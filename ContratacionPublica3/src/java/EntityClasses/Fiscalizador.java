@@ -17,20 +17,22 @@ import javax.enterprise.context.Dependent;
 @Dependent
 public class Fiscalizador {
     private String cedula;
-
     private String codigo;
-
     private String nombre;
-
-    private java.util.Date fechaNac;
-
+    private String fechaNac;
     private Character genero;
-
     private String telefono;
-
     private String celular;
-
     private String correo;
+
+   private final String REGEX_CEDULA = "[/A-Za-z0-9]{1,15}";
+   private final String REGEX_CODIGO = "[/A-Za-z0-9]{1,15}";
+   private final String REGEX_NOMBRE = "[ /A-Za-z0-9]{1,100}";
+   private final String REGEX_FECHANAC = "[0-9]{4}\\/[0-9]{2}\\/[0-9]{2}";
+   private final String REGEX_GENERO = "[/A-Za-z0-9]{1,1}";
+   private final String REGEX_TELEFONO = "[/A-Za-z0-9]{1,10}";
+   private final String REGEX_CELULAR = "[/A-Za-z0-9]{1,10}";
+   private final String REGEX_CORREO = "[/A-Za-z0-9]{1,50}";
     
     /**
      * Creates a new instance of Fiscalizador
@@ -39,7 +41,7 @@ public class Fiscalizador {
     }
     
     
-        public String getCodigo() {
+    public String getCodigo() {
       return codigo;
     } 
     public void setCodigo(String newCodigo) {
@@ -51,10 +53,10 @@ public class Fiscalizador {
     public void setNombre(String newNombre) {
        nombre = newNombre;
     } 
-    public java.util.Date getFechaNac() {
+    public String getFechaNac() {
        return fechaNac;
     } 
-    public void setFechaNac(java.util.Date newFechaNac) {
+    public void setFechaNac(String newFechaNac) {
        fechaNac = newFechaNac;
     } 
     public Character getGenero() {
@@ -86,6 +88,20 @@ public class Fiscalizador {
     } 
     public void setCedula(String newCedula) {
        cedula = newCedula;
+    }
+    public boolean Validar() {
+        if (cedula.matches(REGEX_CEDULA) &&
+            codigo.matches(REGEX_CODIGO) &&
+            nombre.matches(REGEX_NOMBRE) &&
+            fechaNac.matches(REGEX_FECHANAC) &&
+            (genero+"").matches(REGEX_GENERO) &&
+            telefono.matches(REGEX_TELEFONO) &&
+            celular.matches(REGEX_CELULAR) &&
+            correo.matches(REGEX_CORREO)) {
+            return true;
+        } else {
+            return false;
+        }
     }
     
 }
