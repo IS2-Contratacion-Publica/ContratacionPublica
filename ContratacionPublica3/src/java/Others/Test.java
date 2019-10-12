@@ -21,7 +21,7 @@ public class Test {
         ContratistasMD md = new ContratistasMD();
         try {
             Connection conn = md.GenerarConexion();
-            System.out.println(md);
+            System.out.println(conn);
         } catch (SQLException ex) {
             Logger.getLogger(Test.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("failed connection");
