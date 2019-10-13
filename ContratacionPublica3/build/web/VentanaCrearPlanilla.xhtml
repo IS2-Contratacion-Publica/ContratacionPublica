@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Crear nueva planilla</title>
+
+    </h:head>
+    <h:body>
+        <center>
+            <h2>Crear nueva planilla</h2>
+            <h:form>
+                Código de Proyecto: <h:inputText value="#{planillaPD.codigoProyecto}">
+                </h:inputText><h:commandButton value="Verificar"></h:commandButton>
+                <br/>
+                <br/>
+                Codigo de Planilla: <h:inputText value="#{planillaPD.codigo}">
+                </h:inputText><h:commandButton value="Verificar"></h:commandButton>
+                <br/>
+                <br/>
+                Fecha: <input type="date" value="#{planillaDP.fechaCreacion}"/>
+                <br/>
+                <br/>
+                Monto: <input type="float" value="#{planillaDP.monto}" />
+                <br/>
+                <br/>
+                <h:commandButton value="Crear" action="#{planillaPD.crear()}"></h:commandButton>
+                <br/>
+                <br/>
+                <h:outputText value="#{planillaDP.mensaje}"></h:outputText>
+            </h:form>
+        </center>
+    </h:body>
+</html>
+
