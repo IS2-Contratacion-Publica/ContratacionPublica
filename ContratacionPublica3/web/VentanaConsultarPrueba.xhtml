@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Consultar Prueba</title>
+    </h:head>
+    <h:body>
+        <center>
+            <h2>Consultar Prueba</h2>
+            <h:form>
+                Código de Proyecto <h:inputText value="#{PruebasDP.proCodigo}"></h:inputText><h:commandButton value="Consultar" action="#{PruebasDP.Consultar}"></h:commandButton>
+                <br/>
+                Código de Prueba <h:inputText value="#{PruebasDP.pruCodigo}" disabled="#{PruebasDP.existe != -2}"></h:inputText>
+                <br/>
+                Descripción <h:inputText value="#{PruebasDP.descripcion}" disabled="#{PruebasDP.existe != -2}"></h:inputText>
+                <br/>
+                Fecha de Realización de la prueba <h:inputText value="#{PruebasDP.fechaRealizacion}" disabled="#{PruebasDP.existe != -2}"></h:inputText>
+                <br/>               
+            </h:form>
+        </center>
+    </h:body>
+</html>
+

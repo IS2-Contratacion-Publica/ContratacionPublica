@@ -7,10 +7,6 @@ package LayerDP;
 
 import EntityClasses.Contratista;
 import LayerMD.ContratistasMD;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.enterprise.context.Dependent;
 import javax.faces.bean.ManagedBean;
 
