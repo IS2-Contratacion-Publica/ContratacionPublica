@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Ingresar Proyecto</title>
+
+    </h:head>
+    <h:body>
+        <center>
+            <h2>Ingresar Proyecto</h2>
+            <h:form>
+                ID del Proyecto: <h:inputText value="#{proyectosDP.idproyecto}">
+                </h:inputText><h:commandButton value="Verificar" action="#{proyectosDP.Verificar}"></h:commandButton>
+                <br/>
+                Nombre del Proyecto: <h:inputText value="#{proyectosDP.nombreproyecto}" disabled="#{proyectosDP.existe != 0}"></h:inputText>
+                <br/>
+                Descripcion del proyecto: <h:inputText value="#{proyectosDP.descripcion}" disabled="#{proyectosDP.existe != 0}"></h:inputText>
+                <br/>
+                Entidad Contratante: <h:inputText value="#{proyectosDP.entidad}" disabled="#{proyectosDP.existe != 0}"></h:inputText>
+                <br/>
+                Tiempo de duración: <h:inputText value="#{proyectosDP.tiempoDuración}" disabled="#{proyectosDP.existe != 0}"></h:inputText>
+                <br/>
+                Costo: <h:inputText value="#{proyectosDP.costo}" disabled="#{proyectosDP.existe != 0}"></h:inputText>
+                <br/>              
+                <h:commandButton value="Ingresar" action="#{proyectosDP.Ingresar}" disabled="#{proyectosDP.existe != 0}"></h:commandButton>
+                <br/>
+                <h:outputText value="#{proyectosDP.mensaje}"></h:outputText>
+            </h:form>
+        </center>
+    </h:body>
+</html>
+

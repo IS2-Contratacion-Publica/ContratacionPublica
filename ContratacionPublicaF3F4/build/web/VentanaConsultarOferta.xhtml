@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Consultar Oferta</title>
+    </h:head>
+    <h:body>
+        <center>
+            <h2>Consultar Oferta</h2>
+            <h:form>
+                ID de la oferta: <h:inputText value="#{ofertasDP.idoferta}"></h:inputText><h:commandButton value="Consultar" action="#{ofertasDP.Consultar}"></h:commandButton>
+                <br/>
+                ID del proyecto: <h:inputText value="#{ofertasDP.idproyecto}" disabled="#{ofertasDP.existe != -2}"></h:inputText>
+                <br/>
+                Costo ofertado: <h:inputText value="#{ofertasDP.costoofertado}" disabled="#{ofertasDP.existe != -2}"></h:inputText>
+                <br/>
+                Ubicación del archivo: <h:inputText value="#{ofertasDP.ubicacion}" disabled="#{ofertasDP.existe != -2}"></h:inputText>
+                <br/>
+                <h:outputText value="#{ofertasDP.mensaje}"></h:outputText>
+            </h:form>
+        </center>
+    </h:body>
+</html>
+
