@@ -6,23 +6,26 @@
 package LayerDP;
 
 import LayerMD.PlanillaMD;
-import java.sql.Date;
-import javax.annotation.ManagedBean;
+import java.text.ParseException;
+import java.util.Date;
+import java.text.SimpleDateFormat;
 import javax.enterprise.context.Dependent;
+import javax.enterprise.context.RequestScoped;
+import javax.faces.bean.*;
 
 /**
  *
  * @author sebad
  */
-@javax.faces.bean.ManagedBean(name = "planillaPD")
-@Dependent
+@ManagedBean(name = "planillaDP")
+@RequestScoped
 public class PlanillaDP {
      private String codigoProyecto;
     private String codigo;
     private Date fechaCreacion;
     private float monto;
-    private PlanillaMD planillaMD= new PlanillaMD();;
-    private String mensaje="hola";
+    private PlanillaMD planillaMD = new PlanillaMD();
+    private String mensaje;
 
     public void setPlanillaMD() {
 
@@ -58,7 +61,6 @@ public class PlanillaDP {
 
     public PlanillaDP() 
     {
-        
     }
 
     public String getCodigoProyecto() {
@@ -78,18 +80,38 @@ public class PlanillaDP {
     }
     public void crear()
     {
-       planillaMD.crear(this);
+       mensaje=planillaMD.crear(this);
     }
     public void modificar()
     {
-        planillaMD.modificar();
+        mensaje=planillaMD.modificar(this);
     }
     public void eliminar()
     {
-        planillaMD.eliminar();
+        planillaMD.eliminar(this);
+        
     }
-    public void consultar()
+    public void consultar() throws ParseException
     {
-       //return planillaMD.consultar();
+        String fecha;
+      fecha=planillaMD.consultar(this);
+      if(fecha!=null)
+      {
+         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
+         fechaCreacion=dateFormat.parse(fecha);
+      }
+      else
+      {
+          mensaje="No se encontro planilla";
+      }
+    }
+    public String Mensaje()
+    {
+       return "hola";
+    }
+    public void verificar()
+    {
+        codigoProyecto=planillaMD.Verificar(this);
+        
     }
 }

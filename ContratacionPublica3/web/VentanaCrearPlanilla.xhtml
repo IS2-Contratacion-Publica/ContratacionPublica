@@ -11,22 +11,27 @@
         <center>
             <h2>Crear nueva planilla</h2>
             <h:form>
-                Código de Proyecto: <h:inputText value="#{planillaPD.codigoProyecto}">
+                Código de Proyecto: <h:inputText value="#{planillaDP.codigoProyecto}">
+                </h:inputText><h:commandButton value="Verificar" action="#{planillaDP.verificar()}"></h:commandButton>
+                <br/>
+                <br/>
+                Codigo de Planilla: <h:inputText value="#{planillaDP.codigo}">
                 </h:inputText><h:commandButton value="Verificar"></h:commandButton>
                 <br/>
                 <br/>
-                Codigo de Planilla: <h:inputText value="#{planillaPD.codigo}">
-                </h:inputText><h:commandButton value="Verificar"></h:commandButton>
+                Fecha: <h:inputText value="#{planillaDP.fechaCreacion}" >"
+                        <f:convertDateTime pattern = "yyyy-mm-dd" />
+                        </h:inputText>
                 <br/>
                 <br/>
-                Fecha: <input type="date" value="#{planillaDP.fechaCreacion}"/>
+                Monto: <h:inputText value="#{planillaDP.monto}" > 
+                    <f:convertNumber> type="float"</f:convertNumber>
+                </h:inputText>
                 <br/>
                 <br/>
-                Monto: <input type="float" value="#{planillaDP.monto}" />
+                <h:commandButton value="Crear" action="#{planillaDP.crear()}" ></h:commandButton>
                 <br/>
-                <br/>
-                <h:commandButton value="Crear" action="#{planillaPD.crear()}"></h:commandButton>
-                <br/>
+
                 <br/>
                 <h:outputText value="#{planillaDP.mensaje}"></h:outputText>
             </h:form>

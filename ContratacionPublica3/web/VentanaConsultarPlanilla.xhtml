@@ -1,12 +1,37 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Consultar planilla</title>
+
     </h:head>
     <h:body>
-        Hello from Facelets
+        <center>
+            <h2>Consultar planilla</h2>
+            <h:form>
+                Código de Proyecto: <h:inputText value="#{planillaDP.codigoProyecto}">
+                </h:inputText><h:commandButton value="Verificar" action="#{planillaDP.verificar()}"></h:commandButton>
+                <br/>
+                <br/>
+                Codigo de Planilla: <h:inputText value="#{planillaDP.codigo}">
+                </h:inputText><h:commandButton value="Consultar" action="#{planillaDP.consultar()}"></h:commandButton>
+                <br/>
+                <br/>
+                Fecha: <h:inputText value="#{planillaDP.fechaCreacion}" >"
+                        <f:convertDateTime pattern = "yyyy-mm-dd" />
+                        </h:inputText>
+                <br/>
+                <br/>
+                Monto: <h:inputText value="#{planillaDP.monto}" > 
+                    <f:convertNumber> type="float"</f:convertNumber>
+                </h:inputText>
+                <br/>
+                <br/>
+                <h:outputText value="#{planillaDP.mensaje}"></h:outputText>
+            </h:form>
+        </center>
     </h:body>
 </html>
 
