@@ -32,7 +32,10 @@ public class FiscalizadoresMD {
     public FiscalizadoresMD() {
     }
     
-     public Connection GenerarConexion() throws SQLException{
+    /*
+     Genera una conexion con la base de datos
+    */
+    public Connection GenerarConexion() throws SQLException{
         Properties p =  new Properties();
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -51,6 +54,9 @@ public class FiscalizadoresMD {
         return conn;
     }
     
+    /*
+     *Ingresa la informacion de un nuevo contratista a la base de datos
+    */
     public boolean Crear(Fiscalizador fis){
         Properties p =  new Properties();
         Connection conn;
@@ -102,6 +108,9 @@ public class FiscalizadoresMD {
         
     }
     
+    /*
+     *Modifica la informacion de un contratista en la base de datos
+    */
     public boolean Modificar(Fiscalizador fis){
         Properties p =  new Properties();
         Connection conn;
@@ -139,6 +148,9 @@ public class FiscalizadoresMD {
         }
     }
     
+    /*
+     *Elimina la informacion de un contratista en la base de datos
+    */
     public boolean Eliminar(String cedula){
         Properties p =  new Properties();
         Connection conn;
@@ -159,6 +171,9 @@ public class FiscalizadoresMD {
         }
     }
     
+    /*
+     *Consulta la informacion de un contratista en la base de datos
+    */
     public Fiscalizador Consultar(String cedula){
         Properties p =  new Properties();
         Connection conn;
@@ -199,6 +214,9 @@ public class FiscalizadoresMD {
         return resul;
     }
     
+    /*
+     *Verifica si un contratista exista en la base de datos
+    */
     public int Verificar(String cedula){
         Properties p =  new Properties();
         Connection conn;

@@ -34,7 +34,9 @@ public class ContratistasMD {
     public ContratistasMD() {
     }
     
-    
+    /*
+     Genera una conexion con la base de datos
+    */
     public Connection GenerarConexion() throws SQLException{
         Properties p =  new Properties();
         try {
@@ -54,6 +56,9 @@ public class ContratistasMD {
         return conn;
     }
     
+    /*
+     *Ingresa la informacion de un nuevo contratista a la base de datos
+    */
     public boolean Crear(Contratista con){
         Properties p =  new Properties();
         Connection conn;
@@ -105,6 +110,9 @@ public class ContratistasMD {
         
     }
     
+    /*
+     *Modifica la informacion de un contratista en la base de datos
+    */
     public boolean Modificar(Contratista con){
         Properties p =  new Properties();
         Connection conn;
@@ -142,6 +150,9 @@ public class ContratistasMD {
         }
     }
     
+    /*
+     *Elimina la informacion de un contratista en la base de datos
+    */
     public boolean Eliminar(String cedula){
         Properties p =  new Properties();
         Connection conn;
@@ -162,6 +173,9 @@ public class ContratistasMD {
         }
     }
     
+    /*
+     *Consulta la informacion de un contratista en la base de datos
+    */
     public Contratista Consultar(String cedula){
         Properties p =  new Properties();
         Connection conn;
@@ -202,6 +216,9 @@ public class ContratistasMD {
         return resul;
     }
     
+    /*
+     *Verifica si un contratista exista en la base de datos
+    */
     public int Verificar(String cedula){
         Properties p =  new Properties();
         Connection conn;

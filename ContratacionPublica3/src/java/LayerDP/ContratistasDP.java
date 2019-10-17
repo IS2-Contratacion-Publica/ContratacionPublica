@@ -33,85 +33,144 @@ public class ContratistasDP {
     private int existe;
     private String mensaje;
 
+    /*
+     *Obtiene la variable existe
+    */
     public int getExiste() {
         return existe;
     }
 
+    /*
+     *Asigna la variable existe
+    */
     public void setExiste(int existe) {
         this.existe = existe;
     }
 
+    /*
+     *Obtiene la variable mensaje
+    */
     public String getMensaje() {
         return mensaje;
     }
 
+    /*
+     *Asigna la variable mensaje
+    */
     public void setMensaje(String mensaje) {
         this.mensaje = mensaje;
     }
     
-    public String getCedula() {
-        return cedula;
-    }
-
-    public void setCedula(String cedula) {
-        this.cedula = cedula;
-    }
-
+    /*
+     *Obtiene la variable codigo
+    */
     public String getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
-    }
-
+      return codigo;
+    } 
+    
+    /*
+     *Asigna la variable codigo
+    */
+    public void setCodigo(String newCodigo) {
+       codigo = newCodigo;
+    } 
+    
+    /*
+     *Obtiene la variable nombre
+    */
     public String getNombre() {
-        return nombre;
+       return nombre;
     }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
+    
+    /*
+     *Asigna la variable nombre
+    */
+    public void setNombre(String newNombre) {
+       nombre = newNombre;
+    } 
+    
+    /*
+     *Obtiene la variable fechaNac
+    */
     public String getFechanac() {
-        return fechanac;
-    }
-
-    public void setFechanac(String fechanac) {
-        this.fechanac = fechanac;
-    }
-
+       return fechanac;
+    } 
+    
+    /*
+     *Asigna la variable fechaNac
+    */
+    public void setFechanac(String newFechaNac) {
+       fechanac = newFechaNac;
+    } 
+    /*
+     *Obtiene la variable genero
+    */ 
     public String getGenero() {
-        return genero;
-    }
-
-    public void setGenero(String genero) {
-        this.genero = genero;
-    }
-
+       return genero;
+    }  
+    
+    /*
+     *Asigna la variable genero
+    */
+    public void setGenero(String newGenero) {
+       genero = newGenero;
+    }  
+    
+    /*
+     *Obtiene la variable telefono
+    */
     public String getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
-    }
-
+       return telefono;
+    }  
+    
+    /*
+     *Asigna la variable telefono
+    */
+    public void setTelefono(String newTelefono) {
+       telefono = newTelefono;
+    }  
+    
+    /*
+     *Obtiene la variable celular
+    */
     public String getCelular() {
-        return celular;
-    }
-
-    public void setCelular(String celular) {
-        this.celular = celular;
-    }
-
+       return celular;
+    }  
+    
+    /*
+     *Asigna la variable celular
+    */
+    public void setCelular(String newCelular) {
+       celular = newCelular;
+    }  
+    
+    /*
+     *Obtiene la variable correo
+    */
     public String getCorreo() {
-        return correo;
-    }
-
-    public void setCorreo(String correo) {
-        this.correo = correo;
-    }
+       return correo;
+    }  
+    
+    /*
+     *Asigna la variable correo
+    */
+    public void setCorreo(String newCorreo) {
+       correo = newCorreo;
+    } 
+    
+    /*
+     *Obtiene la variable cedula
+    */
+    public String getCedula() {
+       return cedula;
+    }  
+    
+    /*
+     *Asigna la variable cedula
+    */
+    public void setCedula(String newCedula) {
+       cedula = newCedula;
+    } 
     
     /**
      * Creates a new instance of ContratistasDP
@@ -119,6 +178,9 @@ public class ContratistasDP {
     public ContratistasDP() {
     }
     
+    /*
+     *Recupera la informacion del contratista de la interfaz, la valida y la ingresa
+    */
     public void Crear(){
         ContratistasMD md = new ContratistasMD();
         Contratista con = new Contratista();
@@ -144,6 +206,9 @@ public class ContratistasDP {
         
     }
     
+    /*
+     *Recupera la informacion del contratista de la interfaz, la valida y la modifica
+    */
     public void Modificar(){
         ContratistasMD md = new ContratistasMD();
         Contratista con = new Contratista();
@@ -169,6 +234,9 @@ public class ContratistasDP {
         
     }
 
+    /*
+     *Elimina la informacion del contratista, la valida y la ingresa
+    */
     public void Eliminar(){
         ContratistasMD md = new ContratistasMD();
 
@@ -184,6 +252,10 @@ public class ContratistasDP {
         }
         
     }
+    
+    /*
+     *Recupera la informacion del contratista de la base de datos y ;a envia a la interfaz
+    */
     public void Consultar(){
         ContratistasMD md = new ContratistasMD();
         Contratista con;
@@ -212,6 +284,9 @@ public class ContratistasDP {
         
     }
     
+    /*
+     *Verifica que el contratista no exista en la base de datos
+    */
     public void Verificar(){
         ContratistasMD md = new ContratistasMD();
         existe = md.Verificar(cedula);
