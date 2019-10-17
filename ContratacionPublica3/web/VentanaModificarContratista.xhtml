@@ -4,38 +4,53 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
+        <h:outputStylesheet library="css" name="general.css"/>
         <title>Modificar contratista</title>
     </h:head>
     <h:body>
-        <center>
-            <h2>Modificar contratista</h2>
-            <h:form>
-                Número de cédula: <h:inputText value="#{contratistasDP.cedula}"></h:inputText><h:commandButton value="Verificar" action="#{contratistasDP.Consultar}"></h:commandButton>
-                
-                <br/>
-                Código profesional: <h:inputText value="#{contratistasDP.codigo}"></h:inputText>
-                <br/>
-                Nombre: <h:inputText value="#{contratistasDP.nombre}"></h:inputText>
-                <br/>
-                Fecha de nacimiento: <h:inputText value="#{contratistasDP.fechanac}"></h:inputText>
-                <br/>
-                Género: <h:selectOneMenu value="#{contratistasDP.genero}"> 
-                            <f:selectItem itemValue = "M" itemLabel = "Masculino" /> 
-                            <f:selectItem itemValue = "F" itemLabel = "Femenino" /> 
-                            <f:selectItem itemValue = "O" itemLabel = "Otro" /> 
-                         </h:selectOneMenu> 
-                <br/>
-                Número de teléfono: <h:inputText value="#{contratistasDP.telefono}"></h:inputText>
-                <br/>
-                Número de celular: <h:inputText value="#{contratistasDP.celular}"></h:inputText>
-                <br/>
-                Correo electrónico: <h:inputText value="#{contratistasDP.correo}"></h:inputText>
-                <br/>
-                <h:commandButton value="Modificar" action="#{contratistasDP.Modificar}"></h:commandButton>
-                <br/>
-                <h:outputText value="#{contratistasDP.mensaje}"></h:outputText>
-            </h:form>
-        </center>
+        <h2>Modificar contratista</h2>
+        <h:form>
+            <table>
+                <tr>
+                    <td>Número de cédula: </td>
+                    <td><h:inputText value="#{contratistasDP.cedula}"></h:inputText></td>
+                    <td><h:commandButton value="Verificar" action="#{contratistasDP.Consultar}"></h:commandButton></td>
+                </tr>
+                <tr>
+                    <td>Código profesional: </td>
+                    <td><h:inputText value="#{contratistasDP.codigo}"></h:inputText></td>
+                </tr>
+                <tr>
+                    <td>Nombre: </td>
+                    <td><h:inputText value="#{contratistasDP.nombre}"></h:inputText></td>
+                </tr>
+                <tr>
+                    <td>Fecha de nacimiento: </td>
+                    <td><h:inputText value="#{contratistasDP.fechanac}"></h:inputText></td>
+                </tr>
+                <tr>
+                    <td>Género: </td>
+                </tr>
+                <tr>
+                    <td>Número de teléfono: </td>
+                    <td><h:inputText value="#{contratistasDP.telefono}"></h:inputText></td>
+                </tr>
+                <tr>
+                    <td>Número de celular: </td>
+                    <td><h:inputText value="#{contratistasDP.celular}"></h:inputText></td>
+                </tr>
+                    <tr>
+                    <td>Correo electrónico: </td>
+                    <td><h:inputText value="#{contratistasDP.correo}"></h:inputText></td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="boton"><h:commandButton value="Modificar" action="#{contratistasDP.Modificar}"></h:commandButton></td>
+                </tr>
+                <tr>
+                    <td colspan="3" class="mensaje"><h:outputText value="#{contratistasDP.mensaje}"></h:outputText></td>
+                </tr>
+            </table>
+        </h:form>
     </h:body>
 </html>
 
