@@ -9,7 +9,6 @@ import LayerMD.PlanillaMD;
 import java.text.ParseException;
 import java.util.Date;
 import java.text.SimpleDateFormat;
-import javax.enterprise.context.Dependent;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.bean.*;
 
