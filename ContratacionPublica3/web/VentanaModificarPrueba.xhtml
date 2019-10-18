@@ -12,11 +12,11 @@
             <h:form>
                 Código de Proyecto <h:inputText value="#{PruebasDP.proCodigo}"></h:inputText><h:commandButton value="Verificar" action="#{PruebasDP.Verificar}"></h:commandButton>
                 <br/>  
-                Código de Prueba <h:inputText value="#{PruebasDP.pruCodigo}" disabled="#{PruebasDP.existe != 0}"></h:inputText>
+                Código de Prueba <h:inputText value="#{PruebasDP.pruCodigo}"></h:inputText>
                 <br/>
-                Descripción <h:inputText value="#{PruebasDP.descripcion}" disabled="#{PruebasDP.existe != 0}"></h:inputText>
+                Descripción <h:inputText value="#{PruebasDP.descripcion}"></h:inputText>
                 <br/>
-                Fecha de Realización de la prueba <h:inputText value="#{PruebasDP.fechaRealizacion}" disabled="#{PruebasDP.existe != 0}"></h:inputText>
+                Fecha de Realización de la prueba <h:inputText value="#{PruebasDP.fechaRealizacion}"></h:inputText>
                 <br/> 
                 <h:commandButton value="Modificar" action="#{PruebasDP.Modificar}"></h:commandButton>
                 <br/>
