@@ -12,6 +12,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.ManagedBean;
@@ -142,7 +143,7 @@ public class PruebasMD {
         }
     }
     
-    public Prueba Consultar(String prucodigo){
+    public Prueba Consultap(String prucodigo){
         Properties p =  new Properties();
         Connection conn;
         Statement s;
@@ -177,6 +178,41 @@ public class PruebasMD {
         }
         
         return resul;
+    }
+    
+    public LinkedList<Prueba> Consultag(){
+        Properties p =  new Properties();
+        Connection conn;
+        Statement s;
+        ResultSet rs;
+        Prueba resul;
+        String query;
+        LinkedList<Prueba> listpruebas = new LinkedList<Prueba>();
+        
+        query = "select * from "+
+                p.prop("con.tabla");
+
+        try {
+            conn = GenerarConexion();
+            s = conn.createStatement();
+            rs = s.executeQuery(query);
+            
+            while(rs.next()){
+                resul = new Prueba();
+                resul.setProCodigo(rs.getString(1));
+                resul.setPruCodigo(rs.getString(2));
+                resul.setDescripcion(rs.getString(3));
+                resul.setFechaRealizacion(rs.getString(4));
+                listpruebas.add(resul);
+           
+            }
+            conn.close();
+            
+        } catch (SQLException ex) {
+            resul = null;
+        }
+        
+        return listpruebas;
     }
     
     public int Verificar(String prucodigo){

@@ -7,6 +7,7 @@ package LayerDP;
 
 import EntityClasses.Prueba;
 import LayerMD.PruebasMD;
+import java.util.LinkedList;
 import javax.enterprise.context.Dependent;
 import javax.faces.bean.ManagedBean;
 
@@ -134,12 +135,12 @@ public class PruebasDP {
         }
         
     }
-    public void Consultar(){
+    public void Consultap(){
         PruebasMD md = new PruebasMD();
         Prueba pru;
         Verificar();
         if (existe == 1) {
-            pru = md.Consultar(prucodigo);
+            pru = md.Consultap(prucodigo);
             procodigo = pru.getProCodigo();
             prucodigo = pru.getPruCodigo();
             descripcion = pru.getDescripcion();
@@ -153,6 +154,12 @@ public class PruebasDP {
         }
 
         
+    }
+    
+    public LinkedList<Prueba> Consultag(){
+        PruebasMD PMD = new PruebasMD();
+        LinkedList<Prueba> listpruebas = PMD.Consultag();
+        return listpruebas;
     }
     
     public void Verificar(){
