@@ -19,7 +19,7 @@
                 <br/>
                 Fecha de Realización de la prueba <h:inputText value="#{PruebasDP.fechaRealizacion}" disabled="#{PruebasDP.existe != 0}"></h:inputText>
                 <br/>       
-                <h:commandButton value="Crear" action="#{PruebaDP.Crear}" disabled="#{PruebaDP.existe != 0}"></h:commandButton>
+                <h:commandButton value="Crear" action="#{PruebasDP.Crear}"></h:commandButton>
                 <br/>
                 <h:outputText value="#{PruebaDP.mensaje}"></h:outputText>
             </h:form>

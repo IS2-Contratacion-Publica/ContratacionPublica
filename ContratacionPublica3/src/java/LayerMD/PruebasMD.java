@@ -6,6 +6,7 @@
 package LayerMD;
 
 import EntityClasses.Prueba;
+import Others.Conexion;
 import Others.Properties;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -58,7 +59,7 @@ public class PruebasMD {
         Statement s;
         String procod,prucod,descrip,fecha,query;
 
-        
+        Conexion cx = new Conexion();
         procod = con.getProCodigo();
         prucod = con.getPruCodigo();
         descrip = con.getDescripcion();
@@ -78,11 +79,13 @@ public class PruebasMD {
         
         
         try {
+            cx.Ejecutar(query);/*
             conn = GenerarConexion();
             System.out.println(conn);
             s = conn.createStatement();
             s.executeQuery(query);
-            conn.close();
+            conn.close();*/
+            cx.Cerrar();
             return true;
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -108,9 +111,9 @@ public class PruebasMD {
                 p.prop("pru.tabla")+" set "+
                 p.prop("pru.c1")+" = '"+procod+"', "+
                 p.prop("pru.c3")+" = '"+descrip+"', "+
-                p.prop("pru.c3")+" = "+"TO_DATE('"+fecha+"', 'YYYY/MM/DD'), "
-                +"' where "+
-                p.prop("con.c2")+" = '"+prucod+"'";
+                p.prop("pru.c4")+" = "+"TO_DATE('"+fecha+"', 'YYYY/MM/DD') "
+                +" where "+
+                p.prop("pru.c2")+" = '"+prucod+"'";
         System.out.println(query);
         try {
             conn = GenerarConexion();
@@ -129,8 +132,8 @@ public class PruebasMD {
         Statement s;
         String query;
         query = "delete from "+
-                p.prop("con.tabla")+" where "+
-                p.prop("con.c2")+" = '"+prucodigo+"'";
+                p.prop("pru.tabla")+" where "+
+                p.prop("pru.c2")+" = '"+prucodigo+"'";
 
         try {
             conn = GenerarConexion();
@@ -152,8 +155,8 @@ public class PruebasMD {
         String query;
         
         query = "select * from "+
-                p.prop("con.tabla")+" where "+
-                p.prop("con.c1")+" = '"+prucodigo+"'";
+                p.prop("pru.tabla")+" where "+
+                p.prop("pru.c2")+" = '"+prucodigo+"'";
 
         try {
             conn = GenerarConexion();
@@ -224,8 +227,8 @@ public class PruebasMD {
         String query;
         
         query = "select * from "+
-                p.prop("con.tabla")+" where "+
-                p.prop("con.c2")+" = '"+prucodigo+"'";
+                p.prop("pru.tabla")+" where "+
+                p.prop("pru.c2")+" = '"+prucodigo+"'";
 
         try {
             conn = GenerarConexion();
