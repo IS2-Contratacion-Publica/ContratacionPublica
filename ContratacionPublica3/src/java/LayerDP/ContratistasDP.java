@@ -9,6 +9,8 @@ import EntityClasses.Contratista;
 import LayerMD.ContratistasMD;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.enterprise.context.Dependent;
@@ -32,6 +34,15 @@ public class ContratistasDP {
     private String correo;
     private int existe;
     private String mensaje;
+    private ArrayList consulta;
+
+    public ArrayList getConsulta() {
+        return consulta;
+    }
+
+    public void setConsulta(ArrayList consulta) {
+        this.consulta = consulta;
+    }
 
     /*
      *Obtiene la variable existe
@@ -58,7 +69,7 @@ public class ContratistasDP {
      *Asigna la variable mensaje
     */
     public void setMensaje(String mensaje) {
-        this.mensaje = mensaje;
+        this.mensaje = mensaje.trim();
     }
     
     /*
@@ -72,7 +83,7 @@ public class ContratistasDP {
      *Asigna la variable codigo
     */
     public void setCodigo(String newCodigo) {
-       codigo = newCodigo;
+       codigo = newCodigo.trim();
     } 
     
     /*
@@ -86,7 +97,7 @@ public class ContratistasDP {
      *Asigna la variable nombre
     */
     public void setNombre(String newNombre) {
-       nombre = newNombre;
+       nombre = newNombre.trim();
     } 
     
     /*
@@ -100,7 +111,7 @@ public class ContratistasDP {
      *Asigna la variable fechaNac
     */
     public void setFechanac(String newFechaNac) {
-       fechanac = newFechaNac;
+       fechanac = newFechaNac.trim();
     } 
     /*
      *Obtiene la variable genero
@@ -113,7 +124,7 @@ public class ContratistasDP {
      *Asigna la variable genero
     */
     public void setGenero(String newGenero) {
-       genero = newGenero;
+       genero = newGenero.trim();
     }  
     
     /*
@@ -127,7 +138,7 @@ public class ContratistasDP {
      *Asigna la variable telefono
     */
     public void setTelefono(String newTelefono) {
-       telefono = newTelefono;
+       telefono = newTelefono.trim();
     }  
     
     /*
@@ -141,7 +152,7 @@ public class ContratistasDP {
      *Asigna la variable celular
     */
     public void setCelular(String newCelular) {
-       celular = newCelular;
+       celular = newCelular.trim();
     }  
     
     /*
@@ -155,7 +166,7 @@ public class ContratistasDP {
      *Asigna la variable correo
     */
     public void setCorreo(String newCorreo) {
-       correo = newCorreo;
+       correo = newCorreo.trim();
     } 
     
     /*
@@ -169,7 +180,7 @@ public class ContratistasDP {
      *Asigna la variable cedula
     */
     public void setCedula(String newCedula) {
-       cedula = newCedula;
+       cedula = newCedula.trim();
     } 
     
     /**
@@ -260,16 +271,16 @@ public class ContratistasDP {
         ContratistasMD md = new ContratistasMD();
         Contratista con;
         Verificar();
-        if (existe == 1) {
-            con = md.Consultar(cedula);
-            cedula = con.getCedula();
-            codigo = con.getCodigo();
-            nombre = con.getNombre();
+        con = md.Consultar(cedula);
+        if (existe == 1 && con != null) {
+            cedula = con.getCedula().trim();
+            codigo = con.getCodigo().trim();
+            nombre = con.getNombre().trim();
             fechanac = con.getFechaNac().substring(0, 10).replace("-", "/");
             genero = con.getGenero()+"";
-            telefono = con.getTelefono();
-            celular = con.getCelular();
-            correo = con.getCorreo();
+            telefono = con.getTelefono().trim();
+            celular = con.getCelular().trim();
+            correo = con.getCorreo().trim();
         } else {
             cedula = "";
             codigo = "";
@@ -282,6 +293,27 @@ public class ContratistasDP {
         }
 
         
+    }
+    
+    public ArrayList ConsultaGeneral(){
+        ArrayList resul;
+        ContratistasMD md = new ContratistasMD();
+        return md.ConsultaGeneral();
+    }
+    
+    public void ConsultaParametros(){
+        ArrayList resul;
+        ContratistasMD md = new ContratistasMD();
+        Contratista con = new Contratista();
+        con.setCedula(cedula.trim());
+        con.setCodigo(codigo.trim());
+        con.setNombre(nombre.trim());
+        con.setFechaNac(fechanac.trim());
+        con.setGenero(genero.charAt(0));
+        con.setTelefono(telefono.trim());
+        con.setCelular(celular.trim());
+        con.setCorreo(correo.trim());
+        consulta = md.ConsultaParametros(con);
     }
     
     /*

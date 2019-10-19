@@ -18,30 +18,35 @@
                 </tr>
                 <tr>
                     <td>Código profesional: </td>
-                    <td><h:inputText value="#{fiscalizadoresDP.codigo}"></h:inputText></td>
+                    <td><h:inputText value="#{fiscalizadoresDP.codigo}" disabled="#{contratistasDP.existe != -2}"></h:inputText></td>
                 </tr>
                 <tr>
                     <td>Nombre: </td>
-                    <td><h:inputText value="#{fiscalizadoresDP.nombre}"></h:inputText></td>
+                    <td><h:inputText value="#{fiscalizadoresDP.nombre}" disabled="#{contratistasDP.existe != -2}"></h:inputText></td>
                 </tr>
                 <tr>
                     <td>Fecha de nacimiento: </td>
-                    <td><h:inputText value="#{fiscalizadoresDP.fechanac}"></h:inputText></td>
+                    <td><h:inputText value="#{fiscalizadoresDP.fechanac}" disabled="#{contratistasDP.existe != -2}"></h:inputText></td>
                 </tr>
                 <tr>
                     <td>Género: </td>
+                    <td><h:selectOneMenu value="#{fiscalizadoresDP.genero}" disabled="#{fiscalizadoresDP.existe != -2}"> 
+                            <f:selectItem itemValue = "M" itemLabel = "Masculino" /> 
+                            <f:selectItem itemValue = "F" itemLabel = "Femenino" /> 
+                            <f:selectItem itemValue = "O" itemLabel = "Otro" /> 
+                         </h:selectOneMenu></td>
                 </tr>
                 <tr>
                     <td>Número de teléfono: </td>
-                    <td><h:inputText value="#{fiscalizadoresDP.telefono}"></h:inputText></td>
+                    <td><h:inputText value="#{fiscalizadoresDP.telefono}" disabled="#{contratistasDP.existe != -2}"></h:inputText></td>
                 </tr>
                 <tr>
                     <td>Número de celular: </td>
-                    <td><h:inputText value="#{fiscalizadoresDP.celular}"></h:inputText></td>
+                    <td><h:inputText value="#{fiscalizadoresDP.celular}" disabled="#{contratistasDP.existe != -2}"></h:inputText></td>
                 </tr>
                     <tr>
                     <td>Correo electrónico: </td>
-                    <td><h:inputText value="#{fiscalizadoresDP.correo}"></h:inputText></td>
+                    <td><h:inputText value="#{fiscalizadoresDP.correo}" disabled="#{contratistasDP.existe != -2}"></h:inputText></td>
                 </tr>
                 <tr>
                     <td colspan="2" class="boton">

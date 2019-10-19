@@ -14,7 +14,7 @@
                 <tr>
                     <td>Número de cédula: </td>
                     <td><h:inputText value="#{contratistasDP.cedula}"></h:inputText></td>
-                    <td><h:commandButton value="Verificar" action="#{contratistasDP.Consultar}"></h:commandButton></td>
+                    <td><h:commandButton value="Cargar" action="#{contratistasDP.Consultar}"></h:commandButton></td>
                 </tr>
                 <tr>
                     <td>Código profesional: </td>
@@ -30,6 +30,11 @@
                 </tr>
                 <tr>
                     <td>Género: </td>
+                    <td><h:selectOneMenu value="#{contratistasDP.genero}"> 
+                        <f:selectItem itemValue = "M" itemLabel = "Masculino" /> 
+                        <f:selectItem itemValue = "F" itemLabel = "Femenino" /> 
+                        <f:selectItem itemValue = "O" itemLabel = "Otro" /> 
+                        </h:selectOneMenu></td>
                 </tr>
                 <tr>
                     <td>Número de teléfono: </td>

@@ -10,45 +10,82 @@
     <h:body>
         <h2>Consultar contratista</h2>
         <h:form>
-            <table>
-            <tr>
-                <td>Número de cédula: </td>
-                <td><h:inputText value="#{contratistasDP.cedula}"></h:inputText></td>
-                <td><h:commandButton value="Consultar" action="#{contratistasDP.Consultar}"></h:commandButton></td>
-            </tr>
-            <tr>
-                <td>Código profesional: </td>
-                <td><h:inputText value="#{contratistasDP.codigo}" disabled="#{contratistasDP.existe != -2}"></h:inputText></td>
-            </tr>
-            <tr>
-                <td>Nombre: </td>
-                <td><h:inputText value="#{contratistasDP.nombre}" disabled="#{contratistasDP.existe != -2}"></h:inputText></td>
-            </tr>
-            <tr>
-                <td>Fecha de nacimiento: </td>
-                <td><h:inputText value="#{contratistasDP.fechanac}" disabled="#{contratistasDP.existe != -2}"></h:inputText></td>
-            </tr>
-            <tr>
-                <td>Género: </td>
-                <td><h:selectOneMenu value="#{contratistasDP.genero}" disabled="#{contratistasDP.existe != -2}"> 
-                            <f:selectItem itemValue = "M" itemLabel = "Masculino" /> 
-                            <f:selectItem itemValue = "F" itemLabel = "Femenino" /> 
-                            <f:selectItem itemValue = "O" itemLabel = "Otro" /> 
-                         </h:selectOneMenu></td>
-            </tr>
-            <tr>
-                <td>Número de teléfono: </td>
-                <td><h:inputText value="#{contratistasDP.telefono}" disabled="#{contratistasDP.existe != -2}"></h:inputText></td>
-            </tr>
-            <tr>
-                <td>Número de celular: </td>
-                <td><h:inputText value="#{contratistasDP.celular}" disabled="#{contratistasDP.existe != -2}"></h:inputText></td>
-            </tr>
-            <tr>
-                <td>Correo electrónico: </td>
-                <td><h:inputText value="#{contratistasDP.correo}" disabled="#{contratistasDP.existe != -2}"></h:inputText></td>
-            </tr>
-            </table>
+            <h:dataTable value="#{contratistasDP.consulta}" var="consul">
+                <h:column>
+                    <f:facet name="header">
+                            Número de cédula
+                            <br/>
+                            <h:inputText value="#{contratistasDP.cedula}"></h:inputText>
+                    </f:facet>
+                    <h:outputText value="#{consul.cedula}" ></h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                            Código profesional
+                            <br/>
+                            <h:inputText value="#{contratistasDP.codigo}"></h:inputText>
+                    </f:facet>
+                    <h:outputText value="#{consul.codigo}" ></h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                            Nombre
+                            <br/>
+                            <h:inputText value="#{contratistasDP.nombre}"></h:inputText>
+                    </f:facet>
+                    <h:outputText value="#{consul.nombre}" ></h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                            Fecha de nacimiento
+                            <br/>
+                            <h:inputText value="#{contratistasDP.fechanac}"></h:inputText>
+                    </f:facet>
+                    <h:outputText value="#{consul.fechaNac}" ></h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                            Género
+                            <br/>
+                            <h:selectOneMenu value="#{contratistasDP.genero}"> 
+                                <f:selectItem itemValue = "x" itemLabel = " " /> 
+                                <f:selectItem itemValue = "M" itemLabel = "Masculino" /> 
+                                <f:selectItem itemValue = "F" itemLabel = "Femenino" /> 
+                                <f:selectItem itemValue = "O" itemLabel = "Otro" /> 
+                        </h:selectOneMenu>
+                    </f:facet>
+                    <h:outputText value="#{consul.genero}" ></h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                            Número de teléfono
+                            <br/>
+                            <h:inputText value="#{contratistasDP.telefono}"></h:inputText>
+                    </f:facet>
+                    <h:outputText value="#{consul.telefono}" ></h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                            Número de celular
+                            <br/>
+                            <h:inputText value="#{contratistasDP.celular}"></h:inputText>
+                    </f:facet>
+                    <h:outputText value="#{consul.celular}" ></h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                            Correo eletrónico
+                            <br/>
+                            <h:inputText value="#{contratistasDP.correo}"></h:inputText>
+                    </f:facet>
+                    <h:outputText value="#{consul.correo}" ></h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                            <h:commandButton value="Consultar" action="#{contratistasDP.ConsultaParametros}"></h:commandButton>
+                    </f:facet>
+                </h:column>
+            </h:dataTable>
         </h:form>
     </h:body>
 </html>

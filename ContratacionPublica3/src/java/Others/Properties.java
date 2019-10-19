@@ -47,7 +47,6 @@ public class Properties {
         } catch(IOException e) {
                 
         }*/
-        System.out.println(prop.getProperty(propiedad));
         return prop.getProperty(propiedad);
     }
 }

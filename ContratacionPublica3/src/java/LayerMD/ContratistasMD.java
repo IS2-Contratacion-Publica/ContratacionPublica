@@ -6,6 +6,7 @@
 package LayerMD;
 
 import EntityClasses.Contratista;
+import Others.Conexion;
 import Others.Properties;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -15,6 +16,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.ManagedBean;
@@ -34,35 +37,14 @@ public class ContratistasMD {
     public ContratistasMD() {
     }
     
-    /*
-     Genera una conexion con la base de datos
-    */
-    public Connection GenerarConexion() throws SQLException{
-        Properties p =  new Properties();
-        try {
-            Class.forName("oracle.jdbc.driver.OracleDriver");
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ContratistasMD.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("clase no encontrada");
-        }
-        Connection conn;
-        conn = DriverManager.getConnection("jdbc:"+
-                                            p.prop("tipo")+":thin:@"+
-                                            p.prop("direccion")+":"+
-                                            p.prop("puerto")+":"+
-                                            "orcl",
-                                            p.prop("usuario"),
-                                            p.prop("contrasenia"));
-        return conn;
-    }
+    
     
     /*
      *Ingresa la informacion de un nuevo contratista a la base de datos
     */
     public boolean Crear(Contratista con){
         Properties p =  new Properties();
-        Connection conn;
-        Statement s;
+        Conexion cx = new Conexion();
         String cod, nom, tel, cel, cor, orden, ced, nac;
         char gen;
         
@@ -83,28 +65,25 @@ public class ContratistasMD {
                 p.prop("con.campo4")+", "+
                 p.prop("con.campo5")+", "+
                 p.prop("con.campo6")+", "+
-                p.prop("con.campo7")+") "
-                + "values ('"+ced+"','"+
+                p.prop("con.campo7")+", "+
+                p.prop("con.campo8")+") "
+                + "values ('"+
+                ced+"','"+
                 cod+"', '"+
                 nom+"', "+"TO_DATE('"+
                 nac+"', 'YYYY/MM/DD'), '"+
                 gen+"', '"+
                 tel+"', '"+
                 cel+"', '"+
-                cor+"')";
-        
-        
+                cor+"', "+
+                1+")";
         
         try {
-            conn = GenerarConexion();
-            System.out.println(conn);
-            s = conn.createStatement();
-            s.executeQuery(orden);
-            conn.close();
+            cx.Ejecutar(orden);
+            cx.Cerrar();
             return true;
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
-            
             return false;
         }
         
@@ -115,8 +94,8 @@ public class ContratistasMD {
     */
     public boolean Modificar(Contratista con){
         Properties p =  new Properties();
-        Connection conn;
-        Statement s;
+        Conexion cx = new Conexion();
+
         String cod, nom, tel, cel, cor, orden, ced, nac;
         char gen;
         System.out.println("preparando para insertar");
@@ -136,18 +115,19 @@ public class ContratistasMD {
                 p.prop("con.campo4")+" = '"+gen+"', "+
                 p.prop("con.campo5")+" = '"+tel+"', "+
                 p.prop("con.campo6")+" = '"+cel+"', "+
-                p.prop("con.campo7")+" = '"+cor+"' where "+
+                p.prop("con.campo7")+" = '"+cor+"', "+
+                p.prop("con.campo8")+" = "+1+" where "+
                 p.prop("con.llave")+" = '"+ced+"'";
-        System.out.println(orden);
+        
         try {
-            conn = GenerarConexion();
-            s = conn.createStatement();
-            s.executeUpdate(orden);
-            conn.close();
+            cx.Ejecutar(orden);
+            cx.Cerrar();
             return true;
         } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
             return false;
         }
+
     }
     
     /*
@@ -155,20 +135,20 @@ public class ContratistasMD {
     */
     public boolean Eliminar(String cedula){
         Properties p =  new Properties();
-        Connection conn;
-        Statement s;
+        Conexion cx = new Conexion();
         String orden;
-        orden = "delete from "+
-                p.prop("con.tabla")+" where "+
+        
+        orden = "update "+
+                p.prop("con.tabla")+" set "+
+                p.prop("con.campo8")+" = "+0+" where "+
                 p.prop("con.llave")+" = '"+cedula+"'";
 
         try {
-            conn = GenerarConexion();
-            s = conn.createStatement();
-            s.executeUpdate(orden);
-            conn.close();
+            cx.Ejecutar(orden);
+            cx.Cerrar();
             return true;
         } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
             return false;
         }
     }
@@ -178,21 +158,18 @@ public class ContratistasMD {
     */
     public Contratista Consultar(String cedula){
         Properties p =  new Properties();
-        Connection conn;
-        Statement s;
+        Conexion cx = new Conexion();
         ResultSet rs;
         Contratista resul;
         String orden;
         
         orden = "select * from "+
                 p.prop("con.tabla")+" where "+
-                p.prop("con.llave")+" = '"+cedula+"'";
+                p.prop("con.llave")+" = '"+cedula+"' and " +
+                p.prop("con.campo8")+" = "+1;
 
         try {
-            conn = GenerarConexion();
-            s = conn.createStatement();
-            rs = s.executeQuery(orden);
-            
+            rs = cx.Ejecutar(orden);
             if(rs.next()){
                 resul = new Contratista();
                 resul.setCedula(rs.getString(1));
@@ -207,12 +184,112 @@ public class ContratistasMD {
             else{
                 resul = null;
             }
-            conn.close();
-            
+            cx.Cerrar();
         } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
             resul = null;
         }
+        return resul;
+    }
+    
+    
+    /*
+     *Consulta la informacion de uvarios contratistas en la base de datos
+    */
+    public ArrayList ConsultaGeneral(){
+        Properties p =  new Properties();
+        Conexion cx = new Conexion();
+        ResultSet rs;
+        Contratista con = null;
+        ArrayList resul = new ArrayList();
+        String orden;
         
+        orden = "select * from "+
+                p.prop("con.tabla")+" where "+
+                p.prop("con.campo8")+" = "+1;
+
+        try {
+            rs = cx.Ejecutar(orden);
+            while (rs.next()){
+                con = new Contratista();
+                con.setCedula(rs.getString(1));
+                con.setCodigo(rs.getString(2));
+                con.setNombre(rs.getString(3));
+                con.setFechaNac(rs.getString(4));
+                con.setGenero(rs.getString(5).charAt(0));
+                con.setTelefono(rs.getString(6));
+                con.setCelular(rs.getString(7));
+                con.setCorreo(rs.getString(8));
+                resul.add(con);
+            }
+            cx.Cerrar();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            resul = null;
+        }
+        return resul;
+    }
+    
+    
+    public ArrayList ConsultaParametros(Contratista conParam){
+        Properties p =  new Properties();
+        Conexion cx = new Conexion();
+        ResultSet rs;
+        Contratista con = null;
+        ArrayList resul = new ArrayList();
+        String orden;
+        
+        orden = "select * from "+
+                p.prop("con.tabla")+" where "+
+                p.prop("con.campo8")+" = "+
+                1+" and ";
+        
+        if (!conParam.getCedula().isEmpty()) {
+            orden += p.prop("con.llave")+" = '"+conParam.getCedula()+"' and ";
+        }
+        if (!conParam.getCodigo().isEmpty()) {
+            orden += p.prop("con.campo1")+" = '"+conParam.getCodigo()+"' and ";
+        }
+        if (!conParam.getNombre().isEmpty()) {
+            orden += p.prop("con.campo2")+" = '"+conParam.getNombre()+"' and ";
+        }
+        if (!conParam.getFechaNac().isEmpty()) {
+            orden += p.prop("con.campo3")+" = "+"TO_DATE('"+conParam.getFechaNac()+"', 'YYYY/MM/DD') and ";
+        }
+        if (conParam.getGenero() != 'x') {
+            orden += p.prop("con.campo4")+" = '"+conParam.getGenero()+"' and ";
+        }
+        if (!conParam.getTelefono().isEmpty()) {
+            orden += p.prop("con.campo5")+" = '"+conParam.getTelefono()+"' and ";
+        }
+        if (!conParam.getCelular().isEmpty()) {
+            orden += p.prop("con.campo6")+" = '"+conParam.getCelular()+"' and ";
+        }
+        if (!conParam.getCorreo().isEmpty()) {
+            orden += p.prop("con.campo7")+" = '"+conParam.getCorreo()+"' and ";
+        }
+        
+        orden = orden.substring(0, orden.length()-4);
+
+        try {
+            rs = cx.Ejecutar(orden);
+            while (rs.next()){
+                con = new Contratista();
+                con.setCedula(rs.getString(1));
+                con.setCodigo(rs.getString(2));
+                con.setNombre(rs.getString(3));
+                con.setFechaNac(rs.getString(4));
+                con.setGenero(rs.getString(5).charAt(0));
+                con.setTelefono(rs.getString(6));
+                con.setCelular(rs.getString(7));
+                con.setCorreo(rs.getString(8));
+                resul.add(con);
+            }
+            cx.Cerrar();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            resul = null;
+        }
         return resul;
     }
     
@@ -221,8 +298,7 @@ public class ContratistasMD {
     */
     public int Verificar(String cedula){
         Properties p =  new Properties();
-        Connection conn;
-        Statement s;
+        Conexion cx = new Conexion();
         ResultSet rs;
         int existe;
         String orden;
@@ -232,23 +308,18 @@ public class ContratistasMD {
                 p.prop("con.llave")+" = '"+cedula+"'";
 
         try {
-            conn = GenerarConexion();
-            s = conn.createStatement();
-            rs = s.executeQuery(orden);
+            rs = cx.Ejecutar(orden);
             if(rs.next()){
                 existe = 1;
             }
             else{
                 existe = 0;
             }
-            conn.close();
-            
+            cx.Cerrar();
         } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
             existe = -1;
         }
-        System.out.println(orden);
-        System.out.println("Existe: " + cedula);
-        System.out.println("Existe: " + existe);
         return existe;
     }
   

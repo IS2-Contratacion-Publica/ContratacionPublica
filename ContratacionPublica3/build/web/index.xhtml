@@ -3,39 +3,120 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html">
     <h:head>
+        <h:outputStylesheet library="css" name="menu.css"/>
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-        Contratistas
-        <ul>
-            <li>
-                <h:link outcome="VentanaCrearContratista">Crear Contratista</h:link>
-            </li>
-            <li>
-                <h:link outcome="VentanaModificarContratista">Modificar Contratista</h:link>
-            </li>
-            <li>
-                <h:link outcome="VentanaEliminarContratista">Eliminar Contratista</h:link>
-            </li>
-            <li>
-                <h:link outcome="VentanaConsultarContratista">Consultar Contratista</h:link>
-            </li>
-        </ul>
-        Fiscalizadores
-        <ul>
-            <li>
-                <h:link outcome="VentanaCrearFiscalizador">Crear Fiscalizador</h:link>
-            </li>
-            <li>
-                <h:link outcome="VentanaModificarFiscalizador">Modificar Fiscalizador</h:link>
-            </li>
-            <li>
-                <h:link outcome="VentanaEliminarFiscalizador">Eliminar Fiscalizador</h:link>
-            </li>
-            <li>
-                <h:link outcome="VentanaConsultarFiscalizador">Consultar Fiscalizador</h:link>
-            </li>
-        </ul>
+        <div class="navegacion">
+        <nav>
+            <ul>
+                <li>
+                    <a href="#">Archivo <span class="icon icon-up-dir"></span></a>
+                    <div class="submenu">
+                        <div class="submenu-items">
+                            <a href="#">Item #1</a>
+                        </div>
+                    </div>  
+                </li>
+                <li>
+                    <a href="#">Catálogos <span class="icon icon-up-dir"></span></a>
+                    <div class="submenu">
+                        <div class="submenu-items">
+                            <p>Contratistas</p>
+                            <ul>
+                                <li><h:link outcome="VentanaCrearContratista">Crear Contratista</h:link></li>
+                                <li><h:link outcome="VentanaModificarContratista">Modificar Contratista</h:link></li>
+                                <li><h:link outcome="VentanaEliminarContratista">Eliminar Contratista</h:link></li>
+                                <li><h:link outcome="VentanaConsultarContratista">Consultar Contratista</h:link></li>
+                            </ul>
+                        </div>
+                        <div class="submenu-items">
+                            <p>Fiscalizadores</p>
+                            <ul>
+                                <li><h:link outcome="VentanaCrearFiscalizador">Crear Fiscalizador</h:link></li>
+                                <li><h:link outcome="VentanaModificarFiscalizador">Modificar Fiscalizador</h:link></li>
+                                <li><h:link outcome="VentanaEliminarFiscalizador">Eliminar Fiscalizador</h:link></li>
+                                <li><h:link outcome="VentanaConsultarFiscalizador">Consultar Fiscalizador</h:link></li>
+                            </ul>
+                        </div>
+                        <div class="submenu-items">
+                            <p>Submenu #3</p>
+                            <ul>
+                                <li><a href="#">Item #1</a></li>
+                                <li><a href="#">Item #2</a></li>
+                                <li><a href="#">Item #3</a></li>
+                            </ul>
+                        </div>
+                        <div class="submenu-items">
+                            <p>Submenu #3</p>
+                            <ul>
+                                <li><a href="#">Item #1</a></li>
+                                <li><a href="#">Item #2</a></li>
+                                <li><a href="#">Item #3</a></li>
+                            </ul>
+                        </div>
+                        <div class="submenu-items">
+                            <p>Submenu #3</p>
+                            <ul>
+                                <li><a href="#">Item #1</a></li>
+                                <li><a href="#">Item #2</a></li>
+                                <li><a href="#">Item #3</a></li>
+                            </ul>
+                        </div>
+                        <div class="submenu-items">
+                            <p>Submenu #3</p>
+                            <ul>
+                                <li><a href="#">Item #1</a></li>
+                                <li><a href="#">Item #2</a></li>
+                                <li><a href="#">Item #3</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <a href="#">Procesos <span class="icon icon-up-dir"></span></a>
+                    <div class="submenu">
+                        <div class="submenu-items">
+                            <p>Submenu #1</p>
+                            <ul>
+                                <li><a href="#">Item #1</a></li>
+                                <li><a href="#">Item #2</a></li>
+                                <li><a href="#">Item #3</a></li>
+                            </ul>
+                        </div>
+                        <div class="submenu-items">
+                            <p>Submenu #2</p>
+                            <ul>
+                                <li><a href="#">Item #1</a></li>
+                                <li><a href="#">Item #2</a></li>
+                                <li><a href="#">Item #3</a></li>
+                            </ul>
+                        </div>
+                        <div class="submenu-items">
+                            <p>Submenu #3</p>
+                            <ul>
+                                <li><a href="#">Item #1</a></li>
+                                <li><a href="#">Item #2</a></li>
+                                <li><a href="#">Item #3</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li id="derecha">
+                    <a href="#">Cerrar sesión<span class="icon icon-up-dir"></span></a>
+                </li>
+    
+                <li id="derecha">
+                    <a href="#">Ayuda<span class="icon icon-up-dir"></span></a>
+                </li>
+    
+
+            </ul>
+        </nav>
+    </div>
+    <div id="ventanas">
+        aqui va toda la mierda
+    </div>
     </h:body>
 </html>
 

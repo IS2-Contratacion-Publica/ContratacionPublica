@@ -14,34 +14,39 @@
                 <tr>
                     <td>Número de cédula:  </td>
                     <td><h:inputText value="#{contratistasDP.cedula}"></h:inputText></td>
-                    <td><h:commandButton value="Verificar" action="#{contratistasDP.Consultar}"></h:commandButton></td>
+                    <td><h:commandButton value="Cargar" action="#{contratistasDP.Consultar}"></h:commandButton></td>
                 </tr>
                 <tr>
                     <td>Código profesional: </td>
-                    <td><h:inputText value="#{contratistasDP.codigo}"></h:inputText></td>
+                    <td><h:inputText value="#{contratistasDP.codigo}" disabled="#{contratistasDP.existe != -2}"></h:inputText></td>
                 </tr>
                 <tr>
                     <td>Nombre: </td>
-                    <td><h:inputText value="#{contratistasDP.nombre}"></h:inputText></td>
+                    <td><h:inputText value="#{contratistasDP.nombre}" disabled="#{contratistasDP.existe != -2}"></h:inputText></td>
                 </tr>
                 <tr>
                     <td>Fecha de nacimiento: </td>
-                    <td><h:inputText value="#{contratistasDP.fechanac}"></h:inputText></td>
+                    <td><h:inputText value="#{contratistasDP.fechanac}" disabled="#{contratistasDP.existe != -2}"></h:inputText></td>
                 </tr>
                 <tr>
                     <td>Género: </td>
+                    <td><h:selectOneMenu value="#{contratistasDP.genero}" disabled="#{contratistasDP.existe != -2}"> 
+                        <f:selectItem itemValue = "M" itemLabel = "Masculino" /> 
+                        <f:selectItem itemValue = "F" itemLabel = "Femenino" /> 
+                        <f:selectItem itemValue = "O" itemLabel = "Otro" /> 
+                        </h:selectOneMenu></td>
                 </tr>
                 <tr>
                     <td>Número de teléfono: </td>
-                    <td><h:inputText value="#{contratistasDP.telefono}"></h:inputText></td>
+                    <td><h:inputText value="#{contratistasDP.telefono}" disabled="#{contratistasDP.existe != -2}"></h:inputText></td>
                 </tr>
                 <tr>
                     <td>Número de celular: </td>
-                    <td><h:inputText value="#{contratistasDP.celular}"></h:inputText></td>
+                    <td><h:inputText value="#{contratistasDP.celular}" disabled="#{contratistasDP.existe != -2}"></h:inputText></td>
                 </tr>
                     <tr>
                     <td>Correo electrónico: </td>
-                    <td><h:inputText value="#{contratistasDP.correo}"></h:inputText></td>
+                    <td><h:inputText value="#{contratistasDP.correo}" disabled="#{contratistasDP.existe != -2}"></h:inputText></td>
                 </tr>
                 <tr>
                     <td colspan="2" class="boton">

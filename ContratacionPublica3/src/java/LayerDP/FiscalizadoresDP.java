@@ -7,6 +7,8 @@ package LayerDP;
 
 import EntityClasses.Fiscalizador;
 import LayerMD.FiscalizadoresMD;
+import java.util.ArrayList;
+import java.util.LinkedList;
 import javax.enterprise.context.Dependent;
 import javax.faces.bean.ManagedBean;
 
@@ -27,6 +29,15 @@ public class FiscalizadoresDP {
     private String correo;
     private int existe;
     private String mensaje;
+    private ArrayList consulta;
+
+    public ArrayList getConsulta() {
+        return consulta;
+    }
+
+    public void setConsulta(ArrayList consulta) {
+        this.consulta = consulta;
+    }
 
     /*
      *Obtiene la variable existe
@@ -53,7 +64,7 @@ public class FiscalizadoresDP {
      *Asigna la variable mensaje
     */
     public void setMensaje(String mensaje) {
-        this.mensaje = mensaje;
+        this.mensaje = mensaje.trim();
     }
     
     /*
@@ -67,7 +78,7 @@ public class FiscalizadoresDP {
      *Asigna la variable codigo
     */
     public void setCodigo(String newCodigo) {
-       codigo = newCodigo;
+       codigo = newCodigo.trim();
     } 
     
     /*
@@ -81,7 +92,7 @@ public class FiscalizadoresDP {
      *Asigna la variable nombre
     */
     public void setNombre(String newNombre) {
-       nombre = newNombre;
+       nombre = newNombre.trim();
     } 
     
     /*
@@ -95,7 +106,7 @@ public class FiscalizadoresDP {
      *Asigna la variable fechaNac
     */
     public void setFechanac(String newFechaNac) {
-       fechanac = newFechaNac;
+       fechanac = newFechaNac.trim();
     } 
     /*
      *Obtiene la variable genero
@@ -108,7 +119,7 @@ public class FiscalizadoresDP {
      *Asigna la variable genero
     */
     public void setGenero(String newGenero) {
-       genero = newGenero;
+       genero = newGenero.trim();
     }  
     
     /*
@@ -122,7 +133,7 @@ public class FiscalizadoresDP {
      *Asigna la variable telefono
     */
     public void setTelefono(String newTelefono) {
-       telefono = newTelefono;
+       telefono = newTelefono.trim();
     }  
     
     /*
@@ -136,7 +147,7 @@ public class FiscalizadoresDP {
      *Asigna la variable celular
     */
     public void setCelular(String newCelular) {
-       celular = newCelular;
+       celular = newCelular.trim();
     }  
     
     /*
@@ -150,7 +161,7 @@ public class FiscalizadoresDP {
      *Asigna la variable correo
     */
     public void setCorreo(String newCorreo) {
-       correo = newCorreo;
+       correo = newCorreo.trim();
     } 
     
     /*
@@ -164,7 +175,7 @@ public class FiscalizadoresDP {
      *Asigna la variable cedula
     */
     public void setCedula(String newCedula) {
-       cedula = newCedula;
+       cedula = newCedula.trim();
     } 
     
     /**
@@ -255,16 +266,16 @@ public class FiscalizadoresDP {
         FiscalizadoresMD md = new FiscalizadoresMD();
         Fiscalizador fis;
         Verificar();
-        if (existe == 1) {
-            fis = md.Consultar(cedula);
-            cedula = fis.getCedula();
-            codigo = fis.getCodigo();
-            nombre = fis.getNombre();
+        fis = md.Consultar(cedula);
+        if (existe == 1 && fis != null) {
+            cedula = fis.getCedula().trim();
+            codigo = fis.getCodigo().trim();
+            nombre = fis.getNombre().trim();
             fechanac = fis.getFechaNac().substring(0, 10).replace("-", "/");
             genero = fis.getGenero()+"";
-            telefono = fis.getTelefono();
-            celular = fis.getCelular();
-            correo = fis.getCorreo();
+            telefono = fis.getTelefono().trim();
+            celular = fis.getCelular().trim();
+            correo = fis.getCorreo().trim();
         } else {
             cedula = "";
             codigo = "";
@@ -277,6 +288,28 @@ public class FiscalizadoresDP {
         }
 
         
+    }
+    
+    
+    public void ConsultaGeneral(){
+        LinkedList<Fiscalizador> resul;
+        FiscalizadoresMD md = new FiscalizadoresMD();
+        resul = md.ConsultaGeneral();
+    }
+    
+    public void ConsultaParametros(){
+        ArrayList resul;
+        FiscalizadoresMD md = new FiscalizadoresMD();
+        Fiscalizador fis = new Fiscalizador();
+        fis.setCedula(cedula.trim());
+        fis.setCodigo(codigo.trim());
+        fis.setNombre(nombre.trim());
+        fis.setFechaNac(fechanac.trim());
+        fis.setGenero(genero.charAt(0));
+        fis.setTelefono(telefono.trim());
+        fis.setCelular(celular.trim());
+        fis.setCorreo(correo.trim());
+        consulta = md.ConsultaParametros(fis);
     }
     
     /*

@@ -19,12 +19,8 @@ public class Test {
     
     public static void main(String[] args) {
         ContratistasMD md = new ContratistasMD();
-        try {
-            Connection conn = md.GenerarConexion();
-            System.out.println(conn);
-        } catch (SQLException ex) {
-            Logger.getLogger(Test.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("failed connection");
-        }
+
+        md.ConsultaGeneral();
+
     }
 }
