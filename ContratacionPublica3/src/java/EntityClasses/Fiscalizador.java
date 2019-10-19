@@ -32,7 +32,7 @@ public class Fiscalizador {
    private final String REGEX_GENERO = "[/A-Za-z0-9]{1,1}";
    private final String REGEX_TELEFONO = "[/A-Za-z0-9]{1,10}";
    private final String REGEX_CELULAR = "[/A-Za-z0-9]{1,10}";
-   private final String REGEX_CORREO = "[/A-Za-z0-9]{1,50}";
+   private final String REGEX_CORREO = "[@/A-Za-z0-9]{1,50}";
     
     /**
      * Creates a new instance of Fiscalizador
@@ -40,55 +40,120 @@ public class Fiscalizador {
     public Fiscalizador() {
     }
     
-    
+    /*
+     *Obtiene la variable codigo
+    */
     public String getCodigo() {
       return codigo;
     } 
+    
+    /*
+     *Asigna la variable codigo
+    */
     public void setCodigo(String newCodigo) {
        codigo = newCodigo;
     } 
+    
+    /*
+     *Obtiene la variable nombre
+    */
     public String getNombre() {
        return nombre;
-    } 
+    }
+    
+    /*
+     *Asigna la variable nombre
+    */
     public void setNombre(String newNombre) {
        nombre = newNombre;
     } 
+    
+    /*
+     *Obtiene la variable fechaNac
+    */
     public String getFechaNac() {
        return fechaNac;
     } 
+    
+    /*
+     *Asigna la variable fechaNac
+    */
     public void setFechaNac(String newFechaNac) {
        fechaNac = newFechaNac;
     } 
+    /*
+     *Obtiene la variable genero
+    */ 
     public Character getGenero() {
        return genero;
-    } 
+    }  
+    
+    /*
+     *Asigna la variable genero
+    */
     public void setGenero(Character newGenero) {
        genero = newGenero;
-    } 
+    }  
+    
+    /*
+     *Obtiene la variable telefono
+    */
     public String getTelefono() {
        return telefono;
-    } 
+    }  
+    
+    /*
+     *Asigna la variable telefono
+    */
     public void setTelefono(String newTelefono) {
        telefono = newTelefono;
-    } 
+    }  
+    
+    /*
+     *Obtiene la variable celular
+    */
     public String getCelular() {
        return celular;
-    } 
+    }  
+    
+    /*
+     *Asigna la variable celular
+    */
     public void setCelular(String newCelular) {
        celular = newCelular;
-    } 
+    }  
+    
+    /*
+     *Obtiene la variable correo
+    */
     public String getCorreo() {
        return correo;
-    } 
+    }  
+    
+    /*
+     *Asigna la variable correo
+    */
     public void setCorreo(String newCorreo) {
        correo = newCorreo;
     } 
+    
+    /*
+     *Obtiene la variable cedula
+    */
     public String getCedula() {
        return cedula;
-    } 
+    }  
+    
+    /*
+     *Asigna la variable cedula
+    */
     public void setCedula(String newCedula) {
        cedula = newCedula;
-    }
+    } 
+    
+    /*
+     *Se encarga de ver que los datos tengan el formato correcto
+    */
     public boolean Validar() {
         if (cedula.matches(REGEX_CEDULA) &&
             codigo.matches(REGEX_CODIGO) &&

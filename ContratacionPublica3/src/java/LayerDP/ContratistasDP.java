@@ -7,6 +7,12 @@ package LayerDP;
 
 import EntityClasses.Contratista;
 import LayerMD.ContratistasMD;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.enterprise.context.Dependent;
 import javax.faces.bean.ManagedBean;
 
@@ -28,86 +34,154 @@ public class ContratistasDP {
     private String correo;
     private int existe;
     private String mensaje;
+    private ArrayList consulta;
 
+    public ArrayList getConsulta() {
+        return consulta;
+    }
+
+    public void setConsulta(ArrayList consulta) {
+        this.consulta = consulta;
+    }
+
+    /*
+     *Obtiene la variable existe
+    */
     public int getExiste() {
         return existe;
     }
 
+    /*
+     *Asigna la variable existe
+    */
     public void setExiste(int existe) {
         this.existe = existe;
     }
 
+    /*
+     *Obtiene la variable mensaje
+    */
     public String getMensaje() {
         return mensaje;
     }
 
+    /*
+     *Asigna la variable mensaje
+    */
     public void setMensaje(String mensaje) {
-        this.mensaje = mensaje;
+        this.mensaje = mensaje.trim();
     }
     
-    public String getCedula() {
-        return cedula;
-    }
-
-    public void setCedula(String cedula) {
-        this.cedula = cedula;
-    }
-
+    /*
+     *Obtiene la variable codigo
+    */
     public String getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
-    }
-
+      return codigo;
+    } 
+    
+    /*
+     *Asigna la variable codigo
+    */
+    public void setCodigo(String newCodigo) {
+       codigo = newCodigo.trim();
+    } 
+    
+    /*
+     *Obtiene la variable nombre
+    */
     public String getNombre() {
-        return nombre;
+       return nombre;
     }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
+    
+    /*
+     *Asigna la variable nombre
+    */
+    public void setNombre(String newNombre) {
+       nombre = newNombre.trim();
+    } 
+    
+    /*
+     *Obtiene la variable fechaNac
+    */
     public String getFechanac() {
-        return fechanac;
-    }
-
-    public void setFechanac(String fechanac) {
-        this.fechanac = fechanac;
-    }
-
+       return fechanac;
+    } 
+    
+    /*
+     *Asigna la variable fechaNac
+    */
+    public void setFechanac(String newFechaNac) {
+       fechanac = newFechaNac.trim();
+    } 
+    /*
+     *Obtiene la variable genero
+    */ 
     public String getGenero() {
-        return genero;
-    }
-
-    public void setGenero(String genero) {
-        this.genero = genero;
-    }
-
+       return genero;
+    }  
+    
+    /*
+     *Asigna la variable genero
+    */
+    public void setGenero(String newGenero) {
+       genero = newGenero.trim();
+    }  
+    
+    /*
+     *Obtiene la variable telefono
+    */
     public String getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
-    }
-
+       return telefono;
+    }  
+    
+    /*
+     *Asigna la variable telefono
+    */
+    public void setTelefono(String newTelefono) {
+       telefono = newTelefono.trim();
+    }  
+    
+    /*
+     *Obtiene la variable celular
+    */
     public String getCelular() {
-        return celular;
-    }
-
-    public void setCelular(String celular) {
-        this.celular = celular;
-    }
-
+       return celular;
+    }  
+    
+    /*
+     *Asigna la variable celular
+    */
+    public void setCelular(String newCelular) {
+       celular = newCelular.trim();
+    }  
+    
+    /*
+     *Obtiene la variable correo
+    */
     public String getCorreo() {
-        return correo;
-    }
-
-    public void setCorreo(String correo) {
-        this.correo = correo;
-    }
+       return correo;
+    }  
+    
+    /*
+     *Asigna la variable correo
+    */
+    public void setCorreo(String newCorreo) {
+       correo = newCorreo.trim();
+    } 
+    
+    /*
+     *Obtiene la variable cedula
+    */
+    public String getCedula() {
+       return cedula;
+    }  
+    
+    /*
+     *Asigna la variable cedula
+    */
+    public void setCedula(String newCedula) {
+       cedula = newCedula.trim();
+    } 
     
     /**
      * Creates a new instance of ContratistasDP
@@ -115,6 +189,9 @@ public class ContratistasDP {
     public ContratistasDP() {
     }
     
+    /*
+     *Recupera la informacion del contratista de la interfaz, la valida y la ingresa
+    */
     public void Crear(){
         ContratistasMD md = new ContratistasMD();
         Contratista con = new Contratista();
@@ -140,6 +217,9 @@ public class ContratistasDP {
         
     }
     
+    /*
+     *Recupera la informacion del contratista de la interfaz, la valida y la modifica
+    */
     public void Modificar(){
         ContratistasMD md = new ContratistasMD();
         Contratista con = new Contratista();
@@ -165,6 +245,9 @@ public class ContratistasDP {
         
     }
 
+    /*
+     *Elimina la informacion del contratista, la valida y la ingresa
+    */
     public void Eliminar(){
         ContratistasMD md = new ContratistasMD();
 
@@ -180,20 +263,24 @@ public class ContratistasDP {
         }
         
     }
+    
+    /*
+     *Recupera la informacion del contratista de la base de datos y ;a envia a la interfaz
+    */
     public void Consultar(){
         ContratistasMD md = new ContratistasMD();
         Contratista con;
         Verificar();
-        if (existe == 1) {
-            con = md.Consultar(cedula);
-            cedula = con.getCedula();
-            codigo = con.getCodigo();
-            nombre = con.getNombre();
+        con = md.Consultar(cedula);
+        if (existe == 1 && con != null) {
+            cedula = con.getCedula().trim();
+            codigo = con.getCodigo().trim();
+            nombre = con.getNombre().trim();
             fechanac = con.getFechaNac().substring(0, 10).replace("-", "/");
             genero = con.getGenero()+"";
-            telefono = con.getTelefono();
-            celular = con.getCelular();
-            correo = con.getCorreo();
+            telefono = con.getTelefono().trim();
+            celular = con.getCelular().trim();
+            correo = con.getCorreo().trim();
         } else {
             cedula = "";
             codigo = "";
@@ -208,6 +295,30 @@ public class ContratistasDP {
         
     }
     
+    public ArrayList ConsultaGeneral(){
+        ArrayList resul;
+        ContratistasMD md = new ContratistasMD();
+        return md.ConsultaGeneral();
+    }
+    
+    public void ConsultaParametros(){
+        ArrayList resul;
+        ContratistasMD md = new ContratistasMD();
+        Contratista con = new Contratista();
+        con.setCedula(cedula.trim());
+        con.setCodigo(codigo.trim());
+        con.setNombre(nombre.trim());
+        con.setFechaNac(fechanac.trim());
+        con.setGenero(genero.charAt(0));
+        con.setTelefono(telefono.trim());
+        con.setCelular(celular.trim());
+        con.setCorreo(correo.trim());
+        consulta = md.ConsultaParametros(con);
+    }
+    
+    /*
+     *Verifica que el contratista no exista en la base de datos
+    */
     public void Verificar(){
         ContratistasMD md = new ContratistasMD();
         existe = md.Verificar(cedula);
