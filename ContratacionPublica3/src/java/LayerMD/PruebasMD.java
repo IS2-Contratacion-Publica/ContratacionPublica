@@ -53,28 +53,28 @@ public class PruebasMD {
         return conn;
     }
     
-    public boolean Crear(Prueba con){
+    public boolean Crear(Prueba pru){
         Properties p =  new Properties();
-        Connection conn;
-        Statement s;
+
         String procod,prucod,descrip,fecha,query;
 
         Conexion cx = new Conexion();
-        procod = con.getProCodigo();
-        prucod = con.getPruCodigo();
-        descrip = con.getDescripcion();
-        fecha = con.getFechaRealizacion();
+        procod = pru.getProCodigo();
+        prucod = pru.getPruCodigo();
+        descrip = pru.getDescripcion();
+        fecha = pru.getFechaRealizacion();
 
         query = "insert into "+
                 p.prop("pru.tabla")+" ("+
                 p.prop("pru.c1")+", "+
                 p.prop("pru.c2")+", "+
                 p.prop("pru.c3")+", "+
-                p.prop("pru.c4")+") "
+                p.prop("pru.c4")+", "+
+                p.prop("pru.c5")+") "
                 + "values ('"+procod+"','"+
                 prucod+"', '"+
                 descrip+"', "+"TO_DATE('"+
-                fecha+"', 'YYYY/MM/DD'))";
+                fecha+"', 'YYYY/MM/DD'),1)";
     
         
         
@@ -95,17 +95,17 @@ public class PruebasMD {
         
     }
     
-    public boolean Modificar(Prueba con){
+    public boolean Modificar(Prueba pru){
         Properties p =  new Properties();
         Connection conn;
         Statement s;
         String procod,prucod,descrip,fecha,query;
 
         
-        procod = con.getProCodigo();
-        prucod = con.getPruCodigo();
-        descrip = con.getDescripcion();
-        fecha = con.getFechaRealizacion();
+        procod = pru.getProCodigo();
+        prucod = pru.getPruCodigo();
+        descrip = pru.getDescripcion();
+        fecha = pru.getFechaRealizacion();
         
         query = "update "+
                 p.prop("pru.tabla")+" set "+
@@ -131,8 +131,10 @@ public class PruebasMD {
         Connection conn;
         Statement s;
         String query;
-        query = "delete from "+
-                p.prop("pru.tabla")+" where "+
+        query = "update "+
+                p.prop("pru.tabla")+" set "+
+                p.prop("pru.c5")+" = '"+0+"' "
+                +" where "+
                 p.prop("pru.c2")+" = '"+prucodigo+"'";
 
         try {
@@ -193,7 +195,7 @@ public class PruebasMD {
         LinkedList<Prueba> listpruebas = new LinkedList<Prueba>();
         
         query = "select * from "+
-                p.prop("con.tabla");
+                p.prop("pru.tabla");
 
         try {
             conn = GenerarConexion();
@@ -206,7 +208,10 @@ public class PruebasMD {
                 resul.setPruCodigo(rs.getString(2));
                 resul.setDescripcion(rs.getString(3));
                 resul.setFechaRealizacion(rs.getString(4));
-                listpruebas.add(resul);
+                if (rs.getInt(5)==1) {
+                    listpruebas.add(resul);
+                }
+
            
             }
             conn.close();

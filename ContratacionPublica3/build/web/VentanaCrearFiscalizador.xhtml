@@ -4,39 +4,59 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
+        <h:outputStylesheet library="css" name="general.css"/>
         <title>Crear nuevo fiscalizador</title>
 
     </h:head>
     <h:body>
-        <center>
-            <h2>Crear nuevo fiscalizador</h2>
-            <h:form>
-                Número de cédula: <h:inputText value="#{fiscalizadoresDP.cedula}">
-                </h:inputText><h:commandButton value="Verificar" action="#{fiscalizadoresDP.Verificar}"></h:commandButton>
-                <br/>
-                Código profesional: <h:inputText value="#{fiscalizadoresDP.codigo}" disabled="#{fiscalizadoresDP.existe != 0}"></h:inputText>
-                <br/>
-                Nombre: <h:inputText value="#{fiscalizadoresDP.nombre}" disabled="#{fiscalizadoresDP.existe != 0}"></h:inputText>
-                <br/>
-                Fecha de nacimiento: <h:inputText value="#{fiscalizadoresDP.fechanac}" disabled="#{fiscalizadoresDP.existe != 0}"></h:inputText>
-                <br/>
-                Género: <h:selectOneMenu value="#{fiscalizadoresDP.genero}" disabled="#{fiscalizadoresDP.existe != 0}"> 
-                            <f:selectItem itemValue = "M" itemLabel = "Masculino" /> 
-                            <f:selectItem itemValue = "F" itemLabel = "Femenino" /> 
-                            <f:selectItem itemValue = "O" itemLabel = "Otro" /> 
-                         </h:selectOneMenu> 
-                <br/>
-                Número de teléfono: <h:inputText value="#{fiscalizadoresDP.telefono}" disabled="#{fiscalizadoresDP.existe != 0}"></h:inputText>
-                <br/>
-                Número de celular: <h:inputText value="#{fiscalizadoresDP.celular}" disabled="#{fiscalizadoresDP.existe != 0}"></h:inputText>
-                <br/>
-                Correo electrónico: <h:inputText value="#{fiscalizadoresDP.correo}" disabled="#{fiscalizadoresDP.existe != 0}"></h:inputText>
-                <br/>
-                <h:commandButton value="Crear" action="#{fiscalizadoresDP.Crear}" disabled="#{fiscalizadoresDP.existe != 0}"></h:commandButton>
-                <br/>
-                <h:outputText value="#{fiscalizadoresDP.mensaje}"></h:outputText>
-            </h:form>
-        </center>
+        <h2>Crear nuevo fiscalizador</h2>
+        <h:form>
+            <table>
+                <tr>
+                    <td>Número de cédula: </td>
+                    <td><h:inputText value="#{fiscalizadoresDP.cedula}"></h:inputText></td>
+                    <td><h:commandButton value="Verificar" action="#{fiscalizadoresDP.Verificar}"></h:commandButton></td>
+                </tr>
+                <tr>
+                    <td>Código profesional: </td>
+                    <td><h:inputText value="#{fiscalizadoresDP.codigo}" disabled="#{fiscalizadoresDP.existe != 0}"></h:inputText></td>
+                </tr>
+                <tr>
+                    <td>Nombre: </td>
+                    <td><h:inputText value="#{fiscalizadoresDP.nombre}" disabled="#{fiscalizadoresDP.existe != 0}"></h:inputText></td>
+                </tr>
+                <tr>
+                    <td>Fecha de nacimiento: </td>
+                    <td><h:inputText value="#{fiscalizadoresDP.fechanac}" disabled="#{fiscalizadoresDP.existe != 0}"></h:inputText></td>
+                </tr>
+                <tr>
+                    <td>Género: </td>
+                    <td><h:selectOneMenu value="#{fiscalizadoresDP.genero}"> 
+                        <f:selectItem itemValue = "M" itemLabel = "Masculino" /> 
+                        <f:selectItem itemValue = "F" itemLabel = "Femenino" /> 
+                        <f:selectItem itemValue = "O" itemLabel = "Otro" /> 
+                        </h:selectOneMenu></td>
+                </tr>
+                <tr>
+                    <td>Número de teléfono: </td>
+                    <td><h:inputText value="#{fiscalizadoresDP.telefono}" disabled="#{fiscalizadoresDP.existe != 0}"></h:inputText></td>
+                </tr>
+                <tr>
+                    <td>Número de celular: </td>
+                    <td><h:inputText value="#{fiscalizadoresDP.celular}" disabled="#{fiscalizadoresDP.existe != 0}"></h:inputText></td>
+                </tr>
+                <tr>
+                    <td>Correo electrónico: </td>
+                    <td><h:inputText value="#{fiscalizadoresDP.correo}" disabled="#{fiscalizadoresDP.existe != 0}"></h:inputText></td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="boton"><h:commandButton value="Crear" action="#{fiscalizadoresDP.Crear}" disabled="#{fiscalizadoresDP.existe != 0}"></h:commandButton></td>
+                </tr>
+                <tr>
+                    <td colspan="3" class="mensaje"><h:outputText value="#{fiscalizadoresDP.mensaje}"></h:outputText></td>
+                </tr>
+            </table>
+        </h:form>
     </h:body>
 </html>
 
