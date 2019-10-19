@@ -7,6 +7,8 @@ package LayerDP;
 
 import EntityClasses.Fiscalizador;
 import LayerMD.FiscalizadoresMD;
+import java.util.ArrayList;
+import java.util.LinkedList;
 import javax.enterprise.context.Dependent;
 import javax.faces.bean.ManagedBean;
 
@@ -27,86 +29,154 @@ public class FiscalizadoresDP {
     private String correo;
     private int existe;
     private String mensaje;
+    private ArrayList consulta;
 
+    public ArrayList getConsulta() {
+        return consulta;
+    }
+
+    public void setConsulta(ArrayList consulta) {
+        this.consulta = consulta;
+    }
+
+    /*
+     *Obtiene la variable existe
+    */
     public int getExiste() {
         return existe;
     }
 
+    /*
+     *Asigna la variable existe
+    */
     public void setExiste(int existe) {
         this.existe = existe;
     }
 
+    /*
+     *Obtiene la variable mensaje
+    */
     public String getMensaje() {
         return mensaje;
     }
 
+    /*
+     *Asigna la variable mensaje
+    */
     public void setMensaje(String mensaje) {
-        this.mensaje = mensaje;
+        this.mensaje = mensaje.trim();
     }
     
-    public String getCedula() {
-        return cedula;
-    }
-
-    public void setCedula(String cedula) {
-        this.cedula = cedula;
-    }
-
+    /*
+     *Obtiene la variable codigo
+    */
     public String getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
-    }
-
+      return codigo;
+    } 
+    
+    /*
+     *Asigna la variable codigo
+    */
+    public void setCodigo(String newCodigo) {
+       codigo = newCodigo.trim();
+    } 
+    
+    /*
+     *Obtiene la variable nombre
+    */
     public String getNombre() {
-        return nombre;
+       return nombre;
     }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
+    
+    /*
+     *Asigna la variable nombre
+    */
+    public void setNombre(String newNombre) {
+       nombre = newNombre.trim();
+    } 
+    
+    /*
+     *Obtiene la variable fechaNac
+    */
     public String getFechanac() {
-        return fechanac;
-    }
-
-    public void setFechanac(String fechanac) {
-        this.fechanac = fechanac;
-    }
-
+       return fechanac;
+    } 
+    
+    /*
+     *Asigna la variable fechaNac
+    */
+    public void setFechanac(String newFechaNac) {
+       fechanac = newFechaNac.trim();
+    } 
+    /*
+     *Obtiene la variable genero
+    */ 
     public String getGenero() {
-        return genero;
-    }
-
-    public void setGenero(String genero) {
-        this.genero = genero;
-    }
-
+       return genero;
+    }  
+    
+    /*
+     *Asigna la variable genero
+    */
+    public void setGenero(String newGenero) {
+       genero = newGenero.trim();
+    }  
+    
+    /*
+     *Obtiene la variable telefono
+    */
     public String getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
-    }
-
+       return telefono;
+    }  
+    
+    /*
+     *Asigna la variable telefono
+    */
+    public void setTelefono(String newTelefono) {
+       telefono = newTelefono.trim();
+    }  
+    
+    /*
+     *Obtiene la variable celular
+    */
     public String getCelular() {
-        return celular;
-    }
-
-    public void setCelular(String celular) {
-        this.celular = celular;
-    }
-
+       return celular;
+    }  
+    
+    /*
+     *Asigna la variable celular
+    */
+    public void setCelular(String newCelular) {
+       celular = newCelular.trim();
+    }  
+    
+    /*
+     *Obtiene la variable correo
+    */
     public String getCorreo() {
-        return correo;
-    }
-
-    public void setCorreo(String correo) {
-        this.correo = correo;
-    }
+       return correo;
+    }  
+    
+    /*
+     *Asigna la variable correo
+    */
+    public void setCorreo(String newCorreo) {
+       correo = newCorreo.trim();
+    } 
+    
+    /*
+     *Obtiene la variable cedula
+    */
+    public String getCedula() {
+       return cedula;
+    }  
+    
+    /*
+     *Asigna la variable cedula
+    */
+    public void setCedula(String newCedula) {
+       cedula = newCedula.trim();
+    } 
     
     /**
      * Creates a new instance of FiscalizadorDP
@@ -114,6 +184,9 @@ public class FiscalizadoresDP {
     public FiscalizadoresDP() {
     }
     
+    /*
+     *Recupera la informacion del fiscalizador de la interfaz, la valida y la ingresa
+    */
     public void Crear(){
         FiscalizadoresMD md = new FiscalizadoresMD();
         Fiscalizador fis = new Fiscalizador();
@@ -139,6 +212,9 @@ public class FiscalizadoresDP {
         
     }
     
+    /*
+     *Recupera la informacion del fiscalizador de la interfaz, la valida y la modifica
+    */
     public void Modificar(){
         FiscalizadoresMD md = new FiscalizadoresMD();
         Fiscalizador fis = new Fiscalizador();
@@ -164,6 +240,9 @@ public class FiscalizadoresDP {
         
     }
 
+    /*
+     *Elimina la informacion del fiscalizador, la valida y la ingresa
+    */
     public void Eliminar(){
         FiscalizadoresMD md = new FiscalizadoresMD();
 
@@ -179,20 +258,24 @@ public class FiscalizadoresDP {
         }
         
     }
+    
+    /*
+     *Recupera la informacion del fiscalizador de la base de datos y ;a envia a la interfaz
+    */
     public void Consultar(){
         FiscalizadoresMD md = new FiscalizadoresMD();
         Fiscalizador fis;
         Verificar();
-        if (existe == 1) {
-            fis = md.Consultar(cedula);
-            cedula = fis.getCedula();
-            codigo = fis.getCodigo();
-            nombre = fis.getNombre();
+        fis = md.Consultar(cedula);
+        if (existe == 1 && fis != null) {
+            cedula = fis.getCedula().trim();
+            codigo = fis.getCodigo().trim();
+            nombre = fis.getNombre().trim();
             fechanac = fis.getFechaNac().substring(0, 10).replace("-", "/");
             genero = fis.getGenero()+"";
-            telefono = fis.getTelefono();
-            celular = fis.getCelular();
-            correo = fis.getCorreo();
+            telefono = fis.getTelefono().trim();
+            celular = fis.getCelular().trim();
+            correo = fis.getCorreo().trim();
         } else {
             cedula = "";
             codigo = "";
@@ -207,6 +290,31 @@ public class FiscalizadoresDP {
         
     }
     
+    
+    public void ConsultaGeneral(){
+        LinkedList<Fiscalizador> resul;
+        FiscalizadoresMD md = new FiscalizadoresMD();
+        resul = md.ConsultaGeneral();
+    }
+    
+    public void ConsultaParametros(){
+        ArrayList resul;
+        FiscalizadoresMD md = new FiscalizadoresMD();
+        Fiscalizador fis = new Fiscalizador();
+        fis.setCedula(cedula.trim());
+        fis.setCodigo(codigo.trim());
+        fis.setNombre(nombre.trim());
+        fis.setFechaNac(fechanac.trim());
+        fis.setGenero(genero.charAt(0));
+        fis.setTelefono(telefono.trim());
+        fis.setCelular(celular.trim());
+        fis.setCorreo(correo.trim());
+        consulta = md.ConsultaParametros(fis);
+    }
+    
+    /*
+     *Verifica que el fiscalizador no exista en la base de datos
+    */
     public void Verificar(){
         FiscalizadoresMD md = new FiscalizadoresMD();
         existe = md.Verificar(cedula);
