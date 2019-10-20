@@ -32,7 +32,7 @@ public class Fiscalizador {
    private final String REGEX_GENERO = "[/A-Za-z0-9]{1,1}";
    private final String REGEX_TELEFONO = "[/A-Za-z0-9]{1,10}";
    private final String REGEX_CELULAR = "[/A-Za-z0-9]{1,10}";
-   private final String REGEX_CORREO = "[@/A-Za-z0-9]{1,50}";
+   private final String REGEX_CORREO = "([a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+)";
     
     /**
      * Creates a new instance of Fiscalizador
