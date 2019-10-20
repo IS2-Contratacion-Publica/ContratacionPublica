@@ -15,11 +15,13 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.enterprise.context.Dependent;
 import javax.faces.bean.ManagedBean;
+import javax.faces.model.SelectItem;
 
 /**
  *
@@ -320,5 +322,28 @@ public class FiscalizadoresMD {
         }
 
         return existe;
+    }
+    
+    public List<SelectItem> getGeneros() {
+        Properties p =  new Properties();
+        Conexion cx = new Conexion();
+        ResultSet rs;
+        List<SelectItem> resul = new ArrayList<>();
+        String orden;
+        
+        orden = "select * from "+
+                p.prop("gen.tabla");
+
+        try {
+            rs = cx.Ejecutar(orden);
+            while (rs.next()){
+                resul.add(new SelectItem(rs.getString(1), rs.getString(2)));
+            }
+            cx.Cerrar();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            resul = null;
+        }
+        return resul;
     }
 }

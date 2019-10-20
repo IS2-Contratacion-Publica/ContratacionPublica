@@ -32,9 +32,7 @@
                 <tr>
                     <td>Género: </td>
                     <td><h:selectOneMenu value="#{fiscalizadoresDP.genero}"> 
-                        <f:selectItem itemValue = "M" itemLabel = "Masculino" /> 
-                        <f:selectItem itemValue = "F" itemLabel = "Femenino" /> 
-                        <f:selectItem itemValue = "O" itemLabel = "Otro" /> 
+                            <f:selectItems value="#{fiscalizadoresDP.generos}" /> 
                         </h:selectOneMenu></td>
                 </tr>
                 <tr>

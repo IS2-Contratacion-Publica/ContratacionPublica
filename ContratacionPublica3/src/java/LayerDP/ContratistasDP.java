@@ -11,10 +11,13 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.enterprise.context.Dependent;
 import javax.faces.bean.ManagedBean;
+import javax.faces.model.SelectItem;
 
 /**
  *
@@ -35,6 +38,15 @@ public class ContratistasDP {
     private int existe;
     private String mensaje;
     private ArrayList consulta;
+    private List<SelectItem> generos;
+
+    public List<SelectItem> getGeneros() {
+        return new ContratistasMD().getGeneros();
+    }
+
+    public void setGeneros(List<SelectItem> generos) {
+        this.generos = generos;
+    }
 
     public ArrayList getConsulta() {
         return consulta;
