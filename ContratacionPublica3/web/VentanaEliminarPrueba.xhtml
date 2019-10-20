@@ -10,13 +10,13 @@
         <center>
             <h2>Eliminar Prueba</h2>
             <h:form>
-                Código de Prueba <h:inputText value="#{PruebasDP.pruCodigo}"></h:inputText><h:commandButton value="Consultar" action="#{PruebasDP.Consultacod}"></h:commandButton>
+                Código de Prueba <h:inputText value="#{PruebasDP.prucodigo}"></h:inputText><h:commandButton value="Consultar" action="#{PruebasDP.Consultacod}"></h:commandButton>
                 <br/>  
-                Código de Proyecto <h:inputText value="#{PruebasDP.proCodigo}" disabled="#{PruebasDP.existe != -2}"></h:inputText>
+                Código de Proyecto <h:inputText value="#{PruebasDP.procodigo}" disabled="#{PruebasDP.existe != -2}"></h:inputText>
                 <br/>
-                Descripción <h:inputText value="#{PruebasDP.descripcion}" disabled="#{PruebasDP.existe != -2}"></h:inputText>
+                Descripción <h:inputText value="#{PruebasDP.prudescripcion}" disabled="#{PruebasDP.existe != -2}"></h:inputText>
                 <br/>
-                Fecha de Realización de la prueba <h:inputText value="#{PruebasDP.fechaRealizacion}" disabled="#{PruebasDP.existe != -2}"></h:inputText>
+                Fecha de Realización de la prueba <h:inputText value="#{PruebasDP.plafecharealizacion}" disabled="#{PruebasDP.existe != -2}"></h:inputText>
                 <br/> 
                 <h:commandButton onclick="if (! confirm('¿Realmente desea borrar esta información?')) return false"
                                  value="Eliminar" action="#{PruebasDP.Eliminar}">

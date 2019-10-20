@@ -21,20 +21,44 @@ public class PruebasDP {
     
     private String procodigo;
     private String prucodigo;
-    private String descripcion;
-    private String fecharealizacion;
+    private String prudescripcion;
+    private String plafecharealizacion;
     private int existe;
     private String mensaje;
     private ArrayList consultaparametro;
 
-    public ArrayList getConsultap() {
-        return consultaparametro;
+    public String getProcodigo() {
+        return procodigo;
     }
 
-    public void setConsultap(ArrayList consultap) {
-        this.consultaparametro = consultap;
+    public void setProcodigo(String procodigo) {
+        this.procodigo = procodigo;
     }
-    
+
+    public String getPrucodigo() {
+        return prucodigo;
+    }
+
+    public void setPrucodigo(String prucodigo) {
+        this.prucodigo = prucodigo;
+    }
+
+    public String getPrudescripcion() {
+        return prudescripcion;
+    }
+
+    public void setPrudescripcion(String prudescripcion) {
+        this.prudescripcion = prudescripcion;
+    }
+
+    public String getPlafecharealizacion() {
+        return plafecharealizacion;
+    }
+
+    public void setPlafecharealizacion(String plafecharealizacion) {
+        this.plafecharealizacion = plafecharealizacion;
+    }
+
     public int getExiste() {
         return existe;
     }
@@ -50,32 +74,20 @@ public class PruebasDP {
     public void setMensaje(String mensaje) {
         this.mensaje = mensaje;
     }
-    
-     public String getProCodigo() {
-      return procodigo;
-    } 
-    public String getPruCodigo() {
-      return prucodigo;
-    } 
-    public void setProCodigo(String newCodigo) {
-       procodigo = newCodigo;
+
+    public ArrayList getConsultaparametro() {
+        return consultaparametro;
     }
-    public void setPruCodigo(String newCodigo) {
-       prucodigo = newCodigo;
+
+    public void setConsultaparametro(ArrayList consultaparametro) {
+        this.consultaparametro = consultaparametro;
     }
+
     
-    public String getDescripcion() {
-       return descripcion;
-    } 
-    public void setDescripcion(String newDescripcion) {
-       descripcion = newDescripcion;
-    } 
-    public String getFechaRealizacion() {
-       return fecharealizacion;
-    } 
-    public void setFechaRealizacion(String newFecha) {
-       fecharealizacion = newFecha;
-    } 
+
+    
+
+
     
        
     /**
@@ -87,10 +99,10 @@ public class PruebasDP {
     public void Crear(){
         PruebasMD md = new PruebasMD();
         Prueba pru = new Prueba();
-        pru.setProCodigo(procodigo);
-        pru.setPruCodigo(prucodigo);
-        pru.setDescripcion(descripcion);
-        pru.setFechaRealizacion(fecharealizacion);
+        pru.setProcodigo(procodigo);
+        pru.setPrucodigo(prucodigo);
+        pru.setDescripcion(prudescripcion);
+        pru.setFecharealizacion(plafecharealizacion);
         
         if (pru.Validar()) {
             if (md.Crear(pru)) {
@@ -109,10 +121,10 @@ public class PruebasDP {
     public void Modificar(){
         PruebasMD md = new PruebasMD();
         Prueba pru = new Prueba();
-        pru.setProCodigo(procodigo.trim());
-        pru.setPruCodigo(prucodigo.trim());
-        pru.setDescripcion(descripcion.trim());
-        pru.setFechaRealizacion(fecharealizacion.trim());
+        pru.setProcodigo(procodigo.trim());
+        pru.setPrucodigo(prucodigo.trim());
+        pru.setDescripcion(prudescripcion.trim());
+        pru.setFecharealizacion(plafecharealizacion.trim());
         
         if (pru.Validar()) {
             if (md.Modificar(pru)) {
@@ -156,10 +168,10 @@ public class PruebasDP {
         Verificar();
         pru = md.Consultacod(prucodigo);
         if (existe == 1 && pru != null) {
-            procodigo = pru.getProCodigo().trim();
-            prucodigo = pru.getPruCodigo().trim();
-            descripcion = pru.getDescripcion().trim();
-            fecharealizacion = pru.getFechaRealizacion().trim();
+            procodigo = pru.getProcodigo().trim();
+            prucodigo = pru.getPrucodigo().trim();
+            prudescripcion = pru.getDescripcion().trim();
+            plafecharealizacion = pru.getFecharealizacion().trim();
         }
 
         
@@ -168,10 +180,10 @@ public class PruebasDP {
      public void Consultap(){
         PruebasMD md = new PruebasMD();
         Prueba pru = new Prueba();
-        pru.setProCodigo(procodigo);
-        pru.setPruCodigo(prucodigo);
-        pru.setDescripcion(descripcion);
-        pru.setFechaRealizacion(fecharealizacion);
+        pru.setProcodigo(procodigo);
+        pru.setPrucodigo(prucodigo);
+        pru.setDescripcion(prudescripcion);
+        pru.setFecharealizacion(plafecharealizacion);
         consultaparametro = md.Consultap(pru);
     }
     

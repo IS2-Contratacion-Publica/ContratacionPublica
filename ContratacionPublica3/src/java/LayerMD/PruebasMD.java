@@ -59,10 +59,10 @@ public class PruebasMD {
         String procod,prucod,descrip,fecha,query;
 
         Conexion cx = new Conexion();
-        procod = pru.getProCodigo();
-        prucod = pru.getPruCodigo();
+        procod = pru.getProcodigo();
+        prucod = pru.getPrucodigo();
         descrip = pru.getDescripcion();
-        fecha = pru.getFechaRealizacion();
+        fecha = pru.getFecharealizacion();
 
         query = "insert into "+
                 p.prop("pru.tabla")+" ("+
@@ -102,10 +102,10 @@ public class PruebasMD {
         String procod,prucod,descrip,fecha,query;
 
         
-        procod = pru.getProCodigo();
-        prucod = pru.getPruCodigo();
+        procod = pru.getProcodigo();
+        prucod = pru.getPrucodigo();
         descrip = pru.getDescripcion();
-        fecha = pru.getFechaRealizacion();
+        fecha = pru.getFecharealizacion();
         
         query = "update "+
                 p.prop("pru.tabla")+" set "+
@@ -161,17 +161,17 @@ public class PruebasMD {
                 p.prop("pru.c5")+" = "+
                 1+" and ";
         
-        if (!prup.getProCodigo().isEmpty()) {
-            query += p.prop("pru.c1")+" = '"+prup.getProCodigo()+"' and ";
+        if (!prup.getProcodigo().isEmpty()) {
+            query += p.prop("pru.c1")+" = '"+prup.getProcodigo()+"' and ";
         }
-        if (!prup.getPruCodigo().isEmpty()) {
-            query += p.prop("pru.c2")+" = '"+prup.getPruCodigo()+"' and ";
+        if (!prup.getPrucodigo().isEmpty()) {
+            query += p.prop("pru.c2")+" = '"+prup.getPrucodigo()+"' and ";
         }
         if (!prup.getDescripcion().isEmpty()) {
             query += p.prop("pru.c3")+" = '"+prup.getDescripcion()+"' and ";
         }
-        if (!prup.getFechaRealizacion().isEmpty()) {
-            query += p.prop("pru.c4")+" = "+"TO_DATE('"+prup.getFechaRealizacion()+"', 'YYYY/MM/DD') and ";
+        if (!prup.getFecharealizacion().isEmpty()) {
+            query += p.prop("pru.c4")+" = "+"TO_DATE('"+prup.getFecharealizacion()+"', 'YYYY/MM/DD') and ";
         }
                 
         query = query.substring(0, query.length()-4);
@@ -180,10 +180,10 @@ public class PruebasMD {
             rs = cx.Ejecutar(query);
             while (rs.next()){
                 pru = new Prueba();
-                pru.setProCodigo(rs.getString(1));
-                pru.setPruCodigo(rs.getString(2));
+                pru.setProcodigo(rs.getString(1));
+                pru.setPrucodigo(rs.getString(2));
                 pru.setDescripcion(rs.getString(3));
-                pru.setFechaRealizacion(rs.getString(4));
+                pru.setFecharealizacion(rs.getString(4));
                 resul.add(pru);
             }
             cx.Cerrar();
@@ -213,10 +213,10 @@ public class PruebasMD {
             
             while(rs.next()){
                 resul = new Prueba();
-                resul.setProCodigo(rs.getString(1));
-                resul.setPruCodigo(rs.getString(2));
+                resul.setProcodigo(rs.getString(1));
+                resul.setPrucodigo(rs.getString(2));
                 resul.setDescripcion(rs.getString(3));
-                resul.setFechaRealizacion(rs.getString(4));
+                resul.setFecharealizacion(rs.getString(4));
                 if (rs.getInt(5)==1) {
                     listpruebas.add(resul);
                 }
@@ -249,10 +249,10 @@ public class PruebasMD {
             
             if(rs.next()){
                 pru = new Prueba();
-                pru.setProCodigo(rs.getString(1));
-                pru.setPruCodigo(rs.getString(2));
+                pru.setProcodigo(rs.getString(1));
+                pru.setPrucodigo(rs.getString(2));
                 pru.setDescripcion(rs.getString(3));
-                pru.setFechaRealizacion(rs.getString(4));
+                pru.setFecharealizacion(rs.getString(4));
             }
             else{
                 pru = null;

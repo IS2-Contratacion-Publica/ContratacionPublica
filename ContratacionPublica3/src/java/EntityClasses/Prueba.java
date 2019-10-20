@@ -32,34 +32,42 @@ public class Prueba {
      */
     public Prueba() {
     }
-    
-        
-    
-    public String getProCodigo() {
-      return procodigo;
-    } 
-    public String getPruCodigo() {
-      return prucodigo;
-    } 
-    public void setProCodigo(String newCodigo) {
-       procodigo = newCodigo;
+
+    public String getProcodigo() {
+        return procodigo;
     }
-    public void setPruCodigo(String newCodigo) {
-       prucodigo = newCodigo;
+
+    public void setProcodigo(String procodigo) {
+        this.procodigo = procodigo;
     }
-    
+
+    public String getPrucodigo() {
+        return prucodigo;
+    }
+
+    public void setPrucodigo(String prucodigo) {
+        this.prucodigo = prucodigo;
+    }
+
     public String getDescripcion() {
-       return descripcion;
-    } 
-    public void setDescripcion(String newDescripcion) {
-       descripcion = newDescripcion;
-    } 
-    public String getFechaRealizacion() {
-       return fecharealizacion;
-    } 
-    public void setFechaRealizacion(String newFecha) {
-       fecharealizacion = newFecha;
-    } 
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public String getFecharealizacion() {
+        return fecharealizacion;
+    }
+
+    public void setFecharealizacion(String fecharealizacion) {
+        this.fecharealizacion = fecharealizacion;
+    }
+
+   
+    
+   
     public boolean Validar() {
         if (procodigo.matches(REGEX_PROCODIGO) &&
             prucodigo.matches(REGEX_PRUCODIGO) &&

@@ -11,13 +11,13 @@
         <center>
             <h2>Crear Prueba</h2>
             <h:form>
-                Código de Proyecto <h:inputText value="#{PruebasDP.proCodigo}"></h:inputText><h:commandButton value="Verificar" action="#{PruebasDP.Verificar}"></h:commandButton>
+                Código de Proyecto <h:inputText value="#{PruebasDP.procodigo}"></h:inputText><h:commandButton value="Verificar" action="#{PruebasDP.Verificar}"></h:commandButton>
                 <br/>  
-                Código de Prueba <h:inputText value="#{PruebasDP.pruCodigo}" disabled="#{PruebasDP.existe != 0}"></h:inputText>
+                Código de Prueba <h:inputText value="#{PruebasDP.prucodigo}" disabled="#{PruebasDP.existe != 0}"></h:inputText>
                 <br/>
-                Descripción <h:inputText value="#{PruebasDP.descripcion}" disabled="#{PruebasDP.existe != 0}"></h:inputText>
+                Descripción <h:inputText value="#{PruebasDP.prudescripcion}" disabled="#{PruebasDP.existe != 0}"></h:inputText>
                 <br/>
-                Fecha de Realización de la prueba <h:inputText value="#{PruebasDP.fechaRealizacion}" disabled="#{PruebasDP.existe != 0}"></h:inputText>
+                Fecha de Realización de la prueba <h:inputText value="#{PruebasDP.plafecharealizacion}" disabled="#{PruebasDP.existe != 0}"></h:inputText>
                 <br/>       
                 <h:commandButton value="Crear" action="#{PruebasDP.Crear}"></h:commandButton>
                 <br/>
