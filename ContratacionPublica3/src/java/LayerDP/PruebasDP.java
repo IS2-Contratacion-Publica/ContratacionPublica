@@ -135,27 +135,7 @@ public class PruebasDP {
         }
         
     }
-    public void Consultap(){
-        PruebasMD md = new PruebasMD();
-        Prueba pru;
-        Verificar();
-        if (existe == 1) {
-            pru = md.Consultap(prucodigo);
-            procodigo = pru.getProCodigo();
-            prucodigo = pru.getPruCodigo();
-            descripcion = pru.getDescripcion();
-            fecharealizacion = pru.getFechaRealizacion().substring(0, 10).replace("-", "/");
-            
-        } else {
-            procodigo = "";
-            prucodigo = "";
-            descripcion = "";
-            fecharealizacion = "";
-        }
-
         
-    }
-    
     public ArrayList<Prueba> Consultag(){
         PruebasMD PMD = new PruebasMD();
         ArrayList<Prueba> listpruebas = PMD.Consultag();

@@ -148,40 +148,49 @@ public class PruebasMD {
         }
     }
     
-    public Prueba Consultap(String prucodigo){
+    public ArrayList Consultap(Prueba prup){
         Properties p =  new Properties();
-        Connection conn;
-        Statement s;
+        Conexion cx = new Conexion();
         ResultSet rs;
-        Prueba resul;
+        Prueba pru = null;
+        ArrayList resul = new ArrayList();
         String query;
         
         query = "select * from "+
                 p.prop("pru.tabla")+" where "+
-                p.prop("pru.c2")+" = '"+prucodigo+"'";
+                p.prop("pru.c5")+" = "+
+                1+" and ";
+        
+        if (!prup.getProCodigo().isEmpty()) {
+            query += p.prop("pru.c1")+" = '"+prup.getProCodigo()+"' and ";
+        }
+        if (!prup.getPruCodigo().isEmpty()) {
+            query += p.prop("pru.c2")+" = '"+prup.getPruCodigo()+"' and ";
+        }
+        if (!prup.getDescripcion().isEmpty()) {
+            query += p.prop("pru.c3")+" = '"+prup.getDescripcion()+"' and ";
+        }
+        if (!prup.getFechaRealizacion().isEmpty()) {
+            query += p.prop("pru.c4")+" = "+"TO_DATE('"+prup.getFechaRealizacion()+"', 'YYYY/MM/DD') and ";
+        }
+                
+        query = query.substring(0, query.length()-4);
 
         try {
-            conn = GenerarConexion();
-            s = conn.createStatement();
-            rs = s.executeQuery(query);
-            
-            if(rs.next()){
-                resul = new Prueba();
-                resul.setProCodigo(rs.getString(1));
-                resul.setPruCodigo(rs.getString(2));
-                resul.setDescripcion(rs.getString(3));
-                resul.setFechaRealizacion(rs.getString(4));
-
+            rs = cx.Ejecutar(query);
+            while (rs.next()){
+                pru = new Prueba();
+                pru.setProCodigo(rs.getString(1));
+                pru.setPruCodigo(rs.getString(2));
+                pru.setDescripcion(rs.getString(3));
+                pru.setFechaRealizacion(rs.getString(4));
+                resul.add(pru);
             }
-            else{
-                resul = null;
-            }
-            conn.close();
-            
+            cx.Cerrar();
         } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
             resul = null;
         }
-        
         return resul;
     }
     
