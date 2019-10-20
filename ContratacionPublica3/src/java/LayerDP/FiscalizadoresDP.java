@@ -32,7 +32,7 @@ public class FiscalizadoresDP {
     private int existe;
     private String mensaje;
     private ArrayList consulta;
-        private List<SelectItem> generos;
+    private List<SelectItem> generos;
 
     public List<SelectItem> getGeneros() {
         return new FiscalizadoresMD().getGeneros();
