@@ -7,7 +7,7 @@ package LayerDP;
 
 import EntityClasses.Prueba;
 import LayerMD.PruebasMD;
-import java.util.LinkedList;
+import java.util.ArrayList;
 import javax.enterprise.context.Dependent;
 import javax.faces.bean.ManagedBean;
 
@@ -156,9 +156,9 @@ public class PruebasDP {
         
     }
     
-    public LinkedList<Prueba> Consultag(){
+    public ArrayList<Prueba> Consultag(){
         PruebasMD PMD = new PruebasMD();
-        LinkedList<Prueba> listpruebas = PMD.Consultag();
+        ArrayList<Prueba> listpruebas = PMD.Consultag();
         return listpruebas;
     }
     

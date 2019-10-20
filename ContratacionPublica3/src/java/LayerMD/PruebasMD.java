@@ -13,7 +13,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.ManagedBean;
@@ -185,14 +185,14 @@ public class PruebasMD {
         return resul;
     }
     
-    public LinkedList<Prueba> Consultag(){
+    public ArrayList<Prueba> Consultag(){
         Properties p =  new Properties();
         Connection conn;
         Statement s;
         ResultSet rs;
         Prueba resul;
         String query;
-        LinkedList<Prueba> listpruebas = new LinkedList<Prueba>();
+        ArrayList<Prueba> listpruebas = new ArrayList<Prueba>();
         
         query = "select * from "+
                 p.prop("pru.tabla");

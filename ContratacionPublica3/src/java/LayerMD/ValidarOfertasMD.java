@@ -8,14 +8,9 @@ package LayerMD;
 import EntityClasses.ValidarOferta;
 import Others.Conexion;
 import Others.Properties;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.LinkedList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.ArrayList;
 import javax.annotation.ManagedBean;
 import javax.enterprise.context.Dependent;
 
@@ -81,13 +76,13 @@ public class ValidarOfertasMD {
     }
     
    
-    public LinkedList<ValidarOferta> Consultag(){
+    public ArrayList<ValidarOferta> Consultag(){
         Properties p =  new Properties();
         Conexion cx = new Conexion();
         ResultSet rs;
         ValidarOferta resul;
         String query;
-        LinkedList<ValidarOferta> listvalidaciones = new LinkedList<ValidarOferta>();
+        ArrayList<ValidarOferta> listvalidaciones = new ArrayList<ValidarOferta>();
         
         query = "select * from "+
                 p.prop("val.tabla");
