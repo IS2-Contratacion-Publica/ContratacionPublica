@@ -27,6 +27,7 @@ public class ValidarOfertasDP {
     private String VALOBSERVACIONES;
     private int existe;
     private String mensaje;
+    private ArrayList consultaparametro;
 
     public String getCONCEDULA() {
         return CONCEDULA;
@@ -126,10 +127,16 @@ public class ValidarOfertasDP {
     }
     
        
-    public ArrayList<ValidarOferta> Consultag(){
-        ValidarOfertasMD VOMD = new ValidarOfertasMD();
-        ArrayList<ValidarOferta> listpruebas = VOMD.Consultag();
-        return listpruebas;
+    public void Consultap(){
+        ValidarOfertasMD md = new ValidarOfertasMD();
+        ValidarOferta vofe = new ValidarOferta();
+        vofe.setCONCEDULA(CONCEDULA);
+        vofe.setPROCODIGO(PROCODIGO);
+        vofe.setOFECODIGO(OFECODIGO);
+        vofe.setFISCEDULA(FISCEDULA);
+        vofe.setVALCRITERIO(VALCRITERIO);
+        vofe.setVALOBSERVACIONES(VALOBSERVACIONES);
+        consultaparametro = md.Consultap(vofe);
     }
             
 }

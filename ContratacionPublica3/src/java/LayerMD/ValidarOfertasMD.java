@@ -76,44 +76,59 @@ public class ValidarOfertasMD {
     }
     
    
-    public ArrayList<ValidarOferta> Consultag(){
+    public ArrayList<ValidarOferta> Consultap(ValidarOferta vofe){
         Properties p =  new Properties();
         Conexion cx = new Conexion();
         ResultSet rs;
-        ValidarOferta resul;
+        ValidarOferta vo = null;
+        ArrayList resul = new ArrayList();
         String query;
-        ArrayList<ValidarOferta> listvalidaciones = new ArrayList<ValidarOferta>();
         
         query = "select * from "+
-                p.prop("val.tabla");
+                p.prop("val.tabla")+" where "+
+                p.prop("val.c7")+" = "+
+                1+" and ";
+        
+        if (!vofe.getCONCEDULA().isEmpty()) {
+            query += p.prop("pru.c1")+" = '"+vofe.getCONCEDULA()+"' and ";
+        }
+        if (!vofe.getPROCODIGO().isEmpty()) {
+            query += p.prop("pru.c2")+" = '"+vofe.getPROCODIGO()+"' and ";
+        }
+        if (!vofe.getOFECODIGO().isEmpty()) {
+            query += p.prop("pru.c3")+" = '"+vofe.getOFECODIGO()+"' and ";
+        }
+        if (!vofe.getFISCEDULA().isEmpty()) {
+            query += p.prop("pru.c4")+" = '"+vofe.getFISCEDULA()+"' and ";
+        }
+        if (!vofe.getVALCRITERIO().isEmpty()) {
+            query += p.prop("pru.c5")+" = '"+vofe.getVALCRITERIO()+"' and ";
+        }
+        if (!vofe.getVALOBSERVACIONES().isEmpty()) {
+            query += p.prop("pru.c6")+" = '"+vofe.getVALOBSERVACIONES()+"' and ";
+        }
+
+                
+        query = query.substring(0, query.length()-4);
 
         try {
-            
             rs = cx.Ejecutar(query);
-            
-            while(rs.next()){
-                resul = new ValidarOferta();
-                resul.setCONCEDULA(rs.getString(1));
-                resul.setPROCODIGO(rs.getString(2));
-                resul.setOFECODIGO(rs.getString(3));
-                resul.setFISCEDULA(rs.getString(4));
-                resul.setVALCRITERIO(rs.getString(5));
-                resul.setVALOBSERVACIONES(rs.getString(6));
-                                
-
-                if (rs.getInt(7)==1) {
-                    listvalidaciones.add(resul);
-                }
-
-           
+            while (rs.next()){
+                vo = new ValidarOferta();
+                vo.setCONCEDULA(rs.getString(1));
+                vo.setPROCODIGO(rs.getString(2));
+                vo.setOFECODIGO(rs.getString(3));
+                vo.setFISCEDULA(rs.getString(4));
+                vo.setVALCRITERIO(rs.getString(5));
+                vo.setVALOBSERVACIONES(rs.getString(6));
+                resul.add(vo);
             }
             cx.Cerrar();
-            
         } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
             resul = null;
         }
-        
-        return listvalidaciones;
+        return resul;
     }
         
 }
