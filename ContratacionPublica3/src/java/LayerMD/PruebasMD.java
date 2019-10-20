@@ -232,6 +232,40 @@ public class PruebasMD {
         return listpruebas;
     }
     
+    public Prueba Consultacod(String codigo){
+        Properties p =  new Properties();
+        Conexion cx = new Conexion();
+        ResultSet rs;
+        Prueba pru;
+        String orden;
+        
+        orden = "select * from "+
+                p.prop("pru.tabla")+" where "+
+                p.prop("pru.c2")+" = '"+codigo+"' and " +
+                p.prop("pru.c5")+" = "+1;
+
+        try {
+            rs = cx.Ejecutar(orden);
+            
+            if(rs.next()){
+                pru = new Prueba();
+                pru.setProCodigo(rs.getString(1));
+                pru.setPruCodigo(rs.getString(2));
+                pru.setDescripcion(rs.getString(3));
+                pru.setFechaRealizacion(rs.getString(4));
+            }
+            else{
+                pru = null;
+            }
+            cx.Cerrar();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            pru = null;
+        }
+        
+        return pru;
+    }
+    
     public int Verificar(String prucodigo){
         Properties p =  new Properties();
         Connection conn;

@@ -10,28 +10,28 @@
     <h:body>
         <h2>Consultar pruebas</h2>
         <h:form>
-            <h:dataTable value="#{pruebasDP.Consultap}" var="consul">
+            <h:dataTable value="#{PruebasDP.Consultap}" var="consul">
                 <h:column>
                     <f:facet name="header">
                             Código del proyecto
                             <br/>
-                            <h:inputText value="#{pruebasDP.procodigo}"></h:inputText>
+                            <h:inputText value="#{PruebasDP.proCodigo}"></h:inputText>
                     </f:facet>
-                    <h:outputText value="#{consul.procodigo}" ></h:outputText>
+                    <h:outputText value="#{consul.proCodigo}" ></h:outputText>
                 </h:column>
                 <h:column>
                     <f:facet name="header">
                             Código de prueba
                             <br/>
-                            <h:inputText value="#{pruebasDP.prucodigo}"></h:inputText>
+                            <h:inputText value="#{PruebasDP.pruCodigo}"></h:inputText>
                     </f:facet>
-                    <h:outputText value="#{consul.prucodigo}" ></h:outputText>
+                    <h:outputText value="#{consul.pruCodigo}" ></h:outputText>
                 </h:column>
                 <h:column>
                     <f:facet name="header">
                             Descripción
                             <br/>
-                            <h:inputText value="#{pruebasDP.prudescripcion}"></h:inputText>
+                            <h:inputText value="#{PruebasDP.prudescripcion}"></h:inputText>
                     </f:facet>
                     <h:outputText value="#{consul.prudescripcion}" ></h:outputText>
                 </h:column>
@@ -39,14 +39,14 @@
                     <f:facet name="header">
                             Fecha de realización
                             <br/>
-                            <h:inputText value="#{pruebasDP.plafecharealizacion}"></h:inputText>
+                            <h:inputText value="#{PruebasDP.plafecharealizacion}"></h:inputText>
                     </f:facet>
                     <h:outputText value="#{consul.plafecharealizacion}" ></h:outputText>
                 </h:column>
                
                 <h:column>
                     <f:facet name="header">
-                            <h:commandButton value="Consultap" action="#{PruebasMD.Consultap}"></h:commandButton>
+                            <h:commandButton value="Consultar" action="#{PruebasDP.Consultap}"></h:commandButton>
                     </f:facet>
                 </h:column>
             </h:dataTable>

@@ -25,7 +25,15 @@ public class PruebasDP {
     private String fecharealizacion;
     private int existe;
     private String mensaje;
-    
+    private ArrayList consultaparametro;
+
+    public ArrayList getConsultap() {
+        return consultaparametro;
+    }
+
+    public void setConsultap(ArrayList consultap) {
+        this.consultaparametro = consultap;
+    }
     
     public int getExiste() {
         return existe;
@@ -140,6 +148,31 @@ public class PruebasDP {
         PruebasMD PMD = new PruebasMD();
         ArrayList<Prueba> listpruebas = PMD.Consultag();
         return listpruebas;
+    }
+    
+    public void Consultacod(){
+        PruebasMD md = new PruebasMD();
+        Prueba pru;
+        Verificar();
+        pru = md.Consultacod(prucodigo);
+        if (existe == 1 && pru != null) {
+            procodigo = pru.getProCodigo().trim();
+            prucodigo = pru.getPruCodigo().trim();
+            descripcion = pru.getDescripcion().trim();
+            fecharealizacion = pru.getFechaRealizacion().trim();
+        }
+
+        
+    }
+    
+     public void Consultap(){
+        PruebasMD md = new PruebasMD();
+        Prueba pru = new Prueba();
+        pru.setProCodigo(procodigo);
+        pru.setPruCodigo(prucodigo);
+        pru.setDescripcion(descripcion);
+        pru.setFechaRealizacion(fecharealizacion);
+        consultaparametro = md.Consultap(pru);
     }
     
     public void Verificar(){
