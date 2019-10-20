@@ -13,7 +13,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.ManagedBean;
@@ -53,28 +53,28 @@ public class PruebasMD {
         return conn;
     }
     
-    public boolean Crear(Prueba con){
+    public boolean Crear(Prueba pru){
         Properties p =  new Properties();
-        Connection conn;
-        Statement s;
+
         String procod,prucod,descrip,fecha,query;
 
         Conexion cx = new Conexion();
-        procod = con.getProCodigo();
-        prucod = con.getPruCodigo();
-        descrip = con.getDescripcion();
-        fecha = con.getFechaRealizacion();
+        procod = pru.getProcodigo();
+        prucod = pru.getPrucodigo();
+        descrip = pru.getDescripcion();
+        fecha = pru.getFecharealizacion();
 
         query = "insert into "+
                 p.prop("pru.tabla")+" ("+
                 p.prop("pru.c1")+", "+
                 p.prop("pru.c2")+", "+
                 p.prop("pru.c3")+", "+
-                p.prop("pru.c4")+") "
+                p.prop("pru.c4")+", "+
+                p.prop("pru.c5")+") "
                 + "values ('"+procod+"','"+
                 prucod+"', '"+
                 descrip+"', "+"TO_DATE('"+
-                fecha+"', 'YYYY/MM/DD'))";
+                fecha+"', 'YYYY/MM/DD'),1)";
     
         
         
@@ -95,17 +95,17 @@ public class PruebasMD {
         
     }
     
-    public boolean Modificar(Prueba con){
+    public boolean Modificar(Prueba pru){
         Properties p =  new Properties();
         Connection conn;
         Statement s;
         String procod,prucod,descrip,fecha,query;
 
         
-        procod = con.getProCodigo();
-        prucod = con.getPruCodigo();
-        descrip = con.getDescripcion();
-        fecha = con.getFechaRealizacion();
+        procod = pru.getProcodigo();
+        prucod = pru.getPrucodigo();
+        descrip = pru.getDescripcion();
+        fecha = pru.getFecharealizacion();
         
         query = "update "+
                 p.prop("pru.tabla")+" set "+
@@ -131,8 +131,10 @@ public class PruebasMD {
         Connection conn;
         Statement s;
         String query;
-        query = "delete from "+
-                p.prop("pru.tabla")+" where "+
+        query = "update "+
+                p.prop("pru.tabla")+" set "+
+                p.prop("pru.c5")+" = '"+0+"' "
+                +" where "+
                 p.prop("pru.c2")+" = '"+prucodigo+"'";
 
         try {
@@ -146,54 +148,63 @@ public class PruebasMD {
         }
     }
     
-    public Prueba Consultap(String prucodigo){
+    public ArrayList Consultap(Prueba prup){
         Properties p =  new Properties();
-        Connection conn;
-        Statement s;
+        Conexion cx = new Conexion();
         ResultSet rs;
-        Prueba resul;
+        Prueba pru = null;
+        ArrayList resul = new ArrayList();
         String query;
         
         query = "select * from "+
                 p.prop("pru.tabla")+" where "+
-                p.prop("pru.c2")+" = '"+prucodigo+"'";
+                p.prop("pru.c5")+" = "+
+                1+" and ";
+        
+        if (!prup.getProcodigo().isEmpty()) {
+            query += p.prop("pru.c1")+" = '"+prup.getProcodigo()+"' and ";
+        }
+        if (!prup.getPrucodigo().isEmpty()) {
+            query += p.prop("pru.c2")+" = '"+prup.getPrucodigo()+"' and ";
+        }
+        if (!prup.getDescripcion().isEmpty()) {
+            query += p.prop("pru.c3")+" = '"+prup.getDescripcion()+"' and ";
+        }
+        if (!prup.getFecharealizacion().isEmpty()) {
+            query += p.prop("pru.c4")+" = "+"TO_DATE('"+prup.getFecharealizacion()+"', 'YYYY/MM/DD') and ";
+        }
+                
+        query = query.substring(0, query.length()-4);
 
         try {
-            conn = GenerarConexion();
-            s = conn.createStatement();
-            rs = s.executeQuery(query);
-            
-            if(rs.next()){
-                resul = new Prueba();
-                resul.setProCodigo(rs.getString(1));
-                resul.setPruCodigo(rs.getString(2));
-                resul.setDescripcion(rs.getString(3));
-                resul.setFechaRealizacion(rs.getString(4));
-
+            rs = cx.Ejecutar(query);
+            while (rs.next()){
+                pru = new Prueba();
+                pru.setProcodigo(rs.getString(1));
+                pru.setPrucodigo(rs.getString(2));
+                pru.setDescripcion(rs.getString(3));
+                pru.setFecharealizacion(rs.getString(4));
+                resul.add(pru);
             }
-            else{
-                resul = null;
-            }
-            conn.close();
-            
+            cx.Cerrar();
         } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
             resul = null;
         }
-        
         return resul;
     }
     
-    public LinkedList<Prueba> Consultag(){
+    public ArrayList<Prueba> Consultag(){
         Properties p =  new Properties();
         Connection conn;
         Statement s;
         ResultSet rs;
         Prueba resul;
         String query;
-        LinkedList<Prueba> listpruebas = new LinkedList<Prueba>();
+        ArrayList<Prueba> listpruebas = new ArrayList<Prueba>();
         
         query = "select * from "+
-                p.prop("con.tabla");
+                p.prop("pru.tabla");
 
         try {
             conn = GenerarConexion();
@@ -202,11 +213,14 @@ public class PruebasMD {
             
             while(rs.next()){
                 resul = new Prueba();
-                resul.setProCodigo(rs.getString(1));
-                resul.setPruCodigo(rs.getString(2));
+                resul.setProcodigo(rs.getString(1));
+                resul.setPrucodigo(rs.getString(2));
                 resul.setDescripcion(rs.getString(3));
-                resul.setFechaRealizacion(rs.getString(4));
-                listpruebas.add(resul);
+                resul.setFecharealizacion(rs.getString(4));
+                if (rs.getInt(5)==1) {
+                    listpruebas.add(resul);
+                }
+
            
             }
             conn.close();
@@ -216,6 +230,40 @@ public class PruebasMD {
         }
         
         return listpruebas;
+    }
+    
+    public Prueba Consultacod(String codigo){
+        Properties p =  new Properties();
+        Conexion cx = new Conexion();
+        ResultSet rs;
+        Prueba pru;
+        String orden;
+        
+        orden = "select * from "+
+                p.prop("pru.tabla")+" where "+
+                p.prop("pru.c2")+" = '"+codigo+"' and " +
+                p.prop("pru.c5")+" = "+1;
+
+        try {
+            rs = cx.Ejecutar(orden);
+            
+            if(rs.next()){
+                pru = new Prueba();
+                pru.setProcodigo(rs.getString(1));
+                pru.setPrucodigo(rs.getString(2));
+                pru.setDescripcion(rs.getString(3));
+                pru.setFecharealizacion(rs.getString(4));
+            }
+            else{
+                pru = null;
+            }
+            cx.Cerrar();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            pru = null;
+        }
+        
+        return pru;
     }
     
     public int Verificar(String prucodigo){

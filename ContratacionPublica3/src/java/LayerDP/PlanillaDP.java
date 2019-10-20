@@ -9,6 +9,8 @@ import LayerMD.PlanillaMD;
 import java.text.ParseException;
 import java.util.Date;
 import java.text.SimpleDateFormat;
+import java.util.LinkedList;
+import javax.enterprise.context.Dependent;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.bean.*;
 
@@ -25,7 +27,7 @@ public class PlanillaDP {
     private float monto;
     private PlanillaMD planillaMD = new PlanillaMD();
     private String mensaje;
-
+    private LinkedList<PlanillaDP> lista;
     public void setPlanillaMD() {
 
     }
@@ -79,11 +81,12 @@ public class PlanillaDP {
     }
     public void crear()
     {
-       mensaje=planillaMD.crear(this);
+      mensaje=planillaMD.crear(this);
+
     }
     public void modificar()
     {
-        mensaje=planillaMD.modificar(this);
+        planillaMD.modificar(this);
     }
     public void eliminar()
     {
@@ -93,15 +96,14 @@ public class PlanillaDP {
     public void consultar() throws ParseException
     {
         String fecha;
-      fecha=planillaMD.consultar(this);
-      if(fecha!=null)
+      planillaMD.consultar(this);
+      //if(fecha!=null)
       {
-         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
-         fechaCreacion=dateFormat.parse(fecha);
+          
       }
-      else
+      //else
       {
-          mensaje="No se encontro planilla";
+          //mensaje="No se encontro planilla";
       }
     }
     public String Mensaje()
@@ -110,7 +112,19 @@ public class PlanillaDP {
     }
     public void verificar()
     {
-        codigoProyecto=planillaMD.Verificar(this);
+        if(!planillaMD.Verificar(this))
+        {
+            mensaje="Ingrese los demas datos";
+        }
+        else
+        {
+            codigo="";
+            mensaje="codigo ya existente";
+        }
         
+    }
+    public LinkedList<PlanillaDP> ConsultaGeneral()
+    {
+        return planillaMD.ConsultaGeneral();
     }
 }

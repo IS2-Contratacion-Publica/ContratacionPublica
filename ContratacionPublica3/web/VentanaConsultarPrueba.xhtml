@@ -4,22 +4,53 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
-        <title>Consultar Prueba</title>
+        <h:outputStylesheet library="css" name="general.css"/>
+        <title>Consultar prueba</title>
     </h:head>
     <h:body>
-        <center>
-            <h2>Consultar Prueba</h2>
-            <h:form>
-                Código de Prueba <h:inputText value="#{PruebasDP.pruCodigo}"></h:inputText><h:commandButton value="Consultar" action="#{PruebasDP.Consultap}"></h:commandButton>
-                <br/>
-                Código de Proyecto <h:inputText value="#{PruebasDP.proCodigo}" disabled="#{PruebasDP.existe != -2}"></h:inputText>
-                <br/>
-                Descripción <h:inputText value="#{PruebasDP.descripcion}" disabled="#{PruebasDP.existe != -2}"></h:inputText>
-                <br/>
-                Fecha de Realización de la prueba <h:inputText value="#{PruebasDP.fechaRealizacion}" disabled="#{PruebasDP.existe != -2}"></h:inputText>
-                <br/>               
-            </h:form>
-        </center>
+        <h2>Consultar pruebas</h2>
+        <h:form>
+            <h:dataTable value="#{PruebasDP.consultaparametro}" var="consul">
+                <h:column>
+                    <f:facet name="header">
+                            Código del proyecto
+                            <br/>
+                            <h:inputText value="#{PruebasDP.procodigo}"></h:inputText>
+                    </f:facet>
+                    <h:outputText value="#{consul.procodigo}" ></h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                            Código de prueba
+                            <br/>
+                            <h:inputText value="#{PruebasDP.prucodigo}"></h:inputText>
+                    </f:facet>
+                    <h:outputText value="#{consul.prucodigo}" ></h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                            Descripción
+                            <br/>
+                            <h:inputText value="#{PruebasDP.prudescripcion}"></h:inputText>
+                    </f:facet>
+                    <h:outputText value="#{consul.descripcion}" ></h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                            Fecha de realización
+                            <br/>
+                            <h:inputText value="#{PruebasDP.plafecharealizacion}"></h:inputText>
+                    </f:facet>
+                    <h:outputText value="#{consul.fecharealizacion}" ></h:outputText>
+                </h:column>
+               
+                <h:column>
+                    <f:facet name="header">
+                            <h:commandButton value="Consultar" action="#{PruebasDP.Consultap}"></h:commandButton>
+                    </f:facet>
+                </h:column>
+            </h:dataTable>
+        </h:form>
     </h:body>
 </html>
 

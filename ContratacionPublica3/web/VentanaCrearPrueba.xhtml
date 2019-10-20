@@ -4,26 +4,38 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
+        <h:outputStylesheet library="css" name="general.css"/>
         <title>Crear Prueba</title>
 
     </h:head>
     <h:body>
-        <center>
-            <h2>Crear Prueba</h2>
-            <h:form>
-                Código de Proyecto <h:inputText value="#{PruebasDP.proCodigo}"></h:inputText><h:commandButton value="Verificar" action="#{PruebasDP.Verificar}"></h:commandButton>
-                <br/>  
-                Código de Prueba <h:inputText value="#{PruebasDP.pruCodigo}" disabled="#{PruebasDP.existe != 0}"></h:inputText>
-                <br/>
-                Descripción <h:inputText value="#{PruebasDP.descripcion}" disabled="#{PruebasDP.existe != 0}"></h:inputText>
-                <br/>
-                Fecha de Realización de la prueba <h:inputText value="#{PruebasDP.fechaRealizacion}" disabled="#{PruebasDP.existe != 0}"></h:inputText>
-                <br/>       
-                <h:commandButton value="Crear" action="#{PruebasDP.Crear}"></h:commandButton>
-                <br/>
-                <h:outputText value="#{PruebaDP.mensaje}"></h:outputText>
-            </h:form>
-        </center>
+        <h2>Crear Prueba</h2>
+        <h:form>
+            <table>
+                <tr>
+                    <td>Código de Proyecto</td>
+                    <td><h:inputText value="#{PruebasDP.procodigo}"></h:inputText></td>
+                    <td><h:commandButton value="Verificar" action="#{PruebasDP.Verificar}"></h:commandButton></td>
+                </tr>
+                <tr>
+                    <td>Código de Prueba</td>
+                    <td><h:inputText value="#{PruebasDP.prucodigo}" disabled="#{PruebasDP.existe != 0}"></h:inputText></td>
+                </tr>
+                <tr>
+                    <td>Descripción</td>
+                    <td><h:inputText value="#{PruebasDP.prudescripcion}" disabled="#{PruebasDP.existe != 0}"></h:inputText></td>
+                </tr>
+                <tr>
+                    <td>Fecha de Realización de la prueba</td>
+                    <td><h:inputText value="#{PruebasDP.plafecharealizacion}" disabled="#{PruebasDP.existe != 0}"></h:inputText></td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="boton"><h:commandButton value="Crear" action="#{PruebasDP.Crear}" disabled="#{PruebasDP.existe != 0}"></h:commandButton></td>
+                </tr>
+                <tr>
+                    <td colspan="3" class="mensaje"><h:outputText value="#{PruebasDP.mensaje}"></h:outputText></td>
+                </tr>
+            </table>
+        </h:form>
     </h:body>
 </html>
-
