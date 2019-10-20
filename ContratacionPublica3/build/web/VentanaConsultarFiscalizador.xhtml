@@ -48,11 +48,8 @@
                             Género
                             <br/>
                             <h:selectOneMenu value="#{fiscalizadoresDP.genero}"> 
-                                <f:selectItem itemValue = "x" itemLabel = " " /> 
-                                <f:selectItem itemValue = "M" itemLabel = "Masculino" /> 
-                                <f:selectItem itemValue = "F" itemLabel = "Femenino" /> 
-                                <f:selectItem itemValue = "O" itemLabel = "Otro" /> 
-                        </h:selectOneMenu>
+                                <f:selectItems value="#{fiscalizadoresDP.generos}" /> 
+                            </h:selectOneMenu>
                     </f:facet>
                     <h:outputText value="#{consul.genero}" ></h:outputText>
                 </h:column>

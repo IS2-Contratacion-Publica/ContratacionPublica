@@ -31,9 +31,7 @@
                 <tr>
                     <td>Género: </td>
                     <td><h:selectOneMenu value="#{contratistasDP.genero}"> 
-                        <f:selectItem itemValue = "M" itemLabel = "Masculino" /> 
-                        <f:selectItem itemValue = "F" itemLabel = "Femenino" /> 
-                        <f:selectItem itemValue = "O" itemLabel = "Otro" /> 
+                            <f:selectItems value="#{contratistasDP.generos}" /> 
                         </h:selectOneMenu></td>
                 </tr>
                 <tr>

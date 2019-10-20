@@ -29,6 +29,14 @@ public class ValidarOfertasDP {
     private String mensaje;
     private ArrayList consultaparametro;
 
+    public ArrayList getConsultaparametro() {
+        return consultaparametro;
+    }
+
+    public void setConsultaparametro(ArrayList consultaparametro) {
+        this.consultaparametro = consultaparametro;
+    }
+
     public String getCONCEDULA() {
         return CONCEDULA;
     }
