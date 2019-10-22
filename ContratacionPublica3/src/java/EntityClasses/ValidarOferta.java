@@ -21,6 +21,7 @@ public class ValidarOferta {
     private String FISCEDULA;
     private String VALCRITERIO;
     private String VALOBSERVACIONES;
+    private int VALVALIDO;
 
    private final String REGEX_CONCODIGO = "[/A-Za-z0-9]{1,15}";
    private final String REGEX_PROCODIGO = "[/A-Za-z0-9]{1,15}";
@@ -28,10 +29,17 @@ public class ValidarOferta {
    private final String REGEX_FISCEDULA = "[ /A-Za-z0-9]{1,15}";
    private final String REGEX_VALCRITERIO = "[ /A-Za-z0-9]{1,100}";
    private final String REGEX_VALOBSERVACIONES = "[ /A-Za-z0-9]{1,150}";
+
+   
     
-    /**
-     * Creates a new instance of prueba
-     */
+    public int getVALVALIDO() {
+        return VALVALIDO;
+    }
+
+    public void setVALVALIDO(int VALVALIDO) {
+        this.VALVALIDO = VALVALIDO;
+    }
+
     public ValidarOferta() {
     }
 

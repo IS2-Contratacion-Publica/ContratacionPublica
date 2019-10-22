@@ -12,21 +12,38 @@
         <h2>Validar</h2>
         <h:form>
             <table>
+                <!--
                 <tr>
-                    <td>Cédula Contratista</td>
+                    <td>Código del proyecto </td>
+                    <td><h:selectOneMenu value="#{ValidarOfertasDP.PROCODIGO}"> 
+                            <f:selectItems value="#{ValidarOfertasDP.codproy}" /> 
+                        </h:selectOneMenu></td>
+                </tr>
+                <tr>
+                    <td>Código Oferta </td>
+                    <td><h:selectOneMenu value="#{ValidarOfertasDP.OFECODIGO}"> 
+                            <f:selectItems value="#{ValidarOfertasDP.codofe}" /> 
+                        </h:selectOneMenu></td>
+                </tr>
+                -->
+                <tr>
+                    <td>Cédula contratista</td>
                     <td><h:inputText value="#{ValidarOfertasDP.CONCEDULA}"></h:inputText></td>
                 </tr>
                 <tr>
-                    <td>Código Proyecto</td>
+                    <td>Código del proyecto</td>
                     <td><h:inputText value="#{ValidarOfertasDP.PROCODIGO}"></h:inputText></td>
                 </tr>
                 <tr>
                     <td>Código Oferta</td>
                     <td><h:inputText value="#{ValidarOfertasDP.OFECODIGO}"></h:inputText></td>
                 </tr>
+
                 <tr>
-                    <td>Cédula del Fiscalizador</td>
-                    <td><h:inputText value="#{ValidarOfertasDP.FISCEDULA}"></h:inputText></td>
+                    <td>Cédula fiscalizador </td>
+                    <td><h:selectOneMenu value="#{ValidarOfertasDP.FISCEDULA}"> 
+                            <f:selectItems value="#{ValidarOfertasDP.cedfisca}" /> 
+                        </h:selectOneMenu></td>
                 </tr>
                 <tr>
                     <td>Criterios de validación</td>
@@ -36,6 +53,14 @@
                     <td>Observaciones</td>
                     <td><h:inputText value="#{ValidarOfertasDP.VALOBSERVACIONES}"></h:inputText></td>
                 </tr>
+                <tr>
+                    <td>Válido</td>
+                    <td><h:selectOneMenu value="#{ValidarOfertasDP.VALVALIDO}"> 
+                            <f:selectItem value="0" itemLabel="SI"/>
+                            <f:selectItem value="1" itemLabel="NO"/> 
+                        </h:selectOneMenu></td>
+                </tr>
+
                 
  
                 <tr>

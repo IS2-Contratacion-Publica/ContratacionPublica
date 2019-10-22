@@ -34,6 +34,7 @@ public class ValidarOfertasMD {
         Properties p =  new Properties();
 
         String conced,procod,ofecod,fisced,valcri,valobs,query;
+        int valval;
 
         Conexion cx = new Conexion();
         conced = vofe.getCONCEDULA();
@@ -42,6 +43,7 @@ public class ValidarOfertasMD {
         fisced = vofe.getFISCEDULA();
         valcri = vofe.getVALCRITERIO();
         valobs = vofe.getVALOBSERVACIONES();
+        valval = vofe.getVALVALIDO();
         
 
         query = "insert into "+
@@ -59,7 +61,8 @@ public class ValidarOfertasMD {
                 ofecod+"', '"+
                 fisced+"', '"+
                 valcri+"', '"+
-                valobs+"', 1)";
+                valobs+"', '"+
+                valval+"')";
     
         
         
@@ -121,6 +124,7 @@ public class ValidarOfertasMD {
                 vo.setFISCEDULA(rs.getString(4));
                 vo.setVALCRITERIO(rs.getString(5));
                 vo.setVALOBSERVACIONES(rs.getString(6));
+                vo.setVALVALIDO(rs.getInt(7));
                 resul.add(vo);
             }
             cx.Cerrar();

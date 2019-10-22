@@ -5,9 +5,12 @@
  */
 package LayerDP;
 
+import EntityClasses.Fiscalizador;
 import EntityClasses.ValidarOferta;
 import LayerMD.ValidarOfertasMD;
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 import javax.enterprise.context.Dependent;
 import javax.faces.bean.ManagedBean;
 
@@ -25,10 +28,57 @@ public class ValidarOfertasDP {
     private String FISCEDULA;
     private String VALCRITERIO;
     private String VALOBSERVACIONES;
+    private String VALVALIDO;
     private int existe;
     private String mensaje;
     private ArrayList consultaparametro;
+    
+    private List<String> codproy;
+    private List<String> codofe;    
+    private List<String> cedfisca;
 
+    public List<String> getCodproy() {
+        return codproy;
+    }
+
+    public void setCodproy(List<String> codproy) {
+        this.codproy = codproy;
+    }
+
+    public List<String> getCodofe() {
+        return codofe;
+    }
+
+    public void setCodofe(List<String> codofe) {
+        this.codofe = codofe;
+    }
+
+    public List<String> getCedfisca() {
+        FiscalizadoresDP fisDP= new FiscalizadoresDP();
+        LinkedList<Fiscalizador> linlistfis = fisDP.ConsultaGeneral();
+        List<String> fisca= new LinkedList<String>();
+        for (int i = 0; i < linlistfis.size(); i++) {
+            fisca.add(linlistfis.get(i).getCedula());
+        }
+        setCedfisca(fisca);
+        return cedfisca;
+    }
+
+    public void setCedfisca(List<String> cedfisca) {
+        this.cedfisca = cedfisca;
+    }
+
+    
+    
+    
+    public String getVALVALIDO() {
+        return VALVALIDO;
+    }
+
+    public void setVALVALIDO(String VALVALIDO) {
+        this.VALVALIDO = VALVALIDO;
+    }
+    
     public ArrayList getConsultaparametro() {
         return consultaparametro;
     }
@@ -107,9 +157,12 @@ public class ValidarOfertasDP {
      */
     public ValidarOfertasDP() {
     }
-    
-   
-    
+ /*   
+   public String condeofe(){
+       
+       return;
+   }
+    */
     public void Validar(){
         ValidarOfertasMD md = new ValidarOfertasMD();
         ValidarOferta vofe = new ValidarOferta();
@@ -119,6 +172,7 @@ public class ValidarOfertasDP {
         vofe.setFISCEDULA(FISCEDULA);
         vofe.setVALCRITERIO(VALCRITERIO);
         vofe.setVALOBSERVACIONES(VALOBSERVACIONES);
+        vofe.setVALVALIDO(Integer.parseInt(VALVALIDO));
         
         if (vofe.Validar()) {
             if (md.Validar(vofe)) {
@@ -144,6 +198,8 @@ public class ValidarOfertasDP {
         vofe.setFISCEDULA(FISCEDULA);
         vofe.setVALCRITERIO(VALCRITERIO);
         vofe.setVALOBSERVACIONES(VALOBSERVACIONES);
+        vofe.setVALVALIDO(Integer.parseInt(VALVALIDO));
+
         consultaparametro = md.Consultap(vofe);
     }
             

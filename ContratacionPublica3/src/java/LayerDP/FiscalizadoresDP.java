@@ -32,7 +32,7 @@ public class FiscalizadoresDP {
     private int existe;
     private String mensaje;
     private ArrayList consulta;
-        private List<SelectItem> generos;
+    private List<SelectItem> generos;
 
     public List<SelectItem> getGeneros() {
         return new FiscalizadoresMD().getGeneros();
@@ -302,10 +302,11 @@ public class FiscalizadoresDP {
     }
     
     
-    public void ConsultaGeneral(){
+    public LinkedList<Fiscalizador> ConsultaGeneral(){
         LinkedList<Fiscalizador> resul;
         FiscalizadoresMD md = new FiscalizadoresMD();
         resul = md.ConsultaGeneral();
+        return resul;
     }
     
     public void ConsultaParametros(){
