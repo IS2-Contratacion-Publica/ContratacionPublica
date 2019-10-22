@@ -88,31 +88,30 @@ public class ValidarOfertasMD {
         String query;
         
         query = "select * from "+
-                p.prop("val.tabla")+" where "+
-                p.prop("val.c7")+" = "+
-                1+" and ";
+                p.prop("val.tabla")+" where ";
         
         if (!vofe.getCONCEDULA().isEmpty()) {
-            query += p.prop("pru.c1")+" = '"+vofe.getCONCEDULA()+"' and ";
+            query += p.prop("val.c1")+" = '"+vofe.getCONCEDULA()+"' and  ";
         }
         if (!vofe.getPROCODIGO().isEmpty()) {
-            query += p.prop("pru.c2")+" = '"+vofe.getPROCODIGO()+"' and ";
+            query += p.prop("val.c2")+" = '"+vofe.getPROCODIGO()+"' and  ";
         }
         if (!vofe.getOFECODIGO().isEmpty()) {
-            query += p.prop("pru.c3")+" = '"+vofe.getOFECODIGO()+"' and ";
+            query += p.prop("val.c3")+" = '"+vofe.getOFECODIGO()+"' and  ";
         }
         if (!vofe.getFISCEDULA().isEmpty()) {
-            query += p.prop("pru.c4")+" = '"+vofe.getFISCEDULA()+"' and ";
+            query += p.prop("val.c4")+" = '"+vofe.getFISCEDULA()+"' and  ";
         }
         if (!vofe.getVALCRITERIO().isEmpty()) {
-            query += p.prop("pru.c5")+" = '"+vofe.getVALCRITERIO()+"' and ";
+            query += p.prop("val.c5")+" = '"+vofe.getVALCRITERIO()+"' and  ";
         }
         if (!vofe.getVALOBSERVACIONES().isEmpty()) {
-            query += p.prop("pru.c6")+" = '"+vofe.getVALOBSERVACIONES()+"' and ";
+            query += p.prop("val.c6")+" = '"+vofe.getVALOBSERVACIONES()+"' and  ";
         }
+        query += p.prop("val.c7")+" = '"+vofe.getVALVALIDO()+"' and  ";
 
                 
-        query = query.substring(0, query.length()-4);
+        query = query.substring(0, query.length()-5);
 
         try {
             rs = cx.Ejecutar(query);

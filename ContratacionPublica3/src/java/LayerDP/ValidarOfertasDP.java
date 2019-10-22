@@ -13,6 +13,7 @@ import java.util.LinkedList;
 import java.util.List;
 import javax.enterprise.context.Dependent;
 import javax.faces.bean.ManagedBean;
+import javax.faces.model.SelectItem;
 
 /**
  *
@@ -35,7 +36,7 @@ public class ValidarOfertasDP {
     
     private List<String> codproy;
     private List<String> codofe;    
-    private List<String> cedfisca;
+    private List<SelectItem> cedfisca;
 
     public List<String> getCodproy() {
         return codproy;
@@ -53,18 +54,21 @@ public class ValidarOfertasDP {
         this.codofe = codofe;
     }
 
-    public List<String> getCedfisca() {
+    public List<SelectItem> getCedfisca() {
+        String aux;
         FiscalizadoresDP fisDP= new FiscalizadoresDP();
         LinkedList<Fiscalizador> linlistfis = fisDP.ConsultaGeneral();
-        List<String> fisca= new LinkedList<String>();
+        List<SelectItem> fisca= new ArrayList<>();
         for (int i = 0; i < linlistfis.size(); i++) {
-            fisca.add(linlistfis.get(i).getCedula());
+            aux = linlistfis.get(i).getCedula().trim();
+            fisca.add(new SelectItem(aux, aux));
+            System.out.print(aux);
         }
         setCedfisca(fisca);
         return cedfisca;
     }
 
-    public void setCedfisca(List<String> cedfisca) {
+    public void setCedfisca(List<SelectItem> cedfisca) {
         this.cedfisca = cedfisca;
     }
 

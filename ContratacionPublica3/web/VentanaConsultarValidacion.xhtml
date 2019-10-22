@@ -63,14 +63,17 @@
                     <f:facet name="header">
                             Válido
                             <br/>
-                            <h:inputText value="#{ValidarOfertasDP.VALVALIDO}"></h:inputText>
+                            <h:selectOneMenu value="#{ValidarOfertasDP.VALVALIDO}"> 
+                                <f:selectItem itemValue="1" itemLabel="SI"/>
+                                <f:selectItem itemValue="0" itemLabel="NO"/> 
+                            </h:selectOneMenu>
                     </f:facet>
                     <h:outputText value="#{consul.VALVALIDO}" ></h:outputText>
                 </h:column>
                
                 <h:column>
                     <f:facet name="header">
-                        <h:commandButton value="Consultar" action="#{ValidarOfertasDP.consultap}"></h:commandButton>
+                        <h:commandButton value="Consultar" action="#{ValidarOfertasDP.Consultap}"></h:commandButton>
                     </f:facet>
                 </h:column>
             </h:dataTable>

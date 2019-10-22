@@ -56,15 +56,15 @@
                 <tr>
                     <td>Válido</td>
                     <td><h:selectOneMenu value="#{ValidarOfertasDP.VALVALIDO}"> 
-                            <f:selectItem value="0" itemLabel="SI"/>
-                            <f:selectItem value="1" itemLabel="NO"/> 
+                            <f:selectItem itemValue="1" itemLabel="SI"/>
+                            <f:selectItem itemValue="0" itemLabel="NO"/> 
                         </h:selectOneMenu></td>
                 </tr>
 
                 
  
                 <tr>
-                    <td colspan="2" class="boton"><h:commandButton value="Crear" action="#{ValidarOfertasDP.validar}"></h:commandButton></td>
+                    <td colspan="2" class="boton"><h:commandButton value="Crear" action="#{ValidarOfertasDP.Validar}"></h:commandButton></td>
                 </tr>
                 <tr>
                     <td colspan="3" class="mensaje"><h:outputText value="#{ValidarOfertasDP.mensaje}"></h:outputText></td>

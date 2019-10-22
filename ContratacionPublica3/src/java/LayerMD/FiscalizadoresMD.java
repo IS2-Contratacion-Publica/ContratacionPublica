@@ -226,8 +226,6 @@ public class FiscalizadoresMD {
             System.out.println(ex.getMessage());
             resul = null;
         }
-        System.out.print(resul.get(0).getFechaNac());
-        System.out.print(resul.size());
         return resul;
     }
     
