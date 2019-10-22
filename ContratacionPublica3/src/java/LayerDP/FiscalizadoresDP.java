@@ -302,10 +302,11 @@ public class FiscalizadoresDP {
     }
     
     
-    public void ConsultaGeneral(){
+    public LinkedList<Fiscalizador> ConsultaGeneral(){
         LinkedList<Fiscalizador> resul;
         FiscalizadoresMD md = new FiscalizadoresMD();
         resul = md.ConsultaGeneral();
+        return resul;
     }
     
     public void ConsultaParametros(){

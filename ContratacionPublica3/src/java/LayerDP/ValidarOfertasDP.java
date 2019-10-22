@@ -5,11 +5,15 @@
  */
 package LayerDP;
 
+import EntityClasses.Fiscalizador;
 import EntityClasses.ValidarOferta;
 import LayerMD.ValidarOfertasMD;
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 import javax.enterprise.context.Dependent;
 import javax.faces.bean.ManagedBean;
+import javax.faces.model.SelectItem;
 
 /**
  *
@@ -25,8 +29,67 @@ public class ValidarOfertasDP {
     private String FISCEDULA;
     private String VALCRITERIO;
     private String VALOBSERVACIONES;
+    private String VALVALIDO;
     private int existe;
     private String mensaje;
+    private ArrayList consultaparametro;
+    
+    private List<String> codproy;
+    private List<String> codofe;    
+    private List<SelectItem> cedfisca;
+
+    public List<String> getCodproy() {
+        return codproy;
+    }
+
+    public void setCodproy(List<String> codproy) {
+        this.codproy = codproy;
+    }
+
+    public List<String> getCodofe() {
+        return codofe;
+    }
+
+    public void setCodofe(List<String> codofe) {
+        this.codofe = codofe;
+    }
+
+    public List<SelectItem> getCedfisca() {
+        String aux;
+        FiscalizadoresDP fisDP= new FiscalizadoresDP();
+        LinkedList<Fiscalizador> linlistfis = fisDP.ConsultaGeneral();
+        List<SelectItem> fisca= new ArrayList<>();
+        for (int i = 0; i < linlistfis.size(); i++) {
+            aux = linlistfis.get(i).getCedula().trim();
+            fisca.add(new SelectItem(aux, aux));
+            System.out.print(aux);
+        }
+        setCedfisca(fisca);
+        return cedfisca;
+    }
+
+    public void setCedfisca(List<SelectItem> cedfisca) {
+        this.cedfisca = cedfisca;
+    }
+
+    
+    
+    
+    public String getVALVALIDO() {
+        return VALVALIDO;
+    }
+
+    public void setVALVALIDO(String VALVALIDO) {
+        this.VALVALIDO = VALVALIDO;
+    }
+    
+    public ArrayList getConsultaparametro() {
+        return consultaparametro;
+    }
+
+    public void setConsultaparametro(ArrayList consultaparametro) {
+        this.consultaparametro = consultaparametro;
+    }
 
     public String getCONCEDULA() {
         return CONCEDULA;
@@ -98,9 +161,12 @@ public class ValidarOfertasDP {
      */
     public ValidarOfertasDP() {
     }
-    
-   
-    
+ /*   
+   public String condeofe(){
+       
+       return;
+   }
+    */
     public void Validar(){
         ValidarOfertasMD md = new ValidarOfertasMD();
         ValidarOferta vofe = new ValidarOferta();
@@ -110,6 +176,7 @@ public class ValidarOfertasDP {
         vofe.setFISCEDULA(FISCEDULA);
         vofe.setVALCRITERIO(VALCRITERIO);
         vofe.setVALOBSERVACIONES(VALOBSERVACIONES);
+        vofe.setVALVALIDO(Integer.parseInt(VALVALIDO));
         
         if (vofe.Validar()) {
             if (md.Validar(vofe)) {
@@ -126,10 +193,18 @@ public class ValidarOfertasDP {
     }
     
        
-    public ArrayList<ValidarOferta> Consultag(){
-        ValidarOfertasMD VOMD = new ValidarOfertasMD();
-        ArrayList<ValidarOferta> listpruebas = VOMD.Consultag();
-        return listpruebas;
+    public void Consultap(){
+        ValidarOfertasMD md = new ValidarOfertasMD();
+        ValidarOferta vofe = new ValidarOferta();
+        vofe.setCONCEDULA(CONCEDULA);
+        vofe.setPROCODIGO(PROCODIGO);
+        vofe.setOFECODIGO(OFECODIGO);
+        vofe.setFISCEDULA(FISCEDULA);
+        vofe.setVALCRITERIO(VALCRITERIO);
+        vofe.setVALOBSERVACIONES(VALOBSERVACIONES);
+        vofe.setVALVALIDO(Integer.parseInt(VALVALIDO));
+
+        consultaparametro = md.Consultap(vofe);
     }
             
 }
