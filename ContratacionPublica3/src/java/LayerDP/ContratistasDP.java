@@ -39,6 +39,17 @@ public class ContratistasDP {
     private String mensaje;
     private ArrayList consulta;
     private List<SelectItem> generos;
+    private ContratistasMD layermd = new ContratistasMD();
+
+    public ContratistasMD getLayermd() {
+        return layermd;
+    }
+
+    public void setLayermd(ContratistasMD layermd) {
+        this.layermd = layermd;
+    }
+    
+    
 
     public List<SelectItem> getGeneros() {
         return new ContratistasMD().getGeneros();

@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <h:outputStylesheet library="css" name="general.css"/>
+        <title>Modificar Oferta</title>
+    </h:head>
+    <h:body>
+        <h2>Modificar Oferta</h2>
+        <h:form>
+            <table>
+                <tr>
+                    <td>Codigo de la oferta</td>
+                    <td><h:inputText value="#{ofertasDP.idoferta}"></h:inputText></td>
+                    <td><h:commandButton value="Verificar" action="#{ofertasDP.Verificar}"></h:commandButton></td>
+                </tr>
+                <tr>
+                    <td>Cedula del contratista</td>
+                    <td><h:inputText value="#{ofertasDP.concedula}"></h:inputText></td>
+                    
+                </tr>
+                <tr>
+                    <td>Codigo del proyecto</td>
+                    <td><h:inputText value="#{ofertasDP.idproyecto}"></h:inputText></td>
+                </tr>
+                <tr>
+                    <td>Costo ofertado</td>
+                    <td><h:inputText value="#{ofertasDP.costoofertado}"></h:inputText></td>
+                </tr>
+                <tr>
+                    <td>Ubicacion Archivo</td>
+                    <td><h:inputText value="#{ofertasDP.ubicacion}"></h:inputText></td>
+                </tr>
+                
+                <tr>
+                    <td colspan="2" class="boton"><h:commandButton value="Modificar" action="#{ofertasDP.Modificar}"></h:commandButton></td>
+                </tr>
+                <tr>
+                    <td colspan="3" class="mensaje"><h:outputText value="#{ofertasDP.mensaje}"></h:outputText></td>
+                </tr>
+            </table>
+        </h:form>
+    </h:body>
+</html>
+

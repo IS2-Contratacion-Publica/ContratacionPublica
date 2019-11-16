@@ -3,8 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/USER/Documents/NetBeansProjects/ContratacionPublica/ContratacionPublica3/web/VentanaCrearContratista.xhtml</file>
-            <file>file:/C:/Users/USER/Documents/NetBeansProjects/ContratacionPublica/ContratacionPublica3/web/VentanaCrearPrueba.xhtml</file>
+            <file>file:/C:/Users/Dell/Documents/NetBeansProjects/ContratacionPublica/ContratacionPublica3/src/java/Others/General.java</file>
+            <file>file:/C:/Users/Dell/Documents/NetBeansProjects/ContratacionPublica/ContratacionPublica3/src/java/LayerDP/FiscalizadoresDP.java</file>
+            <file>file:/C:/Users/Dell/Documents/NetBeansProjects/ContratacionPublica/ContratacionPublica3/src/java/LayerDP/ProyectosDP.java</file>
+            <file>file:/C:/Users/Dell/Documents/NetBeansProjects/ContratacionPublica/ContratacionPublica3/web/VentanaIngresarProyecto.xhtml</file>
+            <file>file:/C:/Users/Dell/Documents/NetBeansProjects/ContratacionPublica/ContratacionPublica3/web/VentanaAsignarProyecto.xhtml</file>
+            <file>file:/C:/Users/Dell/Documents/NetBeansProjects/ContratacionPublica/ContratacionPublica3/src/java/LayerDP/ContratistasDP.java</file>
         </group>
     </open-files>
 </project-private>

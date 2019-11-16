@@ -33,7 +33,16 @@ public class FiscalizadoresDP {
     private String mensaje;
     private ArrayList consulta;
     private List<SelectItem> generos;
+    private FiscalizadoresMD layermd = new FiscalizadoresMD();
 
+    public FiscalizadoresMD getLayermd() {
+        return layermd;
+    }
+
+    public void setLayermd(FiscalizadoresMD layermd) {
+        this.layermd = layermd;
+    }
+    
     public List<SelectItem> getGeneros() {
         return new FiscalizadoresMD().getGeneros();
     }
