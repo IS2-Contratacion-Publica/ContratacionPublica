@@ -33,8 +33,18 @@ public class ProyectosDP {
     private String estado;
     private int existe;
     private String mensaje;
+    private ProyectosMD layermd = new ProyectosMD();
+
     //Getters
 
+    public ProyectosMD getLayermd() {
+        return layermd;
+    }
+
+    public void setLayermd(ProyectosMD layermd) {
+        this.layermd = layermd;
+    }
+    
     public int getExiste() {
         return existe;
     }

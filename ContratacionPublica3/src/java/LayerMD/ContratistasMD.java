@@ -7,6 +7,7 @@ package LayerMD;
 
 import EntityClasses.Contratista;
 import Others.Conexion;
+import Others.PopulateUtilities;
 import Others.Properties;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -348,6 +349,12 @@ public class ContratistasMD {
             resul = null;
         }
         return resul;
+    }
+    
+    public Map ConsultaGeneralCombo(){
+        Properties p = new Properties();
+        PopulateUtilities pu = new PopulateUtilities();
+        return pu.getMap(p.prop("con.tabla"), p.prop("con.llave"));
     }
   
     

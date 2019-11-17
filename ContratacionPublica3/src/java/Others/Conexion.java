@@ -44,7 +44,6 @@ public class Conexion {
         Statement s = null;
         ResultSet rs = null;
         boolean ejecutado = false;
-        System.out.println(orden);
         
         try {
             GenerarConexion();
@@ -53,27 +52,34 @@ public class Conexion {
                 rs = s.getResultSet();
             }
             ejecutado = true;
+            System.out.println("Se ejecutó: " + orden);
         } catch (NamingException ex) {
             System.out.println(ex.getMessage());
         } catch (ClassNotFoundException ex) {
             System.out.println(ex.getMessage());
         } finally {
+            if (s == null) {
+                System.out.println("No se pudo crear el Statement, se recomienda revisar conexion");
+                System.out.println("Estado de la conexion: " + conexion.toString());
+            } else if (!ejecutado) {
+                System.out.println("No se pudo ejecutar la sentencia SQL o recuperar ResultSet");
+                System.out.println("La sentencia enviada fue: ");
+                System.out.println(orden);
+            }
             if (conexion != null) {
                 conexion.close();
-            }
-            if (s == null) {
-                System.out.println("No se pudo crear el Statement");
-            }
-            if (!ejecutado) {
-                System.out.println("No se pudo ejecutar la sentencia SQL");
             }
         }
         return rs;
     }
     
-    public void Cerrar() throws SQLException {
-        if (conexion != null) {
-            conexion.close();
+    public void Cerrar() {
+        try {
+            if (conexion != null) {
+                conexion.close();
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
         }
     }
 

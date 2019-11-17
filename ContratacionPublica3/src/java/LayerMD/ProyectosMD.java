@@ -7,6 +7,7 @@ package LayerMD;
 
 import EntityClasses.Proyecto;
 import Others.Conexion;
+import Others.PopulateUtilities;
 import Others.Properties;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -17,6 +18,7 @@ import java.sql.Statement;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.LinkedList;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.ManagedBean;
@@ -59,12 +61,12 @@ public class ProyectosMD {
                 p.prop("pro.campo7")+") "+
                 "values ('"+id+"','"+
                 nom+"', '"+
-                des+"', "+
-                tip+"', "+
+                des+"', '"+
+                tip+"', '"+
                 ent+"', "+
-                tid+"', '"+
-                cos+"', '"+
-                est+"')";
+                tid+", "+
+                cos+", "+
+                est+")";
         try {
             cx.Ejecutar(query);
             cx.Cerrar();
@@ -196,5 +198,9 @@ public class ProyectosMD {
         return existe;
     }
      
-    
+    public Map ConsultaGeneralCombo(){
+        Properties p = new Properties();
+        PopulateUtilities pu = new PopulateUtilities();
+        return pu.getMap(p.prop("pro.tabla"), p.prop("pro.llave"));
+    }
 }
