@@ -350,6 +350,6 @@ public class FiscalizadoresMD {
     public Map ConsultaGeneralCombo(){
         Properties p = new Properties();
         PopulateUtilities pu = new PopulateUtilities();
-        return pu.getMap(p.prop("fis.tabla"), p.prop("fis.llave"));
+        return pu.getMap(p.prop("fis.tabla"), p.prop("fis.llave"), 1, p.prop("fis.campo8"));
     }
 }

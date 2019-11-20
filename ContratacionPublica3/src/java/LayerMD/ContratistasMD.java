@@ -354,7 +354,7 @@ public class ContratistasMD {
     public Map ConsultaGeneralCombo(){
         Properties p = new Properties();
         PopulateUtilities pu = new PopulateUtilities();
-        return pu.getMap(p.prop("con.tabla"), p.prop("con.llave"));
+        return pu.getMap(p.prop("con.tabla"), p.prop("con.llave"), 1, p.prop("con.campo8"));
     }
   
     

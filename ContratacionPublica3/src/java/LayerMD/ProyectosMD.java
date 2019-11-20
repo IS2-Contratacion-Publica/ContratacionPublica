@@ -278,7 +278,7 @@ public class ProyectosMD {
     public Map ConsultaGeneralCombo(){
         Properties p = new Properties();
         PopulateUtilities pu = new PopulateUtilities();
-        return pu.getMap(p.prop("pro.tabla"), p.prop("pro.llave"));
+        return pu.getMap(p.prop("pro.tabla"), p.prop("pro.llave"), 1, p.prop("pro.campo7"));
     }
     
      
