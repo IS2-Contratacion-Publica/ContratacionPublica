@@ -6,9 +6,12 @@
 package LayerDP;
 
 import EntityClasses.Oferta;
+import EntityClasses.Proyecto;
 import LayerMD.OfertasMD;
+import LayerMD.ProyectosMD;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.enterprise.context.Dependent;
@@ -29,6 +32,18 @@ public class OfertasDP {
     private String estado;
     private int existe;
     private String mensaje;
+    
+    private LinkedList<Oferta> ofer;
+
+    public LinkedList<Oferta> getOfer() {
+        OfertasMD md = new OfertasMD();
+        ofer= md.consultaGeneral();
+        return ofer;
+    }
+
+    public void setOfer(LinkedList<Oferta> ofer) {
+        this.ofer = ofer;
+    }
     //Getters
 
     public String getConcedula() {
@@ -105,18 +120,18 @@ public class OfertasDP {
         OfertasMD md = new OfertasMD();
         Oferta oft = new Oferta();
         
-        oft.setIdproyecto(concedula);
+        oft.setConcedula(concedula);
         oft.setIdproyecto(idproyecto);
         oft.setIdoferta(idoferta);       
         oft.setCostoofertado(costoofertado);
         oft.setUbicacion(ubicacion);
-        oft.setIdproyecto(estado);
+        
         
         if (oft.Validar()) {
             if (md.Ingresar(oft)) {
                 mensaje = "Se ha ingresado el proyecto al sistema";
             } else {
-                mensaje = "No se pudo eliminar,contactarse al administrador.";
+                mensaje = "No se pudo ingresar,contactarse al administrador.";
             }               
         } else {
             mensaje = "Vuelva a ingresar los datos";
@@ -128,12 +143,12 @@ public class OfertasDP {
         OfertasMD md = new OfertasMD();
         Oferta oft = new Oferta();
         
-        oft.setIdproyecto(concedula.trim());
+        oft.setConcedula(concedula.trim());
         oft.setIdproyecto(idproyecto.trim());
         oft.setIdoferta(idoferta.trim());       
         oft.setCostoofertado(costoofertado.trim());
         oft.setUbicacion(ubicacion.trim());
-        oft.setIdproyecto(estado.trim());
+        
         
         if (oft.Validar()) {
             if (md.Modificar(oft)) {
@@ -189,6 +204,12 @@ public class OfertasDP {
     public void Verificar(){
         OfertasMD md = new OfertasMD();
         existe = md.Verificar(idoferta);
+        if(existe==1){
+            mensaje = "Codigo Existente";
+        }
+        else{
+            mensaje = "Codigo no existente";
+        }
     }
 }
 

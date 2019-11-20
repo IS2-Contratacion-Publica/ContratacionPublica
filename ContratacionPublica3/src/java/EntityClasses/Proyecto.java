@@ -5,6 +5,8 @@
  */
 package EntityClasses;
 
+import java.util.List;
+
 /**
  *
  * @author Ricky
@@ -18,6 +20,17 @@ public class Proyecto {
     private String tiempoDuración;
     private String costo;
     private String estado;
+    
+    private List<Proyecto> proye;
+
+    public List<Proyecto> getProye() {
+        return proye;
+    }
+
+    public void setProye(List<Proyecto> proye) {
+        this.proye = proye;
+    }
+    
 
     
     private final String REGEX_IDEPROYECTO = "[/A-Za-z0-9]{1,15}";
@@ -25,9 +38,9 @@ public class Proyecto {
     private final String REGEX_DESCRIPCION = "[/A-Za-z0-9]{1,15}";
     private final String REGEX_TIPO = "[/A-Za-z0-9]{1,15}";
     private final String REGEX_ENTIDAD = "[/A-Za-z0-9]{1,15}";
-    private final String REGEX_TIEMPODURACION = "[/A-Za-z0-9]{1,15}";
-    private final String REGEX_COSTO = "[/A-Za-z0-9]{1,15}";
-    private final String REGEX_ESTADO = "[/A-Za-z0-9]{1,15}";
+    private final String REGEX_TIEMPODURACION = "[0-9]{1,15}";
+    private final String REGEX_COSTO = "^[0-9]+(\\.[0-9]{1,2})?$";
+    private final String REGEX_ESTADO = "[0-9]{1,15}";
     //Getters
     public String getIdproyecto() {
         return idproyecto;
@@ -102,8 +115,7 @@ public class Proyecto {
             tipo.matches(REGEX_TIPO) &&
             entidad.matches(REGEX_ENTIDAD) &&
             tiempoDuración.matches(REGEX_TIEMPODURACION) &&            
-            costo.matches(REGEX_COSTO)&& 
-            estado.matches(REGEX_ESTADO)) {
+            costo.matches(REGEX_COSTO)) {
             
             return true;
         } else {

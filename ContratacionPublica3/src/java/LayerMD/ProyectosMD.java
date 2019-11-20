@@ -17,6 +17,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.logging.Level;
@@ -31,15 +32,31 @@ import javax.enterprise.context.Dependent;
 public class ProyectosMD {
     public ProyectosMD(){
     }
+    public Connection GenerarConexion() throws SQLException{
+        Properties p =  new Properties();
+        try {
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ProyectosMD.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("clase no encontrada");
+        }
+        Connection conn;
+        
+        conn = DriverManager.getConnection("jdbc:"+
+                                            p.prop("tipo")+":thin:@"+
+                                            p.prop("direccion")+":"+
+                                            p.prop("puerto")+":"+
+                                            "orcl",
+                                            p.prop("usuario"),
+                                            p.prop("contrasenia"));
+        return conn;
+    }
     
     public boolean Ingresar(Proyecto pro){
         Properties p =  new Properties();
-        Connection conn;
-        Conexion cx = new Conexion();
-        Statement s;
-        String id, nom, des, ent, tid, cos,query,tip,est;
+        Conexion cx;
+        String id, nom, des, ent, tid, cos,query,tip,est="1";
 
-        
         id = pro.getIdproyecto();
         nom = pro.getNombreproyecto();
         des = pro.getDescripcion();
@@ -47,7 +64,6 @@ public class ProyectosMD {
         ent = pro.getEntidad();
         tid = pro.getTiempoDuración();
         cos = pro.getCosto();
-        est=pro.getEstado();
         
         query = "insert into "+
                 p.prop("pro.tabla")+" ("+
@@ -63,11 +79,12 @@ public class ProyectosMD {
                 nom+"', '"+
                 des+"', '"+
                 tip+"', '"+
-                ent+"', "+
+                ent+"',"+
                 tid+", "+
                 cos+", "+
                 est+")";
         try {
+            cx = new Conexion();
             cx.Ejecutar(query);
             cx.Cerrar();
             return true;
@@ -81,8 +98,8 @@ public class ProyectosMD {
     
     public boolean Modificar(Proyecto pro){
         Properties p =  new Properties();
-        Conexion cx = new Conexion();
-        String id, nom, des, ent, tid, cos,query,est,tip;
+        Conexion cx;
+        String id, nom, des, ent, tid, cos,query,tip;
         System.out.println("preparando para insertar");
         id = pro.getIdproyecto();
         nom = pro.getNombreproyecto();
@@ -91,19 +108,20 @@ public class ProyectosMD {
         ent = pro.getEntidad();
         tid = pro.getTiempoDuración();
         cos = pro.getCosto();
-        est=pro.getEstado();
+
+        
         query = "update "+
                 p.prop("pro.tabla")+" set "+
                 p.prop("pro.campo1")+" = '"+nom+"', "+
                 p.prop("pro.campo2")+" = '"+des+"', "+
                 p.prop("pro.campo3")+" = '"+tip+"', "+
                 p.prop("pro.campo4")+" = '"+ent+"', "+
-                p.prop("pro.campo5")+" = '"+tip+"', "+
-                p.prop("pro.campo6")+" = '"+cos+"', "+
-                p.prop("pro.campo7")+" = '"+est+"' where "+
+                p.prop("pro.campo5")+" = "+tid+", "+
+                p.prop("pro.campo6")+" = "+cos+" where "+
                 p.prop("pro.llave")+" = '"+id+"'";
         System.out.println(query);
         try {
+            cx = new Conexion();
             cx.Ejecutar(query);
             cx.Cerrar();
             return true;
@@ -115,38 +133,95 @@ public class ProyectosMD {
     
     public boolean Eliminar(String idproyecto){
         Properties p =  new Properties();
-        Conexion cx = new Conexion();
+        Connection conn;
+        Statement s;
         String query;
-        query = "delete from "+
-                p.prop("con.tabla")+" where "+
-                p.prop("con.llave")+" = '"+idproyecto+"'";
+
+        query = "update "+
+                p.prop("pro.tabla")+" set "+
+                p.prop("pro.campo7")+ " = 0 where " +
+                p.prop("pro.llave")+" = '"+idproyecto+"'";
 
         try {
-            cx.Ejecutar(query);
-            cx.Cerrar();
+            conn = GenerarConexion();
+            s = conn.createStatement();
+            s.executeUpdate(query);
+            conn.close();
             return true;
         } catch (SQLException ex) {
             return false;
         }
     }
-    
+    public LinkedList consultaGeneral ()
+    {
+        Connection conn;
+        Statement s;
+        ResultSet rs;
+        Properties p =  new Properties();
+        
+        Proyecto result;
+        String query;
+        LinkedList<Proyecto> registros = new LinkedList<Proyecto>();
+        
+        try {
+            conn = GenerarConexion();
+            s = conn.createStatement();
+            
+            query = "Select * from "+ p.prop("pro.tabla") +" where "+p.prop("pro.campo7")+ "=1";
+            
+            rs = s.executeQuery(query);
+            while(rs.next()) {
+                result =new Proyecto();
+                result.setIdproyecto(rs.getString(1));
+                result.setNombreproyecto(rs.getString(2));
+                result.setDescripcion(rs.getString(3));
+                result.setTipo(rs.getString(4));
+                result.setEntidad(rs.getString(5));
+                result.setTiempoDuración(rs.getString(6));
+                result.setCosto(rs.getString(7));
+                /*
+                registro[0]= rs.getString(1);
+                registro[1]= rs.getString(2);
+                registro[2]= rs.getString(3);
+                registro[3]= rs.getString(4);
+                registro[4]= rs.getString(5);
+                registro[5]= rs.getString(6);
+                registro[6]= rs.getString(7);*/
+                
+                
+                                
+                registros.add(result);
+                System.out.println(registros);
+            }
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return registros;
+    }
      public Proyecto Consultar(String idproyecto){
         Properties p =  new Properties();
-        Conexion cx = new Conexion();
+        Connection conn;
+        Statement s;
         ResultSet rs;
         Proyecto resul;
         String query;
         
+        //query = "select * from PROYECTOS where proESTADO != 0 AND PROCODIGO = '3'";
         query = "select * from "+
-                p.prop("con.tabla")+" where "+
-                p.prop("con.llave")+" = '"+idproyecto+"'";
+                p.prop("pro.tabla")+ " where " +
+                p.prop("pro.campo7")+ " != 0 and "+
+                p.prop("pro.llave")+ 
+                " = '"+idproyecto+"'";
 
         try {
-            rs = cx.Ejecutar(query);
-            
+            conn = GenerarConexion();
+            s = conn.createStatement();
+            rs = s.executeQuery(query);
             
             if(rs.next()){
                 resul = new Proyecto();
+                
                 resul.setIdproyecto(rs.getString(1));
                 resul.setNombreproyecto(rs.getString(2));
                 resul.setDescripcion(rs.getString(3));
@@ -154,12 +229,12 @@ public class ProyectosMD {
                 resul.setEntidad(rs.getString(5));
                 resul.setTiempoDuración(rs.getString(6));
                 resul.setCosto(rs.getString(7));
-                resul.setEstado(rs.getString(8));
+
             }
             else{
                 resul = null;
             }
-            cx.Cerrar();
+            conn.close();
             
         } catch (SQLException ex) {
             resul = null;
@@ -170,16 +245,18 @@ public class ProyectosMD {
     
     public int Verificar(String idproyecto){
         Properties p =  new Properties();
-        Conexion cx = new Conexion();
+        Conexion cx;
         ResultSet rs;
         int existe;
         String query;
         
         query = "select * from "+
-                p.prop("con.tabla")+" where "+
-                p.prop("con.llave")+" = '"+idproyecto+"'";
+                p.prop("pro.tabla")+" where "+
+                p.prop("pro.llave")+" = '"+idproyecto+"'";
+
 
         try {
+            cx = new Conexion();
             rs = cx.Ejecutar(query);
             if(rs.next()){
                 existe = 1;
@@ -190,17 +267,20 @@ public class ProyectosMD {
             cx.Cerrar();
             
         } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
             existe = -1;
         }
-        System.out.println(query);
         System.out.println("Existe: " + idproyecto);
         System.out.println("Existe: " + existe);
         return existe;
     }
-     
+    
     public Map ConsultaGeneralCombo(){
         Properties p = new Properties();
         PopulateUtilities pu = new PopulateUtilities();
         return pu.getMap(p.prop("pro.tabla"), p.prop("pro.llave"));
     }
+    
+     
+    
 }

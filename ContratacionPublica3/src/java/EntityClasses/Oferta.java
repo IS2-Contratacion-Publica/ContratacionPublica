@@ -5,6 +5,7 @@
  */
 package EntityClasses;
 
+import java.util.List;
 import javax.annotation.ManagedBean;
 import javax.enterprise.context.Dependent;
 
@@ -22,12 +23,22 @@ public class Oferta {
     private String ubicacion;
     private String estado;
     
+    private List<Oferta> ofer;
+
+    public List<Oferta> getOfer() {
+        return ofer;
+    }
+
+    public void setOfer(List<Oferta> ofer) {
+        this.ofer = ofer;
+    }
+    
    private final String REGEX_CONCEDULA = "[/A-Za-z0-9]{1,15}";
    private final String REGEX_IDPROYECTO = "[/A-Za-z0-9]{1,15}";
    private final String REGEX_IDOFERTA = "[/A-Za-z0-9]{1,15}";
-   private final String REGEX_COSTOOFERTADO = "[ /A-Za-z0-9]{1,100}";
+   private final String REGEX_COSTOOFERTADO = "^[0-9]+(\\.[0-9]{1,2})?$";
    private final String REGEX_UBICACION = "[/A-Za-z0-9]{1,100}";
-   private final String REGEX_ESTADO = "[/A-Za-z0-9]{1,15}";
+   private final String REGEX_ESTADO = "[0-9]{1,15}";
     
     /**
      * Creates a new instance of Contratista
@@ -89,8 +100,8 @@ public class Oferta {
             idproyecto.matches(REGEX_IDPROYECTO) &&
             idoferta.matches(REGEX_IDOFERTA) &&
             costoofertado.matches(REGEX_COSTOOFERTADO) &&
-            ubicacion.matches(REGEX_UBICACION)&& 
-                estado.matches(REGEX_ESTADO)) {
+            ubicacion.matches(REGEX_UBICACION) 
+            ) {
             return true;
         } else {
             return false;

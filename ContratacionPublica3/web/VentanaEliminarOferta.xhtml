@@ -33,9 +33,9 @@
                     <td><h:inputText value="#{ofertasDP.ubicacion}"></h:inputText></td>
                 </tr>                
                 <tr>
-                <h:commandButton onclick="if (! confirm('¿Realmente deseas borrar esta oferta?')) return false"
+                    <td><h:commandButton onclick="if (! confirm('¿Realmente deseas borrar esta oferta?')) return false"
                                  value="Eliminar" action="#{ofertasDP.Eliminar}">
-                </h:commandButton> 
+                        </h:commandButton> </td>
                 </tr>
                 <tr>
                     <td colspan="3" class="mensaje"><h:outputText value="#{ofertasDP.mensaje}"></h:outputText></td>
