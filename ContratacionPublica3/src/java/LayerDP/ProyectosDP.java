@@ -9,7 +9,9 @@ import EntityClasses.Proyecto;
 import LayerMD.ProyectosMD;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -31,12 +33,26 @@ public class ProyectosDP {
     private String tiempoDuración;
     private String costo;
     private String estado;
+    private ArrayList consultaparametro;
     private int existe;
     private String mensaje;
     private ProyectosMD layermd = new ProyectosMD();
+    
+    private LinkedList<Proyecto> proye;
 
+    public LinkedList<Proyecto> getProye() {
+        ProyectosMD md = new ProyectosMD();
+        proye= md.consultaGeneral();
+        return proye;
+    }
+
+    public void setProye(LinkedList<Proyecto> proye) {
+        this.proye = proye;
+    }
+    
+           
     //Getters
-
+    
     public ProyectosMD getLayermd() {
         return layermd;
     }
@@ -44,7 +60,7 @@ public class ProyectosDP {
     public void setLayermd(ProyectosMD layermd) {
         this.layermd = layermd;
     }
-    
+
     public int getExiste() {
         return existe;
     }
@@ -136,9 +152,13 @@ public class ProyectosDP {
     }
     
     //Constructor
+    public ArrayList getConsultaparametro() {
+        return consultaparametro;
+    }
     public ProyectosDP(){      
     }
-    public void Ingresar(){
+    
+    public void Consultap(){
         ProyectosMD md = new ProyectosMD();
         Proyecto pro = new Proyecto();
         pro.setIdproyecto(idproyecto);
@@ -148,12 +168,26 @@ public class ProyectosDP {
         pro.setEntidad(entidad);
         pro.setTiempoDuración(tiempoDuración);
         pro.setCosto(costo);
-        pro.setEstado("1");
+        consultaparametro = md.Consultap(pro);
+    }
+         
+    public void Ingresar(){
+        ProyectosMD md = new ProyectosMD();
+        Proyecto pro = new Proyecto();
+        
+        pro.setIdproyecto(idproyecto);
+        pro.setNombreproyecto(nombreproyecto);
+        pro.setDescripcion(descripcion);
+        pro.setTipo(tipo);
+        pro.setEntidad(entidad);
+        pro.setTiempoDuración(tiempoDuración);
+        pro.setCosto(costo);
+        
         if (pro.Validar()) {
             if (md.Ingresar(pro)) {
                 mensaje = "Se ha ingresado el proyecto al sistema";
             } else {
-                mensaje = "No se pudo eliminar,contactarse al administrador.";
+                mensaje = "No se pudo ingresar,contactarse al administrador.";
             }               
         } else {
             mensaje = "Vuelva a ingresar los datos";
@@ -171,10 +205,10 @@ public class ProyectosDP {
         pro.setEntidad(entidad.trim());
         pro.setTiempoDuración(tiempoDuración.trim());
         pro.setCosto(costo.trim());
-        pro.setEstado(estado.trim());
+        
         if (pro.Validar()) {
             if (md.Modificar(pro)) {
-                mensaje = "Registro modificada";
+                mensaje = "Registro modificado";
             } else {
                 mensaje = "No se pudo modificar,contactarse al administrador.";
             }
@@ -198,13 +232,24 @@ public class ProyectosDP {
         }
         
     }
+        /*
+        public LinkedList consultageneral() {
+            ProyectosMD md = new ProyectosMD();
+        return md.consultaGeneral();
+    }
+        public List<Proyecto> listar() {
+                ProyectosMD md = new ProyectosMD();
+                return md.consultaGeneral();
+    }*/
         
         public void Consultar(){
         ProyectosMD md = new ProyectosMD();
         Proyecto pro;
         Verificar();
+        
         if (existe == 1) {
             pro = md.Consultar(idproyecto);
+            
             idproyecto = pro.getIdproyecto();
             nombreproyecto = pro.getNombreproyecto();
             descripcion = pro.getDescripcion();
@@ -212,7 +257,8 @@ public class ProyectosDP {
             entidad = pro.getEntidad();
             tiempoDuración = pro.getTiempoDuración();
             costo = pro.getCosto();
-            estado=pro.getEstado();
+            
+            
         } else {
             idproyecto = "";
             nombreproyecto = "";
@@ -221,7 +267,7 @@ public class ProyectosDP {
             entidad = "";
             tiempoDuración = "";
             costo = "";
-            estado="";
+            
         }
 
         
@@ -230,6 +276,12 @@ public class ProyectosDP {
     public void Verificar(){
         ProyectosMD md = new ProyectosMD();
         existe = md.Verificar(idproyecto);
+        if(existe==1){
+            mensaje = "Codigo Existente";
+        }
+        else{
+            mensaje = "Codigo no existente";
+        }
     }
 }
 

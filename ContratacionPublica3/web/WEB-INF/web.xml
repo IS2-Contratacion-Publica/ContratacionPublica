@@ -21,7 +21,7 @@
     <welcome-file-list>
         <welcome-file>faces/index.xhtml</welcome-file>
     </welcome-file-list>
-<!--
+
     <resource-ref>
         <description>jdbc:oracle:thin:@localhost:1521:orcl</description>
         <res-ref-name>scpDataBase</res-ref-name>
@@ -29,7 +29,8 @@
         <res-auth>Container</res-auth>
         <res-sharing-scope>Shareable</res-sharing-scope>
     </resource-ref>
-    -->
+
+    <!--
     <resource-ref>
         <description>jdbc:oracle:thin:@//localhost:1521/XE</description>
         <res-ref-name>Oracle</res-ref-name>
@@ -37,4 +38,5 @@
         <res-auth>Container</res-auth>
         <res-sharing-scope>Shareable</res-sharing-scope>
     </resource-ref>
+    -->
 </web-app>
