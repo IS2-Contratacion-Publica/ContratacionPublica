@@ -15,7 +15,9 @@ import java.util.ArrayList;
 import java.util.Map;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
 import javax.servlet.http.Part;
 
 /**
@@ -174,6 +176,7 @@ public class AsignarProyectoDP {
         } catch (Exception ex) {
             mensaje = "Por favor seleccione un archivo";
         }                                
+        FacesContext.getCurrentInstance().addMessage("menj", new FacesMessage(mensaje, ""));
     }
     
     public void ConsultaParametros() {

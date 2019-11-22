@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
+<html xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
@@ -13,27 +13,27 @@
                 <table>
                     <tr> 
                         <td>Código de Proyecto: </td>
-                        <td><h:inputText value="#{planillaDP.codigoProyecto}"></h:inputText></td>
+                        <td><p:inputText value="#{planillaDP.codigoProyecto}"></p:inputText></td>
                     </tr>
                     <tr>
                         <td>Codigo de Planilla: </td>
-                        <td><h:inputText value="#{planillaDP.codigo}"></h:inputText></td>
-                        <td><h:commandButton value="Consultar" action="#{planillaDP.consultar()}"></h:commandButton></td>
+                        <td><p:inputText value="#{planillaDP.codigo}"></p:inputText></td>
+                        <td><p:commandButton value="Consultar" action="#{planillaDP.consultar()}"></p:commandButton></td>
                     </tr>
                     <tr>
                         <td>Fecha:</td> 
-                        <td><h:inputText value="#{planillaDP.fechaCreacion}" >"
+                        <td><p:inputText value="#{planillaDP.fechaCreacion}" >"
                         <f:convertDateTime pattern = "yyyy/mm/dd" />
-                        </h:inputText></td>
+                        </p:inputText></td>
                     </tr>
                     <tr>
                         <td>Monto:</td> 
-                        <td><h:inputText value="#{planillaDP.monto}" > 
+                        <td><p:inputText value="#{planillaDP.monto}" > 
                     <f:convertNumber> type="float"</f:convertNumber>
-                </h:inputText></td>
+                </p:inputText></td>
                     </tr>
                     <tr>
-                        <td><h:outputText value="#{planillaDP.mensaje}"></h:outputText></td>
+                        <td><p:messages for="menj" autoUpdate="true"/></td>
                     </tr>
                 </table>
             </h:form>

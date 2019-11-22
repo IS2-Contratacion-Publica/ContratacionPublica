@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
+<html xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
@@ -15,7 +15,7 @@
                     <f:facet name="header">
                             Código del proyecto
                             <br/>
-                            <h:inputText value="#{PruebasDP.procodigo}"></h:inputText>
+                            <p:inputText value="#{PruebasDP.procodigo}"></p:inputText>
                     </f:facet>
                     <h:outputText value="#{consul.procodigo}" ></h:outputText>
                 </h:column>
@@ -23,7 +23,7 @@
                     <f:facet name="header">
                             Código de prueba
                             <br/>
-                            <h:inputText value="#{PruebasDP.prucodigo}"></h:inputText>
+                            <p:inputText value="#{PruebasDP.prucodigo}"></p:inputText>
                     </f:facet>
                     <h:outputText value="#{consul.prucodigo}" ></h:outputText>
                 </h:column>
@@ -31,7 +31,7 @@
                     <f:facet name="header">
                             Descripción
                             <br/>
-                            <h:inputText value="#{PruebasDP.prudescripcion}"></h:inputText>
+                            <p:inputText value="#{PruebasDP.prudescripcion}"></p:inputText>
                     </f:facet>
                     <h:outputText value="#{consul.descripcion}" ></h:outputText>
                 </h:column>
@@ -39,14 +39,14 @@
                     <f:facet name="header">
                             Fecha de realización
                             <br/>
-                            <h:inputText value="#{PruebasDP.plafecharealizacion}"></h:inputText>
+                            <p:inputText value="#{PruebasDP.plafecharealizacion}"></p:inputText>
                     </f:facet>
                     <h:outputText value="#{consul.fecharealizacion}" ></h:outputText>
                 </h:column>
                
                 <h:column>
                     <f:facet name="header">
-                            <h:commandButton value="Consultar" action="#{PruebasDP.Consultap}"></h:commandButton>
+                            <p:commandButton value="Consultar" action="#{PruebasDP.Consultap}"></p:commandButton>
                     </f:facet>
                 </h:column>
             </h:dataTable>

@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
+<html xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
@@ -15,7 +15,7 @@
                     <f:facet name="header">
                             Código del proyecto
                             <br/>
-                            <h:inputText value="#{proyectosDP.idproyecto}"></h:inputText>
+                            <p:inputText value="#{proyectosDP.idproyecto}"></p:inputText>
                     </f:facet>
                     <h:outputText value="#{consul.idproyecto}" ></h:outputText>
                 </h:column>
@@ -23,7 +23,7 @@
                     <f:facet name="header">
                             Nombre del proyecto
                             <br/>
-                            <h:inputText value="#{proyectosDP.nombreproyecto}"></h:inputText>
+                            <p:inputText value="#{proyectosDP.nombreproyecto}"></p:inputText>
                     </f:facet>
                     <h:outputText value="#{consul.nombreproyecto}" ></h:outputText>
                 </h:column>
@@ -31,7 +31,7 @@
                     <f:facet name="header">
                             Descripción
                             <br/>
-                            <h:inputText value="#{proyectosDP.descripcion}"></h:inputText>
+                            <p:inputText value="#{proyectosDP.descripcion}"></p:inputText>
                     </f:facet>
                     <h:outputText value="#{consul.descripcion}" ></h:outputText>
                 </h:column>
@@ -39,7 +39,7 @@
                     <f:facet name="header">
                             Tipo del Proyecto
                             <br/>
-                            <h:inputText value="#{proyectosDP.tipo}"></h:inputText>
+                            <p:inputText value="#{proyectosDP.tipo}"></p:inputText>
                     </f:facet>
                     <h:outputText value="#{consul.tipo}" ></h:outputText>
                 </h:column>
@@ -48,7 +48,7 @@
                     <f:facet name="header">
                             Contratante
                             <br/>
-                            <h:inputText value="#{proyectosDP.entidad}"></h:inputText>
+                            <p:inputText value="#{proyectosDP.entidad}"></p:inputText>
                     </f:facet>
                     <h:outputText value="#{consul.entidad}" ></h:outputText>
                 </h:column>
@@ -57,7 +57,7 @@
                     <f:facet name="header">
                             Tiempo de duración
                             <br/>
-                            <h:inputText value="#{proyectosDP.tiempoDuración}"></h:inputText>
+                            <p:inputText value="#{proyectosDP.tiempoDuración}"></p:inputText>
                     </f:facet>
                     <h:outputText value="#{consul.tiempoDuración}" ></h:outputText>
                 </h:column>
@@ -66,14 +66,14 @@
                     <f:facet name="header">
                             Costo del Proyecto
                             <br/>
-                            <h:inputText value="#{proyectosDP.costo}"></h:inputText>
+                            <p:inputText value="#{proyectosDP.costo}"></p:inputText>
                     </f:facet>
                     <h:outputText value="#{consul.costo}" ></h:outputText>
                 </h:column>
                 
                 <h:column>
                     <f:facet name="header">
-                            <h:commandButton value="Consultar" action="#{proyectosDP.Consultap}"></h:commandButton>
+                            <p:commandButton value="Consultar" action="#{proyectosDP.Consultap}"></p:commandButton>
                     </f:facet>
                 </h:column>
             </h:dataTable>

@@ -9,6 +9,8 @@ import EntityClasses.Fiscalizaciones;
 import LayerMD.FiscalizacionesMD;
 import java.util.ArrayList;
 import java.util.Map;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -108,7 +110,7 @@ public class FiscalizacionesDP {
         } else {
             mensaje = "Por favor ingrese correctamente todos los valores";
         }
-                                   
+        FacesContext.getCurrentInstance().addMessage("menj", new FacesMessage(mensaje, ""));
     }
     
     public void ConsultaParametros() {

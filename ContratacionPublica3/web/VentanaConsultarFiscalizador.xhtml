@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
+<html xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
@@ -15,7 +15,7 @@
                     <f:facet name="header">
                             Número de cédula
                             <br/>
-                            <h:inputText value="#{fiscalizadoresDP.cedula}"></h:inputText>
+                            <p:inputText value="#{fiscalizadoresDP.cedula}"></p:inputText>
                     </f:facet>
                     <h:outputText value="#{consul.cedula}" ></h:outputText>
                 </h:column>
@@ -23,7 +23,7 @@
                     <f:facet name="header">
                             Código profesional
                             <br/>
-                            <h:inputText value="#{fiscalizadoresDP.codigo}"></h:inputText>
+                            <p:inputText value="#{fiscalizadoresDP.codigo}"></p:inputText>
                     </f:facet>
                     <h:outputText value="#{consul.codigo}" ></h:outputText>
                 </h:column>
@@ -31,7 +31,7 @@
                     <f:facet name="header">
                             Nombre
                             <br/>
-                            <h:inputText value="#{fiscalizadoresDP.nombre}"></h:inputText>
+                            <p:inputText value="#{fiscalizadoresDP.nombre}"></p:inputText>
                     </f:facet>
                     <h:outputText value="#{consul.nombre}" ></h:outputText>
                 </h:column>
@@ -39,7 +39,7 @@
                     <f:facet name="header">
                             Fecha de nacimiento
                             <br/>
-                            <h:inputText value="#{fiscalizadoresDP.fechanac}"></h:inputText>
+                            <p:inputText value="#{fiscalizadoresDP.fechanac}"></p:inputText>
                     </f:facet>
                     <h:outputText value="#{consul.fechaNac}" ></h:outputText>
                 </h:column>
@@ -47,9 +47,9 @@
                     <f:facet name="header">
                             Género
                             <br/>
-                            <h:selectOneMenu value="#{fiscalizadoresDP.genero}"> 
+                            <p:selectOneMenu value="#{fiscalizadoresDP.genero}"> 
                                 <f:selectItems value="#{fiscalizadoresDP.generos}" /> 
-                            </h:selectOneMenu>
+                            </p:selectOneMenu>
                     </f:facet>
                     <h:outputText value="#{consul.genero}" ></h:outputText>
                 </h:column>
@@ -57,7 +57,7 @@
                     <f:facet name="header">
                             Número de teléfono
                             <br/>
-                            <h:inputText value="#{fiscalizadoresDP.telefono}"></h:inputText>
+                            <p:inputText value="#{fiscalizadoresDP.telefono}"></p:inputText>
                     </f:facet>
                     <h:outputText value="#{consul.telefono}" ></h:outputText>
                 </h:column>
@@ -65,7 +65,7 @@
                     <f:facet name="header">
                             Número de celular
                             <br/>
-                            <h:inputText value="#{fiscalizadoresDP.celular}"></h:inputText>
+                            <p:inputText value="#{fiscalizadoresDP.celular}"></p:inputText>
                     </f:facet>
                     <h:outputText value="#{consul.celular}" ></h:outputText>
                 </h:column>
@@ -73,13 +73,13 @@
                     <f:facet name="header">
                             Correo eletrónico
                             <br/>
-                            <h:inputText value="#{fiscalizadoresDP.correo}"></h:inputText>
+                            <p:inputText value="#{fiscalizadoresDP.correo}"></p:inputText>
                     </f:facet>
                     <h:outputText value="#{consul.correo}" ></h:outputText>
                 </h:column>
                 <h:column>
                     <f:facet name="header">
-                            <h:commandButton value="Consultar" action="#{fiscalizadoresDP.ConsultaParametros}"></h:commandButton>
+                            <p:commandButton value="Consultar" action="#{fiscalizadoresDP.ConsultaParametros}"></p:commandButton>
                     </f:facet>
                 </h:column>
             </h:dataTable>

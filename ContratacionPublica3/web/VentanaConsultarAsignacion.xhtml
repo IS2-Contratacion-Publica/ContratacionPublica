@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
+<html xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
@@ -15,9 +15,9 @@
                     <f:facet name="header">
                         Cédula de contratista
                         <br/>
-                        <h:selectOneMenu value="#{asignarProyectoDP.concedula}"> 
+                        <p:selectOneMenu value="#{asignarProyectoDP.concedula}"> 
                             <f:selectItems value="#{asignarProyectoDP.mapContratistas}" /> 
-                        </h:selectOneMenu>
+                        </p:selectOneMenu>
                     </f:facet>
                     <h:outputText value="#{consul.concedula}" ></h:outputText>
                 </h:column>
@@ -25,9 +25,9 @@
                     <f:facet name="header">
                         Cédula de contratista
                         <br/>
-                        <h:selectOneMenu value="#{asignarProyectoDP.fiscedula}"> 
+                        <p:selectOneMenu value="#{asignarProyectoDP.fiscedula}"> 
                             <f:selectItems value="#{asignarProyectoDP.mapFiscalizadores}" /> 
-                        </h:selectOneMenu>
+                        </p:selectOneMenu>
                     </f:facet>
                     <h:outputText value="#{consul.fiscedula}" ></h:outputText>
                 </h:column>
@@ -35,9 +35,9 @@
                     <f:facet name="header">
                         Código de proyecto
                         <br/>
-                        <h:selectOneMenu value="#{asignarProyectoDP.procodigo}"> 
+                        <p:selectOneMenu value="#{asignarProyectoDP.procodigo}"> 
                             <f:selectItems value="#{asignarProyectoDP.mapProyectos}" /> 
-                        </h:selectOneMenu>
+                        </p:selectOneMenu>
                     </f:facet>
                     <h:outputText value="#{consul.procodigo}" ></h:outputText>
                 </h:column>
@@ -45,7 +45,7 @@
                     <f:facet name="header">
                         Anticipo
                         <br/>
-                        <h:inputText value="#{asignarProyectoDP.adjanticipo}"></h:inputText>
+                        <p:inputText value="#{asignarProyectoDP.adjanticipo}"></p:inputText>
                     </f:facet>
                     <h:outputText value="#{consul.adjanticipo}" ></h:outputText>
                 </h:column>
@@ -53,14 +53,14 @@
                     <f:facet name="header">
                         Fecha
                         <br/>
-                        <h:inputText value="#{asignarProyectoDP.adjfecha}"></h:inputText>
+                        <p:inputText value="#{asignarProyectoDP.adjfecha}"></p:inputText>
                     </f:facet>
                     <h:outputText value="#{consul.adjfecha}" ></h:outputText>
                 </h:column>
                
                 <h:column>
                     <f:facet name="header">
-                            <h:commandButton value="Consultar" action="#{asignarProyectoDP.ConsultaParametros}"></h:commandButton>
+                            <p:commandButton value="Consultar" action="#{asignarProyectoDP.ConsultaParametros}"></p:commandButton>
                     </f:facet>
                 </h:column>
             </h:dataTable>

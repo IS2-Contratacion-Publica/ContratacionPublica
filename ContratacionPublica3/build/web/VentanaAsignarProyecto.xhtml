@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
+<html xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
@@ -13,39 +13,39 @@
             <table>
                 <tr>
                     <td>Contratista: </td>
-                    <td><h:selectOneMenu value="#{asignarProyectoDP.concedula}"> 
+                    <td><p:selectOneMenu value="#{asignarProyectoDP.concedula}"> 
                             <f:selectItems value="#{asignarProyectoDP.mapContratistas}" /> 
-                        </h:selectOneMenu></td>
+                        </p:selectOneMenu></td>
                 </tr>
                 <tr>
                     <td>Fiscalizador: </td>
-                    <td><h:selectOneMenu value="#{asignarProyectoDP.fiscedula}"> 
+                    <td><p:selectOneMenu value="#{asignarProyectoDP.fiscedula}"> 
                             <f:selectItems value="#{asignarProyectoDP.mapFiscalizadores}" /> 
-                        </h:selectOneMenu></td>
+                        </p:selectOneMenu></td>
                 </tr>
                 <tr>
                     <td>Proyectos: </td>
-                    <td><h:selectOneMenu value="#{asignarProyectoDP.procodigo}"> 
+                    <td><p:selectOneMenu value="#{asignarProyectoDP.procodigo}"> 
                             <f:selectItems value="#{asignarProyectoDP.mapProyectos}" /> 
-                        </h:selectOneMenu></td>
+                        </p:selectOneMenu></td>
                 </tr>
                 <tr>
                     <td>Anticipo: </td>
-                    <td><h:inputText value="#{asignarProyectoDP.adjanticipo}"></h:inputText></td>
+                    <td><p:inputText value="#{asignarProyectoDP.adjanticipo}"></p:inputText></td>
                 </tr>
                 <tr>
                     <td>Fecha: </td>
-                    <td><h:inputText value="#{asignarProyectoDP.adjfecha}"></h:inputText></td>
+                    <td><p:inputText value="#{asignarProyectoDP.adjfecha}"></p:inputText></td>
                 </tr>               
                 
                 <tr>
                     <td><h:inputFile value="#{asignarProyectoDP.documento}" /></td>
                 </tr>
                 <tr>
-                    <td colspan="2" class="boton"><h:commandButton value="Crear" action="#{asignarProyectoDP.Asignar}"></h:commandButton></td>
+                    <td colspan="2" class="boton"><p:commandButton value="Crear" action="#{asignarProyectoDP.Asignar}"></p:commandButton></td>
                 </tr>
                 <tr>
-                    <td colspan="3" class="mensaje"><h:outputText value="#{asignarProyectoDP.mensaje}"></h:outputText></td>
+                    <td colspan="3" class="mensaje"><p:messages for="menj" autoUpdate="true"/></td>
                 </tr>
             </table>
         </h:form>

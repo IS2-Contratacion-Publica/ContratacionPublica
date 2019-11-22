@@ -16,7 +16,9 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.enterprise.context.Dependent;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 
 /**
@@ -237,7 +239,7 @@ public class ContratistasDP {
         } else {
             mensaje = "Por favor ingrese correctamente todos los valores";
         }
-        
+        FacesContext.getCurrentInstance().addMessage("menj", new FacesMessage(mensaje, ""));
     }
     
     /*
@@ -264,7 +266,7 @@ public class ContratistasDP {
         } else {
             mensaje = "Por favor ingrese correctamente todos los valores";
         }
-        
+        FacesContext.getCurrentInstance().addMessage("menj", new FacesMessage(mensaje, ""));
         
     }
 
@@ -284,7 +286,7 @@ public class ContratistasDP {
         } else {
             mensaje = "Por favor ingrese correctamente todos los valores";
         }
-        
+        FacesContext.getCurrentInstance().addMessage("menj", new FacesMessage(mensaje, ""));
     }
     
     /*

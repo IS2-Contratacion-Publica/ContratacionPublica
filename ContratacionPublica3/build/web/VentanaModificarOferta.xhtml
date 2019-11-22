@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
+<html xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html">
     <h:head>
         <h:outputStylesheet library="css" name="general.css"/>
@@ -12,32 +12,32 @@
             <table>
                 <tr>
                     <td>Codigo de la oferta</td>
-                    <td><h:inputText value="#{ofertasDP.idoferta}"></h:inputText></td>
-                    <td><h:commandButton value="Verificar" action="#{ofertasDP.Consultar}"></h:commandButton></td>
+                    <td><p:inputText value="#{ofertasDP.idoferta}"></p:inputText></td>
+                    <td><p:commandButton value="Verificar" action="#{ofertasDP.Consultar}"></p:commandButton></td>
                 </tr>
                 <tr>
                     <td>Cedula del contratista</td>
-                    <td><h:inputText value="#{ofertasDP.concedula}"></h:inputText></td>
+                    <td><p:inputText value="#{ofertasDP.concedula}"></p:inputText></td>
                     
                 </tr>
                 <tr>
                     <td>Codigo del proyecto</td>
-                    <td><h:inputText value="#{ofertasDP.idproyecto}"></h:inputText></td>
+                    <td><p:inputText value="#{ofertasDP.idproyecto}"></p:inputText></td>
                 </tr>
                 <tr>
                     <td>Costo ofertado</td>
-                    <td><h:inputText value="#{ofertasDP.costoofertado}"></h:inputText></td>
+                    <td><p:inputText value="#{ofertasDP.costoofertado}"></p:inputText></td>
                 </tr>
                 <tr>
                     <td>Ubicacion Archivo</td>
-                    <td><h:inputText value="#{ofertasDP.ubicacion}"></h:inputText></td>
+                    <td><p:inputText value="#{ofertasDP.ubicacion}"></p:inputText></td>
                 </tr>
                 
                 <tr>
-                    <td colspan="2" class="boton"><h:commandButton value="Modificar" action="#{ofertasDP.Modificar}"></h:commandButton></td>
+                    <td colspan="2" class="boton"><p:commandButton value="Modificar" action="#{ofertasDP.Modificar}"></p:commandButton></td>
                 </tr>
                 <tr>
-                    <td colspan="3" class="mensaje"><h:outputText value="#{ofertasDP.mensaje}"></h:outputText></td>
+                    <td colspan="3" class="mensaje"><p:messages for="menj" autoUpdate="true"/></td>
                 </tr>
             </table>
         </h:form>

@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
+<html xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
@@ -15,59 +15,59 @@
                 <!--
                 <tr>
                     <td>Código del proyecto </td>
-                    <td><h:selectOneMenu value="#{ValidarOfertasDP.PROCODIGO}"> 
+                    <td><p:selectOneMenu value="#{ValidarOfertasDP.PROCODIGO}"> 
                             <f:selectItems value="#{ValidarOfertasDP.codproy}" /> 
-                        </h:selectOneMenu></td>
+                        </p:selectOneMenu></td>
                 </tr>
                 <tr>
                     <td>Código Oferta </td>
-                    <td><h:selectOneMenu value="#{ValidarOfertasDP.OFECODIGO}"> 
+                    <td><p:selectOneMenu value="#{ValidarOfertasDP.OFECODIGO}"> 
                             <f:selectItems value="#{ValidarOfertasDP.codofe}" /> 
-                        </h:selectOneMenu></td>
+                        </p:selectOneMenu></td>
                 </tr>
                 -->
                 <tr>
                     <td>Cédula contratista</td>
-                    <td><h:inputText value="#{ValidarOfertasDP.CONCEDULA}"></h:inputText></td>
+                    <td><p:inputText value="#{ValidarOfertasDP.CONCEDULA}"></p:inputText></td>
                 </tr>
                 <tr>
                     <td>Código del proyecto</td>
-                    <td><h:inputText value="#{ValidarOfertasDP.PROCODIGO}"></h:inputText></td>
+                    <td><p:inputText value="#{ValidarOfertasDP.PROCODIGO}"></p:inputText></td>
                 </tr>
                 <tr>
                     <td>Código Oferta</td>
-                    <td><h:inputText value="#{ValidarOfertasDP.OFECODIGO}"></h:inputText></td>
+                    <td><p:inputText value="#{ValidarOfertasDP.OFECODIGO}"></p:inputText></td>
                 </tr>
 
                 <tr>
                     <td>Cédula fiscalizador </td>
-                    <td><h:selectOneMenu value="#{ValidarOfertasDP.FISCEDULA}"> 
+                    <td><p:selectOneMenu value="#{ValidarOfertasDP.FISCEDULA}"> 
                             <f:selectItems value="#{ValidarOfertasDP.cedfisca}" /> 
-                        </h:selectOneMenu></td>
+                        </p:selectOneMenu></td>
                 </tr>
                 <tr>
                     <td>Criterios de validación</td>
-                    <td><h:inputText value="#{ValidarOfertasDP.VALCRITERIO}"></h:inputText></td>
+                    <td><p:inputText value="#{ValidarOfertasDP.VALCRITERIO}"></p:inputText></td>
                 </tr>
                 <tr>
                     <td>Observaciones</td>
-                    <td><h:inputText value="#{ValidarOfertasDP.VALOBSERVACIONES}"></h:inputText></td>
+                    <td><p:inputText value="#{ValidarOfertasDP.VALOBSERVACIONES}"></p:inputText></td>
                 </tr>
                 <tr>
                     <td>Válido</td>
-                    <td><h:selectOneMenu value="#{ValidarOfertasDP.VALVALIDO}"> 
+                    <td><p:selectOneMenu value="#{ValidarOfertasDP.VALVALIDO}"> 
                             <f:selectItem itemValue="1" itemLabel="SI"/>
                             <f:selectItem itemValue="0" itemLabel="NO"/> 
-                        </h:selectOneMenu></td>
+                        </p:selectOneMenu></td>
                 </tr>
 
                 
  
                 <tr>
-                    <td colspan="2" class="boton"><h:commandButton value="Crear" action="#{ValidarOfertasDP.Validar}"></h:commandButton></td>
+                    <td colspan="2" class="boton"><p:commandButton value="Crear" action="#{ValidarOfertasDP.Validar}"></p:commandButton></td>
                 </tr>
                 <tr>
-                    <td colspan="3" class="mensaje"><h:outputText value="#{ValidarOfertasDP.mensaje}"></h:outputText></td>
+                    <td colspan="3" class="mensaje"><p:messages for="menj" autoUpdate="true"/></td>
                 </tr>
             </table>
         </h:form>

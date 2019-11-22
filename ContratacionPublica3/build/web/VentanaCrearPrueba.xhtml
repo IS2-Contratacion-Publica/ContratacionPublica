@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
+<html xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
@@ -14,26 +14,26 @@
             <table>
                 <tr>
                     <td>Código de Proyecto</td>
-                    <td><h:inputText value="#{PruebasDP.procodigo}"></h:inputText></td>
-                    <td><h:commandButton value="Verificar" action="#{PruebasDP.Verificar}"></h:commandButton></td>
+                    <td><p:inputText value="#{PruebasDP.procodigo}"></p:inputText></td>
+                    <td><p:commandButton value="Verificar" action="#{PruebasDP.Verificar}"></p:commandButton></td>
                 </tr>
                 <tr>
                     <td>Código de Prueba</td>
-                    <td><h:inputText value="#{PruebasDP.prucodigo}" disabled="#{PruebasDP.existe != 0}"></h:inputText></td>
+                    <td><p:inputText value="#{PruebasDP.prucodigo}" disabled="#{PruebasDP.existe != 0}"></p:inputText></td>
                 </tr>
                 <tr>
                     <td>Descripción</td>
-                    <td><h:inputText value="#{PruebasDP.prudescripcion}" disabled="#{PruebasDP.existe != 0}"></h:inputText></td>
+                    <td><p:inputText value="#{PruebasDP.prudescripcion}" disabled="#{PruebasDP.existe != 0}"></p:inputText></td>
                 </tr>
                 <tr>
                     <td>Fecha de Realización de la prueba</td>
-                    <td><h:inputText value="#{PruebasDP.plafecharealizacion}" disabled="#{PruebasDP.existe != 0}"></h:inputText></td>
+                    <td><p:inputText value="#{PruebasDP.plafecharealizacion}" disabled="#{PruebasDP.existe != 0}"></p:inputText></td>
                 </tr>
                 <tr>
-                    <td colspan="2" class="boton"><h:commandButton value="Crear" action="#{PruebasDP.Crear}" disabled="#{PruebasDP.existe != 0}"></h:commandButton></td>
+                    <td colspan="2" class="boton"><p:commandButton value="Crear" action="#{PruebasDP.Crear}" disabled="#{PruebasDP.existe != 0}"></p:commandButton></td>
                 </tr>
                 <tr>
-                    <td colspan="3" class="mensaje"><h:outputText value="#{PruebasDP.mensaje}"></h:outputText></td>
+                    <td colspan="3" class="mensaje"><p:messages for="menj" autoUpdate="true"/></td>
                 </tr>
             </table>
         </h:form>

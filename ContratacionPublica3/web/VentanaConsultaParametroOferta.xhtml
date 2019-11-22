@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
+<html xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
@@ -15,7 +15,7 @@
                     <f:facet name="header">
                             Cedula del contratista
                             <br/>
-                            <h:inputText value="#{ofertasDP.concedula}"></h:inputText>
+                            <p:inputText value="#{ofertasDP.concedula}"></p:inputText>
                     </f:facet>
                     <h:outputText value="#{consul.concedula}" ></h:outputText>
                 </h:column>
@@ -23,7 +23,7 @@
                     <f:facet name="header">
                             Codigo Del Proyecto
                             <br/>
-                            <h:inputText value="#{ofertasDP.idproyecto}"></h:inputText>
+                            <p:inputText value="#{ofertasDP.idproyecto}"></p:inputText>
                     </f:facet>
                     <h:outputText value="#{consul.idproyecto}" ></h:outputText>
                 </h:column>
@@ -31,7 +31,7 @@
                     <f:facet name="header">
                             Codigo de la Oferta
                             <br/>
-                            <h:inputText value="#{ofertasDP.idoferta}"></h:inputText>
+                            <p:inputText value="#{ofertasDP.idoferta}"></p:inputText>
                     </f:facet>
                     <h:outputText value="#{consul.idoferta}" ></h:outputText>
                 </h:column>
@@ -39,7 +39,7 @@
                     <f:facet name="header">
                             Costo Ofertado
                             <br/>
-                            <h:inputText value="#{ofertasDP.costoofertado}"></h:inputText>
+                            <p:inputText value="#{ofertasDP.costoofertado}"></p:inputText>
                     </f:facet>
                     <h:outputText value="#{consul.costoofertado}" ></h:outputText>
                 </h:column>
@@ -48,14 +48,14 @@
                     <f:facet name="header">
                             Adjunto
                             <br/>
-                            <h:inputText value="#{ofertasDP.ubicacion}"></h:inputText>
+                            <p:inputText value="#{ofertasDP.ubicacion}"></p:inputText>
                     </f:facet>
                     <h:outputText value="#{consul.ubicacion}" ></h:outputText>
                 </h:column>
                 
                 <h:column>
                     <f:facet name="header">
-                            <h:commandButton value="Consultar" action="#{ofertasDP.Consultap}"></h:commandButton>
+                            <p:commandButton value="Consultar" action="#{ofertasDP.Consultap}"></p:commandButton>
                     </f:facet>
                 </h:column>
             </h:dataTable>

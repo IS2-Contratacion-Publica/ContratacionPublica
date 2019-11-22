@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
+<html xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
@@ -13,44 +13,44 @@
             <table>
                 <tr>
                     <td>Número de cédula: </td>
-                    <td><h:inputText value="#{contratistasDP.cedula}"></h:inputText></td>
-                    <td><h:commandButton value="Cargar" action="#{contratistasDP.Consultar}"></h:commandButton></td>
+                    <td><p:inputText value="#{contratistasDP.cedula}"></p:inputText></td>
+                    <td><p:commandButton value="Cargar" action="#{contratistasDP.Consultar}"></p:commandButton></td>
                 </tr>
                 <tr>
                     <td>Código profesional: </td>
-                    <td><h:inputText value="#{contratistasDP.codigo}"></h:inputText></td>
+                    <td><p:inputText value="#{contratistasDP.codigo}"></p:inputText></td>
                 </tr>
                 <tr>
                     <td>Nombre: </td>
-                    <td><h:inputText value="#{contratistasDP.nombre}"></h:inputText></td>
+                    <td><p:inputText value="#{contratistasDP.nombre}"></p:inputText></td>
                 </tr>
                 <tr>
                     <td>Fecha de nacimiento: </td>
-                    <td><h:inputText value="#{contratistasDP.fechanac}"></h:inputText></td>
+                    <td><p:inputText value="#{contratistasDP.fechanac}"></p:inputText></td>
                 </tr>
                 <tr>
                     <td>Género: </td>
-                    <td><h:selectOneMenu value="#{contratistasDP.genero}"> 
+                    <td><p:selectOneMenu value="#{contratistasDP.genero}"> 
                             <f:selectItems value="#{contratistasDP.generos}" /> 
-                        </h:selectOneMenu></td>
+                        </p:selectOneMenu></td>
                 </tr>
                 <tr>
                     <td>Número de teléfono: </td>
-                    <td><h:inputText value="#{contratistasDP.telefono}"></h:inputText></td>
+                    <td><p:inputText value="#{contratistasDP.telefono}"></p:inputText></td>
                 </tr>
                 <tr>
                     <td>Número de celular: </td>
-                    <td><h:inputText value="#{contratistasDP.celular}"></h:inputText></td>
+                    <td><p:inputText value="#{contratistasDP.celular}"></p:inputText></td>
                 </tr>
                     <tr>
                     <td>Correo electrónico: </td>
-                    <td><h:inputText value="#{contratistasDP.correo}"></h:inputText></td>
+                    <td><p:inputText value="#{contratistasDP.correo}"></p:inputText></td>
                 </tr>
                 <tr>
-                    <td colspan="2" class="boton"><h:commandButton value="Modificar" action="#{contratistasDP.Modificar}"></h:commandButton></td>
+                    <td colspan="2" class="boton"><p:commandButton value="Modificar" action="#{contratistasDP.Modificar}"></p:commandButton></td>
                 </tr>
                 <tr>
-                    <td colspan="3" class="mensaje"><h:outputText value="#{contratistasDP.mensaje}"></h:outputText></td>
+                    <td colspan="3" class="mensaje"><p:messages for="menj" autoUpdate="true"/></td>
                 </tr>
             </table>
         </h:form>

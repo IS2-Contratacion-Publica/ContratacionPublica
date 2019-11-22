@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
+<html xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
@@ -14,29 +14,29 @@
                 <table>
                     <tr>
                         <td>Código de Proyecto: </td>
-                        <td><h:inputText value="#{planillaDP.codigoProyecto}"></h:inputText></td>
+                        <td><p:inputText value="#{planillaDP.codigoProyecto}"></p:inputText></td>
                     </tr>
                     <tr>
                         <td>Codigo de Planilla: </td>
-                        <td><h:inputText value="#{planillaDP.codigo}"></h:inputText></td>
-                        <td><h:commandButton value="Verificar" action="#{planillaDP.consultar()}"></h:commandButton></td>
+                        <td><p:inputText value="#{planillaDP.codigo}"></p:inputText></td>
+                        <td><p:commandButton value="Verificar" action="#{planillaDP.consultar()}"></p:commandButton></td>
                     </tr>
                     <tr>
                         <td>Fecha: </td>
-                        <td><h:inputText value="#{planillaDP.fechaCreacion}" disabled="true" >"
+                        <td><p:inputText value="#{planillaDP.fechaCreacion}" disabled="true" >"
                         <f:convertDateTime pattern = "yyyy/mm/dd" />
-                        </h:inputText></td>
+                        </p:inputText></td>
                     </tr>
                     <tr>
                         <td>Monto:</td> 
-                        <td><h:inputText value="#{planillaDP.monto}" disabled="true"> 
+                        <td><p:inputText value="#{planillaDP.monto}" disabled="true"> 
                     <f:convertNumber> type="float"</f:convertNumber>
-                </h:inputText></td>
+                </p:inputText></td>
                     </tr>
                     <tr>
-                        <td><h:commandButton onclick="if (! confirm('¿Realmente desea borrar esta información?')) return false"
+                        <td><p:commandButton onclick="if (! confirm('¿Realmente desea borrar esta información?')) return false"
                                  value="Eliminar" action="#{planillaDP.eliminar()}">
-                </h:commandButton></td> 
+                </p:commandButton></td> 
                     </tr>
                 </table>
             </h:form>

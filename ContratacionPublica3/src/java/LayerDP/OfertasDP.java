@@ -17,7 +17,9 @@ import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.enterprise.context.Dependent;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -142,6 +144,7 @@ public class OfertasDP {
         } else {
             mensaje = "Vuelva a ingresar los datos";
         } 
+        FacesContext.getCurrentInstance().addMessage("menj", new FacesMessage(mensaje, ""));
     } 
     
         public void Modificar(){
@@ -166,6 +169,7 @@ public class OfertasDP {
         } else {
             mensaje = "Vuelva a ingresar los datos";
         }    
+        FacesContext.getCurrentInstance().addMessage("menj", new FacesMessage(mensaje, ""));
     }
         
         public void Eliminar(){
@@ -180,6 +184,7 @@ public class OfertasDP {
         } else {
             mensaje = "Vuelva a ingresar los datos";
         }
+        FacesContext.getCurrentInstance().addMessage("menj", new FacesMessage(mensaje, ""));
         
     }
         public void Consultar(){
@@ -227,6 +232,7 @@ public class OfertasDP {
         else{
             mensaje = "Codigo no existente";
         }
+        FacesContext.getCurrentInstance().addMessage("menj", new FacesMessage(mensaje, ""));
     }
 }
 

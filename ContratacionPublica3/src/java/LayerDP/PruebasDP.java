@@ -9,7 +9,9 @@ import EntityClasses.Prueba;
 import LayerMD.PruebasMD;
 import java.util.ArrayList;
 import javax.enterprise.context.Dependent;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -115,6 +117,7 @@ public class PruebasDP {
         } else {
             mensaje = "Por favor ingrese correctamente todos los valores";
         }
+        FacesContext.getCurrentInstance().addMessage("menj", new FacesMessage(mensaje, ""));
         
     }
     
@@ -137,7 +140,7 @@ public class PruebasDP {
             mensaje = "Por favor ingrese correctamente todos los valores";
         }
         
-        
+        FacesContext.getCurrentInstance().addMessage("menj", new FacesMessage(mensaje, ""));
     }
 
     public void Eliminar(){
@@ -153,7 +156,7 @@ public class PruebasDP {
         } else {
             mensaje = "Por favor ingrese correctamente todos los valores";
         }
-        
+        FacesContext.getCurrentInstance().addMessage("menj", new FacesMessage(mensaje, ""));
     }
         
     public ArrayList<Prueba> Consultag(){
