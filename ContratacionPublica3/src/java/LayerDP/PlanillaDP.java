@@ -9,6 +9,7 @@ import LayerMD.PlanillaMD;
 import java.text.ParseException;
 import java.util.Date;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import javax.enterprise.context.Dependent;
 import javax.enterprise.context.RequestScoped;
@@ -28,6 +29,27 @@ public class PlanillaDP {
     private PlanillaMD planillaMD = new PlanillaMD();
     private String mensaje;
     private LinkedList<PlanillaDP> lista;
+    private ArrayList consulta;
+
+    public LinkedList<PlanillaDP> getLista() {
+        return lista;
+    }
+
+    public void setLista(LinkedList<PlanillaDP> lista) {
+        this.lista = lista;
+    }
+
+    public ArrayList getConsulta() {
+        ConsultaGeneral();
+        return consulta;
+    }
+
+    public void setConsulta(ArrayList consulta) {
+        this.consulta = consulta;
+    }
+    
+    
+    
     public void setPlanillaMD() {
 
     }
@@ -123,8 +145,9 @@ public class PlanillaDP {
         }
         
     }
-    public LinkedList<PlanillaDP> ConsultaGeneral()
+    public ArrayList ConsultaGeneral()
     {
-        return planillaMD.ConsultaGeneral();
+        consulta = planillaMD.ConsultaGeneral();
+        return consulta;
     }
 }

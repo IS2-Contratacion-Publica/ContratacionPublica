@@ -10,73 +10,63 @@
     <h:body>
         <h2>Consultar validaciones</h2>
         <h:form>
-            <h:dataTable value="#{ValidarOfertasDP.consultaparametro}" var="consul">
-                <h:column>
-                    <f:facet name="header">
-                            Cédula Contratista
-                            <br/>
-                            <p:inputText value="#{ValidarOfertasDP.CONCEDULA}"></p:inputText>
-                    </f:facet>
+            <p:dataTable value="#{ValidarOfertasDP.consultaparametro}" var="consul">
+                <p:column headerText="Cédula Contratista" filterBy="#{consul.CONCEDULA}" filterMatchMode="contains">
+                    
+                            
+                            
+                            
+                    
                     <h:outputText value="#{consul.CONCEDULA}" ></h:outputText>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">
-                            Código Proyecto
-                            <br/>
-                            <p:inputText value="#{ValidarOfertasDP.PROCODIGO}"></p:inputText>
-                    </f:facet>
+                </p:column>
+                <p:column headerText="Código Proyecto" filterBy="#{consul.PROCODIGO}" filterMatchMode="contains">
+                    
+                            
+                            
+                            
+                    
                     <h:outputText value="#{consul.PROCODIGO}" ></h:outputText>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">
-                            Código Oferta
-                            <br/>
-                            <p:inputText value="#{ValidarOfertasDP.OFECODIGO}"></p:inputText>
-                    </f:facet>
+                </p:column>
+                <p:column headerText="Código Oferta" filterBy="#{consul.OFECODIGO}" filterMatchMode="contains">
+                    
+                            
+                            
+                            
+                    
                     <h:outputText value="#{consul.OFECODIGO}" ></h:outputText>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">
-                            Cédula del Fiscalizador
-                            <br/>
-                            <p:inputText value="#{ValidarOfertasDP.FISCEDULA}"></p:inputText>
-                    </f:facet>
+                </p:column>
+                <p:column headerText="Cédula del Fiscalizador" filterBy="#{consul.FISCEDULA}" filterMatchMode="contains">
+                    
+                            
+                            
+                            
+                    
                     <h:outputText value="#{consul.FISCEDULA}" ></h:outputText>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">
-                            Criterios de validación
-                            <br/>
-                            <p:inputText value="#{ValidarOfertasDP.VALCRITERIO}"></p:inputText>
-                    </f:facet>
+                </p:column>
+                <p:column headerText="Criterios de validación" filterBy="#{consul.VALCRITERIO}" filterMatchMode="contains">
+                    
+                            
+                            
+                            
+                    
                     <h:outputText value="#{consul.VALCRITERIO}" ></h:outputText>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">
-                            Observaciones
-                            <br/>
-                            <p:inputText value="#{ValidarOfertasDP.VALOBSERVACIONES}"></p:inputText>
-                    </f:facet>
+                </p:column>
+                <p:column headerText="Observaciones" filterBy="#{consul.VALOBSERVACIONES}" filterMatchMode="contains">
+                    
+                            
+                            
+                            
+                    
                     <h:outputText value="#{consul.VALOBSERVACIONES}" ></h:outputText>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">
-                            Válido
-                            <br/>
-                            <p:selectOneMenu value="#{ValidarOfertasDP.VALVALIDO}"> 
-                                <f:selectItem itemValue="1" itemLabel="SI"/>
-                                <f:selectItem itemValue="0" itemLabel="NO"/> 
-                            </p:selectOneMenu>
-                    </f:facet>
+                </p:column>
+                <p:column headerText="Válido" filterBy="#{consul.VALVALIDO}" filterMatchMode="contains">
+                    
+                          
+                    
                     <h:outputText value="#{consul.VALVALIDO}" ></h:outputText>
-                </h:column>
+                </p:column>
                
-                <h:column>
-                    <f:facet name="header">
-                        <p:commandButton value="Consultar" action="#{ValidarOfertasDP.Consultap}"></p:commandButton>
-                    </f:facet>
-                </h:column>
-            </h:dataTable>
+            </p:dataTable>
         </h:form>
     </h:body>
 </html>

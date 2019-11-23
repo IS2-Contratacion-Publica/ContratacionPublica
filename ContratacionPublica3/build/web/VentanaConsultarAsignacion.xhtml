@@ -10,60 +10,48 @@
     <h:body>
         <h2>Consultar asignación de proyectos</h2>
         <h:form>
-            <h:dataTable value="#{asignarProyectoDP.consulta}" var="consul">
-                <h:column>
-                    <f:facet name="header">
-                        Cédula de contratista
-                        <br/>
-                        <p:selectOneMenu value="#{asignarProyectoDP.concedula}"> 
-                            <f:selectItems value="#{asignarProyectoDP.mapContratistas}" /> 
-                        </p:selectOneMenu>
-                    </f:facet>
+            <p:dataTable value="#{asignarProyectoDP.consulta}" var="consul">
+                <p:column headerText="Cédula de contratista" filterBy="#{consul.concedula}" filterMatchMode="contains">
+                    
+                        
+                        
+                    
                     <h:outputText value="#{consul.concedula}" ></h:outputText>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">
-                        Cédula de contratista
-                        <br/>
-                        <p:selectOneMenu value="#{asignarProyectoDP.fiscedula}"> 
-                            <f:selectItems value="#{asignarProyectoDP.mapFiscalizadores}" /> 
-                        </p:selectOneMenu>
-                    </f:facet>
+                </p:column>
+                <p:column headerText="Cédula de fiscalizador" filterBy="#{consul.fiscedula}" filterMatchMode="contains">
+                    
+                        
+                        
+
+                    
                     <h:outputText value="#{consul.fiscedula}" ></h:outputText>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">
-                        Código de proyecto
-                        <br/>
-                        <p:selectOneMenu value="#{asignarProyectoDP.procodigo}"> 
-                            <f:selectItems value="#{asignarProyectoDP.mapProyectos}" /> 
-                        </p:selectOneMenu>
-                    </f:facet>
+                </p:column>
+                <p:column headerText="Código de proyecto" filterBy="#{consul.procodigo}" filterMatchMode="contains">
+                    
+                        
+                        
+
+                    
                     <h:outputText value="#{consul.procodigo}" ></h:outputText>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">
-                        Anticipo
-                        <br/>
-                        <p:inputText value="#{asignarProyectoDP.adjanticipo}"></p:inputText>
-                    </f:facet>
+                </p:column>
+                <p:column headerText="Anticipo" filterBy="#{consul.adjanticipo}" filterMatchMode="contains">
+                    
+                        
+                        
+                        
+                    
                     <h:outputText value="#{consul.adjanticipo}" ></h:outputText>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">
-                        Fecha
-                        <br/>
-                        <p:inputText value="#{asignarProyectoDP.adjfecha}"></p:inputText>
-                    </f:facet>
+                </p:column>
+                <p:column headerText="Fecha" filterBy="#{consul.adjfecha}" filterMatchMode="contains">
+                    
+                        
+                        
+                        
+                    
                     <h:outputText value="#{consul.adjfecha}" ></h:outputText>
-                </h:column>
+                </p:column>
                
-                <h:column>
-                    <f:facet name="header">
-                            <p:commandButton value="Consultar" action="#{asignarProyectoDP.ConsultaParametros}"></p:commandButton>
-                    </f:facet>
-                </h:column>
-            </h:dataTable>
+            </p:dataTable>
         </h:form>
     </h:body>
 </html>

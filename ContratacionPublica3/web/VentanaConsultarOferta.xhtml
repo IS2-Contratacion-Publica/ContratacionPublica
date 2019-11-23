@@ -9,36 +9,36 @@
     </h:head>
     <h:body>
         <h2>Consulta general</h2>
-            <h:dataTable value="#{ofertasDP.ofer}" var="s">
+            <p:dataTable value="#{ofertasDP.ofer}" var="s">
         
-            <h:column>
-                <f:facet name="header">Cèula del Contratista</f:facet>
+            <p:column headerText="" filterBy="" filterMatchMode="contains">
+                Cèula del Contratista
                 #{s.concedula}
-            </h:column>
+            </p:column>
             
             
-            <h:column>
-                <f:facet name="header">Codigo del Proyecto</f:facet>
+            <p:column headerText="" filterBy="" filterMatchMode="contains">
+                Codigo del Proyecto
                 #{s.idproyecto}
-            </h:column>
+            </p:column>
             
-            <h:column>
-                <f:facet name="header">Còdigo de la oferta</f:facet>
+            <p:column headerText="" filterBy="" filterMatchMode="contains">
+                Còdigo de la oferta
                 #{s.idoferta}
-            </h:column>
+            </p:column>
             
-            <h:column>
-                <f:facet name="header">Costo Ofertado</f:facet>
+            <p:column headerText="" filterBy="" filterMatchMode="contains">
+                Costo Ofertado
                 #{s.costoofertado}
-            </h:column>
+            </p:column>
                         
-            <h:column>
-                <f:facet name="header">Archivo</f:facet>
+            <p:column headerText="" filterBy="" filterMatchMode="contains">
+                Archivo
                 #{s.ubicacion}
-            </h:column>            
+            </p:column>            
             
             
-        </h:dataTable>
+        </p:dataTable>
     </h:body>
 </html>
 

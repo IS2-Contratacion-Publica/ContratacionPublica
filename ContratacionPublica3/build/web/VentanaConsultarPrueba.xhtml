@@ -10,46 +10,42 @@
     <h:body>
         <h2>Consultar pruebas</h2>
         <h:form>
-            <h:dataTable value="#{PruebasDP.consultaparametro}" var="consul">
-                <h:column>
-                    <f:facet name="header">
-                            Código del proyecto
-                            <br/>
-                            <p:inputText value="#{PruebasDP.procodigo}"></p:inputText>
-                    </f:facet>
+            <p:dataTable value="#{PruebasDP.consultaparametro}" var="consul">
+                <p:column headerText="Código del proyecto" filterBy="#{consul.procodigo}" filterMatchMode="contains">
+                    
+                            
+                            
+                            
+                    
                     <h:outputText value="#{consul.procodigo}" ></h:outputText>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">
-                            Código de prueba
-                            <br/>
-                            <p:inputText value="#{PruebasDP.prucodigo}"></p:inputText>
-                    </f:facet>
+                </p:column>
+                <p:column headerText="Código de prueba" filterBy="#{consul.prucodigo}" filterMatchMode="contains">
+                    
+                            
+                            
+                            
+                    
                     <h:outputText value="#{consul.prucodigo}" ></h:outputText>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">
-                            Descripción
-                            <br/>
-                            <p:inputText value="#{PruebasDP.prudescripcion}"></p:inputText>
-                    </f:facet>
+                </p:column>
+                <p:column headerText="Descripción" filterBy="#{consul.descripcion}" filterMatchMode="contains">
+                    
+                            
+                            
+                            
+                    
                     <h:outputText value="#{consul.descripcion}" ></h:outputText>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">
-                            Fecha de realización
-                            <br/>
-                            <p:inputText value="#{PruebasDP.plafecharealizacion}"></p:inputText>
-                    </f:facet>
+                </p:column>
+                <p:column headerText="Fecha de realización" filterBy="#{consul.fecharealizacion}" filterMatchMode="contains">
+                    
+                            
+                            
+                            
+                    
                     <h:outputText value="#{consul.fecharealizacion}" ></h:outputText>
-                </h:column>
+                </p:column>
                
-                <h:column>
-                    <f:facet name="header">
-                            <p:commandButton value="Consultar" action="#{PruebasDP.Consultap}"></p:commandButton>
-                    </f:facet>
-                </h:column>
-            </h:dataTable>
+
+            </p:dataTable>
         </h:form>
     </h:body>
 </html>

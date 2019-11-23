@@ -10,55 +10,50 @@
     <h:body>
         <h2>Consulta de ofertas</h2>
         <h:form>
-            <h:dataTable value="#{ofertasDP.consultaparametro}" var="consul">
-                <h:column>
-                    <f:facet name="header">
-                            Cedula del contratista
-                            <br/>
-                            <p:inputText value="#{ofertasDP.concedula}"></p:inputText>
-                    </f:facet>
+            <p:dataTable value="#{ofertasDP.consultaparametro}" var="consul">
+                <p:column headerText="Cedula del contratista" filterBy="#{consul.concedula}" filterMatchMode="contains">
+                    
+                            
+                            
+                            
+                    
                     <h:outputText value="#{consul.concedula}" ></h:outputText>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">
-                            Codigo Del Proyecto
-                            <br/>
-                            <p:inputText value="#{ofertasDP.idproyecto}"></p:inputText>
-                    </f:facet>
+                </p:column>
+                <p:column headerText="Codigo Del Proyecto" filterBy="#{consul.idproyecto}" filterMatchMode="contains">
+                    
+                            
+                            
+                            
+                    
                     <h:outputText value="#{consul.idproyecto}" ></h:outputText>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">
-                            Codigo de la Oferta
-                            <br/>
-                            <p:inputText value="#{ofertasDP.idoferta}"></p:inputText>
-                    </f:facet>
+                </p:column>
+                <p:column headerText="Codigo de la Oferta" filterBy="#{consul.idoferta}" filterMatchMode="contains">
+                    
+                            
+                            
+                            
+                    
                     <h:outputText value="#{consul.idoferta}" ></h:outputText>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">
-                            Costo Ofertado
-                            <br/>
-                            <p:inputText value="#{ofertasDP.costoofertado}"></p:inputText>
-                    </f:facet>
+                </p:column>
+                <p:column headerText="Costo Ofertado" filterBy="#{consul.costoofertado}" filterMatchMode="contains">
+                    
+                            
+                            
+                            
+                    
                     <h:outputText value="#{consul.costoofertado}" ></h:outputText>
-                </h:column>
+                </p:column>
                
-                <h:column>
-                    <f:facet name="header">
-                            Adjunto
-                            <br/>
-                            <p:inputText value="#{ofertasDP.ubicacion}"></p:inputText>
-                    </f:facet>
+                <p:column headerText="Adjunto" filterBy="#{consul.ubicacion}" filterMatchMode="contains">
+                    
+                            
+                            
+                            
+                    
                     <h:outputText value="#{consul.ubicacion}" ></h:outputText>
-                </h:column>
+                </p:column>
                 
-                <h:column>
-                    <f:facet name="header">
-                            <p:commandButton value="Consultar" action="#{ofertasDP.Consultap}"></p:commandButton>
-                    </f:facet>
-                </h:column>
-            </h:dataTable>
+            </p:dataTable>
         </h:form>
     </h:body>
 </html>

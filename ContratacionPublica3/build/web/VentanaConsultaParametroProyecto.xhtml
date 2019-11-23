@@ -10,73 +10,68 @@
     <h:body>
         <h2>Consulta de proyectos</h2>
         <h:form>
-            <h:dataTable value="#{proyectosDP.consultaparametro}" var="consul">
-                <h:column>
-                    <f:facet name="header">
-                            Código del proyecto
-                            <br/>
-                            <p:inputText value="#{proyectosDP.idproyecto}"></p:inputText>
-                    </f:facet>
+            <p:dataTable value="#{proyectosDP.consultaparametro}" var="consul">
+                <p:column headerText="Código del proyecto" filterBy="#{consul.idproyecto}" filterMatchMode="contains">
+                    
+                            
+                            
+                            
+                    
                     <h:outputText value="#{consul.idproyecto}" ></h:outputText>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">
-                            Nombre del proyecto
-                            <br/>
-                            <p:inputText value="#{proyectosDP.nombreproyecto}"></p:inputText>
-                    </f:facet>
+                </p:column>
+                <p:column headerText="Nombre" filterBy="#{consul.nombreproyecto}" filterMatchMode="contains">
+                    
+                            
+                            
+                            
+                    
                     <h:outputText value="#{consul.nombreproyecto}" ></h:outputText>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">
-                            Descripción
-                            <br/>
-                            <p:inputText value="#{proyectosDP.descripcion}"></p:inputText>
-                    </f:facet>
+                </p:column>
+                <p:column headerText="Descripción" filterBy="#{consul.descripcion}" filterMatchMode="contains">
+                    
+                            
+                            
+                            
+                    
                     <h:outputText value="#{consul.descripcion}" ></h:outputText>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">
-                            Tipo del Proyecto
-                            <br/>
-                            <p:inputText value="#{proyectosDP.tipo}"></p:inputText>
-                    </f:facet>
+                </p:column>
+                <p:column headerText="Tipo del Proyecto" filterBy="#{consul.tipo}" filterMatchMode="contains">
+                    
+                            
+                            
+                            
+                    
                     <h:outputText value="#{consul.tipo}" ></h:outputText>
-                </h:column>
+                </p:column>
                
-                <h:column>
-                    <f:facet name="header">
-                            Contratante
-                            <br/>
-                            <p:inputText value="#{proyectosDP.entidad}"></p:inputText>
-                    </f:facet>
+                <p:column headerText="Contratante" filterBy="#{consul.entidad}" filterMatchMode="contains">
+                    
+                           
+                            
+                            
+                    
                     <h:outputText value="#{consul.entidad}" ></h:outputText>
-                </h:column>
+                </p:column>
                 
-                <h:column>
-                    <f:facet name="header">
-                            Tiempo de duración
-                            <br/>
-                            <p:inputText value="#{proyectosDP.tiempoDuración}"></p:inputText>
-                    </f:facet>
+                <p:column headerText="Tiempo de duración" filterBy="#{consul.tiempoDuración}" filterMatchMode="contains">
+                    
+                            
+                            
+                            
+                    
                     <h:outputText value="#{consul.tiempoDuración}" ></h:outputText>
-                </h:column>
+                </p:column>
                 
-                <h:column>
-                    <f:facet name="header">
-                            Costo del Proyecto
-                            <br/>
-                            <p:inputText value="#{proyectosDP.costo}"></p:inputText>
-                    </f:facet>
+                <p:column headerText="Costo del Proyecto" filterBy="#{consul.costo}" filterMatchMode="contains">
+                    
+                            
+                            
+                            
+                    
                     <h:outputText value="#{consul.costo}" ></h:outputText>
-                </h:column>
-                
-                <h:column>
-                    <f:facet name="header">
-                            <p:commandButton value="Consultar" action="#{proyectosDP.Consultap}"></p:commandButton>
-                    </f:facet>
-                </h:column>
-            </h:dataTable>
+                </p:column>
+               
+            </p:dataTable>
         </h:form>
     </h:body>
 </html>

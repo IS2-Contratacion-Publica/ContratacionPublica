@@ -62,6 +62,7 @@ public class ContratistasDP {
     }
 
     public ArrayList getConsulta() {
+        ConsultaParametros();
         return consulta;
     }
 
@@ -330,14 +331,14 @@ public class ContratistasDP {
         ArrayList resul;
         ContratistasMD md = new ContratistasMD();
         Contratista con = new Contratista();
-        con.setCedula(cedula.trim());
-        con.setCodigo(codigo.trim());
-        con.setNombre(nombre.trim());
-        con.setFechaNac(fechanac.trim());
-        con.setGenero(genero.charAt(0));
-        con.setTelefono(telefono.trim());
-        con.setCelular(celular.trim());
-        con.setCorreo(correo.trim());
+        con.setCedula((""));
+        con.setCodigo((""));
+        con.setNombre((""));
+        con.setFechaNac((""));
+        con.setGenero('x');
+        con.setTelefono((""));
+        con.setCelular((""));
+        con.setCorreo((""));
         consulta = md.ConsultaParametros(con);
     }
     

@@ -83,8 +83,15 @@ public class OfertasDP {
         return ubicacion;
     }
     public ArrayList getConsultaparametro() {
+        Consultap();
         return consultaparametro;
     }
+
+    public void setConsultaparametro(ArrayList consultaparametro) {
+        this.consultaparametro = consultaparametro;
+    }
+    
+    
     
     
     public void setIdoferta(String idoferta) {
@@ -214,11 +221,11 @@ public class OfertasDP {
          public void Consultap(){
         OfertasMD md = new OfertasMD();
         Oferta oft = new Oferta();
-        oft.setConcedula(concedula);
-        oft.setIdproyecto(idproyecto);
-        oft.setIdoferta(idoferta);
-        oft.setCostoofertado(costoofertado);
-        oft.setUbicacion(ubicacion);
+        oft.setConcedula("");
+        oft.setIdproyecto("");
+        oft.setIdoferta("");
+        oft.setCostoofertado("");
+        oft.setUbicacion("");
              
         consultaparametro = md.Consultap(oft);
     }

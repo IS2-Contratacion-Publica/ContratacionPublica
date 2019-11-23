@@ -10,47 +10,47 @@
     <h:body>
         <h2>Consultar Proyectos</h2>
         
-        <h:dataTable value="#{proyectosDP.proye}" var="s">
+        <p:dataTable value="#{proyectosDP.proye}" var="s">
         
-            <h:column>
-                <f:facet name="header">ID Proyecto</f:facet>
+            <p:column headerText="" filterBy="" filterMatchMode="contains">
+                ID Proyecto
                 #{s.idproyecto}
-            </h:column>
+            </p:column>
             
             
-            <h:column>
-                <f:facet name="header">Nombre del Proyecto</f:facet>
+            <p:column headerText="" filterBy="" filterMatchMode="contains">
+                Nombre del Proyecto
                 #{s.nombreproyecto}
-            </h:column>
+            </p:column>
             
-            <h:column>
-                <f:facet name="header">Descripcion</f:facet>
+            <p:column headerText="" filterBy="" filterMatchMode="contains">
+                Descripcion
                 #{s.descripcion}
-            </h:column>
+            </p:column>
             
-            <h:column>
-                <f:facet name="header">Tipo</f:facet>
+            <p:column headerText="" filterBy="" filterMatchMode="contains">
+                Tipo
                 #{s.tipo}
-            </h:column>
+            </p:column>
                         
-            <h:column>
-                <f:facet name="header">Contratante</f:facet>
+            <p:column headerText="" filterBy="" filterMatchMode="contains">
+                Contratante
                 #{s.entidad}
-            </h:column>
+            </p:column>
             
-            <h:column>
-                <f:facet name="header">Tiempo duracion</f:facet>
+            <p:column headerText="" filterBy="" filterMatchMode="contains">
+                Tiempo duracion
                 #{s.tiempoDuración}
             
-            </h:column>
+            </p:column>
             
-            <h:column>
-                <f:facet name="header">Costo</f:facet>
+            <p:column headerText="" filterBy="" filterMatchMode="contains">
+                Costo
                 #{s.costo}
             
-            </h:column>
+            </p:column>
             
             
-        </h:dataTable>
+        </p:dataTable>
     </h:body>
 </html>

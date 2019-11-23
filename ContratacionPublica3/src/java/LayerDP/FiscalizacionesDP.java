@@ -50,6 +50,7 @@ public class FiscalizacionesDP {
     }
     
     public ArrayList getConsulta() {
+        ConsultaParametros();
         return consulta;
     }
 
@@ -115,9 +116,8 @@ public class FiscalizacionesDP {
     
     public void ConsultaParametros() {
         FiscalizacionesMD md = new FiscalizacionesMD();
-        Fiscalizaciones fiz = new Fiscalizaciones(procodigo, 
-                                                fiscedula, fizfecha, 
-                                                fizobservaciones);
+        Fiscalizaciones fiz = new Fiscalizaciones("", "", 
+                                                "", "");
         
         consulta = md.ConsultaParametros(fiz);
                             

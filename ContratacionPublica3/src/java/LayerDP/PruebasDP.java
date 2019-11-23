@@ -78,6 +78,7 @@ public class PruebasDP {
     }
 
     public ArrayList getConsultaparametro() {
+        Consultap();
         return consultaparametro;
     }
 
@@ -183,10 +184,10 @@ public class PruebasDP {
      public void Consultap(){
         PruebasMD md = new PruebasMD();
         Prueba pru = new Prueba();
-        pru.setProcodigo(procodigo);
-        pru.setPrucodigo(prucodigo);
-        pru.setDescripcion(prudescripcion);
-        pru.setFecharealizacion(plafecharealizacion);
+        pru.setProcodigo("");
+        pru.setPrucodigo("");
+        pru.setDescripcion("");
+        pru.setFecharealizacion("");
         consultaparametro = md.Consultap(pru);
     }
     

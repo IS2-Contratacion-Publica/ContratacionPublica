@@ -86,6 +86,7 @@ public class ValidarOfertasDP {
     }
     
     public ArrayList getConsultaparametro() {
+        Consultap(); 
         return consultaparametro;
     }
 
@@ -198,13 +199,13 @@ public class ValidarOfertasDP {
     public void Consultap(){
         ValidarOfertasMD md = new ValidarOfertasMD();
         ValidarOferta vofe = new ValidarOferta();
-        vofe.setCONCEDULA(CONCEDULA);
-        vofe.setPROCODIGO(PROCODIGO);
-        vofe.setOFECODIGO(OFECODIGO);
-        vofe.setFISCEDULA(FISCEDULA);
-        vofe.setVALCRITERIO(VALCRITERIO);
-        vofe.setVALOBSERVACIONES(VALOBSERVACIONES);
-        vofe.setVALVALIDO(Integer.parseInt(VALVALIDO));
+        vofe.setCONCEDULA("");
+        vofe.setPROCODIGO("");
+        vofe.setOFECODIGO("");
+        vofe.setFISCEDULA("");
+        vofe.setVALCRITERIO("");
+        vofe.setVALOBSERVACIONES("");
+
 
         consultaparametro = md.Consultap(vofe);
     }

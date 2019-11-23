@@ -48,6 +48,7 @@ public class AsignarProyectoDP {
     //Getters y Setters
 
     public ArrayList getConsulta() {
+        ConsultaParametros();
         return consulta;
     }
 
@@ -183,9 +184,9 @@ public class AsignarProyectoDP {
         AsignarProyectoMD md = new AsignarProyectoMD();
         String aux;
 
-        AsignarProyecto ap = new AsignarProyecto(concedula, procodigo, 
-                                                fiscedula, adjanticipo, 
-                                                adjfecha);
+        AsignarProyecto ap = new AsignarProyecto("", "", 
+                                                "", "", 
+                                                "");
         
         consulta = md.ConsultaParametros(ap);
                             

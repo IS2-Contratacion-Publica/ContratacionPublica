@@ -108,7 +108,7 @@ public class ValidarOfertasMD {
         if (!vofe.getVALOBSERVACIONES().isEmpty()) {
             query += p.prop("val.c6")+" = '"+vofe.getVALOBSERVACIONES()+"' and  ";
         }
-        query += p.prop("val.c7")+" = '"+vofe.getVALVALIDO()+"' and  ";
+        
 
                 
         query = query.substring(0, query.length()-5);

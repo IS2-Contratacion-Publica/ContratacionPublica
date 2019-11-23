@@ -153,23 +153,29 @@ public class ProyectosDP {
         this.estado = estado;
     }
     
-    //Constructor
     public ArrayList getConsultaparametro() {
+        Consultap();
         return consultaparametro;
     }
+
+    public void setConsultaparametro(ArrayList consultaparametro) {
+        this.consultaparametro = consultaparametro;
+    }
+    
+    
     public ProyectosDP(){      
     }
     
     public void Consultap(){
         ProyectosMD md = new ProyectosMD();
         Proyecto pro = new Proyecto();
-        pro.setIdproyecto(idproyecto);
-        pro.setNombreproyecto(nombreproyecto);
-        pro.setDescripcion(descripcion);
-        pro.setTipo(tipo);
-        pro.setEntidad(entidad);
-        pro.setTiempoDuración(tiempoDuración);
-        pro.setCosto(costo);
+        pro.setIdproyecto("");
+        pro.setNombreproyecto("");
+        pro.setDescripcion("");
+        pro.setTipo("");
+        pro.setEntidad("");
+        pro.setTiempoDuración("");
+        pro.setCosto("");
         consultaparametro = md.Consultap(pro);
     }
          

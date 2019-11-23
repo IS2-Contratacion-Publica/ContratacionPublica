@@ -54,6 +54,7 @@ public class FiscalizadoresDP {
     }
 
     public ArrayList getConsulta() {
+        ConsultaParametros();
         return consulta;
     }
 
@@ -324,14 +325,14 @@ public class FiscalizadoresDP {
         ArrayList resul;
         FiscalizadoresMD md = new FiscalizadoresMD();
         Fiscalizador fis = new Fiscalizador();
-        fis.setCedula(cedula.trim());
-        fis.setCodigo(codigo.trim());
-        fis.setNombre(nombre.trim());
-        fis.setFechaNac(fechanac.trim());
-        fis.setGenero(genero.charAt(0));
-        fis.setTelefono(telefono.trim());
-        fis.setCelular(celular.trim());
-        fis.setCorreo(correo.trim());
+        fis.setCedula("");
+        fis.setCodigo("");
+        fis.setNombre("");
+        fis.setFechaNac("");
+        fis.setGenero('x');
+        fis.setTelefono("");
+        fis.setCelular("");
+        fis.setCorreo("");
         consulta = md.ConsultaParametros(fis);
     }
     
