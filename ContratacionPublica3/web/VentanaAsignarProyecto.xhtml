@@ -31,18 +31,28 @@
                 </tr>
                 <tr>
                     <td>Anticipo: </td>
-                    <td><p:inputText value="#{asignarProyectoDP.adjanticipo}"></p:inputText></td>
+                    <td><p:inputText id="anticipo" value="#{asignarProyectoDP.adjanticipo}" type="number" validatorMessage="Ingrese un número con dos decimales entre 1 y 0">
+                        <f:validateRegex pattern="0\.([0-9]{2})" />
+                        <f:ajax event="keyup" render="anticipomsg" />
+                        </p:inputText></td>
                 </tr>
+                        <tr><td></td><td colspan="2"><p:message id="anticipomsg" for="anticipo" /></td></tr>
                 <tr>
                     <td>Fecha: </td>
-                    <td><p:inputText value="#{asignarProyectoDP.adjfecha}"></p:inputText></td>
-                </tr>               
+                    <td><p:inputText id="fecha" value="#{asignarProyectoDP.adjfecha}" validatorMessage="Ingrese una fecha en formato YYYY/MM/DD">
+                        <f:validateRegex pattern="[0-9]{4}\/[0-9]{2}\/[0-9]{2}" />
+                        <f:ajax event="keyup" render="fechamsg" />
+                        </p:inputText></td>
+                </tr>
+                        <tr><td></td><td colspan="2"><p:message id="fechamsg" for="fecha" /></td></tr>               
                 
                 <tr>
-                    <td><h:inputFile value="#{asignarProyectoDP.documento}" /></td>
+                    <td><p:fileUpload mode="simple" value="#{asignarProyectoDP.documento}" /></td>
                 </tr>
                 <tr>
-                    <td colspan="2" class="boton"><p:commandButton update="@form" value="Crear" action="#{asignarProyectoDP.Asignar}"></p:commandButton></td>
+                    <td colspan="2" class="boton"><h:commandButton value="Crear" action="#{asignarProyectoDP.Asignar}">
+                        <f:ajax execute="@form" render="@form" />
+                        </h:commandButton></td>
                 </tr>
                 <tr>
                     <td colspan="3" class="mensaje"><p:messages for="menj" autoUpdate="true"/></td>

@@ -19,7 +19,7 @@ public class Fiscalizaciones {
     private final String REGEX_PROCODIGO = "[/A-Za-z0-9]{1,15}";
     private final String REGEX_FISCEDULA = "[/A-Za-z0-9]{1,15}";
     private final String REGEX_FIZFECHA = "[0-9]{4}\\/[0-9]{2}\\/[0-9]{2}";
-    private final String REGEX_FIZOBSERVACIONES = "[.,/A-Za-z0-9]{1,200}";
+    private final String REGEX_FIZOBSERVACIONES = "[ .,/A-Za-z0-9]{1,200}";
 
     public boolean Validar(){
         if (procodigo.matches(REGEX_PROCODIGO) &&

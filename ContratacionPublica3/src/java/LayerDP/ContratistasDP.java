@@ -297,6 +297,7 @@ public class ContratistasDP {
         ContratistasMD md = new ContratistasMD();
         Contratista con;
         Verificar();
+        System.out.println("CARGANDO CONTRATISTA");
         con = md.Consultar(cedula);
         if (existe == 1 && con != null) {
             cedula = con.getCedula().trim();

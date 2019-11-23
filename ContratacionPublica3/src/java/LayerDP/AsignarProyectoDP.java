@@ -19,6 +19,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.Part;
+import org.primefaces.model.UploadedFile;
 
 /**
  *
@@ -41,7 +42,7 @@ public class AsignarProyectoDP {
     private String adjdocumento;
     private String adjfecha;
     private String mensaje;
-    private Part documento;
+    private UploadedFile documento;
     private ArrayList consulta;
     
     
@@ -58,12 +59,12 @@ public class AsignarProyectoDP {
     
     
     
-    public Part getDocumento() {
+    public UploadedFile getDocumento() {
         return documento;
     }
 
     
-    public void setDocumento(Part documento) {
+    public void setDocumento(UploadedFile documento) {
         this.documento = documento;
     }
 
@@ -161,7 +162,7 @@ public class AsignarProyectoDP {
         procodigo = procodigo.trim();
         fiscedula = fiscedula.trim();
         try {
-            aux = documento.getSubmittedFileName();
+            aux = documento.getFileName();
             adjdocumento = "c" + concedula + "p" + procodigo + "f" + fiscedula;
             adjdocumento += aux.substring(aux.lastIndexOf("."));
             AsignarProyecto ap = new AsignarProyecto(concedula, procodigo, 

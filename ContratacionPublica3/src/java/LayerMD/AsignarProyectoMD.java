@@ -9,6 +9,7 @@ import EntityClasses.AsignarProyecto;
 import Others.Conexion;
 import Others.Properties;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
@@ -26,6 +27,7 @@ public class AsignarProyectoMD {
     public String Asignar(AsignarProyecto ap){
         Properties p = new Properties();
         Conexion cx = new Conexion();
+        FileOutputStream fos = null;
         String nombreDocumento, orden;
         boolean query, archivo;
         String resul;
@@ -49,20 +51,26 @@ public class AsignarProyectoMD {
                 ap.getAdjdocumento()+"', "+"TO_DATE('"+
                 ap.getAdjfecha()+"', 'YYYY/MM/DD'))";
         
-        try {
-            cx.Ejecutar(orden);
-            query = true;
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        } finally {
-            cx.Cerrar();
-        }
-        try (InputStream input = ap.getDocumento().getInputStream()) {
+        
+        try (InputStream input = ap.getDocumento().getInputstream()) {
             Files.copy(input, new File(p.prop("path.asignacion"), ap.getAdjdocumento()).toPath());
+            
             archivo = true;
+            
+            try {
+                cx.Ejecutar(orden);
+                query = true;
+            } catch (SQLException ex) {
+                System.out.println(ex.getMessage());
+            } finally {
+                cx.Cerrar();
+            }
         }
         catch (IOException ex) {
             System.out.println(ex.getMessage());
+        } finally {
+
+            
         }
         
         if (archivo&&query) {

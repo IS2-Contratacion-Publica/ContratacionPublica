@@ -34,12 +34,12 @@ public class Proyecto {
 
     
     private final String REGEX_IDEPROYECTO = "[/A-Za-z0-9]{1,15}";
-    private final String REGEX_NOMBREPROYECTO = "[/A-Za-z0-9]{1,15}";
-    private final String REGEX_DESCRIPCION = "[/A-Za-z0-9]{1,15}";
-    private final String REGEX_TIPO = "[/A-Za-z0-9]{1,15}";
-    private final String REGEX_ENTIDAD = "[/A-Za-z0-9]{1,15}";
+    private final String REGEX_NOMBREPROYECTO = "[ /A-Za-z0-9]{1,30}";
+    private final String REGEX_DESCRIPCION = "[ /A-Za-z0-9]{1,100}";
+    private final String REGEX_TIPO = "[ /A-Za-z0-9]{1,25}";
+    private final String REGEX_ENTIDAD = "[ /A-Za-z0-9]{1,30}";
     private final String REGEX_TIEMPODURACION = "[0-9]{1,15}";
-    private final String REGEX_COSTO = "^[0-9]+(\\.[0-9]{1,2})?$";
+    private final String REGEX_COSTO = "([0-9]+(.[0-9]{1,2})?){1,11}";
     private final String REGEX_ESTADO = "[0-9]{1,15}";
     //Getters
     public String getIdproyecto() {

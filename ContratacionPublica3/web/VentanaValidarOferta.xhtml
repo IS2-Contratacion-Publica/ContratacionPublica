@@ -28,16 +28,30 @@
                 -->
                 <tr>
                     <td>Cédula contratista</td>
-                    <td><p:inputText value="#{ValidarOfertasDP.CONCEDULA}"></p:inputText></td>
+                    <td><p:inputText id="contratista" value="#{ValidarOfertasDP.CONCEDULA}" type="number" validatorMessage="Ingrese de 1 a 15 números"
+>
+                        <f:validateLength minimum="1" maximum="15" />
+                        <f:ajax event="keyup" render="contratistamsg" />
+                        </p:inputText></td>
                 </tr>
+                        <tr><td></td><td colspan="2"><p:message id="contratistamsg" for="contratista" /></td></tr>
                 <tr>
                     <td>Código del proyecto</td>
-                    <td><p:inputText value="#{ValidarOfertasDP.PROCODIGO}"></p:inputText></td>
+                    <td><p:inputText id="proyecto" value="#{ValidarOfertasDP.PROCODIGO}" type="number" validatorMessage="Ingrese de 1 a 15 números"
+>
+                        <f:validateLength minimum="1" maximum="15" />
+                        <f:ajax event="keyup" render="proyectomsg" />
+                        </p:inputText></td>
                 </tr>
+                        <tr><td></td><td colspan="2"><p:message id="proyectomsg" for="proyecto" /></td></tr>
                 <tr>
-                    <td>Código Oferta</td>
-                    <td><p:inputText value="#{ValidarOfertasDP.OFECODIGO}"></p:inputText></td>
+                    <td>Código de la oferta</td>
+                    <td><p:inputText id="oferta" value="#{ValidarOfertasDP.OFECODIGO}" type="number" validatorMessage="Ingrese de 1 a 100 numeros">
+                        <f:validateLength minimum="1" maximum="100" />
+                        <f:ajax event="keyup" render="ofertamsg" />
+                        </p:inputText></td>
                 </tr>
+                        <tr><td></td><td colspan="2"><p:message id="ofertamsg" for="oferta" /></td></tr>
 
                 <tr>
                     <td>Cédula fiscalizador </td>
@@ -47,12 +61,20 @@
                 </tr>
                 <tr>
                     <td>Criterios de validación</td>
-                    <td><p:inputText value="#{ValidarOfertasDP.VALCRITERIO}"></p:inputText></td>
+                    <td><p:inputText id="criterio" value="#{ValidarOfertasDP.VALCRITERIO}">
+                        <f:validateLength minimum="1" maximum="100" />
+                        <f:ajax event="keyup" render="criteriomsg" />
+                        </p:inputText></td>
                 </tr>
+                        <tr><td></td><td colspan="2"><p:message id="criteriomsg" for="criterio" /></td></tr>
                 <tr>
                     <td>Observaciones</td>
-                    <td><p:inputText value="#{ValidarOfertasDP.VALOBSERVACIONES}"></p:inputText></td>
+                    <td><p:inputText id="observacion" value="#{ValidarOfertasDP.VALOBSERVACIONES}" validatorMessage="Ingrese de 1 a 150 caracteres">
+                        <f:validateLength minimum="1" maximum="150" />
+                        <f:ajax event="keyup" render="observacionmsg" />
+                        </p:inputText></td>
                 </tr>
+                        <tr><td></td><td colspan="2"><p:message id="observacionmsg" for="observacion" /></td></tr>
                 <tr>
                     <td>Válido</td>
                     <td><p:selectOneMenu value="#{ValidarOfertasDP.VALVALIDO}"> 

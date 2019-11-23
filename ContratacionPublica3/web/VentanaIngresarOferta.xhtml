@@ -1,7 +1,8 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
         <h:outputStylesheet library="css" name="general.css"/>
         <title>Ingresar Oferta</title>
@@ -12,26 +13,46 @@
             <table>
                 <tr>
                     <td>Cedula del contratista</td>
-                    <td><p:inputText value="#{ofertasDP.concedula}"></p:inputText></td>
+                    <td><p:inputText id="cedulac" value="#{ofertasDP.concedula}" type="number" validatorMessage="Ingrese de 1 a 15 números">
+                        <f:validateLength minimum="1" maximum="15" />
+                        <f:ajax event="keyup" render="cedulacmsg" />
+                        </p:inputText></td>
                     
                 </tr>
+                        <tr><td></td><td colspan="2"><p:message id="cedulacmsg" for="cedulac" /></td></tr>
                 <tr>
                     <td>Codigo del proyecto</td>
-                    <td><p:inputText value="#{ofertasDP.idproyecto}"></p:inputText></td>
+                    <td><p:inputText id="codigop" value="#{ofertasDP.idproyecto}" type="number" validatorMessage="Ingrese de 1 a 15 números">
+                        <f:validateLength minimum="1" maximum="15" />
+                        <f:ajax event="keyup" render="codigopmsg" />
+                        </p:inputText></td>
                 </tr>
+                        <tr><td></td><td colspan="2"><p:message id="codigopmsg" for="codigop" /></td></tr>
                 <tr>
                     <td>Codigo de la oferta</td>
-                    <td><p:inputText value="#{ofertasDP.idoferta}"></p:inputText></td>
+                    <td><p:inputText id="oferta" value="#{ofertasDP.idoferta}" type="number" validatorMessage="Ingrese de 1 a 100 números">
+                        <f:validateLength minimum="1" maximum="100" />
+                        <f:ajax event="keyup" render="ofertamsg" />
+                        </p:inputText></td>
                     <td><p:commandButton update="@form" value="Verificar" action="#{ofertasDP.Verificar}"></p:commandButton></td>
                 </tr>
+                        <tr><td></td><td colspan="2"><p:message id="ofertamsg" for="oferta" /></td></tr>
                 <tr>
                     <td>Costo ofertado</td>
-                    <td><p:inputText value="#{ofertasDP.costoofertado}"></p:inputText></td>
+                    <td><p:inputText id="costo" value="#{ofertasDP.costoofertado}" type="number" validatorMessage="Ingrese de 1 a 11 números">
+                        <f:validateLength minimum="1" maximum="11" />
+                        <f:ajax event="keyup" render="costomsg" />
+                        </p:inputText></td>
                 </tr>
+                        <tr><td></td><td colspan="2"><p:message id="costomsg" for="costo" /></td></tr>
                 <tr>
                     <td>Ubicacion Archivo</td>
-                    <td><p:inputText value="#{ofertasDP.ubicacion}"></p:inputText></td>
-                </tr>               
+                    <td><p:inputText id="archivo" value="#{ofertasDP.ubicacion}" validatorMessage="Ingrese de 1 a 20 caracteres">
+                        <f:validateLength minimum="1" maximum="20" />
+                        <f:ajax event="keyup" render="archivomsg" />
+                        </p:inputText></td>
+                </tr>
+                        <tr><td></td><td colspan="2"><p:message id="archivomsg" for="archivo" /></td></tr>               
                 <tr>
                     <td colspan="2" class="boton"><p:commandButton update="@form" value="Ingresar" action="#{ofertasDP.Ingresar}"></p:commandButton></td>
                 </tr>

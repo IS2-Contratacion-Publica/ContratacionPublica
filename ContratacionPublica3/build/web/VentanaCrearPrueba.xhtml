@@ -14,21 +14,37 @@
             <table>
                 <tr>
                     <td>Código de Proyecto</td>
-                    <td><p:inputText value="#{PruebasDP.procodigo}"></p:inputText></td>
+                    <td><p:inputText id="codigopo" value="#{PruebasDP.procodigo}" type="number" validatorMessage="Ingrese de 1 a 15 números">
+                        <f:validateLength minimum="1" maximum="15" />
+                        <f:ajax event="keyup" render="codigopomsg" />
+                        </p:inputText></td>
                     <td><p:commandButton update="@form" value="Verificar" action="#{PruebasDP.Verificar}"></p:commandButton></td>
                 </tr>
+                        <tr><td></td><td colspan="2"><p:message id="codigopomsg" for="codigopo" /></td></tr>
                 <tr>
                     <td>Código de Prueba</td>
-                    <td><p:inputText value="#{PruebasDP.prucodigo}" disabled="#{PruebasDP.existe != 0}"></p:inputText></td>
+                    <td><p:inputText id="codigopu" value="#{PruebasDP.prucodigo}" disabled="#{PruebasDP.existe != 0}" type="number" validatorMessage="Ingrese de 1 a 10 números">
+                        <f:validateLength minimum="1" maximum="10" />
+                        <f:ajax event="keyup" render="codigopumsg" />
+                        </p:inputText></td>
                 </tr>
+                        <tr><td></td><td colspan="2"><p:message id="codigopumsg" for="codigopu" /></td></tr>
                 <tr>
                     <td>Descripción</td>
-                    <td><p:inputText value="#{PruebasDP.prudescripcion}" disabled="#{PruebasDP.existe != 0}"></p:inputText></td>
+                    <td><p:inputText id="descripcion" value="#{PruebasDP.prudescripcion}" disabled="#{PruebasDP.existe != 0}" validatorMessage="Ingrese de 1 a 100 caracteres">
+                        <f:validateLength minimum="1" maximum="100" />
+                        <f:ajax event="keyup" render="descripcionmsg" />
+                        </p:inputText></td>
                 </tr>
+                        <tr><td></td><td colspan="2"><p:message id="descripcionmsg" for="descripcion" /></td></tr>
                 <tr>
                     <td>Fecha de Realización de la prueba</td>
-                    <td><p:inputText value="#{PruebasDP.plafecharealizacion}" disabled="#{PruebasDP.existe != 0}"></p:inputText></td>
+                    <td><p:inputText id="fecha" value="#{PruebasDP.plafecharealizacion}" disabled="#{PruebasDP.existe != 0}" validatorMessage="Ingrese una fecha en formato YYYY/MM/DD">
+                        <f:validateRegex pattern="[0-9]{4}\/[0-9]{2}\/[0-9]{2}" />
+                        <f:ajax event="keyup" render="fechamsg" />
+                        </p:inputText></td>
                 </tr>
+                        <tr><td></td><td colspan="2"><p:message id="fechamsg" for="fecha" /></td></tr>
                 <tr>
                     <td colspan="2" class="boton"><p:commandButton update="@form" value="Crear" action="#{PruebasDP.Crear}" disabled="#{PruebasDP.existe != 0}"></p:commandButton></td>
                 </tr>

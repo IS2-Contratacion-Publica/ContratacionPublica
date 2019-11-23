@@ -13,25 +13,39 @@
                 <table>
                     <tr>
                         <td>Código de Proyecto: </td>
-                        <td><p:inputText value="#{planillaDP.codigoProyecto}"></p:inputText></td>
-                    </tr>
-                    <tr>
-                        <td>Codigo de Planilla: </td>
-                        <td><p:inputText value="#{planillaDP.codigo}"></p:inputText></td>
-                        <td><p:commandButton update="@form" value="Verificar"></p:commandButton></td>
-                    </tr>
-                    <tr>
-                        <td>Fecha: </td>
-                        <td><p:inputText value="#{planillaDP.fechaCreacion}" >"
-                        <f:convertDateTime pattern = "yyyy/mm/dd" />
+                        <td><p:inputText id="codigop" value="#{planillaDP.codigoProyecto}" type="number" validatorMessage="Ingrese de 1 a 15 números">
+                        <f:validateLength minimum="1" maximum="15" />
+                        <f:ajax event="keyup" render="codigopmsg" />
                         </p:inputText></td>
                     </tr>
+                        <tr><td></td><td colspan="2"><p:message id="codigopmsg" for="codigop" /></td></tr>
+                    <tr>
+                        <td>Codigo de Planilla: </td>
+                        <td><p:inputText id="codigopl" value="#{planillaDP.codigo}" type="number" validatorMessage="Ingrese de 1 a 10 números">
+                        <f:validateLength minimum="1" maximum="10" />
+                        <f:ajax event="keyup" render="codigoplmsg" />
+                        </p:inputText></td>
+                        <td><p:commandButton update="@form" value="Verificar" action="#{planillaDP.verificar()}></p:commandButton></td>
+                    </tr>
+                        <tr><td></td><td colspan="2"><p:message id="codigoplmsg" for="codigopl" /></td></tr>
+                    <tr>
+                        <td>Fecha: </td>
+                        <td><p:inputText id="fecha" value="#{planillaDP.fechaCreacion}" validatorMessage="Ingrese una fecha en formato YYYY/MM/DD">
+                        <f:convertDateTime pattern = "yyyy/mm/dd" />
+                        <f:ajax event="keyup" render="fechamsg" />
+                        </p:inputText></td>
+                    </tr>
+                        <tr><td></td><td colspan="2"><p:message id="fechamsg" for="fecha" /></td></tr>
                     <tr>
                         <td>Monto: </td>
-                        <td><p:inputText value="#{planillaDP.monto}" > 
-                    <f:convertNumber> type="float"</f:convertNumber>
-                </p:inputText></td>
+                        <td><p:inputText id="monto" value="#{planillaDP.monto}" type="number" validatorMessage="Ingrese de 0 a 11 números"> 
+                        <f:convertNumber> type="float"</f:convertNumber>
+                        <f:validateLength minimum="1" maximum="11" />
+                        <f:ajax event="keyup" render="montomsg" />
+                        
+                         </p:inputText></td>
                     </tr>
+                        <tr><td></td><td colspan="2"><p:message id="montomsg" for="monto" /></td></tr>
                     <tr>
                         <td><p:commandButton update="@form" value="Crear" action="#{planillaDP.crear()}" ></p:commandButton></td>
                     </tr>

@@ -33,11 +33,11 @@ public class Oferta {
         this.ofer = ofer;
     }
     
-   private final String REGEX_CONCEDULA = "[/A-Za-z0-9]{1,15}";
-   private final String REGEX_IDPROYECTO = "[/A-Za-z0-9]{1,15}";
-   private final String REGEX_IDOFERTA = "[/A-Za-z0-9]{1,15}";
-   private final String REGEX_COSTOOFERTADO = "^[0-9]+(\\.[0-9]{1,2})?$";
-   private final String REGEX_UBICACION = "[/A-Za-z0-9]{1,100}";
+   private final String REGEX_CONCEDULA = "[ /A-Za-z0-9]{1,15}";
+   private final String REGEX_IDPROYECTO = "[ /A-Za-z0-9]{1,15}";
+   private final String REGEX_IDOFERTA = "[ /A-Za-z0-9]{1,15}";
+   private final String REGEX_COSTOOFERTADO = "([0-9]+(.[0-9]{1,2})?){1,11}";
+   private final String REGEX_UBICACION = "[ .,/A-Za-z0-9]{1,100}";
    private final String REGEX_ESTADO = "[0-9]{1,15}";
     
     /**

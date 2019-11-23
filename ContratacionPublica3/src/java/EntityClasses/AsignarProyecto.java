@@ -6,6 +6,7 @@
 package EntityClasses;
 
 import javax.servlet.http.Part;
+import org.primefaces.model.UploadedFile;
 
 /**
  *
@@ -18,7 +19,7 @@ public class AsignarProyecto {
     private String adjanticipo;
     private String adjdocumento;
     private String adjfecha;
-    private Part documento;
+    private UploadedFile documento;
     
     private final String REGEX_CONCEDULA = "[/A-Za-z0-9]{1,15}";
     private final String REGEX_PROCODIGO = "[/A-Za-z0-9]{1,15}";
@@ -75,16 +76,16 @@ public class AsignarProyecto {
         this.adjfecha = adjfecha;
     }
 
-    public Part getDocumento() {
+    public UploadedFile getDocumento() {
         return documento;
     }
 
-    public void setDocumento(Part documento) {
+    public void setDocumento(UploadedFile documento) {
         this.documento = documento;
     }
 
     
-    public AsignarProyecto(String concedula, String procodigo, String fiscedula, String adjanticipo, String adjdocumento, String adjfecha, Part documento) {
+    public AsignarProyecto(String concedula, String procodigo, String fiscedula, String adjanticipo, String adjdocumento, String adjfecha, UploadedFile documento) {
         this.concedula = concedula;
         this.procodigo = procodigo;
         this.fiscedula = fiscedula;
