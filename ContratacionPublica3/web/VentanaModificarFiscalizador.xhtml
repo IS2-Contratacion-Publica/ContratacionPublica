@@ -9,7 +9,7 @@
     </h:head>
     <h:body>
         <h2>Modificar fiscalizador</h2>
-        <h:form>
+        <h:form id="form1">
             <table>
                 <tr>
                     <td>Número de cédula: </td>
@@ -17,12 +17,24 @@
                         <f:validateLength minimum="1" maximum="15" />
                         <f:ajax event="keyup" render="cedulamsg" />
                         </p:inputText></td>
-                    <td><p:commandButton update="@form" value="Verificar" action="#{fiscalizadoresDP.Consultar}"></p:commandButton></td>
+                    <td><p:commandButton update=":form2" value="Cargar" action="#{fiscalizadoresDP.Consultar}"></p:commandButton></td>
+                </tr>
+                <tr><td></td><td colspan="2"><p:message id="cedulamsg" for="cedula" /></td></tr>
+            </table>
+        </h:form>
+        <h:form id="form2">
+            <table>
+                <tr>
+                    <td>Número de cédula: </td>
+                    <td><p:inputText id="cedula" value="#{fiscalizadoresDP.cedula}" type="number" validatorMessage="Ingrese de 1 a 15 números">
+                        <f:validateLength minimum="1" maximum="15" />
+                        <f:ajax event="keyup" render="cedulamsg" />
+                        </p:inputText></td>
                 </tr>
                 <tr><td></td><td colspan="2"><p:message id="cedulamsg" for="cedula" /></td></tr>
                 <tr>
                     <td>Código profesional: </td>
-                    <td><p:inputText id="codigo" value="#{fiscalizadoresDP.codigo}" disabled="#{fiscalizadoresDP.existe != 0}" type="number" validatorMessage="Ingrese de 1 a 15 números">
+                    <td><p:inputText id="codigo" value="#{fiscalizadoresDP.codigo}" type="number" validatorMessage="Ingrese de 1 a 15 números">
                         <f:validateLength minimum="1" maximum="15" />
                         <f:ajax event="keyup" render="codigomsg" />
                         </p:inputText></td>
@@ -30,7 +42,7 @@
                 <tr><td></td><td colspan="2"><p:message id="codigomsg" for="codigo" /></td></tr>
                 <tr>
                     <td>Nombre: </td>
-                    <td><p:inputText id="nombre" value="#{fiscalizadoresDP.nombre}" disabled="#{fiscalizadoresDP.existe != 0}" validatorMessage="Ingrese de 1 a 100 caracteres">
+                    <td><p:inputText id="nombre" value="#{fiscalizadoresDP.nombre}" validatorMessage="Ingrese de 1 a 100 caracteres">
                         <f:validateLength minimum="1" maximum="100" />
                         <f:ajax event="keyup" render="nombremsg" />
                         </p:inputText></td>
@@ -38,7 +50,7 @@
                 <tr><td></td><td colspan="2"><p:message id="nombremsg" for="nombre" /></td></tr>
                 <tr>
                     <td>Fecha de nacimiento: </td>
-                    <td><p:inputText id="fecha" value="#{fiscalizadoresDP.fechanac}" disabled="#{fiscalizadoresDP.existe != 0}" validatorMessage="Ingrese una fecha en formato YYYY/MM/DD">
+                    <td><p:inputText id="fecha" value="#{fiscalizadoresDP.fechanac}" validatorMessage="Ingrese una fecha en formato YYYY/MM/DD">
                         <f:validateRegex pattern="[0-9]{4}\/[0-9]{2}\/[0-9]{2}" />
                         <f:ajax event="keyup" render="fechamsg" />
                         </p:inputText></td>
@@ -52,7 +64,7 @@
                 </tr>
                 <tr>
                     <td>Número de teléfono: </td>
-                    <td><p:inputText id="telefono" value="#{fiscalizadoresDP.telefono}" disabled="#{fiscalizadoresDP.existe != 0}" type="number" validatorMessage="Ingrese de 1 a 10 números">
+                    <td><p:inputText id="telefono" value="#{fiscalizadoresDP.telefono}" type="number" validatorMessage="Ingrese de 1 a 10 números">
                         <f:validateLength minimum="1" maximum="10" />
                         <f:ajax event="keyup" render="telefonomsg" />
                         </p:inputText></td>
@@ -60,7 +72,7 @@
                 <tr><td></td><td colspan="2"><p:message id="telefonomsg" for="telefono" /></td></tr>
                 <tr>
                     <td>Número de celular: </td>
-                    <td><p:inputText id="celular" value="#{fiscalizadoresDP.celular}" disabled="#{fiscalizadoresDP.existe != 0}" type="number" validatorMessage="Ingrese de 1 a 10 números">
+                    <td><p:inputText id="celular" value="#{fiscalizadoresDP.celular}" type="number" validatorMessage="Ingrese de 1 a 10 números">
                         <f:validateLength minimum="1" maximum="10" />
                         <f:ajax event="keyup" render="celularmsg" />
                         </p:inputText></td>
@@ -68,14 +80,14 @@
                 <tr><td></td><td colspan="2"><p:message id="celularmsg" for="celular" /></td></tr>
                 <tr>
                     <td>Correo electrónico: </td>
-                    <td><p:inputText id="correo" value="#{fiscalizadoresDP.correo}" disabled="#{fiscalizadoresDP.existe != 0}" validatorMessage="Ingrese un correo con máximo 50 caracteres">
+                    <td><p:inputText id="correo" value="#{fiscalizadoresDP.correo}" validatorMessage="Ingrese un correo con máximo 50 caracteres">
                         <f:validateRegex pattern="(?!.{51})([a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+)" />
                         <f:ajax event="keyup" render="correomsg" />
                         </p:inputText></td>
                 </tr>
                 <tr><td></td><td colspan="2"><p:message id="correomsg" for="correo" /></td></tr>
                 <tr>
-                    <td colspan="2" class="boton"><p:commandButton update="@form" value="Crear" action="#{fiscalizadoresDP.Modificar}" disabled="#{fiscalizadoresDP.existe != 0}"></p:commandButton></td>
+                    <td colspan="2" class="boton"><p:commandButton update="@form" value="Modificar" action="#{fiscalizadoresDP.Modificar}"></p:commandButton></td>
                 </tr>
                 <tr>
                     <td colspan="3" class="mensaje"><p:messages for="menj" autoUpdate="true"/></td>

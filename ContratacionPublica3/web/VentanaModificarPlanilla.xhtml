@@ -8,8 +8,21 @@
         <title>Modificar planilla</title>
     </h:head>
     <h:body>
-            <h2>Modificar planilla</h2>
-            <h:form>
+        <h2>Modificar planilla</h2>
+        <h:form id="form1">
+            <table>
+                <tr>
+                        <td>Codigo de Planilla: </td>
+                        <td><p:inputText id="codigopl" value="#{planillaDP.codigo}" type="number" validatorMessage="Ingrese de 1 a 10 números">
+                        <f:validateLength minimum="1" maximum="10" />
+                        <f:ajax event="keyup" render="codigoplmsg" />
+                        </p:inputText></td>
+                        <td><p:commandButton update=":form2" value="Cargar" action="#{planillaDP.consultar()}"></p:commandButton></td>
+                    </tr>
+                        <tr><td></td><td colspan="2"><p:message id="codigoplmsg" for="codigopl" /></td></tr>
+            </table>
+        </h:form>
+        <h:form id="form2">
                 <table>
                     <tr>
                         <td>Código de Proyecto: </td>
@@ -25,7 +38,6 @@
                         <f:validateLength minimum="1" maximum="10" />
                         <f:ajax event="keyup" render="codigoplmsg" />
                         </p:inputText></td>
-                        <td><p:commandButton update="@form" value="Verificar" action="#{planillaDP.consultar()}></p:commandButton></td>
                     </tr>
                         <tr><td></td><td colspan="2"><p:message id="codigoplmsg" for="codigopl" /></td></tr>
                     <tr>
@@ -47,7 +59,7 @@
                     </tr>
                         <tr><td></td><td colspan="2"><p:message id="montomsg" for="monto" /></td></tr>
                     <tr>
-                        <td><p:commandButton update="@form" value="Crear" action="#{planillaDP.modificar()}" ></p:commandButton></td>
+                        <td><p:commandButton update="@form" value="Modificar" action="#{planillaDP.modificar()}" ></p:commandButton></td>
                     </tr>
                     <tr>
                         <td><p:messages for="menj" autoUpdate="true"/></td>

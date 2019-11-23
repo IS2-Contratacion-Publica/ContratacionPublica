@@ -9,7 +9,20 @@
     </h:head>
     <h:body>
         <h2>Modificar Oferta</h2>
-        <h:form>
+        <h:form id="form1">
+            <table>
+                <tr>
+                    <td>Codigo de la oferta</td>
+                    <td><p:inputText id="oferta" value="#{ofertasDP.idoferta}" type="number" validatorMessage="Ingrese de 1 a 100 números">
+                        <f:validateLength minimum="1" maximum="100" />
+                        <f:ajax event="keyup" render="ofertamsg" />
+                        </p:inputText></td>
+                    <td><p:commandButton update=":form2" value="Cargar" action="#{ofertasDP.Consultar}"></p:commandButton></td>
+                </tr>
+                        <tr><td></td><td colspan="2"><p:message id="ofertamsg" for="oferta" /></td></tr>
+            </table>
+        </h:form>
+        <h:form id="form2">
             <table>
                 <tr>
                     <td>Cedula del contratista</td>
@@ -34,7 +47,7 @@
                         <f:validateLength minimum="1" maximum="100" />
                         <f:ajax event="keyup" render="ofertamsg" />
                         </p:inputText></td>
-                    <td><p:commandButton update="@form" value="Verificar" action="#{ofertasDP.Consultar}"></p:commandButton></td>
+                    
                 </tr>
                         <tr><td></td><td colspan="2"><p:message id="ofertamsg" for="oferta" /></td></tr>
                 <tr>
@@ -54,7 +67,7 @@
                 </tr>
                         <tr><td></td><td colspan="2"><p:message id="archivomsg" for="archivo" /></td></tr>               
                 <tr>
-                    <td colspan="2" class="boton"><p:commandButton update="@form" value="Ingresar" action="#{ofertasDP.Modificar}"></p:commandButton></td>
+                    <td colspan="2" class="boton"><p:commandButton update="@form" value="Modificar" action="#{ofertasDP.Modificar}"></p:commandButton></td>
                 </tr>
                 <tr>
                     <td colspan="3" class="mensaje"><p:messages for="menj" autoUpdate="true"/></td>

@@ -9,7 +9,7 @@
     </h:head>
     <h:body>
         <h2>Modificar Proyecto</h2>
-        <h:form>
+        <h:form id="form1">
             <table>
                 <tr>
                     <td>Codigo del proyecto</td>
@@ -17,7 +17,20 @@
                         <f:validateLength minimum="1" maximum="15" />
                         <f:ajax event="keyup" render="codigomsg" />
                         </p:inputText></td>
-                    <td><p:commandButton update="@form" value="Verificar" action="#{proyectosDP.Consultar}"></p:commandButton></td>
+                    <td><p:commandButton update=":form2" value="Cargar" action="#{proyectosDP.Consultar}"></p:commandButton></td>
+                </tr>
+                        <tr><td></td><td colspan="2"><p:message id="codigomsg" for="codigo" /></td></tr>
+            </table>
+        </h:form>
+        <h:form id="form2">
+            <table>
+                <tr>
+                    <td>Codigo del proyecto</td>
+                    <td><p:inputText id="codigo" value="#{proyectosDP.idproyecto}" type="number" validatorMessage="Ingrese de 1 a 15 números">
+                        <f:validateLength minimum="1" maximum="15" />
+                        <f:ajax event="keyup" render="codigomsg" />
+                        </p:inputText></td>
+
                 </tr>
                         <tr><td></td><td colspan="2"><p:message id="codigomsg" for="codigo" /></td></tr>
                 <tr>
@@ -70,7 +83,7 @@
                 </tr>
                         <tr><td></td><td colspan="2"><p:message id="costomsg" for="costo" /></td></tr>
                 <tr>
-                    <td colspan="2" class="boton"><p:commandButton update="@form" value="Ingresar" action="#{proyectosDP.Modificar}"></p:commandButton></td>
+                    <td colspan="2" class="boton"><p:commandButton update="@form" value="Modificar" action="#{proyectosDP.Modificar}"></p:commandButton></td>
                 </tr>
                 <tr>
                     <td colspan="3" class="mensaje"><p:messages for="menj" autoUpdate="true"/></td>
