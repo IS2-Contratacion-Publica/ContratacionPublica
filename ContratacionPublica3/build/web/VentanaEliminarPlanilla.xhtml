@@ -19,7 +19,7 @@
                     <tr>
                         <td>Codigo de Planilla: </td>
                         <td><p:inputText value="#{planillaDP.codigo}"></p:inputText></td>
-                        <td><p:commandButton value="Verificar" action="#{planillaDP.consultar()}"></p:commandButton></td>
+                        <td><p:commandButton update="@form" value="Verificar" action="#{planillaDP.consultar()}"></p:commandButton></td>
                     </tr>
                     <tr>
                         <td>Fecha: </td>
@@ -34,7 +34,7 @@
                 </p:inputText></td>
                     </tr>
                     <tr>
-                        <td><p:commandButton onclick="if (! confirm('¿Realmente desea borrar esta información?')) return false"
+                        <td><p:commandButton update="@form" onclick="if (! confirm('¿Realmente desea borrar esta información?')) return false"
                                  value="Eliminar" action="#{planillaDP.eliminar()}">
                 </p:commandButton></td> 
                     </tr>

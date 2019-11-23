@@ -13,7 +13,7 @@
                 <tr>
                     <td>Codigo del proyecto</td>
                     <td><p:inputText value="#{proyectosDP.idproyecto}"></p:inputText></td>
-                    <td><p:commandButton value="Consultar" action="#{proyectosDP.Consultar}"></p:commandButton></td>
+                    <td><p:commandButton update="@form" value="Consultar" action="#{proyectosDP.Consultar}"></p:commandButton></td>
                 </tr>
                 <tr>
                     <td>Nombre del proyecto</td>
@@ -42,7 +42,7 @@
                 </tr>
                 <tr>
                     
-                    <td><p:commandButton onclick="if (! confirm('¿Realmente deseas borrar este proyecto?')) return false"
+                    <td><p:commandButton update="@form" onclick="if (! confirm('¿Realmente deseas borrar este proyecto?')) return false"
                                  value="Eliminar" action="#{proyectosDP.Eliminar}">
                         </p:commandButton> </td>
                 </tr>

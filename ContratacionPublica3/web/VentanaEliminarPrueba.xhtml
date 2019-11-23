@@ -14,7 +14,7 @@
                 <tr>
                     <td>Código de Prueba</td>
                     <td><p:inputText value="#{PruebasDP.prucodigo}"></p:inputText></td>
-                    <td><p:commandButton value="Cargar" action="#{PruebasDP.Consultacod}"></p:commandButton></td>
+                    <td><p:commandButton update="@form" value="Cargar" action="#{PruebasDP.Consultacod}"></p:commandButton></td>
                 </tr>
                 <tr>
                     <td>Código de Proyecto</td>
@@ -30,7 +30,7 @@
                 </tr>
                 <tr>
                     <td colspan="2" class="boton">
-                <p:commandButton onclick="if (! confirm('¿Realmente desea borrar esta información?')) return false"
+                <p:commandButton update="@form" onclick="if (! confirm('¿Realmente desea borrar esta información?')) return false"
                                  value="Eliminar" action="#{PruebasDP.Eliminar}">
                 </p:commandButton></td>
                 </tr>

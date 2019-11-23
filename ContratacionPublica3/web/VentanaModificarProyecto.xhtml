@@ -13,7 +13,7 @@
                 <tr>
                     <td>Codigo del proyecto</td>
                     <td><p:inputText value="#{proyectosDP.idproyecto}"></p:inputText></td>
-                    <td><p:commandButton value="Verificar" action="#{proyectosDP.Consultar}"></p:commandButton></td>
+                    <td><p:commandButton update="@form" value="Verificar" action="#{proyectosDP.Consultar}"></p:commandButton></td>
                 </tr>
                 <tr>
                     <td>Nombre del proyecto</td>
@@ -41,7 +41,7 @@
                     <td><p:inputText value="#{proyectosDP.costo}"></p:inputText></td>
                 </tr>
                 <tr>
-                    <td colspan="2" class="boton"><p:commandButton value="Modificar" action="#{proyectosDP.Modificar}"></p:commandButton></td>
+                    <td colspan="2" class="boton"><p:commandButton update="@form" value="Modificar" action="#{proyectosDP.Modificar}"></p:commandButton></td>
                 </tr>
                 <tr>
                     <td colspan="3" class="mensaje"><p:messages for="menj" autoUpdate="true"/></td>

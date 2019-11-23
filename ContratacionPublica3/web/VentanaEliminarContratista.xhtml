@@ -14,7 +14,7 @@
                 <tr>
                     <td>Número de cédula:  </td>
                     <td><p:inputText value="#{contratistasDP.cedula}"></p:inputText></td>
-                    <td><p:commandButton value="Cargar" action="#{contratistasDP.Consultar}"></p:commandButton></td>
+                    <td><p:commandButton update="@form" value="Cargar" action="#{contratistasDP.Consultar}"></p:commandButton></td>
                 </tr>
                 <tr>
                     <td>Código profesional: </td>
@@ -48,7 +48,7 @@
                 </tr>
                 <tr>
                     <td colspan="2" class="boton">
-                <p:commandButton onclick="if (! confirm('¿Realmente desea borrar esta información?')) return false"
+                <p:commandButton update="@form" onclick="if (! confirm('¿Realmente desea borrar esta información?')) return false"
                                  value="Eliminar" action="#{contratistasDP.Eliminar}">
                 </p:commandButton></td>
                 </tr>

@@ -18,7 +18,7 @@
                     <tr>
                         <td>Codigo de Planilla: </td>
                         <td><p:inputText value="#{planillaDP.codigo}"></p:inputText></td>
-                        <td><p:commandButton value="Verificar" action="#{planillaDP.consultar()}"></p:commandButton></td>
+                        <td><p:commandButton update="@form" value="Verificar" action="#{planillaDP.consultar()}"></p:commandButton></td>
                     </tr>
                     <tr>
                         <td>Fecha:</td> 
@@ -33,7 +33,7 @@
                     </p:inputText></td>
                     </tr>
                     <tr>
-                        <td><p:commandButton value="Modificar" action="#{planillaDP.modificar()}"></p:commandButton></td>
+                        <td><p:commandButton update="@form" value="Modificar" action="#{planillaDP.modificar()}"></p:commandButton></td>
                     </tr>
                     <tr>
                         <td><p:messages for="menj" autoUpdate="true"/></td>

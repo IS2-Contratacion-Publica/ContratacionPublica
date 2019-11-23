@@ -15,7 +15,7 @@
                 <tr>
                     <td>Número de cédula: </td>
                     <td><p:inputText value="#{contratistasDP.cedula}"></p:inputText></td>
-                    <td><p:commandButton value="Verificar" action="#{contratistasDP.Verificar}"></p:commandButton></td>
+                    <td><p:commandButton update="@form" value="Verificar" action="#{contratistasDP.Verificar}"></p:commandButton></td>
                 </tr>
                 <tr>
                     <td>Código profesional: </td>
@@ -48,7 +48,7 @@
                     <td><p:inputText value="#{contratistasDP.correo}" disabled="#{contratistasDP.existe != 0}"></p:inputText></td>
                 </tr>
                 <tr>
-                    <td colspan="2" class="boton"><p:commandButton value="Crear" action="#{contratistasDP.Crear}" disabled="#{contratistasDP.existe != 0}"></p:commandButton></td>
+                    <td colspan="2" class="boton"><p:commandButton update="@form" value="Crear" action="#{contratistasDP.Crear}" disabled="#{contratistasDP.existe != 0}"></p:commandButton></td>
                 </tr>
                 <tr>
                     <td colspan="3" class="mensaje"><p:messages for="menj" autoUpdate="true"/></td>

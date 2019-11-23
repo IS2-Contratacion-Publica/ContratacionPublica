@@ -13,7 +13,7 @@
                 <tr>
                     <td>Codigo de la oferta</td>
                     <td><p:inputText value="#{ofertasDP.idoferta}"></p:inputText></td>
-                    <td><p:commandButton value="Verificar" action="#{ofertasDP.Consultar}"></p:commandButton></td>
+                    <td><p:commandButton update="@form" value="Verificar" action="#{ofertasDP.Consultar}"></p:commandButton></td>
                 </tr>
                 <tr>
                     <td>Cedula del contratista</td>
@@ -34,7 +34,7 @@
                 </tr>
                 
                 <tr>
-                    <td colspan="2" class="boton"><p:commandButton value="Modificar" action="#{ofertasDP.Modificar}"></p:commandButton></td>
+                    <td colspan="2" class="boton"><p:commandButton update="@form" value="Modificar" action="#{ofertasDP.Modificar}"></p:commandButton></td>
                 </tr>
                 <tr>
                     <td colspan="3" class="mensaje"><p:messages for="menj" autoUpdate="true"/></td>

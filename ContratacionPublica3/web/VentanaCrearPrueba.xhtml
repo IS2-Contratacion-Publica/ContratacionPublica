@@ -15,7 +15,7 @@
                 <tr>
                     <td>Código de Proyecto</td>
                     <td><p:inputText value="#{PruebasDP.procodigo}"></p:inputText></td>
-                    <td><p:commandButton value="Verificar" action="#{PruebasDP.Verificar}"></p:commandButton></td>
+                    <td><p:commandButton update="@form" value="Verificar" action="#{PruebasDP.Verificar}"></p:commandButton></td>
                 </tr>
                 <tr>
                     <td>Código de Prueba</td>
@@ -30,7 +30,7 @@
                     <td><p:inputText value="#{PruebasDP.plafecharealizacion}" disabled="#{PruebasDP.existe != 0}"></p:inputText></td>
                 </tr>
                 <tr>
-                    <td colspan="2" class="boton"><p:commandButton value="Crear" action="#{PruebasDP.Crear}" disabled="#{PruebasDP.existe != 0}"></p:commandButton></td>
+                    <td colspan="2" class="boton"><p:commandButton update="@form" value="Crear" action="#{PruebasDP.Crear}" disabled="#{PruebasDP.existe != 0}"></p:commandButton></td>
                 </tr>
                 <tr>
                     <td colspan="3" class="mensaje"><p:messages for="menj" autoUpdate="true"/></td>
