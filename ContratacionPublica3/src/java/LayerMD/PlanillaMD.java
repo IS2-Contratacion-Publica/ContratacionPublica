@@ -129,7 +129,7 @@ public class PlanillaMD {
             return "Comuniquese con el administrado de la base de datos";
         }
     }
-    public boolean eliminar(PlanillaDP planillaDP)
+    public String eliminar(PlanillaDP planillaDP)
     {
         Properties p =  new Properties();
         Conexion cx = new Conexion();
@@ -150,9 +150,9 @@ public class PlanillaMD {
         try {
             cx.Ejecutar(orden);
             cx.Cerrar();
-            return true;
+            return "Se ha modificado correctamente los datos";
         } catch (SQLException ex) {
-            return false;
+            return "Error En La conexion";
         }
     }
     public String consultar(PlanillaDP planillaDP) throws ParseException

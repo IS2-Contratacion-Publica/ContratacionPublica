@@ -6,33 +6,95 @@
 package LayerDP;
 
 import EntityClasses.Fiscalizaciones;
+import EntityClasses.Prueba;
 import LayerMD.FiscalizacionesMD;
 import java.util.ArrayList;
 import java.util.Map;
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 
 /**
  *
  * @author USER
  */
+@ManagedBean(name="fiscalizaciones")
+@RequestScoped
 public class FiscalizacionesDP {
     
     private FiscalizadoresDP fisdp = new FiscalizadoresDP();
     private ProyectosDP prodp = new ProyectosDP();
+    private PruebasDP prudp = new PruebasDP();
     private String procodigo;
     private String fiscedula;
     private String fizfecha;
     private String fizobservaciones;
     private String mensaje;
     private ArrayList consulta;
+    private ArrayList filtered;
     private Map mapFiscalizadores;
     private Map mapProyectos;
+    private Map mapPrueba;
+    private String recparametro;
+    private int recaprob;
+    private String prucodigo;
+
+    public ArrayList getFiltered() {
+        return filtered;
+    }
+
+    public void setFiltered(ArrayList filtered) {
+        this.filtered = filtered;
+    }
     
+    
+
+    public Map getMapPrueba() {
+        return prudp.getLayermd().ConsultaGeneralCombo();
+    }
+    public FiscalizadoresDP getFisdp() {
+        return fisdp;
+    }
+
+    public void setFisdp(FiscalizadoresDP fisdp) {
+        this.fisdp = fisdp;
+    }
+
+    public PruebasDP getPrudp() {
+        return prudp;
+    }
+
+    public void setPrudp(PruebasDP prudp) {
+        this.prudp = prudp;
+    }
+
+    public String getRecparametro() {
+        return recparametro;
+    }
+
+    public void setRecparametro(String recparametro) {
+        this.recparametro = recparametro;
+    }
+
+    public int getRecaprob() {
+        return recaprob;
+    }
+
+    public void setRecaprob(int recaprob) {
+        this.recaprob = recaprob;
+    }
+
+    public String getPrucodigo() {
+        return prucodigo;
+    }
+
+    public void setPrucodigo(String prucodigo) {
+        this.prucodigo = prucodigo;
+    }
 
     public FiscalizacionesDP() {
     }
-
         public Map getMapFiscalizadores() {
         return fisdp.getLayermd().ConsultaGeneralCombo();
     }
@@ -111,15 +173,30 @@ public class FiscalizacionesDP {
         } else {
             mensaje = "Por favor ingrese correctamente todos los valores";
         }
-        FacesContext.getCurrentInstance().addMessage("menj", new FacesMessage(mensaje, ""));
+        FacesContext.getCurrentInstance().addMessage("menj", new FacesMessage(mensaje, ""));                           
     }
     
     public void ConsultaParametros() {
         FiscalizacionesMD md = new FiscalizacionesMD();
-        Fiscalizaciones fiz = new Fiscalizaciones("", "", 
-                                                "", "");
+        Fiscalizaciones fiz = new Fiscalizaciones("", 
+                                                "", "", 
+                                                "");
         
         consulta = md.ConsultaParametros(fiz);
                             
+    }
+    public void validarPrueba()
+    {
+        FiscalizacionesMD md = new FiscalizacionesMD();
+        Fiscalizaciones fiz = new Fiscalizaciones( procodigo,  
+                                        fiscedula,  prucodigo,  
+                                        recparametro, recaprob
+                                                    );
+        if (fiz.ValidarP()) {
+            mensaje = md.validarPrueba(fiz);
+        } else {
+            mensaje = "Por favor ingrese correctamente todos los valores";
+        }
+        FacesContext.getCurrentInstance().addMessage("menj", new FacesMessage(mensaje, ""));
     }
 }

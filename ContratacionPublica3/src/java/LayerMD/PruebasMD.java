@@ -7,6 +7,7 @@ package LayerMD;
 
 import EntityClasses.Prueba;
 import Others.Conexion;
+import Others.PopulateUtilities;
 import Others.Properties;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -14,6 +15,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.ManagedBean;
@@ -297,6 +299,12 @@ public class PruebasMD {
         System.out.println("Existe: " + prucodigo);
         System.out.println("Existe: " + existe);
         return existe;
+    }
+    
+    public Map ConsultaGeneralCombo(){
+        Properties p = new Properties();
+        PopulateUtilities pu = new PopulateUtilities();
+        return pu.getMap(p.prop("pru.tabla"), p.prop("pru.c2"), 1, p.prop("pru.c5"));
     }
   
     

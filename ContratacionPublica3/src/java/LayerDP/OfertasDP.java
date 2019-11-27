@@ -202,7 +202,7 @@ public class OfertasDP {
             oft = md.Consultar(idoferta);
             concedula=oft.getConcedula();
             idproyecto = oft.getIdproyecto();
-            idoferta = oft.getIdoferta();
+            idoferta = oft.getIdoferta().trim();
             costoofertado = oft.getCostoofertado();
             ubicacion = oft.getUbicacion();
             estado=oft.getEstado();
@@ -234,10 +234,10 @@ public class OfertasDP {
         OfertasMD md = new OfertasMD();
         existe = md.Verificar(idoferta);
         if(existe==1){
-            mensaje = "Codigo Existente";
+            mensaje = "Código Existente";
         }
         else{
-            mensaje = "Codigo no existente";
+            mensaje = "Código no existente";
         }
         FacesContext.getCurrentInstance().addMessage("menj", new FacesMessage(mensaje, ""));
     }

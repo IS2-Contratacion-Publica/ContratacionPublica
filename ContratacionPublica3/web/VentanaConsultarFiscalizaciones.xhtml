@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <h:outputStylesheet library="css" name="general.css"/>
+        <title>Consultar estados de fiscalización</title>
+    </h:head>
+    <h:body>
+        <h2>Consultar estados de fiscalización</h2>
+        <h:form>
+            <p:dataTable value="#{fiscalizaciones.consulta}" var="consul" filteredValue="#{fiscalizaciones.filtered}">
+                <p:column headerText="Cédula de contratista" filterBy="#{consul.procodigo}" filterMatchMode="contains">
+                    
+                        
+                        
+                    
+                    <h:outputText value="#{consul.procodigo}" ></h:outputText>
+                </p:column>
+                <p:column headerText="Cédula de fiscalizador" filterBy="#{consul.fiscedula}" filterMatchMode="contains">
+                    
+                        
+                        
+
+                    
+                    <h:outputText value="#{consul.fiscedula}" ></h:outputText>
+                </p:column>
+                <p:column headerText="Código de proyecto" filterBy="#{consul.fizfecha}" filterMatchMode="contains">
+                    
+                        
+                        
+
+                    
+                    <h:outputText value="#{consul.fizfecha}" ></h:outputText>
+                </p:column>
+                <p:column headerText="Anticipo" filterBy="#{consul.fizobservaciones}" filterMatchMode="contains">
+                    
+                        
+                        
+                        
+                    
+                    <h:outputText value="#{consul.fizobservaciones}" ></h:outputText>
+                </p:column>
+                               
+            </p:dataTable>
+        </h:form>
+    </h:body>
+</html>
+

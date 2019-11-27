@@ -13,7 +13,9 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import javax.enterprise.context.Dependent;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.*;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -103,30 +105,27 @@ public class PlanillaDP {
     }
     public void crear()
     {
-      mensaje=planillaMD.crear(this);
+        mensaje = planillaMD.crear(this);
+        FacesContext.getCurrentInstance().addMessage("menj", new FacesMessage(mensaje, ""));
 
     }
     public void modificar()
     {
-        planillaMD.modificar(this);
+        mensaje = planillaMD.modificar(this);
+        FacesContext.getCurrentInstance().addMessage("menj", new FacesMessage(mensaje, ""));
     }
     public void eliminar()
     {
-        planillaMD.eliminar(this);
-        
+        mensaje = planillaMD.eliminar(this);
+        FacesContext.getCurrentInstance().addMessage("menj", new FacesMessage(mensaje, ""));
     }
     public void consultar() throws ParseException
     {
         String fecha;
-      planillaMD.consultar(this);
-      //if(fecha!=null)
-      {
-          
-      }
-      //else
-      {
-          //mensaje="No se encontro planilla";
-      }
+        mensaje = planillaMD.consultar(this);
+        FacesContext.getCurrentInstance().addMessage("menj", new FacesMessage(mensaje, ""));
+
+      
     }
     public String Mensaje()
     {
@@ -136,14 +135,14 @@ public class PlanillaDP {
     {
         if(!planillaMD.Verificar(this))
         {
-            mensaje="Ingrese los demas datos";
+            mensaje="Código disponible. Ingrese los demas datos";
         }
         else
         {
             codigo="";
-            mensaje="codigo ya existente";
+            mensaje="Código ya existente";
         }
-        
+        FacesContext.getCurrentInstance().addMessage("menj", new FacesMessage(mensaje, ""));
     }
     public ArrayList ConsultaGeneral()
     {

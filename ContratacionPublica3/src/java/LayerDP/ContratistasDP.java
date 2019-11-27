@@ -349,6 +349,13 @@ public class ContratistasDP {
     public void Verificar(){
         ContratistasMD md = new ContratistasMD();
         existe = md.Verificar(cedula);
+        if (existe == 1) {
+            mensaje = "Código Existente";
+        }
+        else {
+            mensaje = "Código no existente";
+        }
+        FacesContext.getCurrentInstance().addMessage("menj", new FacesMessage(mensaje, ""));
     }
     
 }

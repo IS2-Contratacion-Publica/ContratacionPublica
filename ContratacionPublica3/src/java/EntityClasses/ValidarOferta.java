@@ -23,8 +23,8 @@ public class ValidarOferta {
     private String VALOBSERVACIONES;
     private int VALVALIDO;
 
-   private final String REGEX_CONCODIGO = "[/A-Za-z0-9]{1,15}";
-   private final String REGEX_PROCODIGO = "[/A-Za-z0-9]{1,15}";
+   private final String REGEX_CONCODIGO = "[ /A-Za-z0-9]{1,15}";
+   private final String REGEX_PROCODIGO = "[ /A-Za-z0-9]{1,15}";
    private final String REGEX_OFECODIGO = "[ /A-Za-z0-9]{1,100}";
    private final String REGEX_FISCEDULA = "[ /A-Za-z0-9]{1,15}";
    private final String REGEX_VALCRITERIO = "[ .,/A-Za-z0-9]{1,100}";

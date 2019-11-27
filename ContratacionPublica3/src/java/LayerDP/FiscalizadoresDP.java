@@ -342,6 +342,13 @@ public class FiscalizadoresDP {
     public void Verificar(){
         FiscalizadoresMD md = new FiscalizadoresMD();
         existe = md.Verificar(cedula);
+        if (existe == 1) {
+            mensaje = "Código Existente";
+        }
+        else {
+            mensaje = "Código no existente";
+        }
+        FacesContext.getCurrentInstance().addMessage("menj", new FacesMessage(mensaje, ""));
     }
     
 }

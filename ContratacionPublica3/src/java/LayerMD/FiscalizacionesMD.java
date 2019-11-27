@@ -29,7 +29,7 @@ public class FiscalizacionesMD {
                 p.prop("fiz.campo1")+", "+
                 p.prop("fiz.campo2")+", "+
                 p.prop("fiz.campo3")+", "+
-                p.prop("fiz.campo4")+", "
+                p.prop("fiz.campo4")+") "
                 + "values ('"+
                 fiz.getProcodigo()+"', '"+
                 fiz.getFiscedula()+"', "+
@@ -90,6 +90,37 @@ public class FiscalizacionesMD {
             System.out.println(ex.getMessage());
             resul = null;
         }
+        return resul;
+    }
+    public String validarPrueba(Fiscalizaciones fiz)
+    {
+        Properties p = new Properties();
+        Conexion cx = new Conexion();
+        String query;
+        String resul;
+        query = "insert into "+
+                p.prop("vap.tabla")+" ("+
+                p.prop("vap.c1")+", "+
+                p.prop("vap.c2")+", "+
+                p.prop("vap.c3")+", "+
+                p.prop("vap.c4")+", "+
+                p.prop("vap.c5")+") "
+                + "values ('"+
+                fiz.getProcodigo()+"', '"+
+                fiz.getPrucodigo()+"', '"+
+                fiz.getFiscedula()+"', '"+
+                fiz.getRecparametro()+"',"+
+                fiz.getRecaprob()+")";
+        try {
+            cx.Ejecutar(query);
+            resul = "Ingreso exitoso";
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            resul = "No se pudo ingresar los datos, hubo problema con la base de datos";
+        } finally {
+            cx.Cerrar();
+        }
+               
         return resul;
     }
     

@@ -21,7 +21,7 @@ public class Prueba {
     private String fecharealizacion;
 
 
-   private final String REGEX_PROCODIGO = "[/A-Za-z0-9]{1,15}";
+   private final String REGEX_PROCODIGO = "[ /A-Za-z0-9]{1,15}";
    private final String REGEX_PRUCODIGO = "[/A-Za-z0-9]{1,10}";
    private final String REGEX_DESCRIPCION = "[ .,/A-Za-z0-9]{1,100}";
    private final String REGEX_FECHAREALIZACION = "[0-9]{4}\\/[0-9]{2}\\/[0-9]{2}";

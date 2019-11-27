@@ -288,10 +288,10 @@ public class ProyectosDP {
         ProyectosMD md = new ProyectosMD();
         existe = md.Verificar(idproyecto);
         if(existe==1){
-            mensaje = "Codigo Existente";
+            mensaje = "Código Existente";
         }
         else{
-            mensaje = "Codigo no existente";
+            mensaje = "Código no existente";
         }
         FacesContext.getCurrentInstance().addMessage("menj", new FacesMessage(mensaje, ""));
     }
