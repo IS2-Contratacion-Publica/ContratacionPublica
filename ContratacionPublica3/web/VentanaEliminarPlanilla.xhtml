@@ -13,17 +13,17 @@
             <h:form>
                 <table>
                     <tr>
-                        <td>Código de Proyecto: </td>
-                        <td><p:inputText value="#{planillaDP.codigoProyecto}"></p:inputText></td>
-                    </tr>
-                    <tr>
                         <td>Codigo de Planilla: </td>
                         <td><p:inputText value="#{planillaDP.codigo}"></p:inputText></td>
                         <td><p:commandButton update="@form" value="Verificar" action="#{planillaDP.consultar()}"></p:commandButton></td>
                     </tr>
                     <tr>
+                        <td>Código de Proyecto: </td>
+                        <td><p:inputText value="#{planillaDP.codigoProyecto}"></p:inputText></td>
+                    </tr>
+                    <tr>
                         <td>Fecha: </td>
-                        <td><p:inputText value="#{planillaDP.fechaCreacion}" disabled="true" >"
+                        <td><p:inputText value="#{planillaDP.fechaCreacion}" disabled="true" >
                         <f:convertDateTime pattern = "yyyy/mm/dd" />
                         </p:inputText></td>
                     </tr>
@@ -38,6 +38,9 @@
                                  value="Eliminar" action="#{planillaDP.eliminar()}">
                 </p:commandButton></td> 
                     </tr>
+                    <tr>
+                    <td colspan="3" class="mensaje"><p:messages for="menj" autoUpdate="true"/></td>
+                </tr>
                 </table>
             </h:form>
     </h:body>

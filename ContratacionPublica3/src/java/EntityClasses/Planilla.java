@@ -38,11 +38,11 @@ public class Planilla {
     }
 
     public void setCodigoProyecto(String codigoProyecto) {
-        this.codigoProyecto = codigoProyecto;
+        this.codigoProyecto = codigoProyecto.trim();
     }
 
     public void setCodigo(String codigo) {
-        this.codigo = codigo;
+        this.codigo = codigo.trim();
     }
 
     public void setFechaCreacion(Date fechaCreacion) {

@@ -18,7 +18,7 @@
                         <f:validateLength minimum="1" maximum="15" />
                         <f:ajax event="keyup" render="cedulamsg" />
                         </p:inputText></td>
-                    <td><p:commandButton update="@form" value="Verificar" action="#{fiscalizadoresDP.Verificar}"></p:commandButton></td>
+                    <td><p:commandButton value="Verificar" action="#{fiscalizadoresDP.Verificar}" process="@this cedula"></p:commandButton></td>
                 </tr>
                 <tr><td></td><td colspan="2"><p:message id="cedulamsg" for="cedula" /></td></tr>
                 <tr>

@@ -348,6 +348,7 @@ public class ContratistasDP {
     */
     public void Verificar(){
         ContratistasMD md = new ContratistasMD();
+        System.out.println("VERIFICANDO CODIGO");
         existe = md.Verificar(cedula);
         if (existe == 1) {
             mensaje = "Código Existente";

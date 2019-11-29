@@ -133,8 +133,7 @@ public class ProyectosMD {
     
     public boolean Eliminar(String idproyecto){
         Properties p =  new Properties();
-        Connection conn;
-        Statement s;
+        Conexion cx = new Conexion();
         String query;
 
         query = "update "+
@@ -143,10 +142,8 @@ public class ProyectosMD {
                 p.prop("pro.llave")+" = '"+idproyecto+"'";
 
         try {
-            conn = GenerarConexion();
-            s = conn.createStatement();
-            s.executeUpdate(query);
-            conn.close();
+            cx.Ejecutar(query);
+            cx.Cerrar();
             return true;
         } catch (SQLException ex) {
             return false;
@@ -154,8 +151,7 @@ public class ProyectosMD {
     }
     public LinkedList consultaGeneral ()
     {
-        Connection conn;
-        Statement s;
+        Conexion cx = new Conexion();
         ResultSet rs;
         Properties p =  new Properties();
         
@@ -164,12 +160,10 @@ public class ProyectosMD {
         LinkedList<Proyecto> registros = new LinkedList<Proyecto>();
         
         try {
-            conn = GenerarConexion();
-            s = conn.createStatement();
             
             query = "Select * from "+ p.prop("pro.tabla") +" where "+p.prop("pro.campo7")+ "=1";
             
-            rs = s.executeQuery(query);
+            rs = cx.Ejecutar(query);
             while(rs.next()) {
                 result =new Proyecto();
                 result.setIdproyecto(rs.getString(1));
@@ -196,13 +190,14 @@ public class ProyectosMD {
             
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            cx.Cerrar();
         }
         return registros;
     }
      public Proyecto Consultar(String idproyecto){
         Properties p =  new Properties();
-        Connection conn;
-        Statement s;
+        Conexion cx = new Conexion();
         ResultSet rs;
         Proyecto resul;
         String query;
@@ -215,9 +210,7 @@ public class ProyectosMD {
                 " = '"+idproyecto+"'";
 
         try {
-            conn = GenerarConexion();
-            s = conn.createStatement();
-            rs = s.executeQuery(query);
+            rs = cx.Ejecutar(query);
             
             if(rs.next()){
                 resul = new Proyecto();
@@ -234,7 +227,7 @@ public class ProyectosMD {
             else{
                 resul = null;
             }
-            conn.close();
+            cx.Cerrar();
             
         } catch (SQLException ex) {
             resul = null;

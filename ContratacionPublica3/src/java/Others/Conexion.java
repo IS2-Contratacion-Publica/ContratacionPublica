@@ -25,7 +25,9 @@ import javax.sql.DataSource;
 public class Conexion {
     
     Connection conexion = null;
-    
+    Statement s = null;
+    ResultSet rs = null;
+        
     private DataSource getScpDataBase() throws NamingException {
         Properties p = new Properties();
         Context c = new InitialContext();
@@ -41,8 +43,7 @@ public class Conexion {
     }
     
     public ResultSet Ejecutar(String orden) throws SQLException {
-        Statement s = null;
-        ResultSet rs = null;
+        
         boolean ejecutado = false;
         
         try {
@@ -77,6 +78,12 @@ public class Conexion {
         try {
             if (conexion != null) {
                 conexion.close();
+            }
+            if (s != null) {
+                s.close();
+            }
+            if (rs != null) {
+                rs.close();
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());

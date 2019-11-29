@@ -51,7 +51,7 @@ public class Fiscalizador {
      *Asigna la variable codigo
     */
     public void setCodigo(String newCodigo) {
-       codigo = newCodigo;
+       codigo = newCodigo.trim();
     } 
     
     /*
@@ -65,7 +65,7 @@ public class Fiscalizador {
      *Asigna la variable nombre
     */
     public void setNombre(String newNombre) {
-       nombre = newNombre;
+       nombre = newNombre.trim();
     } 
     
     /*
@@ -79,7 +79,7 @@ public class Fiscalizador {
      *Asigna la variable fechaNac
     */
     public void setFechaNac(String newFechaNac) {
-       fechaNac = newFechaNac;
+       fechaNac = newFechaNac.trim();
     } 
     /*
      *Obtiene la variable genero
@@ -106,7 +106,7 @@ public class Fiscalizador {
      *Asigna la variable telefono
     */
     public void setTelefono(String newTelefono) {
-       telefono = newTelefono;
+       telefono = newTelefono.trim();
     }  
     
     /*
@@ -120,7 +120,7 @@ public class Fiscalizador {
      *Asigna la variable celular
     */
     public void setCelular(String newCelular) {
-       celular = newCelular;
+       celular = newCelular.trim();
     }  
     
     /*
@@ -134,7 +134,7 @@ public class Fiscalizador {
      *Asigna la variable correo
     */
     public void setCorreo(String newCorreo) {
-       correo = newCorreo;
+       correo = newCorreo.trim();
     } 
     
     /*
@@ -148,7 +148,7 @@ public class Fiscalizador {
      *Asigna la variable cedula
     */
     public void setCedula(String newCedula) {
-       cedula = newCedula;
+       cedula = newCedula.trim();
     } 
     
     /*

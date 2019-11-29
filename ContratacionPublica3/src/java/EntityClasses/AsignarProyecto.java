@@ -33,7 +33,7 @@ public class AsignarProyecto {
     }
 
     public void setConcedula(String concedula) {
-        this.concedula = concedula;
+        this.concedula = concedula.trim();
     }
 
     public String getProcodigo() {
@@ -41,7 +41,7 @@ public class AsignarProyecto {
     }
 
     public void setProcodigo(String procodigo) {
-        this.procodigo = procodigo;
+        this.procodigo = procodigo.trim();
     }
 
     public String getFiscedula() {
@@ -49,7 +49,7 @@ public class AsignarProyecto {
     }
 
     public void setFiscedula(String fiscedula) {
-        this.fiscedula = fiscedula;
+        this.fiscedula = fiscedula.trim();
     }
 
     public String getAdjanticipo() {
@@ -57,7 +57,7 @@ public class AsignarProyecto {
     }
 
     public void setAdjanticipo(String adjanticipo) {
-        this.adjanticipo = adjanticipo;
+        this.adjanticipo = adjanticipo.trim();
     }
 
     public String getAdjdocumento() {
@@ -65,7 +65,7 @@ public class AsignarProyecto {
     }
 
     public void setAdjdocumento(String adjdocumento) {
-        this.adjdocumento = adjdocumento;
+        this.adjdocumento = adjdocumento.trim();
     }
 
     public String getAdjfecha() {
@@ -73,7 +73,7 @@ public class AsignarProyecto {
     }
 
     public void setAdjfecha(String adjfecha) {
-        this.adjfecha = adjfecha;
+        this.adjfecha = adjfecha.trim();
     }
 
     public UploadedFile getDocumento() {

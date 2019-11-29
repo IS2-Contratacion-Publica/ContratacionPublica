@@ -38,7 +38,7 @@ public class Prueba {
     }
 
     public void setProcodigo(String procodigo) {
-        this.procodigo = procodigo;
+        this.procodigo = procodigo.trim();
     }
 
     public String getPrucodigo() {
@@ -46,7 +46,7 @@ public class Prueba {
     }
 
     public void setPrucodigo(String prucodigo) {
-        this.prucodigo = prucodigo;
+        this.prucodigo = prucodigo.trim();
     }
 
     public String getDescripcion() {
@@ -54,7 +54,7 @@ public class Prueba {
     }
 
     public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+        this.descripcion = descripcion.trim();
     }
 
     public String getFecharealizacion() {
@@ -62,7 +62,7 @@ public class Prueba {
     }
 
     public void setFecharealizacion(String fecharealizacion) {
-        this.fecharealizacion = fecharealizacion;
+        this.fecharealizacion = fecharealizacion.trim();
     }
 
    

@@ -99,8 +99,7 @@ public class PruebasMD {
     
     public boolean Modificar(Prueba pru){
         Properties p =  new Properties();
-        Connection conn;
-        Statement s;
+        Conexion cx = new Conexion();
         String procod,prucod,descrip,fecha,query;
 
         
@@ -118,10 +117,8 @@ public class PruebasMD {
                 p.prop("pru.c2")+" = '"+prucod+"'";
         System.out.println(query);
         try {
-            conn = GenerarConexion();
-            s = conn.createStatement();
-            s.executeUpdate(query);
-            conn.close();
+            cx.Ejecutar(query);
+            cx.Cerrar();
             return true;
         } catch (SQLException ex) {
             return false;
@@ -130,8 +127,7 @@ public class PruebasMD {
     
     public boolean Eliminar(String prucodigo){
         Properties p =  new Properties();
-        Connection conn;
-        Statement s;
+        Conexion cx = new Conexion();
         String query;
         query = "update "+
                 p.prop("pru.tabla")+" set "+
@@ -140,10 +136,8 @@ public class PruebasMD {
                 p.prop("pru.c2")+" = '"+prucodigo+"'";
 
         try {
-            conn = GenerarConexion();
-            s = conn.createStatement();
-            s.executeUpdate(query);
-            conn.close();
+            cx.Ejecutar(query);
+            cx.Cerrar();
             return true;
         } catch (SQLException ex) {
             return false;
@@ -198,8 +192,7 @@ public class PruebasMD {
     
     public ArrayList<Prueba> Consultag(){
         Properties p =  new Properties();
-        Connection conn;
-        Statement s;
+        Conexion cx = new Conexion();
         ResultSet rs;
         Prueba resul;
         String query;
@@ -209,9 +202,7 @@ public class PruebasMD {
                 p.prop("pru.tabla");
 
         try {
-            conn = GenerarConexion();
-            s = conn.createStatement();
-            rs = s.executeQuery(query);
+            rs = cx.Ejecutar(query);
             
             while(rs.next()){
                 resul = new Prueba();
@@ -225,7 +216,7 @@ public class PruebasMD {
 
            
             }
-            conn.close();
+            cx.Cerrar();
             
         } catch (SQLException ex) {
             resul = null;
@@ -270,8 +261,7 @@ public class PruebasMD {
     
     public int Verificar(String prucodigo){
         Properties p =  new Properties();
-        Connection conn;
-        Statement s;
+        Conexion cx = new Conexion();
         ResultSet rs;
         int existe;
         String query;
@@ -281,16 +271,14 @@ public class PruebasMD {
                 p.prop("pru.c2")+" = '"+prucodigo+"'";
 
         try {
-            conn = GenerarConexion();
-            s = conn.createStatement();
-            rs = s.executeQuery(query);
+            rs = cx.Ejecutar(query);
             if(rs.next()){
                 existe = 1;
             }
             else{
                 existe = 0;
             }
-            conn.close();
+            cx.Cerrar();
             
         } catch (SQLException ex) {
             existe = -1;

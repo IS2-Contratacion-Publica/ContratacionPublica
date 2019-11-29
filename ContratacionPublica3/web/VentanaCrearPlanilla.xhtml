@@ -25,7 +25,7 @@
                         <f:validateLength minimum="1" maximum="10" />
                         <f:ajax event="keyup" render="codigoplmsg" />
                         </p:inputText></td>
-                        <td><p:commandButton update="@form" value="Verificar" action="#{planillaDP.verificar()}"></p:commandButton></td>
+                        <td><p:commandButton value="Verificar" action="#{planillaDP.verificar()}" process="@this codigopl"></p:commandButton></td>
                     </tr>
                         <tr><td></td><td colspan="2"><p:message id="codigoplmsg" for="codigopl" /></td></tr>
                     <tr>
@@ -50,7 +50,7 @@
                         <td><p:commandButton update="@form" value="Crear" action="#{planillaDP.crear()}" ></p:commandButton></td>
                     </tr>
                     <tr>
-                        <td><p:messages for="menj" autoUpdate="true"/></td>
+                        <td colspan="3"><p:messages for="menj" autoUpdate="true"/></td>
                     </tr>
                 </table>
             </h:form>

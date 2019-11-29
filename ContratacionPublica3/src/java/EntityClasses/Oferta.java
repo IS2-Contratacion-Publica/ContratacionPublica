@@ -72,28 +72,28 @@ public class Oferta {
     }
     
     public void setConcedula(String concedula) {
-        this.concedula = concedula;
+        this.concedula = concedula.trim();
     }
 
     //SETTERS
     public void setEstado(String estado) {
-        this.estado = estado;
+        this.estado = estado.trim();
     }
 
     public void setIdoferta(String idoferta) {
-        this.idoferta = idoferta;
+        this.idoferta = idoferta.trim();
     }
 
     public void setIdproyecto(String idproyecto) {
-        this.idproyecto = idproyecto;
+        this.idproyecto = idproyecto.trim();
     }
 
     public void setCostoofertado(String costoofertado) {
-        this.costoofertado = costoofertado;
+        this.costoofertado = costoofertado.trim();
     }
 
     public void setUbicacion(String ubicacion) {
-        this.ubicacion = ubicacion;
+        this.ubicacion = ubicacion.trim();
     }
     public boolean Validar() {
         if (concedula.matches(REGEX_CONCEDULA) &&

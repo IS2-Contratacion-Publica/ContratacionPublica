@@ -56,8 +56,7 @@ public class OfertasMD {
     
     public boolean Ingresar(Oferta oft){
         Properties p =  new Properties();
-        Connection conn;
-        Statement s;
+        Conexion cx = new Conexion();
         String idof, idpro, cos, ubi,query,conced,estado;
         
         conced=oft.getConcedula();
@@ -82,11 +81,8 @@ public class OfertasMD {
                 ubi+"', '"+
                 estado+"')"; 
         try {
-            conn = GenerarConexion();
-            System.out.println(conn);
-            s = conn.createStatement();
-            s.executeQuery(query);
-            conn.close();
+            cx.Ejecutar(query);
+            cx.Cerrar();
             return true;
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -98,8 +94,7 @@ public class OfertasMD {
     
     public boolean Modificar(Oferta oft){
         Properties p =  new Properties();
-        Connection conn;
-        Statement s;
+        Conexion cx = new Conexion();
         String idof, idpro, cos, ubi,query,conced;
         
         conced=oft.getConcedula();
@@ -117,10 +112,8 @@ public class OfertasMD {
                 p.prop("oft.campo3")+" = '"+idof+"'";
         System.out.println(query);
         try {
-            conn = GenerarConexion();
-            s = conn.createStatement();
-            s.executeUpdate(query);
-            conn.close();
+            cx.Ejecutar(query);
+            cx.Cerrar();
             return true;
         } catch (SQLException ex) {
             return false;
@@ -129,8 +122,7 @@ public class OfertasMD {
     
     public boolean Eliminar(String idoferta){
         Properties p =  new Properties();
-        Connection conn;
-        Statement s;
+        Conexion cx = new Conexion();
         String orden;
         orden = "update "+
                 p.prop("oft.tabla")+" set "+
@@ -138,10 +130,8 @@ public class OfertasMD {
                 p.prop("oft.campo3")+" = '"+idoferta+"'";
 
         try {
-            conn = GenerarConexion();
-            s = conn.createStatement();
-            s.executeUpdate(orden);
-            conn.close();
+            cx.Ejecutar(orden);
+            cx.Cerrar();
             return true;
         } catch (SQLException ex) {
             return false;
@@ -199,8 +189,7 @@ public class OfertasMD {
     }
         public LinkedList consultaGeneral ()
     {
-        Connection conn;
-        Statement s;
+        Conexion cx = new Conexion();
         ResultSet rs;
         Properties p =  new Properties();
         
@@ -209,12 +198,11 @@ public class OfertasMD {
         LinkedList<Oferta> registros = new LinkedList<Oferta>();
         
         try {
-            conn = GenerarConexion();
-            s = conn.createStatement();
+
             
             query = "Select * from "+ p.prop("oft.tabla") +" where "+p.prop("oft.campo6")+ "=1";
             
-            rs = s.executeQuery(query);
+            rs = cx.Ejecutar(query);
             while(rs.next()) {
                 result =new Oferta();
                 result.setConcedula(rs.getString(1));
@@ -239,14 +227,15 @@ public class OfertasMD {
             
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            cx.Cerrar();
         }
         return registros;
     }
     
     public Oferta Consultar(String idoferta){
         Properties p =  new Properties();
-        Connection conn;
-        Statement s;
+        Conexion cx = new Conexion();
         ResultSet rs;
         Oferta resul;
         String query;
@@ -256,9 +245,7 @@ public class OfertasMD {
                 p.prop("oft.campo3")+" = '"+idoferta+"'";
 
         try {
-            conn = GenerarConexion();
-            s = conn.createStatement();
-            rs = s.executeQuery(query);
+            rs = cx.Ejecutar(query);
             
             if(rs.next()){
                 resul = new Oferta();
@@ -271,7 +258,7 @@ public class OfertasMD {
             else{
                 resul = null;
             }
-            conn.close();
+            cx.Cerrar();
             
         } catch (SQLException ex) {
             resul = null;
@@ -282,8 +269,7 @@ public class OfertasMD {
     
     public int Verificar(String idoferta){
         Properties p =  new Properties();
-        Connection conn;
-        Statement s;
+        Conexion cx = new Conexion();
         ResultSet rs;
         int existe;
         String query;
@@ -293,16 +279,14 @@ public class OfertasMD {
                 p.prop("oft.campo3")+" = '"+idoferta+"'";
 
         try {
-            conn = GenerarConexion();
-            s = conn.createStatement();
-            rs = s.executeQuery(query);
+            rs = cx.Ejecutar(query);
             if(rs.next()){
                 existe = 1;
             }
             else{
                 existe = 0;
             }
-            conn.close();
+            cx.Cerrar();
             
         } catch (SQLException ex) {
             existe = -1;

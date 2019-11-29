@@ -155,7 +155,7 @@ public class PlanillaMD {
             return "Error En La conexion";
         }
     }
-    public String consultar(PlanillaDP planillaDP) throws ParseException
+    public void consultar(PlanillaDP planillaDP) throws ParseException
     {
         String codigo=planillaDP.getCodigo();
       Properties p =  new Properties();
@@ -183,6 +183,7 @@ public class PlanillaMD {
                 fecha= new Date(año-1900,0,dia,0,mes,0);
                 planillaDP.setFechaCreacion(fecha);
                 planillaDP.setMonto(rs.getFloat(4));
+                mensaje = "";
             }
             else{
                 planillaDP = null;
@@ -193,7 +194,7 @@ public class PlanillaMD {
         } catch (SQLException ex) {
             planillaDP = null;
         }      
-        return mensaje;
+   
     }
     public boolean Verificar(PlanillaDP planillaDP)
     {
