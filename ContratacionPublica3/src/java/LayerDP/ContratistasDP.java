@@ -57,8 +57,8 @@ public class ContratistasDP {
         return new ContratistasMD().getGeneros();
     }
 
-    public void setGeneros(List<SelectItem> generos) {
-        this.generos = generos;
+    public void setGeneros(List<SelectItem> newgeneros) {
+        this.generos = newgeneros;
     }
 
     public ArrayList getConsulta() {
@@ -66,8 +66,8 @@ public class ContratistasDP {
         return consulta;
     }
 
-    public void setConsulta(ArrayList consulta) {
-        this.consulta = consulta;
+    public void setConsulta(ArrayList newconsulta) {
+        this.consulta = newconsulta;
     }
 
     /*
@@ -80,8 +80,8 @@ public class ContratistasDP {
     /*
      *Asigna la variable existe
     */
-    public void setExiste(int existe) {
-        this.existe = existe;
+    public void setExiste(int newexiste) {
+        this.existe = newexiste;
     }
 
     /*
@@ -94,8 +94,8 @@ public class ContratistasDP {
     /*
      *Asigna la variable mensaje
     */
-    public void setMensaje(String mensaje) {
-        this.mensaje = mensaje.trim();
+    public void setMensaje(String newmensaje) {
+        this.mensaje = newmensaje.trim();
     }
     
     /*
@@ -297,7 +297,6 @@ public class ContratistasDP {
         ContratistasMD md = new ContratistasMD();
         Contratista con;
         Verificar();
-        System.out.println("CARGANDO CONTRATISTA");
         con = md.Consultar(cedula);
         if (existe == 1 && con != null) {
             cedula = con.getCedula().trim();
@@ -332,14 +331,14 @@ public class ContratistasDP {
         ArrayList resul;
         ContratistasMD md = new ContratistasMD();
         Contratista con = new Contratista();
-        con.setCedula((""));
-        con.setCodigo((""));
-        con.setNombre((""));
-        con.setFechaNac((""));
+        con.setCedula("");
+        con.setCodigo("");
+        con.setNombre("");
+        con.setFechaNac("");
         con.setGenero('x');
-        con.setTelefono((""));
-        con.setCelular((""));
-        con.setCorreo((""));
+        con.setTelefono("");
+        con.setCelular("");
+        con.setCorreo("");
         consulta = md.ConsultaParametros(con);
     }
     
@@ -348,7 +347,6 @@ public class ContratistasDP {
     */
     public void Verificar(){
         ContratistasMD md = new ContratistasMD();
-        System.out.println("VERIFICANDO CODIGO");
         existe = md.Verificar(cedula);
         if (existe == 1) {
             mensaje = "Código Existente";

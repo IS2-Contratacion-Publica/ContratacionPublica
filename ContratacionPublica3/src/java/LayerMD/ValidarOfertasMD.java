@@ -11,6 +11,8 @@ import Others.Properties;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.ManagedBean;
 import javax.enterprise.context.Dependent;
 
@@ -72,7 +74,7 @@ public class ValidarOfertasMD {
             return true;
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
-            
+            Logger.getLogger(ValidarOfertasMD.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
         
@@ -130,6 +132,7 @@ public class ValidarOfertasMD {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
             resul = null;
+            Logger.getLogger(ValidarOfertasMD.class.getName()).log(Level.SEVERE, null, ex);
         }
         return resul;
     }

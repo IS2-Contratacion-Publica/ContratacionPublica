@@ -86,7 +86,7 @@ public class OfertasMD {
             return true;
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
-            
+            Logger.getLogger(OfertasMD.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
         
@@ -116,6 +116,7 @@ public class OfertasMD {
             cx.Cerrar();
             return true;
         } catch (SQLException ex) {
+            Logger.getLogger(OfertasMD.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
     }
@@ -134,6 +135,7 @@ public class OfertasMD {
             cx.Cerrar();
             return true;
         } catch (SQLException ex) {
+            Logger.getLogger(OfertasMD.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
     }
@@ -184,6 +186,7 @@ public class OfertasMD {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
             resul = null;
+            Logger.getLogger(OfertasMD.class.getName()).log(Level.SEVERE, null, ex);
         }
         return resul;
     }
@@ -226,7 +229,7 @@ public class OfertasMD {
             }
             
         } catch (SQLException e) {
-            e.printStackTrace();
+            Logger.getLogger(OfertasMD.class.getName()).log(Level.SEVERE, null, e);
         } finally {
             cx.Cerrar();
         }
@@ -262,6 +265,7 @@ public class OfertasMD {
             
         } catch (SQLException ex) {
             resul = null;
+            Logger.getLogger(OfertasMD.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         return resul;
@@ -290,6 +294,7 @@ public class OfertasMD {
             
         } catch (SQLException ex) {
             existe = -1;
+            Logger.getLogger(OfertasMD.class.getName()).log(Level.SEVERE, null, ex);
         }
         System.out.println(query);
         System.out.println("Existe: " + idoferta);

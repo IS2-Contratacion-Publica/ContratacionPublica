@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.faces.model.SelectItem;
 
 /**
@@ -27,7 +29,6 @@ public class PopulateUtilities {
      * value es lo que va a retornar el combox
     */
     public List<SelectItem> getListSelectItem(String tabla, String value, String label) {
-        Properties p =  new Properties();
         Conexion cx = new Conexion();
         ResultSet rs;
         List<SelectItem> resul = new ArrayList<>();
@@ -39,20 +40,19 @@ public class PopulateUtilities {
 
         try {
             rs = cx.Ejecutar(orden);
-            while (rs.next()){
-                resul.add(new SelectItem(rs.getString(1), rs.getString(2)));
-            }
+            resul = RS2SelectItemsList2(rs);
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
             resul = null;
+            Logger.getLogger(PopulateUtilities.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             cx.Cerrar();
         }
+        
         return resul;
     }
     
     public List<SelectItem> getListSelectItem(String tabla, String value_label) {
-        Properties p =  new Properties();
         Conexion cx = new Conexion();
         ResultSet rs;
         List<SelectItem> resul = new ArrayList<>();
@@ -63,14 +63,15 @@ public class PopulateUtilities {
 
         try {
             rs = cx.Ejecutar(orden);
-            while (rs.next()){
-                resul.add(new SelectItem(rs.getString(1), rs.getString(1)));
-            }
+            resul = RS2SelectItemsList1(rs);
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
             resul = null;
+            Logger.getLogger(PopulateUtilities.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
+            
             cx.Cerrar();
+            
         }
         return resul;
     }
@@ -80,10 +81,9 @@ public class PopulateUtilities {
      * value es lo que va a retornar el combox
     */
     public Map getMap(String tabla, String key, String value) {
-        Properties p =  new Properties();
         Conexion cx = new Conexion();
         ResultSet rs;
-        LinkedHashMap map = new LinkedHashMap();
+        Map map = new LinkedHashMap();
         String orden;
         
         orden = "select " + key + 
@@ -93,11 +93,10 @@ public class PopulateUtilities {
         
         try {
             rs = cx.Ejecutar(orden);
-            while (rs.next()){
-                map.put(rs.getString(1), rs.getString(2));
-            }
+            map = RS2Map2(rs);
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
+            Logger.getLogger(PopulateUtilities.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             cx.Cerrar();
         }
@@ -105,10 +104,9 @@ public class PopulateUtilities {
     }
     
     public Map getMap(String tabla, String key_value) {
-        Properties p =  new Properties();
         Conexion cx = new Conexion();
         ResultSet rs;
-        LinkedHashMap map = new LinkedHashMap();
+        Map map = new LinkedHashMap();
         String orden;
         
         orden = "select " + key_value + 
@@ -117,11 +115,10 @@ public class PopulateUtilities {
         
         try {
             rs = cx.Ejecutar(orden);
-            while (rs.next()){
-                map.put(rs.getString(1), rs.getString(1));
-            }
+            map = RS2Map1(rs);
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
+            Logger.getLogger(PopulateUtilities.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             cx.Cerrar();
         }
@@ -135,7 +132,6 @@ public class PopulateUtilities {
      * value es lo que va a retornar el combox
     */
     public List<SelectItem> getListSelectItem(String tabla, String value, String label, int estado, String campoEstado) {
-        Properties p =  new Properties();
         Conexion cx = new Conexion();
         ResultSet rs;
         List<SelectItem> resul = new ArrayList<>();
@@ -149,12 +145,13 @@ public class PopulateUtilities {
 
         try {
             rs = cx.Ejecutar(orden);
-            while (rs.next()){
-                resul.add(new SelectItem(rs.getString(1), rs.getString(2)));
-            }
+            resul = RS2SelectItemsList2(rs);
         } catch (SQLException ex) {
+            
             System.out.println(ex.getMessage());
+            
             resul = null;
+            Logger.getLogger(PopulateUtilities.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             cx.Cerrar();
         }
@@ -162,7 +159,6 @@ public class PopulateUtilities {
     }
     
     public List<SelectItem> getListSelectItem(String tabla, String value_label, int estado, String campoEstado) {
-        Properties p =  new Properties();
         Conexion cx = new Conexion();
         ResultSet rs;
         List<SelectItem> resul = new ArrayList<>();
@@ -175,12 +171,13 @@ public class PopulateUtilities {
 
         try {
             rs = cx.Ejecutar(orden);
-            while (rs.next()){
-                resul.add(new SelectItem(rs.getString(1), rs.getString(1)));
-            }
+            
+            resul = RS2SelectItemsList1(rs);
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
+            
             resul = null;
+            Logger.getLogger(PopulateUtilities.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             cx.Cerrar();
         }
@@ -192,10 +189,9 @@ public class PopulateUtilities {
      * value es lo que va a retornar el combox
     */
     public Map getMap(String tabla, String key, String value, int estado, String campoEstado) {
-        Properties p =  new Properties();
         Conexion cx = new Conexion();
         ResultSet rs;
-        LinkedHashMap map = new LinkedHashMap();
+        Map map = new LinkedHashMap();
         String orden;
         
         orden = "select " + key + 
@@ -206,11 +202,10 @@ public class PopulateUtilities {
         
         try {
             rs = cx.Ejecutar(orden);
-            while (rs.next()){
-                map.put(rs.getString(1), rs.getString(2));
-            }
+            map = RS2Map2(rs);
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
+            Logger.getLogger(PopulateUtilities.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             cx.Cerrar();
         }
@@ -218,10 +213,9 @@ public class PopulateUtilities {
     }
     
     public Map getMap(String tabla, String key_value, int estado, String campoEstado) {
-        Properties p =  new Properties();
         Conexion cx = new Conexion();
         ResultSet rs;
-        LinkedHashMap map = new LinkedHashMap();
+        Map map = new LinkedHashMap();
         String orden;
         
         orden = "select " + key_value + 
@@ -232,14 +226,42 @@ public class PopulateUtilities {
         
         try {
             rs = cx.Ejecutar(orden);
-            while (rs.next()){
-                map.put(rs.getString(1), rs.getString(1));
-            }
+            map = RS2Map1(rs);
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
+            Logger.getLogger(PopulateUtilities.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             cx.Cerrar();
         }
         return map;
+    }
+    
+    private Map RS2Map1(ResultSet rs) throws SQLException{
+        LinkedHashMap map = new LinkedHashMap();
+        while (rs.next()){
+            map.put(rs.getString(1), rs.getString(1));
+        }
+        return map;
+    }
+    private Map RS2Map2(ResultSet rs) throws SQLException{
+        LinkedHashMap map = new LinkedHashMap();
+        while (rs.next()){
+            map.put(rs.getString(1), rs.getString(2));
+        }
+        return map;
+    }
+    private List<SelectItem> RS2SelectItemsList1(ResultSet rs) throws SQLException{
+        List<SelectItem> resul = new ArrayList<>();
+        while (rs.next()){
+            resul.add(new SelectItem(rs.getString(1), rs.getString(1)));
+        }
+        return resul;
+    }
+    private List<SelectItem> RS2SelectItemsList2(ResultSet rs) throws SQLException{
+        List<SelectItem> resul = new ArrayList<>();
+        while (rs.next()){
+            resul.add(new SelectItem(rs.getString(1), rs.getString(2)));
+        }
+        return resul;
     }
 }

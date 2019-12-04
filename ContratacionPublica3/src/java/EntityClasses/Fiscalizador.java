@@ -19,21 +19,21 @@ public class Fiscalizador {
     private String cedula;
     private String codigo;
     private String nombre;
-    private String fechaNac;
     private Character genero;
     private String telefono;
-    private String celular;
+    private String fechaNac;
     private String correo;
+    private String celular;
+    
 
    private final String REGEX_CEDULA = "[/A-Za-z0-9]{1,15}";
    private final String REGEX_CODIGO = "[/A-Za-z0-9]{1,15}";
    private final String REGEX_NOMBRE = "[ /A-Za-z0-9]{1,100}";
-   private final String REGEX_FECHANAC = "[0-9]{4}\\/[0-9]{2}\\/[0-9]{2}";
    private final String REGEX_GENERO = "[/A-Za-z0-9]{1,1}";
    private final String REGEX_TELEFONO = "[/A-Za-z0-9]{1,10}";
-   private final String REGEX_CELULAR = "[/A-Za-z0-9]{1,10}";
+   private final String REGEX_FECHANAC = "[0-9]{4}\\/[0-9]{2}\\/[0-9]{2}";
    private final String REGEX_CORREO = "([a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+)";
-    
+   private final String REGEX_CELULAR = "[/A-Za-z0-9]{1,10}";
     /**
      * Creates a new instance of Fiscalizador
      */

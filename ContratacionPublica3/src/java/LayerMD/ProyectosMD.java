@@ -90,7 +90,7 @@ public class ProyectosMD {
             return true;
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
-            
+            Logger.getLogger(ProyectosMD.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
     
@@ -126,6 +126,7 @@ public class ProyectosMD {
             cx.Cerrar();
             return true;
         } catch (SQLException ex) {
+            Logger.getLogger(ProyectosMD.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
     }
@@ -146,6 +147,7 @@ public class ProyectosMD {
             cx.Cerrar();
             return true;
         } catch (SQLException ex) {
+            Logger.getLogger(ProyectosMD.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
     }
@@ -189,7 +191,7 @@ public class ProyectosMD {
             }
             
         } catch (SQLException e) {
-            e.printStackTrace();
+            Logger.getLogger(ProyectosMD.class.getName()).log(Level.SEVERE, null, e);
         } finally {
             cx.Cerrar();
         }
@@ -231,6 +233,7 @@ public class ProyectosMD {
             
         } catch (SQLException ex) {
             resul = null;
+            Logger.getLogger(ProyectosMD.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         return resul;
@@ -262,6 +265,7 @@ public class ProyectosMD {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
             existe = -1;
+            Logger.getLogger(ProyectosMD.class.getName()).log(Level.SEVERE, null, ex);
         }
         System.out.println("Existe: " + idproyecto);
         System.out.println("Existe: " + existe);
@@ -322,6 +326,7 @@ public class ProyectosMD {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
             resul = null;
+            Logger.getLogger(ProyectosMD.class.getName()).log(Level.SEVERE, null, ex);
         }
         return resul;
     }

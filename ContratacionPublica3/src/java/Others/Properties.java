@@ -10,6 +10,8 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.charset.Charset;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
@@ -38,7 +40,7 @@ public class Properties {
 
             
         } catch(IOException e) {
-                
+                Logger.getLogger(Properties.class.getName()).log(Level.SEVERE, null, e);
         }/*
         try {
             

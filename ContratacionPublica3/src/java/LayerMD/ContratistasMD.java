@@ -89,6 +89,7 @@ public class ContratistasMD {
             return true;
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
+            Logger.getLogger(ContratistasMD.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
         
@@ -103,7 +104,6 @@ public class ContratistasMD {
 
         String cod, nom, tel, cel, cor, orden, ced, nac;
         char gen;
-        System.out.println("preparando para insertar");
         ced = con.getCedula();
         cod = con.getCodigo();
         nom = con.getNombre();
@@ -113,16 +113,26 @@ public class ContratistasMD {
         cel = con.getCelular();
         cor = con.getCorreo();
         orden = "update "+
-                p.prop("con.tabla")+" set "+
-                p.prop("con.campo1")+" = '"+cod+"', "+
-                p.prop("con.campo2")+" = '"+nom+"', "+
-                p.prop("con.campo3")+" = "+"TO_DATE('"+nac+"', 'YYYY/MM/DD'), "+
-                p.prop("con.campo4")+" = '"+gen+"', "+
-                p.prop("con.campo5")+" = '"+tel+"', "+
-                p.prop("con.campo6")+" = '"+cel+"', "+
-                p.prop("con.campo7")+" = '"+cor+"', "+
-                p.prop("con.campo8")+" = "+1+" where "+
-                p.prop("con.llave")+" = '"+ced+"'";
+                p.prop("con.tabla")+
+                " set "+
+                p.prop("con.campo1")+
+                " = '"+cod+"', "+
+                p.prop("con.campo2")+
+                " = '"+nom+"', "+
+                p.prop("con.campo3")+
+                " = "+"TO_DATE('"+nac+"', 'YYYY/MM/DD'), "+
+                p.prop("con.campo4")+
+                " = '"+gen+"', "+
+                p.prop("con.campo5")+
+                " = '"+tel+"', "+
+                p.prop("con.campo6")+
+                " = '"+cel+"', "+
+                p.prop("con.campo7")+
+                " = '"+cor+"', "+
+                p.prop("con.campo8")+
+                " = "+1+" where "+
+                p.prop("con.llave")+
+                " = '"+ced+"'";
         
         try {
             cx.Ejecutar(orden);
@@ -130,6 +140,7 @@ public class ContratistasMD {
             return true;
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
+            Logger.getLogger(ContratistasMD.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
 
@@ -141,19 +152,20 @@ public class ContratistasMD {
     public boolean Eliminar(String cedula){
         Properties p =  new Properties();
         Conexion cx = new Conexion();
-        String orden;
+        String ord;
         
-        orden = "update "+
+        ord = "update "+
                 p.prop("con.tabla")+" set "+
                 p.prop("con.campo8")+" = "+0+" where "+
                 p.prop("con.llave")+" = '"+cedula+"'";
 
         try {
-            cx.Ejecutar(orden);
+            cx.Ejecutar(ord);
             cx.Cerrar();
             return true;
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
+            Logger.getLogger(ContratistasMD.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
     }
@@ -192,6 +204,7 @@ public class ContratistasMD {
             cx.Cerrar();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
+            Logger.getLogger(ContratistasMD.class.getName()).log(Level.SEVERE, null, ex);
             resul = null;
         }
         return resul;
@@ -230,6 +243,7 @@ public class ContratistasMD {
             cx.Cerrar();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
+            Logger.getLogger(ContratistasMD.class.getName()).log(Level.SEVERE, null, ex);
             resul = null;
         }
         return resul;
@@ -293,6 +307,7 @@ public class ContratistasMD {
             cx.Cerrar();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
+            Logger.getLogger(ContratistasMD.class.getName()).log(Level.SEVERE, null, ex);
             resul = null;
         }
         return resul;
@@ -324,6 +339,7 @@ public class ContratistasMD {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
             existe = -1;
+            Logger.getLogger(ContratistasMD.class.getName()).log(Level.SEVERE, null, ex);
         }
         return existe;
     }
@@ -347,6 +363,7 @@ public class ContratistasMD {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
             resul = null;
+            Logger.getLogger(ContratistasMD.class.getName()).log(Level.SEVERE, null, ex);
         }
         return resul;
     }

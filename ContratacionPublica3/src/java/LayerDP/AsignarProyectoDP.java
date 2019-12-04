@@ -13,6 +13,8 @@ import java.io.InputStream;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
 import javax.faces.application.FacesMessage;
@@ -187,6 +189,7 @@ public class AsignarProyectoDP {
             }
         } catch (Exception ex) {
             mensaje = "Por favor seleccione un archivo";
+            Logger.getLogger(AsignarProyectoDP.class.getName()).log(Level.SEVERE, null, ex);
         }                                
         FacesContext.getCurrentInstance().addMessage("menj", new FacesMessage(mensaje, ""));
     }

@@ -27,12 +27,13 @@ public class FiscalizadoresDP {
     private String codigo;
     private String nombre;
     private String fechanac;
-    private String genero;
     private String telefono;
     private String celular;
+    private String genero;
     private String correo;
-    private int existe;
     private String mensaje;
+    private int existe;
+    
     private ArrayList consulta;
     private List<SelectItem> generos;
     private FiscalizadoresMD layermd = new FiscalizadoresMD();
@@ -86,8 +87,8 @@ public class FiscalizadoresDP {
     /*
      *Asigna la variable mensaje
     */
-    public void setMensaje(String mensaje) {
-        this.mensaje = mensaje.trim();
+    public void setMensaje(String newmensaje) {
+        this.mensaje = newmensaje.trim();
     }
     
     /*
@@ -100,8 +101,8 @@ public class FiscalizadoresDP {
     /*
      *Asigna la variable codigo
     */
-    public void setCodigo(String newCodigo) {
-       codigo = newCodigo.trim();
+    public void setCodigo(String Codigo) {
+       codigo = Codigo.trim();
     } 
     
     /*
@@ -114,8 +115,8 @@ public class FiscalizadoresDP {
     /*
      *Asigna la variable nombre
     */
-    public void setNombre(String newNombre) {
-       nombre = newNombre.trim();
+    public void setNombre(String Nombre) {
+       nombre = Nombre.trim();
     } 
     
     /*
@@ -128,8 +129,8 @@ public class FiscalizadoresDP {
     /*
      *Asigna la variable fechaNac
     */
-    public void setFechanac(String newFechaNac) {
-       fechanac = newFechaNac.trim();
+    public void setFechanac(String FechaNac) {
+       fechanac = FechaNac.trim();
     } 
     /*
      *Obtiene la variable genero
@@ -141,8 +142,8 @@ public class FiscalizadoresDP {
     /*
      *Asigna la variable genero
     */
-    public void setGenero(String newGenero) {
-       genero = newGenero.trim();
+    public void setGenero(String Genero) {
+       genero = Genero.trim();
     }  
     
     /*
@@ -155,8 +156,8 @@ public class FiscalizadoresDP {
     /*
      *Asigna la variable telefono
     */
-    public void setTelefono(String newTelefono) {
-       telefono = newTelefono.trim();
+    public void setTelefono(String Telefono) {
+       telefono = Telefono.trim();
     }  
     
     /*
@@ -169,8 +170,8 @@ public class FiscalizadoresDP {
     /*
      *Asigna la variable celular
     */
-    public void setCelular(String newCelular) {
-       celular = newCelular.trim();
+    public void setCelular(String Celular) {
+       celular = Celular.trim();
     }  
     
     /*
@@ -183,8 +184,8 @@ public class FiscalizadoresDP {
     /*
      *Asigna la variable correo
     */
-    public void setCorreo(String newCorreo) {
-       correo = newCorreo.trim();
+    public void setCorreo(String Correo) {
+       correo = Correo.trim();
     } 
     
     /*
@@ -197,8 +198,8 @@ public class FiscalizadoresDP {
     /*
      *Asigna la variable cedula
     */
-    public void setCedula(String newCedula) {
-       cedula = newCedula.trim();
+    public void setCedula(String Cedula) {
+       cedula = Cedula.trim();
     } 
     
     /**

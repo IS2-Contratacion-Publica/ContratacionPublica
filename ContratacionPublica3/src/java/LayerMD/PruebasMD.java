@@ -91,7 +91,7 @@ public class PruebasMD {
             return true;
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
-            
+            Logger.getLogger(PruebasMD.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
         
@@ -121,6 +121,7 @@ public class PruebasMD {
             cx.Cerrar();
             return true;
         } catch (SQLException ex) {
+            Logger.getLogger(PruebasMD.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
     }
@@ -140,6 +141,7 @@ public class PruebasMD {
             cx.Cerrar();
             return true;
         } catch (SQLException ex) {
+            Logger.getLogger(PruebasMD.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
     }
@@ -186,6 +188,7 @@ public class PruebasMD {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
             resul = null;
+            Logger.getLogger(PruebasMD.class.getName()).log(Level.SEVERE, null, ex);
         }
         return resul;
     }
@@ -220,6 +223,7 @@ public class PruebasMD {
             
         } catch (SQLException ex) {
             resul = null;
+            Logger.getLogger(PruebasMD.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         return listpruebas;
@@ -254,6 +258,7 @@ public class PruebasMD {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
             pru = null;
+            Logger.getLogger(PruebasMD.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         return pru;
@@ -281,7 +286,9 @@ public class PruebasMD {
             cx.Cerrar();
             
         } catch (SQLException ex) {
+            
             existe = -1;
+            Logger.getLogger(PruebasMD.class.getName()).log(Level.SEVERE, null, ex);
         }
         System.out.println(query);
         System.out.println("Existe: " + prucodigo);

@@ -43,30 +43,30 @@ public class FiscalizadoresMD {
      *Ingresa la informacion de un nuevo contratista a la base de datos
     */
     public boolean Crear(Fiscalizador fis){
-        Properties p =  new Properties();
+        Properties pro =  new Properties();
         Conexion cx = new Conexion();
         String cod, nom, tel, cel, cor, orden, ced, nac;
         char gen;
         
-        ced = fis.getCedula();
+        ced = fis.getCedula(); 
         cod = fis.getCodigo();
         nom = fis.getNombre();
-        nac = fis.getFechaNac();
         gen = fis.getGenero();
-        tel = fis.getTelefono();
+        nac = fis.getFechaNac();
         cel = fis.getCelular();
+        tel = fis.getTelefono();
         cor = fis.getCorreo();
         orden = "insert into "+
-                p.prop("fis.tabla")+" ("+
-                p.prop("fis.llave")+", "+
-                p.prop("fis.campo1")+", "+
-                p.prop("fis.campo2")+", "+
-                p.prop("fis.campo3")+", "+
-                p.prop("fis.campo4")+", "+
-                p.prop("fis.campo5")+", "+
-                p.prop("fis.campo6")+", "+
-                p.prop("fis.campo7")+", "+
-                p.prop("fis.campo8")+") "
+                pro.prop("fis.tabla")+" ("+
+                pro.prop("fis.llave")+", "+
+                pro.prop("fis.campo1")+", "+
+                pro.prop("fis.campo2")+", "+
+                pro.prop("fis.campo3")+", "+
+                pro.prop("fis.campo4")+", "+
+                pro.prop("fis.campo5")+", "+
+                pro.prop("fis.campo6")+", "+
+                pro.prop("fis.campo7")+", "+
+                pro.prop("fis.campo8")+") "
                 + "values ('"+
                 ced+"','"+
                 cod+"', '"+
@@ -86,6 +86,7 @@ public class FiscalizadoresMD {
             return true;
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
+            Logger.getLogger(FiscalizadoresMD.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
         
@@ -103,11 +104,12 @@ public class FiscalizadoresMD {
         ced = fis.getCedula();
         cod = fis.getCodigo();
         nom = fis.getNombre();
-        nac = fis.getFechaNac();
-        gen = fis.getGenero();
         tel = fis.getTelefono();
+        nac = fis.getFechaNac();
         cel = fis.getCelular();
         cor = fis.getCorreo();
+        gen = fis.getGenero();
+        
         orden = "update "+
                 p.prop("fis.tabla")+" set "+
                 p.prop("fis.campo1")+" = '"+cod+"', "+
@@ -126,6 +128,7 @@ public class FiscalizadoresMD {
             return true;
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
+            Logger.getLogger(FiscalizadoresMD.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
     }
@@ -148,6 +151,7 @@ public class FiscalizadoresMD {
             return true;
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
+            Logger.getLogger(FiscalizadoresMD.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
     }
@@ -159,7 +163,7 @@ public class FiscalizadoresMD {
         Properties p =  new Properties();
         Conexion cx = new Conexion();
         ResultSet rs;
-        Fiscalizador resul;
+        Fiscalizador res;
         String orden;
         
         orden = "select * from "+
@@ -171,26 +175,27 @@ public class FiscalizadoresMD {
             rs = cx.Ejecutar(orden);
             
             if(rs.next()){
-                resul = new Fiscalizador();
-                resul.setCedula(rs.getString(1));
-                resul.setCodigo(rs.getString(2));
-                resul.setNombre(rs.getString(3));
-                resul.setFechaNac(rs.getString(4));
-                resul.setGenero(rs.getString(5).charAt(0));
-                resul.setTelefono(rs.getString(6));
-                resul.setCelular(rs.getString(7));
-                resul.setCorreo(rs.getString(8));
+                res = new Fiscalizador();
+                res.setCedula(rs.getString(1));
+                res.setCodigo(rs.getString(2));
+                res.setNombre(rs.getString(3));
+                res.setFechaNac(rs.getString(4));
+                res.setGenero(rs.getString(5).charAt(0));
+                res.setTelefono(rs.getString(6));
+                res.setCelular(rs.getString(7));
+                res.setCorreo(rs.getString(8));
             }
             else{
-                resul = null;
+                res = null;
             }
             cx.Cerrar();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
-            resul = null;
+            res = null;
+            Logger.getLogger(FiscalizadoresMD.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        return resul;
+        return res;
     }
     
     /*
@@ -227,6 +232,7 @@ public class FiscalizadoresMD {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
             resul = null;
+            Logger.getLogger(FiscalizadoresMD.class.getName()).log(Level.SEVERE, null, ex);
         }
         return resul;
     }
@@ -235,7 +241,7 @@ public class FiscalizadoresMD {
         Properties p =  new Properties();
         Conexion cx = new Conexion();
         ResultSet rs;
-        Fiscalizador fis = null;
+        Fiscalizador fisc = null;
         ArrayList resul = new ArrayList();
         String orden;
         
@@ -274,21 +280,22 @@ public class FiscalizadoresMD {
         try {
             rs = cx.Ejecutar(orden);
             while (rs.next()){
-                fis = new Fiscalizador();
-                fis.setCedula(rs.getString(1));
-                fis.setCodigo(rs.getString(2));
-                fis.setNombre(rs.getString(3));
-                fis.setFechaNac(rs.getString(4));
-                fis.setGenero(rs.getString(5).charAt(0));
-                fis.setTelefono(rs.getString(6));
-                fis.setCelular(rs.getString(7));
-                fis.setCorreo(rs.getString(8));
-                resul.add(fis);
+                fisc = new Fiscalizador();
+                fisc.setCedula(rs.getString(1));
+                fisc.setCodigo(rs.getString(2));
+                fisc.setNombre(rs.getString(3));
+                fisc.setFechaNac(rs.getString(4));
+                fisc.setGenero(rs.getString(5).charAt(0));
+                fisc.setTelefono(rs.getString(6));
+                fisc.setCelular(rs.getString(7));
+                fisc.setCorreo(rs.getString(8));
+                resul.add(fisc);
             }
             cx.Cerrar();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
             resul = null;
+            Logger.getLogger(FiscalizadoresMD.class.getName()).log(Level.SEVERE, null, ex);
         }
         return resul;
     }
@@ -297,59 +304,61 @@ public class FiscalizadoresMD {
      *Verifica si un contratista exista en la base de datos
     */
     public int Verificar(String cedula){
-        Properties p =  new Properties();
+        Properties pr =  new Properties();
         Conexion cx = new Conexion();
         ResultSet rs;
-        int existe;
-        String orden;
+        int hay;
+        String query;
         
-        orden = "select * from "+
-                p.prop("fis.tabla")+" where "+
-                p.prop("fis.llave")+" = '"+cedula+"'";
+        query = "select * from "+
+                pr.prop("fis.tabla")+" where "+
+                pr.prop("fis.llave")+" = '"+cedula+"'";
 
         try {
-            rs = cx.Ejecutar(orden);
+            rs = cx.Ejecutar(query);
             if(rs.next()){
-                existe = 1;
+                hay = 1;
             }
             else{
-                existe = 0;
+                hay = 0;
             }
             cx.Cerrar();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
-            existe = -1;
+            hay = -1;
+            Logger.getLogger(FiscalizadoresMD.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        return existe;
+        return hay;
     }
     
     public List<SelectItem> getGeneros() {
         Properties p =  new Properties();
         Conexion cx = new Conexion();
         ResultSet rs;
-        List<SelectItem> resul = new ArrayList<>();
-        String orden;
+        List<SelectItem> res = new ArrayList<>();
+        String query;
         
-        orden = "select * from "+
+        query = "select * from "+
                 p.prop("gen.tabla");
 
         try {
-            rs = cx.Ejecutar(orden);
+            rs = cx.Ejecutar(query);
             while (rs.next()){
-                resul.add(new SelectItem(rs.getString(1), rs.getString(2)));
+                res.add(new SelectItem(rs.getString(1), rs.getString(2)));
             }
             cx.Cerrar();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
-            resul = null;
+            res = null;
+            Logger.getLogger(FiscalizadoresMD.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return resul;
+        return res;
     }
     
     public Map ConsultaGeneralCombo(){
-        Properties p = new Properties();
+        Properties pr = new Properties();
         PopulateUtilities pu = new PopulateUtilities();
-        return pu.getMap(p.prop("fis.tabla"), p.prop("fis.llave"));
+        return pu.getMap(pr.prop("fis.tabla"), pr.prop("fis.llave"));
     }
 }
