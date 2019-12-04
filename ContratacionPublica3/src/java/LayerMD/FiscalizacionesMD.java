@@ -11,6 +11,8 @@ import Others.Properties;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author USER
@@ -43,6 +45,7 @@ public class FiscalizacionesMD {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
             resul = "No se pudo ingresar los datos, hubo problema con la base de datos";
+            Logger.getLogger(FiscalizacionesMD.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             cx.Cerrar();
         }
@@ -89,6 +92,7 @@ public class FiscalizacionesMD {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
             resul = null;
+            Logger.getLogger(FiscalizacionesMD.class.getName()).log(Level.SEVERE, null, ex);
         }
         return resul;
     }
@@ -117,6 +121,7 @@ public class FiscalizacionesMD {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
             resul = "No se pudo ingresar los datos, hubo problema con la base de datos";
+            Logger.getLogger(FiscalizacionesMD.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             cx.Cerrar();
         }

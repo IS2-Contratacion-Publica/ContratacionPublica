@@ -89,7 +89,7 @@ public class PlanillaMD {
             return "Ingresado Correctamente";
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
-            
+            Logger.getLogger(PlanillaMD.class.getName()).log(Level.SEVERE, null, ex);
             return "Error En La conexion";
         }
     }
@@ -126,6 +126,7 @@ public class PlanillaMD {
             cx.Cerrar();
             return "Se ha modificado correctamente los datos";
         } catch (SQLException ex) {       
+            Logger.getLogger(OfertasMD.class.getName()).log(Level.SEVERE, null, ex);
             return "Comuniquese con el administrado de la base de datos";
         }
     }
@@ -152,6 +153,7 @@ public class PlanillaMD {
             cx.Cerrar();
             return "Se ha modificado correctamente los datos";
         } catch (SQLException ex) {
+            Logger.getLogger(OfertasMD.class.getName()).log(Level.SEVERE, null, ex);
             return "Error En La conexion";
         }
     }
@@ -193,6 +195,7 @@ public class PlanillaMD {
             
         } catch (SQLException ex) {
             planillaDP = null;
+            Logger.getLogger(OfertasMD.class.getName()).log(Level.SEVERE, null, ex);
         }      
    
     }
@@ -217,6 +220,7 @@ public class PlanillaMD {
             
         } catch (SQLException ex) {
             planillaDP = null;
+            Logger.getLogger(OfertasMD.class.getName()).log(Level.SEVERE, null, ex);
         }      
         return verificar;
     }   
@@ -243,6 +247,7 @@ public class PlanillaMD {
             
         } catch (SQLException ex) {
             lista= null;
+            Logger.getLogger(OfertasMD.class.getName()).log(Level.SEVERE, null, ex);
         }      
         return lista;
     }

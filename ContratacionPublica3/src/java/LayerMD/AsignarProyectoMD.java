@@ -61,12 +61,14 @@ public class AsignarProyectoMD {
                 cx.Ejecutar(orden);
                 query = true;
             } catch (SQLException ex) {
+                Logger.getLogger(AsignarProyectoMD.class.getName()).log(Level.SEVERE, null, ex);
                 System.out.println(ex.getMessage());
             } finally {
                 cx.Cerrar();
             }
         }
         catch (IOException ex) {
+            Logger.getLogger(AsignarProyectoMD.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println(ex.getMessage());
         } finally {
 
@@ -128,6 +130,7 @@ public class AsignarProyectoMD {
             }
             cx.Cerrar();
         } catch (SQLException ex) {
+            Logger.getLogger(AsignarProyectoMD.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println(ex.getMessage());
             resul = null;
         }

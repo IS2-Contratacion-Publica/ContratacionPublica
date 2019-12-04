@@ -55,8 +55,10 @@ public class Conexion {
             ejecutado = true;
             System.out.println("Se ejecutó: " + orden);
         } catch (NamingException ex) {
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println(ex.getMessage());
         } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println(ex.getMessage());
         } finally {
             if (s == null) {
@@ -86,6 +88,7 @@ public class Conexion {
                 rs.close();
             }
         } catch (SQLException ex) {
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println(ex.getMessage());
         }
     }
