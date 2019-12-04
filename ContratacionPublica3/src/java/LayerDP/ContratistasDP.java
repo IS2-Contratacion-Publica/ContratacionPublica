@@ -16,7 +16,9 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.enterprise.context.Dependent;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 
 /**
@@ -39,6 +41,17 @@ public class ContratistasDP {
     private String mensaje;
     private ArrayList consulta;
     private List<SelectItem> generos;
+    private ContratistasMD layermd = new ContratistasMD();
+
+    public ContratistasMD getLayermd() {
+        return layermd;
+    }
+
+    public void setLayermd(ContratistasMD layermd) {
+        this.layermd = layermd;
+    }
+    
+    
 
     public List<SelectItem> getGeneros() {
         return new ContratistasMD().getGeneros();
@@ -49,6 +62,7 @@ public class ContratistasDP {
     }
 
     public ArrayList getConsulta() {
+        ConsultaParametros();
         return consulta;
     }
 
@@ -226,7 +240,7 @@ public class ContratistasDP {
         } else {
             mensaje = "Por favor ingrese correctamente todos los valores";
         }
-        
+        FacesContext.getCurrentInstance().addMessage("menj", new FacesMessage(mensaje, ""));
     }
     
     /*
@@ -253,7 +267,7 @@ public class ContratistasDP {
         } else {
             mensaje = "Por favor ingrese correctamente todos los valores";
         }
-        
+        FacesContext.getCurrentInstance().addMessage("menj", new FacesMessage(mensaje, ""));
         
     }
 
@@ -273,7 +287,7 @@ public class ContratistasDP {
         } else {
             mensaje = "Por favor ingrese correctamente todos los valores";
         }
-        
+        FacesContext.getCurrentInstance().addMessage("menj", new FacesMessage(mensaje, ""));
     }
     
     /*
@@ -283,6 +297,7 @@ public class ContratistasDP {
         ContratistasMD md = new ContratistasMD();
         Contratista con;
         Verificar();
+        System.out.println("CARGANDO CONTRATISTA");
         con = md.Consultar(cedula);
         if (existe == 1 && con != null) {
             cedula = con.getCedula().trim();
@@ -317,14 +332,14 @@ public class ContratistasDP {
         ArrayList resul;
         ContratistasMD md = new ContratistasMD();
         Contratista con = new Contratista();
-        con.setCedula(cedula.trim());
-        con.setCodigo(codigo.trim());
-        con.setNombre(nombre.trim());
-        con.setFechaNac(fechanac.trim());
-        con.setGenero(genero.charAt(0));
-        con.setTelefono(telefono.trim());
-        con.setCelular(celular.trim());
-        con.setCorreo(correo.trim());
+        con.setCedula((""));
+        con.setCodigo((""));
+        con.setNombre((""));
+        con.setFechaNac((""));
+        con.setGenero('x');
+        con.setTelefono((""));
+        con.setCelular((""));
+        con.setCorreo((""));
         consulta = md.ConsultaParametros(con);
     }
     
@@ -333,7 +348,15 @@ public class ContratistasDP {
     */
     public void Verificar(){
         ContratistasMD md = new ContratistasMD();
+        System.out.println("VERIFICANDO CODIGO");
         existe = md.Verificar(cedula);
+        if (existe == 1) {
+            mensaje = "Código Existente";
+        }
+        else {
+            mensaje = "Código no existente";
+        }
+        FacesContext.getCurrentInstance().addMessage("menj", new FacesMessage(mensaje, ""));
     }
     
 }

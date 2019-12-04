@@ -1,5 +1,6 @@
 package LayerMD;
 import LayerDP.PlanillaDP;
+import Others.Conexion;
 import Others.Properties;
 import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
 import java.sql.Connection;
@@ -9,6 +10,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.logging.Level;
@@ -50,8 +52,7 @@ public class PlanillaMD {
     public String crear(PlanillaDP planillaDP)
     {
         Properties p =  new Properties();
-        Connection conn;
-        Statement s;
+        Conexion cx = new Conexion();
         String codP,cod,fecha,orden;
         float monto;
         int dia,estado;
@@ -83,11 +84,8 @@ public class PlanillaMD {
         planillaDP.setMonto(0);
         mensaje=orden;
         try {
-            conn = GenerarConexion();
-            s = conn.createStatement();
-            //mensaje=orden;
-            s.executeQuery(orden);
-            conn.close();
+            cx.Ejecutar(orden);
+            cx.Cerrar();
             return "Ingresado Correctamente";
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -98,8 +96,7 @@ public class PlanillaMD {
     public String modificar(PlanillaDP planillaDP)
     {
          Properties p =  new Properties();
-        Connection conn;
-        Statement s;
+        Conexion cx = new Conexion();
         String codP,cod,fecha,orden,mensaje;
         float monto;
         int dia,estado;
@@ -125,20 +122,17 @@ public class PlanillaMD {
 
         planillaDP.getFechaCreacion().setDate(dia);
         try {
-            conn = GenerarConexion();
-            s = conn.createStatement();
-            s.executeQuery(orden);
-            conn.close();
+            cx.Ejecutar(orden);
+            cx.Cerrar();
             return "Se ha modificado correctamente los datos";
         } catch (SQLException ex) {       
             return "Comuniquese con el administrado de la base de datos";
         }
     }
-    public boolean eliminar(PlanillaDP planillaDP)
+    public String eliminar(PlanillaDP planillaDP)
     {
         Properties p =  new Properties();
-        Connection conn;
-        Statement s;
+        Conexion cx = new Conexion();
         String cod,orden,mensaje;
         int estado;
         estado=0;
@@ -154,23 +148,20 @@ public class PlanillaMD {
         planillaDP.setMensaje("");
         planillaDP.setMonto(0);
         try {
-            conn = GenerarConexion();
-            s = conn.createStatement();
-            s.executeUpdate(orden);
-            conn.close();
-            return true;
+            cx.Ejecutar(orden);
+            cx.Cerrar();
+            return "Se ha modificado correctamente los datos";
         } catch (SQLException ex) {
-            return false;
+            return "Error En La conexion";
         }
     }
-    public String consultar(PlanillaDP planillaDP) throws ParseException
+    public void consultar(PlanillaDP planillaDP) throws ParseException
     {
         String codigo=planillaDP.getCodigo();
       Properties p =  new Properties();
       String[] datosFecha;
       int estado=1;
-        Connection conn;
-        Statement s;
+        Conexion cx = new Conexion();
         ResultSet rs;
         String orden,mensaje="";
         Date fecha;
@@ -179,9 +170,7 @@ public class PlanillaMD {
                 p.prop("pla.tabla")+" where "+
                 p.prop("pla.campo1")+" = '"+codigo+"' and "+p.prop("pla.campo4")+"="+estado;
         try {
-            conn = GenerarConexion();
-            s = conn.createStatement();
-            rs = s.executeQuery(orden);
+            rs = cx.Ejecutar(orden);
             
             if(rs.next()){
                 planillaDP.setCodigo(rs.getString(2));
@@ -194,59 +183,54 @@ public class PlanillaMD {
                 fecha= new Date(año-1900,0,dia,0,mes,0);
                 planillaDP.setFechaCreacion(fecha);
                 planillaDP.setMonto(rs.getFloat(4));
+                mensaje = "";
             }
             else{
                 planillaDP = null;
                 mensaje=null;
             }
-            conn.close();
+            cx.Cerrar();
             
         } catch (SQLException ex) {
             planillaDP = null;
         }      
-        return mensaje;
+   
     }
     public boolean Verificar(PlanillaDP planillaDP)
     {
         String orden,cod;
         boolean verificar = false;
         Properties p =  new Properties();
-        Connection conn;
-        Statement s;
+        Conexion cx = new Conexion();
         ResultSet rs;
         cod=planillaDP.getCodigo();
         orden="Select "+p.prop("pla.campo1")+" from "+p.prop("pla.tabla")+" where "+p.prop("pla.campo1")+"='"+cod+"'";
         try {
-            conn = GenerarConexion();
-            s = conn.createStatement();
-            rs = s.executeQuery(orden);          
+            rs = cx.Ejecutar(orden);         
             if(rs.next()){
                 verificar=true;
             }
             else{
                 verificar=false;
             }
-            conn.close();
+            cx.Cerrar();
             
         } catch (SQLException ex) {
             planillaDP = null;
         }      
         return verificar;
     }   
-    public LinkedList<PlanillaDP> ConsultaGeneral()
+    public ArrayList ConsultaGeneral()
     {
-        LinkedList<PlanillaDP> lista = new LinkedList<>();
+        ArrayList lista = new ArrayList();
         PlanillaDP agregar;
         Properties p =  new Properties();
-        Connection conn;
-        Statement s;
+        Conexion cx = new Conexion();
         ResultSet rs;
         String Orden;
         Orden ="Select * from "+ p.prop("pla.tabla");
         try {
-            conn = GenerarConexion();
-            s = conn.createStatement();
-            rs = s.executeQuery(Orden);          
+            rs = cx.Ejecutar(Orden);         
             while(rs.next()){
                 agregar= new PlanillaDP();
                 agregar.setCodigo(rs.getString(1));
@@ -255,7 +239,7 @@ public class PlanillaMD {
                 agregar.setMonto(rs.getFloat(4));
                 lista.add(agregar);
             }
-            conn.close();
+            cx.Cerrar();
             
         } catch (SQLException ex) {
             lista= null;

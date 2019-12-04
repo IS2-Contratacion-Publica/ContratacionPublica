@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <h:outputStylesheet library="css" name="general.css"/>
+        <title>Asignar Proyecto</title>
+    </h:head>
+    <h:body>
+        <h2>Asignar Proyecto</h2>
+        <h:form enctype="multipart/form-data">
+            <table>
+                <tr>
+                    <td>Contratista: </td>
+                    <td><p:selectOneMenu value="#{asignarProyectoDP.concedula}"> 
+                            <f:selectItems value="#{asignarProyectoDP.mapContratistas}" /> 
+                        </p:selectOneMenu></td>
+                </tr>
+                <tr>
+                    <td>Fiscalizador: </td>
+                    <td><p:selectOneMenu value="#{asignarProyectoDP.fiscedula}"> 
+                            <f:selectItems value="#{asignarProyectoDP.mapFiscalizadores}" /> 
+                        </p:selectOneMenu></td>
+                </tr>
+                <tr>
+                    <td>Proyectos: </td>
+                    <td><p:selectOneMenu value="#{asignarProyectoDP.procodigo}"> 
+                            <f:selectItems value="#{asignarProyectoDP.mapProyectos}" /> 
+                        </p:selectOneMenu></td>
+                </tr>
+                <tr>
+                    <td>Anticipo: </td>
+                    <td><p:inputText id="anticipo" value="#{asignarProyectoDP.adjanticipo}" type="number" validatorMessage="Ingrese un número con dos decimales entre 1 y 0">
+                        <f:validateRegex pattern="0\.([0-9]{2})" />
+                        <f:ajax event="keyup" render="anticipomsg" />
+                        </p:inputText></td>
+                </tr>
+                        <tr><td></td><td colspan="2"><p:message id="anticipomsg" for="anticipo" /></td></tr>
+                <tr>
+                    <td>Fecha: </td>
+                    <td><p:inputText id="fecha" value="#{asignarProyectoDP.adjfecha}" validatorMessage="Ingrese una fecha en formato YYYY/MM/DD">
+                        <f:validateRegex pattern="[0-9]{4}\/[0-9]{2}\/[0-9]{2}" />
+                        <f:ajax event="keyup" render="fechamsg" />
+                        </p:inputText></td>
+                </tr>
+                        <tr><td></td><td colspan="2"><p:message id="fechamsg" for="fecha" /></td></tr>               
+                
+                <tr>
+                    <td><p:fileUpload mode="simple" value="#{asignarProyectoDP.documento}" /></td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="boton"><h:commandButton value="Crear" action="#{asignarProyectoDP.Asignar}">
+                        <f:ajax execute="@form" render="@form" />
+                        </h:commandButton></td>
+                </tr>
+                <tr>
+                    <td colspan="3" class="mensaje"><p:messages for="menj" autoUpdate="true"/></td>
+                </tr>
+            </table>
+        </h:form>
+    </h:body>
+</html>
+

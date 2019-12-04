@@ -1,0 +1,94 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <h:outputStylesheet library="css" name="general.css"/>
+        <title>Modificar Proyecto</title>
+    </h:head>
+    <h:body>
+        <h2>Modificar Proyecto</h2>
+        <h:form id="form1">
+            <table>
+                <tr>
+                    <td>Codigo del proyecto</td>
+                    <td><p:inputText id="codigo" value="#{proyectosDP.idproyecto}" type="number" validatorMessage="Ingrese de 1 a 15 números">
+                        <f:validateLength minimum="1" maximum="15" />
+                        <f:ajax event="keyup" render="codigomsg" />
+                        </p:inputText></td>
+                    <td><p:commandButton update=":form2" value="Cargar" action="#{proyectosDP.Consultar}"></p:commandButton></td>
+                </tr>
+                        <tr><td></td><td colspan="2"><p:message id="codigomsg" for="codigo" /></td></tr>
+            </table>
+        </h:form>
+        <h:form id="form2">
+            <table>
+                <tr>
+                    <td>Codigo del proyecto</td>
+                    <td><p:inputText id="codigo" value="#{proyectosDP.idproyecto}" type="number" validatorMessage="Ingrese de 1 a 15 números">
+                        <f:validateLength minimum="1" maximum="15" />
+                        <f:ajax event="keyup" render="codigomsg" />
+                        </p:inputText></td>
+
+                </tr>
+                        <tr><td></td><td colspan="2"><p:message id="codigomsg" for="codigo" /></td></tr>
+                <tr>
+                    <td>Nombre del proyecto</td>
+                    <td><p:inputText id="nombre" value="#{proyectosDP.nombreproyecto}" validatorMessage="Ingrese de 1 a 30 caracteres">
+                        <f:validateLength minimum="1" maximum="30" />
+                        <f:ajax event="keyup" render="nombremsg" />
+                        </p:inputText></td>
+                </tr>
+                        <tr><td></td><td colspan="2"><p:message id="nombremsg" for="nombre" /></td></tr>
+                <tr>
+                    <td>Descripcion del proyecto</td>
+                    <td><p:inputText id="descripcion" value="#{proyectosDP.descripcion}" validatorMessage="Ingrese de 1 a 100 caracteres">
+                        <f:validateLength minimum="1" maximum="100" />
+                        <f:ajax event="keyup" render="descripcionmsg" />
+                        </p:inputText></td>
+                </tr>
+                        <tr><td></td><td colspan="2"><p:message id="descripcionmsg" for="descripcion" /></td></tr>
+                <tr>
+                    <td>Tipo del proyecto</td>
+                    <td><p:inputText id="tipo" value="#{proyectosDP.tipo}" validatorMessage="Ingrese de 1 a 25 caracteres">
+                        <f:validateLength minimum="1" maximum="25" />
+                        <f:ajax event="keyup" render="tipomsg" />
+                        </p:inputText></td>
+                </tr>
+                        <tr><td></td><td colspan="2"><p:message id="tipomsg" for="tipo" /></td></tr>
+                <tr>
+                    <td>Entidad contratante</td>
+                    <td><p:inputText id="entidad" value="#{proyectosDP.entidad}" validatorMessage="Ingrese de 1 a 30 caracteres">
+                        <f:validateLength minimum="1" maximum="30" />
+                        <f:ajax event="keyup" render="entidadmsg" />
+                        </p:inputText></td>
+                </tr>
+                        <tr><td></td><td colspan="2"><p:message id="entidadmsg" for="entidad" /></td></tr>
+                
+                <tr>
+                    <td>Tiempo de duracion</td>
+                    <td><p:inputText id="duracion" value="#{proyectosDP.tiempoDuración}" type="number" validatorMessage="Ingrese de 1 a 10 números">
+                        <f:validateLength minimum="1" maximum="10" />
+                        <f:ajax event="keyup" render="duracionmsg" />
+                        </p:inputText></td>
+                </tr>
+                        <tr><td></td><td colspan="2"><p:message id="duracionmsg" for="duracion" /></td></tr>
+                                <tr>
+                    <td>Costo</td>
+                    <td><p:inputText id="costo" value="#{proyectosDP.costo}" type="number" validatorMessage="Ingrese de 1 a 11 números">
+                        <f:validateLength minimum="1" maximum="11" />
+                        <f:ajax event="keyup" render="costomsg" />
+                        </p:inputText></td>
+                </tr>
+                        <tr><td></td><td colspan="2"><p:message id="costomsg" for="costo" /></td></tr>
+                <tr>
+                    <td colspan="2" class="boton"><p:commandButton update="@form" value="Modificar" action="#{proyectosDP.Modificar}"></p:commandButton></td>
+                </tr>
+                <tr>
+                    <td colspan="3" class="mensaje"><p:messages for="menj" autoUpdate="true"/></td>
+                </tr>
+            </table>
+        </h:form>
+    </h:body>
+</html>

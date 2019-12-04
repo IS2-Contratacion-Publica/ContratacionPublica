@@ -9,10 +9,13 @@ import LayerMD.PlanillaMD;
 import java.text.ParseException;
 import java.util.Date;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import javax.enterprise.context.Dependent;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.*;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -28,6 +31,27 @@ public class PlanillaDP {
     private PlanillaMD planillaMD = new PlanillaMD();
     private String mensaje;
     private LinkedList<PlanillaDP> lista;
+    private ArrayList consulta;
+
+    public LinkedList<PlanillaDP> getLista() {
+        return lista;
+    }
+
+    public void setLista(LinkedList<PlanillaDP> lista) {
+        this.lista = lista;
+    }
+
+    public ArrayList getConsulta() {
+        ConsultaGeneral();
+        return consulta;
+    }
+
+    public void setConsulta(ArrayList consulta) {
+        this.consulta = consulta;
+    }
+    
+    
+    
     public void setPlanillaMD() {
 
     }
@@ -45,11 +69,11 @@ public class PlanillaDP {
     }
     
     public void setCodigoProyecto(String codigoProyecto) {
-        this.codigoProyecto = codigoProyecto;
+        this.codigoProyecto = codigoProyecto.trim();
     }
 
     public void setCodigo(String codigo) {
-        this.codigo = codigo;
+        this.codigo = codigo.trim();
     }
 
     public void setFechaCreacion(Date fechaCreacion) {
@@ -81,30 +105,25 @@ public class PlanillaDP {
     }
     public void crear()
     {
-      mensaje=planillaMD.crear(this);
+        mensaje = planillaMD.crear(this);
+        FacesContext.getCurrentInstance().addMessage("menj", new FacesMessage(mensaje, ""));
 
     }
     public void modificar()
     {
-        planillaMD.modificar(this);
+        mensaje = planillaMD.modificar(this);
+        FacesContext.getCurrentInstance().addMessage("menj", new FacesMessage(mensaje, ""));
     }
     public void eliminar()
     {
-        planillaMD.eliminar(this);
-        
+        mensaje = planillaMD.eliminar(this);
+        FacesContext.getCurrentInstance().addMessage("menj", new FacesMessage(mensaje, ""));
     }
     public void consultar() throws ParseException
     {
         String fecha;
-      planillaMD.consultar(this);
-      //if(fecha!=null)
-      {
-          
-      }
-      //else
-      {
-          //mensaje="No se encontro planilla";
-      }
+        planillaMD.consultar(this);
+              
     }
     public String Mensaje()
     {
@@ -114,17 +133,17 @@ public class PlanillaDP {
     {
         if(!planillaMD.Verificar(this))
         {
-            mensaje="Ingrese los demas datos";
+            mensaje="Código disponible. Ingrese los demas datos";
         }
         else
         {
-            codigo="";
-            mensaje="codigo ya existente";
+            mensaje="Código ya existente";
         }
-        
+        FacesContext.getCurrentInstance().addMessage("menj", new FacesMessage(mensaje, ""));
     }
-    public LinkedList<PlanillaDP> ConsultaGeneral()
+    public ArrayList ConsultaGeneral()
     {
-        return planillaMD.ConsultaGeneral();
+        consulta = planillaMD.ConsultaGeneral();
+        return consulta;
     }
 }

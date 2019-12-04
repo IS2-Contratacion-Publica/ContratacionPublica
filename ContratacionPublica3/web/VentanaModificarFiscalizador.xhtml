@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
+<html xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
@@ -9,48 +9,88 @@
     </h:head>
     <h:body>
         <h2>Modificar fiscalizador</h2>
-        <h:form>
+        <h:form id="form1">
             <table>
                 <tr>
                     <td>Número de cédula: </td>
-                    <td><h:inputText value="#{fiscalizadoresDP.cedula}"></h:inputText></td>
-                    <td><h:commandButton value="Verificar" action="#{fiscalizadoresDP.Consultar}"></h:commandButton></td>
+                    <td><p:inputText id="cedula" value="#{fiscalizadoresDP.cedula}" type="number" validatorMessage="Ingrese de 1 a 15 números">
+                        <f:validateLength minimum="1" maximum="15" />
+                        <f:ajax event="keyup" render="cedulamsg" />
+                        </p:inputText></td>
+                    <td><p:commandButton update=":form2" value="Cargar" action="#{fiscalizadoresDP.Consultar}"></p:commandButton></td>
                 </tr>
+                <tr><td></td><td colspan="2"><p:message id="cedulamsg" for="cedula" /></td></tr>
+            </table>
+        </h:form>
+        <h:form id="form2">
+            <table>
+                <tr>
+                    <td>Número de cédula: </td>
+                    <td><p:inputText id="cedula" value="#{fiscalizadoresDP.cedula}" type="number" validatorMessage="Ingrese de 1 a 15 números">
+                        <f:validateLength minimum="1" maximum="15" />
+                        <f:ajax event="keyup" render="cedulamsg" />
+                        </p:inputText></td>
+                </tr>
+                <tr><td></td><td colspan="2"><p:message id="cedulamsg" for="cedula" /></td></tr>
                 <tr>
                     <td>Código profesional: </td>
-                    <td><h:inputText value="#{fiscalizadoresDP.codigo}"></h:inputText></td>
+                    <td><p:inputText id="codigo" value="#{fiscalizadoresDP.codigo}" type="number" validatorMessage="Ingrese de 1 a 15 números">
+                        <f:validateLength minimum="1" maximum="15" />
+                        <f:ajax event="keyup" render="codigomsg" />
+                        </p:inputText></td>
                 </tr>
+                <tr><td></td><td colspan="2"><p:message id="codigomsg" for="codigo" /></td></tr>
                 <tr>
                     <td>Nombre: </td>
-                    <td><h:inputText value="#{fiscalizadoresDP.nombre}"></h:inputText></td>
+                    <td><p:inputText id="nombre" value="#{fiscalizadoresDP.nombre}" validatorMessage="Ingrese de 1 a 100 caracteres">
+                        <f:validateLength minimum="1" maximum="100" />
+                        <f:ajax event="keyup" render="nombremsg" />
+                        </p:inputText></td>
                 </tr>
+                <tr><td></td><td colspan="2"><p:message id="nombremsg" for="nombre" /></td></tr>
                 <tr>
                     <td>Fecha de nacimiento: </td>
-                    <td><h:inputText value="#{fiscalizadoresDP.fechanac}"></h:inputText></td>
+                    <td><p:inputText id="fecha" value="#{fiscalizadoresDP.fechanac}" validatorMessage="Ingrese una fecha en formato YYYY/MM/DD">
+                        <f:validateRegex pattern="[0-9]{4}\/[0-9]{2}\/[0-9]{2}" />
+                        <f:ajax event="keyup" render="fechamsg" />
+                        </p:inputText></td>
                 </tr>
+                <tr><td></td><td colspan="2"><p:message id="fechamsg" for="fecha" /></td></tr>
                 <tr>
                     <td>Género: </td>
-                    <td><h:selectOneMenu value="#{fiscalizadoresDP.genero}"> 
+                    <td><p:selectOneMenu value="#{fiscalizadoresDP.genero}"> 
                             <f:selectItems value="#{fiscalizadoresDP.generos}" /> 
-                        </h:selectOneMenu></td>
+                        </p:selectOneMenu></td>
                 </tr>
                 <tr>
                     <td>Número de teléfono: </td>
-                    <td><h:inputText value="#{fiscalizadoresDP.telefono}"></h:inputText></td>
+                    <td><p:inputText id="telefono" value="#{fiscalizadoresDP.telefono}" type="number" validatorMessage="Ingrese de 1 a 10 números">
+                        <f:validateLength minimum="1" maximum="10" />
+                        <f:ajax event="keyup" render="telefonomsg" />
+                        </p:inputText></td>
                 </tr>
+                <tr><td></td><td colspan="2"><p:message id="telefonomsg" for="telefono" /></td></tr>
                 <tr>
                     <td>Número de celular: </td>
-                    <td><h:inputText value="#{fiscalizadoresDP.celular}"></h:inputText></td>
+                    <td><p:inputText id="celular" value="#{fiscalizadoresDP.celular}" type="number" validatorMessage="Ingrese de 1 a 10 números">
+                        <f:validateLength minimum="1" maximum="10" />
+                        <f:ajax event="keyup" render="celularmsg" />
+                        </p:inputText></td>
                 </tr>
-                    <tr>
+                <tr><td></td><td colspan="2"><p:message id="celularmsg" for="celular" /></td></tr>
+                <tr>
                     <td>Correo electrónico: </td>
-                    <td><h:inputText value="#{fiscalizadoresDP.correo}"></h:inputText></td>
+                    <td><p:inputText id="correo" value="#{fiscalizadoresDP.correo}" validatorMessage="Ingrese un correo con máximo 50 caracteres">
+                        <f:validateRegex pattern="(?!.{51})([a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+)" />
+                        <f:ajax event="keyup" render="correomsg" />
+                        </p:inputText></td>
+                </tr>
+                <tr><td></td><td colspan="2"><p:message id="correomsg" for="correo" /></td></tr>
+                <tr>
+                    <td colspan="2" class="boton"><p:commandButton update="@form" value="Modificar" action="#{fiscalizadoresDP.Modificar}"></p:commandButton></td>
                 </tr>
                 <tr>
-                    <td colspan="2" class="boton"><h:commandButton value="Modificar" action="#{fiscalizadoresDP.Modificar}"></h:commandButton></td>
-                </tr>
-                <tr>
-                    <td colspan="3" class="mensaje"><h:outputText value="#{fiscalizadoresDP.mensaje}"></h:outputText></td>
+                    <td colspan="3" class="mensaje"><p:messages for="menj" autoUpdate="true"/></td>
                 </tr>
             </table>
         </h:form>

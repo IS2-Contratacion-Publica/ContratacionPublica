@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
+<html xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
@@ -8,35 +8,45 @@
         <title>Consultar planilla</title>
     </h:head>
     <h:body>
-            <h2>Consultar planilla</h2>
+            <h2>Consultar planillas</h2>
             <h:form>
-                <table>
-                    <tr> 
-                        <td>Código de Proyecto: </td>
-                        <td><h:inputText value="#{planillaDP.codigoProyecto}"></h:inputText></td>
-                    </tr>
-                    <tr>
-                        <td>Codigo de Planilla: </td>
-                        <td><h:inputText value="#{planillaDP.codigo}"></h:inputText></td>
-                        <td><h:commandButton value="Consultar" action="#{planillaDP.consultar()}"></h:commandButton></td>
-                    </tr>
-                    <tr>
-                        <td>Fecha:</td> 
-                        <td><h:inputText value="#{planillaDP.fechaCreacion}" >"
-                        <f:convertDateTime pattern = "yyyy/mm/dd" />
-                        </h:inputText></td>
-                    </tr>
-                    <tr>
-                        <td>Monto:</td> 
-                        <td><h:inputText value="#{planillaDP.monto}" > 
-                    <f:convertNumber> type="float"</f:convertNumber>
-                </h:inputText></td>
-                    </tr>
-                    <tr>
-                        <td><h:outputText value="#{planillaDP.mensaje}"></h:outputText></td>
-                    </tr>
-                </table>
-            </h:form>
+                <p:dataTable value="#{planillaDP.consulta}" var="consul">
+                <p:column headerText="Código del proyecto" filterBy="#{consul.codigoProyecto}" filterMatchMode="contains">
+                    
+                            
+                            
+                            
+                    
+                    <h:outputText value="#{consul.codigoProyecto}" ></h:outputText>
+                </p:column>
+                <p:column headerText="Código de plantilla" filterBy="#{consul.codigo}" filterMatchMode="contains">
+                    
+                            
+                            
+                            
+                    
+                    <h:outputText value="#{consul.codigo}" ></h:outputText>
+                </p:column>
+                <p:column headerText="Descripción" filterBy="#{consul.fechaCreacion}" filterMatchMode="contains">
+                    
+                            
+                            
+                            
+                    
+                    <h:outputText value="#{consul.fechaCreacion}" ></h:outputText>
+                </p:column>
+                <p:column headerText="Fecha de realización" filterBy="#{consul.monto}" filterMatchMode="contains">
+                    
+                            
+                            
+                            
+                    
+                    <h:outputText value="#{consul.monto}" ></h:outputText>
+                </p:column>
+               
+
+            </p:dataTable>
+        </h:form>
     </h:body>
 </html>
 

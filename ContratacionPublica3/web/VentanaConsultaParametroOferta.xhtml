@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <h:outputStylesheet library="css" name="general.css"/>
+        <title>Consulta por parámetros de ofertas</title>
+    </h:head>
+    <h:body>
+        <h2>Consulta de ofertas</h2>
+        <h:form>
+            <p:dataTable value="#{ofertasDP.consultaparametro}" var="consul">
+                <p:column headerText="Cedula del contratista" filterBy="#{consul.concedula}" filterMatchMode="contains">
+                    
+                            
+                            
+                            
+                    
+                    <h:outputText value="#{consul.concedula}" ></h:outputText>
+                </p:column>
+                <p:column headerText="Codigo Del Proyecto" filterBy="#{consul.idproyecto}" filterMatchMode="contains">
+                    
+                            
+                            
+                            
+                    
+                    <h:outputText value="#{consul.idproyecto}" ></h:outputText>
+                </p:column>
+                <p:column headerText="Codigo de la Oferta" filterBy="#{consul.idoferta}" filterMatchMode="contains">
+                    
+                            
+                            
+                            
+                    
+                    <h:outputText value="#{consul.idoferta}" ></h:outputText>
+                </p:column>
+                <p:column headerText="Costo Ofertado" filterBy="#{consul.costoofertado}" filterMatchMode="contains">
+                    
+                            
+                            
+                            
+                    
+                    <h:outputText value="#{consul.costoofertado}" ></h:outputText>
+                </p:column>
+               
+                <p:column headerText="Adjunto" filterBy="#{consul.ubicacion}" filterMatchMode="contains">
+                    
+                            
+                            
+                            
+                    
+                    <h:outputText value="#{consul.ubicacion}" ></h:outputText>
+                </p:column>
+                
+            </p:dataTable>
+        </h:form>
+    </h:body>
+</html>

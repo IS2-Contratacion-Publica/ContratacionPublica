@@ -12,7 +12,9 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import javax.enterprise.context.Dependent;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 
 /**
@@ -84,6 +86,7 @@ public class ValidarOfertasDP {
     }
     
     public ArrayList getConsultaparametro() {
+        Consultap(); 
         return consultaparametro;
     }
 
@@ -189,20 +192,20 @@ public class ValidarOfertasDP {
         } else {
             mensaje = "Por favor ingrese correctamente todos los valores";
         }
-        
+        FacesContext.getCurrentInstance().addMessage("menj", new FacesMessage(mensaje, ""));
     }
     
        
     public void Consultap(){
         ValidarOfertasMD md = new ValidarOfertasMD();
         ValidarOferta vofe = new ValidarOferta();
-        vofe.setCONCEDULA(CONCEDULA);
-        vofe.setPROCODIGO(PROCODIGO);
-        vofe.setOFECODIGO(OFECODIGO);
-        vofe.setFISCEDULA(FISCEDULA);
-        vofe.setVALCRITERIO(VALCRITERIO);
-        vofe.setVALOBSERVACIONES(VALOBSERVACIONES);
-        vofe.setVALVALIDO(Integer.parseInt(VALVALIDO));
+        vofe.setCONCEDULA("");
+        vofe.setPROCODIGO("");
+        vofe.setOFECODIGO("");
+        vofe.setFISCEDULA("");
+        vofe.setVALCRITERIO("");
+        vofe.setVALOBSERVACIONES("");
+
 
         consultaparametro = md.Consultap(vofe);
     }

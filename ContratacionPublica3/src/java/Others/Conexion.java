@@ -13,6 +13,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
 
 /**
  *
@@ -20,45 +24,76 @@ import java.sql.Statement;
  */
 public class Conexion {
     
-    Connection conexion;
+    Connection conexion = null;
+    Statement s = null;
+    ResultSet rs = null;
+        
+    private DataSource getScpDataBase() throws NamingException {
+        Properties p = new Properties();
+        Context c = new InitialContext();
+        return (DataSource) c.lookup(p.prop("pool"));
+    }
     /*
      Genera una conexion con la base de datos
     */
-    private void GenerarConexion() throws SQLException{
-        Properties p =  new Properties();
-        try {
-            Class.forName("oracle.jdbc.driver.OracleDriver");
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ContratistasMD.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("clase no encontrada");
-        }
+    private void GenerarConexion() throws SQLException, NamingException, ClassNotFoundException{
         Connection conn;
-        conn = DriverManager.getConnection("jdbc:"+
-                                            p.prop("tipo")+":thin:@"+
-                                            p.prop("direccion")+":"+
-                                            p.prop("puerto")+":"+
-                                            "orcl",
-                                            p.prop("usuario"),
-                                            p.prop("contrasenia"));
+        conn = getScpDataBase().getConnection();
         conexion = conn;
     }
     
     public ResultSet Ejecutar(String orden) throws SQLException {
-        Statement s;
-        ResultSet rs = null;
         
-        System.out.println(orden);
-
-        GenerarConexion();
-        s = conexion.createStatement();
-        if (s.execute(orden)) {
-            rs = s.getResultSet();
+        boolean ejecutado = false;
+        
+        try {
+            GenerarConexion();
+            s = conexion.createStatement();
+            if (s.execute(orden)) {
+                rs = s.getResultSet();
+            }
+            ejecutado = true;
+            System.out.println("Se ejecutó: " + orden);
+        } catch (NamingException ex) {
+            System.out.println(ex.getMessage());
+        } catch (ClassNotFoundException ex) {
+            System.out.println(ex.getMessage());
+        } finally {
+            if (s == null) {
+                System.out.println("No se pudo crear el Statement, se recomienda revisar conexion");
+                System.out.println("Estado de la conexion: " + conexion.toString());
+            } else if (!ejecutado) {
+                System.out.println("No se pudo ejecutar la sentencia SQL o recuperar ResultSet");
+                System.out.println("La sentencia enviada fue: ");
+                System.out.println(orden);
+            }
+            if (conexion != null) {
+                conexion.close();
+            }
         }
-        
         return rs;
     }
     
-    public void Cerrar() throws SQLException {
-        conexion.close();
+    public void Cerrar() {
+        try {
+            if (conexion != null) {
+                conexion.close();
+            }
+            if (s != null) {
+                s.close();
+            }
+            if (rs != null) {
+                rs.close();
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
+
+    private DataSource getOracle() throws NamingException {
+        Context c = new InitialContext();
+        return (DataSource) c.lookup("java:comp/env/Oracle");
+    }
+
+
 }

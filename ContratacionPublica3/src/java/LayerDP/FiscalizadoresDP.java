@@ -11,7 +11,9 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import javax.enterprise.context.Dependent;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 
 /**
@@ -33,7 +35,16 @@ public class FiscalizadoresDP {
     private String mensaje;
     private ArrayList consulta;
     private List<SelectItem> generos;
+    private FiscalizadoresMD layermd = new FiscalizadoresMD();
 
+    public FiscalizadoresMD getLayermd() {
+        return layermd;
+    }
+
+    public void setLayermd(FiscalizadoresMD layermd) {
+        this.layermd = layermd;
+    }
+    
     public List<SelectItem> getGeneros() {
         return new FiscalizadoresMD().getGeneros();
     }
@@ -43,6 +54,7 @@ public class FiscalizadoresDP {
     }
 
     public ArrayList getConsulta() {
+        ConsultaParametros();
         return consulta;
     }
 
@@ -220,7 +232,7 @@ public class FiscalizadoresDP {
         } else {
             mensaje = "Por favor ingrese correctamente todos los valores";
         }
-        
+        FacesContext.getCurrentInstance().addMessage("menj", new FacesMessage(mensaje, ""));
     }
     
     /*
@@ -247,7 +259,7 @@ public class FiscalizadoresDP {
         } else {
             mensaje = "Por favor ingrese correctamente todos los valores";
         }
-        
+        FacesContext.getCurrentInstance().addMessage("menj", new FacesMessage(mensaje, ""));
         
     }
 
@@ -267,7 +279,7 @@ public class FiscalizadoresDP {
         } else {
             mensaje = "Por favor ingrese correctamente todos los valores";
         }
-        
+        FacesContext.getCurrentInstance().addMessage("menj", new FacesMessage(mensaje, ""));
     }
     
     /*
@@ -313,14 +325,14 @@ public class FiscalizadoresDP {
         ArrayList resul;
         FiscalizadoresMD md = new FiscalizadoresMD();
         Fiscalizador fis = new Fiscalizador();
-        fis.setCedula(cedula.trim());
-        fis.setCodigo(codigo.trim());
-        fis.setNombre(nombre.trim());
-        fis.setFechaNac(fechanac.trim());
-        fis.setGenero(genero.charAt(0));
-        fis.setTelefono(telefono.trim());
-        fis.setCelular(celular.trim());
-        fis.setCorreo(correo.trim());
+        fis.setCedula("");
+        fis.setCodigo("");
+        fis.setNombre("");
+        fis.setFechaNac("");
+        fis.setGenero('x');
+        fis.setTelefono("");
+        fis.setCelular("");
+        fis.setCorreo("");
         consulta = md.ConsultaParametros(fis);
     }
     
@@ -330,6 +342,13 @@ public class FiscalizadoresDP {
     public void Verificar(){
         FiscalizadoresMD md = new FiscalizadoresMD();
         existe = md.Verificar(cedula);
+        if (existe == 1) {
+            mensaje = "Código Existente";
+        }
+        else {
+            mensaje = "Código no existente";
+        }
+        FacesContext.getCurrentInstance().addMessage("menj", new FacesMessage(mensaje, ""));
     }
     
 }

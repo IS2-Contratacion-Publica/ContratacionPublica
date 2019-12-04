@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
+<html xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
@@ -10,73 +10,63 @@
     <h:body>
         <h2>Consultar validaciones</h2>
         <h:form>
-            <h:dataTable value="#{ValidarOfertasDP.consultaparametro}" var="consul">
-                <h:column>
-                    <f:facet name="header">
-                            Cédula Contratista
-                            <br/>
-                            <h:inputText value="#{ValidarOfertasDP.CONCEDULA}"></h:inputText>
-                    </f:facet>
+            <p:dataTable value="#{ValidarOfertasDP.consultaparametro}" var="consul">
+                <p:column headerText="Cédula Contratista" filterBy="#{consul.CONCEDULA}" filterMatchMode="contains">
+                    
+                            
+                            
+                            
+                    
                     <h:outputText value="#{consul.CONCEDULA}" ></h:outputText>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">
-                            Código Proyecto
-                            <br/>
-                            <h:inputText value="#{ValidarOfertasDP.PROCODIGO}"></h:inputText>
-                    </f:facet>
+                </p:column>
+                <p:column headerText="Código Proyecto" filterBy="#{consul.PROCODIGO}" filterMatchMode="contains">
+                    
+                            
+                            
+                            
+                    
                     <h:outputText value="#{consul.PROCODIGO}" ></h:outputText>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">
-                            Código Oferta
-                            <br/>
-                            <h:inputText value="#{ValidarOfertasDP.OFECODIGO}"></h:inputText>
-                    </f:facet>
+                </p:column>
+                <p:column headerText="Código Oferta" filterBy="#{consul.OFECODIGO}" filterMatchMode="contains">
+                    
+                            
+                            
+                            
+                    
                     <h:outputText value="#{consul.OFECODIGO}" ></h:outputText>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">
-                            Cédula del Fiscalizador
-                            <br/>
-                            <h:inputText value="#{ValidarOfertasDP.FISCEDULA}"></h:inputText>
-                    </f:facet>
+                </p:column>
+                <p:column headerText="Cédula del Fiscalizador" filterBy="#{consul.FISCEDULA}" filterMatchMode="contains">
+                    
+                            
+                            
+                            
+                    
                     <h:outputText value="#{consul.FISCEDULA}" ></h:outputText>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">
-                            Criterios de validación
-                            <br/>
-                            <h:inputText value="#{ValidarOfertasDP.VALCRITERIO}"></h:inputText>
-                    </f:facet>
+                </p:column>
+                <p:column headerText="Criterios de validación" filterBy="#{consul.VALCRITERIO}" filterMatchMode="contains">
+                    
+                            
+                            
+                            
+                    
                     <h:outputText value="#{consul.VALCRITERIO}" ></h:outputText>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">
-                            Observaciones
-                            <br/>
-                            <h:inputText value="#{ValidarOfertasDP.VALOBSERVACIONES}"></h:inputText>
-                    </f:facet>
+                </p:column>
+                <p:column headerText="Observaciones" filterBy="#{consul.VALOBSERVACIONES}" filterMatchMode="contains">
+                    
+                            
+                            
+                            
+                    
                     <h:outputText value="#{consul.VALOBSERVACIONES}" ></h:outputText>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">
-                            Válido
-                            <br/>
-                            <h:selectOneMenu value="#{ValidarOfertasDP.VALVALIDO}"> 
-                                <f:selectItem itemValue="1" itemLabel="SI"/>
-                                <f:selectItem itemValue="0" itemLabel="NO"/> 
-                            </h:selectOneMenu>
-                    </f:facet>
+                </p:column>
+                <p:column headerText="Válido" filterBy="#{consul.VALVALIDO}" filterMatchMode="contains">
+                    
+                          
+                    
                     <h:outputText value="#{consul.VALVALIDO}" ></h:outputText>
-                </h:column>
+                </p:column>
                
-                <h:column>
-                    <f:facet name="header">
-                        <h:commandButton value="Consultar" action="#{ValidarOfertasDP.Consultap}"></h:commandButton>
-                    </f:facet>
-                </h:column>
-            </h:dataTable>
+            </p:dataTable>
         </h:form>
     </h:body>
 </html>

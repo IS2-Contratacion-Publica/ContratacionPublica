@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" >      
+    <h:head>
+        <title>Ingreso del sistema</title>
+    </h:head>
+    <h:body>
+        <h:form id="IngresoForm">
+            <p:panel header="Formulario de Ingreso" style="width: 400px">
+                <p:messages/>
+                <h:panelGrid columns="3">
+                    <p:outputLabel value="Proyecto"/>
+                    <p:selectOneMenu id="Proyecto" value="#{fiscalizaciones.procodigo}" style="width:150px" >
+                        <f:selectItem itemLabel="Seleccione" itemValue="" noSelectionOption="true"/>
+                        <f:selectItems value="#{fiscalizaciones.getMapProyectos().entrySet()}" var="entry" itemValue="#{entry.key}" itemLabel="#{entry.key}"/>
+                    </p:selectOneMenu>
+                     <br></br>
+                      <p:outputLabel value="Fiscalizadores"/>
+                      <p:selectOneMenu id="Fiscalizadores" value="#{fiscalizaciones.fiscedula}" style="width:150px" >
+                        <f:selectItem itemLabel="Seleccione" itemValue="" noSelectionOption="true"/>
+                        <f:selectItems value="#{fiscalizaciones.getMapFiscalizadores().entrySet()}" var="entry" itemValue="#{entry.key}" itemLabel="#{entry.key}"/>
+                    </p:selectOneMenu>
+                     <br></br>
+                     <p:outputLabel value="Pruebas"/>
+                     <p:selectOneMenu id="Pruebas" value="#{fiscalizaciones.prucodigo}" style="width:150px" >
+                        <f:selectItem itemLabel="Seleccione" itemValue="" noSelectionOption="true"/>
+                        <f:selectItems value="#{fiscalizaciones.getMapPrueba().entrySet()}" var="entry" itemValue="#{entry.key}" itemLabel="#{entry.key}"/>
+                    </p:selectOneMenu>
+                     <br></br>
+                    <p:outputLabel value="Parametro"/>
+                    <p:inputText id="parametro" value="#{fiscalizaciones.recparametro}" validatorMessage="Ingrese de 1 a 150 caracteres">
+                        <f:validateLength minimum="1" maximum="150" />
+                        <f:ajax event="keyup" render="parametromsg" />
+                    </p:inputText>
+                    <p:message id="parametromsg" for="parametro" />
+                    
+                    <p:outputLabel value="Aprobacion"/>
+                    <p:selectOneMenu value="#{fiscalizaciones.recaprob}"> 
+                            <f:selectItem itemValue="1" itemLabel="SI"/>
+                            <f:selectItem itemValue="0" itemLabel="NO"/> 
+                        </p:selectOneMenu>
+                    <br></br>
+                    <p:outputLabel value=''/>
+                    <p:commandButton action="#{fiscalizaciones.validarPrueba()}" value="Ingresar" update="IngresoForm"/>
+                    <p:outputLabel value=''/>
+                    <br></br>
+                    <br></br>
+                </h:panelGrid>
+            </p:panel>
+        </h:form>
+    </h:body>
+</html>
+

@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <h:outputStylesheet library="css" name="general.css"/>
+        <title>Consulta General Oferta</title>
+    </h:head>
+    <h:body>
+        <h2>Consulta general</h2>
+            <p:dataTable value="#{ofertasDP.ofer}" var="s">
+        
+            <p:column headerText="" filterBy="" filterMatchMode="contains">
+                Cèula del Contratista
+                #{s.concedula}
+            </p:column>
+            
+            
+            <p:column headerText="" filterBy="" filterMatchMode="contains">
+                Codigo del Proyecto
+                #{s.idproyecto}
+            </p:column>
+            
+            <p:column headerText="" filterBy="" filterMatchMode="contains">
+                Còdigo de la oferta
+                #{s.idoferta}
+            </p:column>
+            
+            <p:column headerText="" filterBy="" filterMatchMode="contains">
+                Costo Ofertado
+                #{s.costoofertado}
+            </p:column>
+                        
+            <p:column headerText="" filterBy="" filterMatchMode="contains">
+                Archivo
+                #{s.ubicacion}
+            </p:column>            
+            
+            
+        </p:dataTable>
+    </h:body>
+</html>
+

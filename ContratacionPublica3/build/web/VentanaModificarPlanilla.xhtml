@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
+<html xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
@@ -8,35 +8,61 @@
         <title>Modificar planilla</title>
     </h:head>
     <h:body>
-            <h2>Modificar planilla</h2>
-            <h:form>
+        <h2>Modificar planilla</h2>
+        <h:form id="form1">
+            <table>
+                <tr>
+                        <td>Codigo de Planilla: </td>
+                        <td><p:inputText id="codigopl" value="#{planillaDP.codigo}" type="number" validatorMessage="Ingrese de 1 a 10 números">
+                        <f:validateLength minimum="1" maximum="10" />
+                        <f:ajax event="keyup" render="codigoplmsg" />
+                        </p:inputText></td>
+                        <td><p:commandButton update=":form2" value="Cargar" action="#{planillaDP.consultar()}"></p:commandButton></td>
+                    </tr>
+                        <tr><td></td><td colspan="2"><p:message id="codigoplmsg" for="codigopl" /></td></tr>
+            </table>
+        </h:form>
+        <h:form id="form2">
                 <table>
                     <tr>
                         <td>Código de Proyecto: </td>
-                        <td><h:inputText value="#{planillaDP.codigoProyecto}"></h:inputText></td>
+                        <td><p:inputText id="codigop" value="#{planillaDP.codigoProyecto}" type="number" validatorMessage="Ingrese de 1 a 15 números">
+                        <f:validateLength minimum="1" maximum="15" />
+                        <f:ajax event="keyup" render="codigopmsg" />
+                        </p:inputText></td>
                     </tr>
+                        <tr><td></td><td colspan="2"><p:message id="codigopmsg" for="codigop" /></td></tr>
                     <tr>
                         <td>Codigo de Planilla: </td>
-                        <td><h:inputText value="#{planillaDP.codigo}"></h:inputText></td>
-                        <td><h:commandButton value="Verificar" action="#{planillaDP.consultar()}"></h:commandButton></td>
+                        <td><p:inputText id="codigopl" value="#{planillaDP.codigo}" type="number" validatorMessage="Ingrese de 1 a 10 números">
+                        <f:validateLength minimum="1" maximum="10" />
+                        <f:ajax event="keyup" render="codigoplmsg" />
+                        </p:inputText></td>
                     </tr>
+                        <tr><td></td><td colspan="2"><p:message id="codigoplmsg" for="codigopl" /></td></tr>
                     <tr>
-                        <td>Fecha:</td> 
-                        <td><h:inputText value="#{planillaDP.fechaCreacion}" >"
-                            <f:convertDateTime pattern = "yyyy/mm/dd" />
-                            </h:inputText></td>
+                        <td>Fecha: </td>
+                        <td><p:inputText id="fecha" value="#{planillaDP.fechaCreacion}" validatorMessage="Ingrese una fecha en formato YYYY/MM/DD">
+                        <f:convertDateTime pattern = "yyyy/mm/dd" />
+                        <f:ajax event="keyup" render="fechamsg" />
+                        </p:inputText></td>
                     </tr>
+                        <tr><td></td><td colspan="2"><p:message id="fechamsg" for="fecha" /></td></tr>
                     <tr>
                         <td>Monto: </td>
-                        <td><h:inputText value="#{planillaDP.monto}" > 
+                        <td><p:inputText id="monto" value="#{planillaDP.monto}" type="number" validatorMessage="Ingrese de 0 a 11 números"> 
                         <f:convertNumber> type="float"</f:convertNumber>
-                    </h:inputText></td>
+                        <f:validateLength minimum="1" maximum="11" />
+                        <f:ajax event="keyup" render="montomsg" />
+                        
+                         </p:inputText></td>
+                    </tr>
+                        <tr><td></td><td colspan="2"><p:message id="montomsg" for="monto" /></td></tr>
+                    <tr>
+                        <td><p:commandButton update="@form" value="Modificar" action="#{planillaDP.modificar()}" ></p:commandButton></td>
                     </tr>
                     <tr>
-                        <td><h:commandButton value="Modificar" action="#{planillaDP.modificar()}"></h:commandButton></td>
-                    </tr>
-                    <tr>
-                        <td><h:outputText value="#{planillaDP.mensaje}"></h:outputText></td>
+                        <td colspan="3" class="mensaje"><p:messages for="menj" autoUpdate="true"/></td>
                     </tr>
                 </table>
             </h:form>

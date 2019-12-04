@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <h:outputStylesheet library="css" name="general.css"/>
+        <title>Consulta por parámetros de proyectos</title>
+    </h:head>
+    <h:body>
+        <h2>Consulta de proyectos</h2>
+        <h:form>
+            <p:dataTable value="#{proyectosDP.consultaparametro}" var="consul">
+                <p:column headerText="Código del proyecto" filterBy="#{consul.idproyecto}" filterMatchMode="contains">
+                    
+                            
+                            
+                            
+                    
+                    <h:outputText value="#{consul.idproyecto}" ></h:outputText>
+                </p:column>
+                <p:column headerText="Nombre" filterBy="#{consul.nombreproyecto}" filterMatchMode="contains">
+                    
+                            
+                            
+                            
+                    
+                    <h:outputText value="#{consul.nombreproyecto}" ></h:outputText>
+                </p:column>
+                <p:column headerText="Descripción" filterBy="#{consul.descripcion}" filterMatchMode="contains">
+                    
+                            
+                            
+                            
+                    
+                    <h:outputText value="#{consul.descripcion}" ></h:outputText>
+                </p:column>
+                <p:column headerText="Tipo del Proyecto" filterBy="#{consul.tipo}" filterMatchMode="contains">
+                    
+                            
+                            
+                            
+                    
+                    <h:outputText value="#{consul.tipo}" ></h:outputText>
+                </p:column>
+               
+                <p:column headerText="Contratante" filterBy="#{consul.entidad}" filterMatchMode="contains">
+                    
+                           
+                            
+                            
+                    
+                    <h:outputText value="#{consul.entidad}" ></h:outputText>
+                </p:column>
+                
+                <p:column headerText="Tiempo de duración" filterBy="#{consul.tiempoDuración}" filterMatchMode="contains">
+                    
+                            
+                            
+                            
+                    
+                    <h:outputText value="#{consul.tiempoDuración}" ></h:outputText>
+                </p:column>
+                
+                <p:column headerText="Costo del Proyecto" filterBy="#{consul.costo}" filterMatchMode="contains">
+                    
+                            
+                            
+                            
+                    
+                    <h:outputText value="#{consul.costo}" ></h:outputText>
+                </p:column>
+               
+            </p:dataTable>
+        </h:form>
+    </h:body>
+</html>

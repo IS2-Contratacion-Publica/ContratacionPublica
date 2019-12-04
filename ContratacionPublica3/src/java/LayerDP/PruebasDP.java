@@ -7,9 +7,14 @@ package LayerDP;
 
 import EntityClasses.Prueba;
 import LayerMD.PruebasMD;
+import Others.PopulateUtilities;
+import Others.Properties;
 import java.util.ArrayList;
+import java.util.Map;
 import javax.enterprise.context.Dependent;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -26,6 +31,17 @@ public class PruebasDP {
     private int existe;
     private String mensaje;
     private ArrayList consultaparametro;
+    private PruebasMD layermd = new PruebasMD();
+
+    public PruebasMD getLayermd() {
+        return layermd;
+    }
+
+    public void setLayermd(PruebasMD layermd) {
+        this.layermd = layermd;
+    }
+    
+    
 
     public String getProcodigo() {
         return procodigo;
@@ -76,6 +92,7 @@ public class PruebasDP {
     }
 
     public ArrayList getConsultaparametro() {
+        Consultap();
         return consultaparametro;
     }
 
@@ -115,6 +132,7 @@ public class PruebasDP {
         } else {
             mensaje = "Por favor ingrese correctamente todos los valores";
         }
+        FacesContext.getCurrentInstance().addMessage("menj", new FacesMessage(mensaje, ""));
         
     }
     
@@ -137,7 +155,7 @@ public class PruebasDP {
             mensaje = "Por favor ingrese correctamente todos los valores";
         }
         
-        
+        FacesContext.getCurrentInstance().addMessage("menj", new FacesMessage(mensaje, ""));
     }
 
     public void Eliminar(){
@@ -153,7 +171,7 @@ public class PruebasDP {
         } else {
             mensaje = "Por favor ingrese correctamente todos los valores";
         }
-        
+        FacesContext.getCurrentInstance().addMessage("menj", new FacesMessage(mensaje, ""));
     }
         
     public ArrayList<Prueba> Consultag(){
@@ -172,6 +190,8 @@ public class PruebasDP {
             prucodigo = pru.getPrucodigo().trim();
             prudescripcion = pru.getDescripcion().trim();
             plafecharealizacion = pru.getFecharealizacion().trim();
+            plafecharealizacion = plafecharealizacion.substring(0, plafecharealizacion.indexOf(" "));
+            plafecharealizacion = plafecharealizacion.replace("-", "/");
         }
 
         
@@ -180,16 +200,23 @@ public class PruebasDP {
      public void Consultap(){
         PruebasMD md = new PruebasMD();
         Prueba pru = new Prueba();
-        pru.setProcodigo(procodigo);
-        pru.setPrucodigo(prucodigo);
-        pru.setDescripcion(prudescripcion);
-        pru.setFecharealizacion(plafecharealizacion);
+        pru.setProcodigo("");
+        pru.setPrucodigo("");
+        pru.setDescripcion("");
+        pru.setFecharealizacion("");
         consultaparametro = md.Consultap(pru);
     }
     
     public void Verificar(){
         PruebasMD md = new PruebasMD();
         existe = md.Verificar(prucodigo);
+        if(existe==1){
+            mensaje = "Código Existente";
+        }
+        else{
+            mensaje = "Código no existente";
+        }
+        FacesContext.getCurrentInstance().addMessage("menj", new FacesMessage(mensaje, ""));
     }
     
 }

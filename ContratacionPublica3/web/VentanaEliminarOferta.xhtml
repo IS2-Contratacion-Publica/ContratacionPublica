@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <h:outputStylesheet library="css" name="general.css"/>
+        <title>Eliminar Oferta</title>
+    </h:head>
+    <h:body>
+        <h2>Eliminar Oferta</h2>
+        <h:form>
+            <table>
+                <tr>
+                    <td>Codigo de la oferta</td>
+                    <td><p:inputText value="#{ofertasDP.idoferta}"></p:inputText></td>
+                    <td><p:commandButton update="@form" value="Consultar" action="#{ofertasDP.Consultar}"></p:commandButton></td>
+                </tr>
+                <tr>
+                    <td>Cedula del contratista</td>
+                    <td><p:inputText value="#{ofertasDP.concedula}"></p:inputText></td>
+                    
+                </tr>
+                <tr>
+                    <td>Codigo del proyecto</td>
+                    <td><p:inputText value="#{ofertasDP.idproyecto}"></p:inputText></td>
+                </tr>
+                <tr>
+                    <td>Costo ofertado</td>
+                    <td><p:inputText value="#{ofertasDP.costoofertado}"></p:inputText></td>
+                </tr>
+                <tr>
+                    <td>Ubicacion Archivo</td>
+                    <td><p:inputText value="#{ofertasDP.ubicacion}"></p:inputText></td>
+                </tr>                
+                <tr>
+                    <td><p:commandButton update="@form" onclick="if (! confirm('¿Realmente deseas borrar esta oferta?')) return false"
+                                 value="Eliminar" action="#{ofertasDP.Eliminar}">
+                        </p:commandButton> </td>
+                </tr>
+                <tr>
+                    <td colspan="3" class="mensaje"><p:messages for="menj" autoUpdate="true"/></td>
+                </tr>
+            </table>
+        </h:form>
+    </h:body>
+</html>

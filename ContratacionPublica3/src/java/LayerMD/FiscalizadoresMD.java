@@ -7,6 +7,7 @@ package LayerMD;
 
 import EntityClasses.Fiscalizador;
 import Others.Conexion;
+import Others.PopulateUtilities;
 import Others.Properties;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -16,6 +17,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -343,5 +345,11 @@ public class FiscalizadoresMD {
             resul = null;
         }
         return resul;
+    }
+    
+    public Map ConsultaGeneralCombo(){
+        Properties p = new Properties();
+        PopulateUtilities pu = new PopulateUtilities();
+        return pu.getMap(p.prop("fis.tabla"), p.prop("fis.llave"));
     }
 }

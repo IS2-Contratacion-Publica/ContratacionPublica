@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
+<html xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
@@ -10,46 +10,42 @@
     <h:body>
         <h2>Consultar pruebas</h2>
         <h:form>
-            <h:dataTable value="#{PruebasDP.consultaparametro}" var="consul">
-                <h:column>
-                    <f:facet name="header">
-                            Código del proyecto
-                            <br/>
-                            <h:inputText value="#{PruebasDP.procodigo}"></h:inputText>
-                    </f:facet>
+            <p:dataTable value="#{PruebasDP.consultaparametro}" var="consul">
+                <p:column headerText="Código del proyecto" filterBy="#{consul.procodigo}" filterMatchMode="contains">
+                    
+                            
+                            
+                            
+                    
                     <h:outputText value="#{consul.procodigo}" ></h:outputText>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">
-                            Código de prueba
-                            <br/>
-                            <h:inputText value="#{PruebasDP.prucodigo}"></h:inputText>
-                    </f:facet>
+                </p:column>
+                <p:column headerText="Código de prueba" filterBy="#{consul.prucodigo}" filterMatchMode="contains">
+                    
+                            
+                            
+                            
+                    
                     <h:outputText value="#{consul.prucodigo}" ></h:outputText>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">
-                            Descripción
-                            <br/>
-                            <h:inputText value="#{PruebasDP.prudescripcion}"></h:inputText>
-                    </f:facet>
+                </p:column>
+                <p:column headerText="Descripción" filterBy="#{consul.descripcion}" filterMatchMode="contains">
+                    
+                            
+                            
+                            
+                    
                     <h:outputText value="#{consul.descripcion}" ></h:outputText>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">
-                            Fecha de realización
-                            <br/>
-                            <h:inputText value="#{PruebasDP.plafecharealizacion}"></h:inputText>
-                    </f:facet>
+                </p:column>
+                <p:column headerText="Fecha de realización" filterBy="#{consul.fecharealizacion}" filterMatchMode="contains">
+                    
+                            
+                            
+                            
+                    
                     <h:outputText value="#{consul.fecharealizacion}" ></h:outputText>
-                </h:column>
+                </p:column>
                
-                <h:column>
-                    <f:facet name="header">
-                            <h:commandButton value="Consultar" action="#{PruebasDP.Consultap}"></h:commandButton>
-                    </f:facet>
-                </h:column>
-            </h:dataTable>
+
+            </p:dataTable>
         </h:form>
     </h:body>
 </html>

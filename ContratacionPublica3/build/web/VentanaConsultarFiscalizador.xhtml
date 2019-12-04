@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
+<html xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
@@ -10,79 +10,72 @@
     <h:body>
         <h2>Consultar fiscalizador</h2>
         <h:form>
-            <h:dataTable value="#{fiscalizadoresDP.consulta}" var="consul">
-                <h:column>
-                    <f:facet name="header">
-                            Número de cédula
-                            <br/>
-                            <h:inputText value="#{fiscalizadoresDP.cedula}"></h:inputText>
-                    </f:facet>
+            <p:dataTable value="#{fiscalizadoresDP.consulta}" var="consul">
+                <p:column headerText="Número de cédula" filterBy="#{consul.cedula}" filterMatchMode="contains">
+                    
+                            
+                            
+                            
+                    
                     <h:outputText value="#{consul.cedula}" ></h:outputText>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">
-                            Código profesional
-                            <br/>
-                            <h:inputText value="#{fiscalizadoresDP.codigo}"></h:inputText>
-                    </f:facet>
+                </p:column>
+                <p:column headerText="Código profesional" filterBy="#{consul.codigo}" filterMatchMode="contains">
+                    
+                            
+                            
+                            
+                    
                     <h:outputText value="#{consul.codigo}" ></h:outputText>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">
-                            Nombre
-                            <br/>
-                            <h:inputText value="#{fiscalizadoresDP.nombre}"></h:inputText>
-                    </f:facet>
+                </p:column>
+                <p:column headerText="Nombre" filterBy="#{consul.nombre}" filterMatchMode="contains">
+                    
+                            
+                            
+                            
+                    
                     <h:outputText value="#{consul.nombre}" ></h:outputText>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">
-                            Fecha de nacimiento
-                            <br/>
-                            <h:inputText value="#{fiscalizadoresDP.fechanac}"></h:inputText>
-                    </f:facet>
+                </p:column>
+                <p:column headerText="Fecha de nacimiento" filterBy="#{consul.fechaNac}" filterMatchMode="contains">
+                    
+                            
+                            
+                            
+                    
                     <h:outputText value="#{consul.fechaNac}" ></h:outputText>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">
-                            Género
-                            <br/>
-                            <h:selectOneMenu value="#{fiscalizadoresDP.genero}"> 
-                                <f:selectItems value="#{fiscalizadoresDP.generos}" /> 
-                            </h:selectOneMenu>
-                    </f:facet>
+                </p:column>
+                <p:column headerText="Género" filterBy="#{consul.genero}" filterMatchMode="contains">
+                    
+                    
+                    
+                    
                     <h:outputText value="#{consul.genero}" ></h:outputText>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">
-                            Número de teléfono
-                            <br/>
-                            <h:inputText value="#{fiscalizadoresDP.telefono}"></h:inputText>
-                    </f:facet>
+                </p:column>
+                <p:column headerText="Número de teléfono" filterBy="#{consul.telefono}" filterMatchMode="contains">
+                    
+                            
+                            
+                            
+                    
                     <h:outputText value="#{consul.telefono}" ></h:outputText>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">
-                            Número de celular
-                            <br/>
-                            <h:inputText value="#{fiscalizadoresDP.celular}"></h:inputText>
-                    </f:facet>
+                </p:column>
+                <p:column headerText="Número de celular" filterBy="#{consul.celular}" filterMatchMode="contains">
+                    
+                            
+                            
+                            
+                    
                     <h:outputText value="#{consul.celular}" ></h:outputText>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">
-                            Correo eletrónico
-                            <br/>
-                            <h:inputText value="#{fiscalizadoresDP.correo}"></h:inputText>
-                    </f:facet>
+                </p:column>
+                <p:column headerText="Correo eletrónico" filterBy="#{consul.correo}" filterMatchMode="contains">
+                    
+                            
+                            
+                            
+                    
                     <h:outputText value="#{consul.correo}" ></h:outputText>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">
-                            <h:commandButton value="Consultar" action="#{fiscalizadoresDP.ConsultaParametros}"></h:commandButton>
-                    </f:facet>
-                </h:column>
-            </h:dataTable>
+                </p:column>
+
+            </p:dataTable>
         </h:form>
     </h:body>
 </html>
