@@ -10,7 +10,7 @@
     <h:body>
         <h2>Consultar asignación de proyectos</h2>
         <h:form>
-            <p:dataTable value="#{asignarProyectoDP.consulta}" var="consul">
+            <p:dataTable value="#{asignarProyectoDP.consulta}" var="consul" filteredValue="#{asignarProyectoDP.consultaaux}">
                 <p:column headerText="Cédula de contratista" filterBy="#{consul.concedula}" filterMatchMode="contains">
                     
                         

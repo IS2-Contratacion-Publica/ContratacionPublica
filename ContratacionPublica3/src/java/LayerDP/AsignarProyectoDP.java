@@ -44,10 +44,20 @@ public class AsignarProyectoDP {
     private String mensaje;
     private UploadedFile documento;
     private ArrayList consulta;
-    
+    private ArrayList consultaaux;
     
     //Getters y Setters
 
+    public ArrayList getConsultaaux() {
+        return consultaaux;
+    }
+
+    public void setConsultaaux(ArrayList consultaaux) {
+        this.consultaaux = consultaaux;
+    }
+
+    
+    
     public ArrayList getConsulta() {
         ConsultaParametros();
         return consulta;
