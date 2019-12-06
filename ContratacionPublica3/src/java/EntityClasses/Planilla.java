@@ -11,14 +11,23 @@ import javax.enterprise.context.Dependent;
  *
  * @author sebad
  */
-@ManagedBean(value = "planilla")
-@Dependent
 public class Planilla {
     private String codigoProyecto;
     private String codigo;
     private Date fechaCreacion;
     private float monto;
+    private String conCedula;
+    
+    
     public Planilla() {
+    }
+
+    public String getConCedula() {
+        return conCedula;
+    }
+
+    public void setConCedula(String conCedula) {
+        this.conCedula = conCedula;
     }
     
     public String getCodigoProyecto() {
@@ -28,6 +37,11 @@ public class Planilla {
     public String getCodigo() {
         return codigo;
     }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
+
 
     public Date getFechaCreacion() {
         return fechaCreacion;
@@ -41,9 +55,7 @@ public class Planilla {
         this.codigoProyecto = codigoProyecto.trim();
     }
 
-    public void setCodigo(String codigo) {
-        this.codigo = codigo.trim();
-    }
+
 
     public void setFechaCreacion(Date fechaCreacion) {
         this.fechaCreacion = fechaCreacion;

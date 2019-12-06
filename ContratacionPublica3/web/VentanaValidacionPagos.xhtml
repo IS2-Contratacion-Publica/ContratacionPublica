@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <h:outputStylesheet library="css" name="general.css"/>
+        <title>Ingreso de Pagos</title>
+    </h:head>
+    <h:body>
+        <h2>Validacion de Pagos</h2>
+        <h:form enctype="multipart/form-data" id="form2">
+            <table>
+                <tr>
+                    <td>Planillas </td>
+                    <td>
+                        <p:selectOneMenu value="#{pagosdp.pagCodigo}">
+                        <f:selectItem itemLabel="Seleccione" itemValue="" noSelectionOption="true"/>
+                        <f:selectItems value="#{pagosdp.lista.entrySet()}" var="entry" itemValue="#{entry.key}" itemLabel="#{entry.key}" />
+                        </p:selectOneMenu>
+                    </td>
+                    <td></td>
+                    <td>
+                        <p:commandButton action="#{pagosdp.verificar2()}" value="Visualizar" update=":form2"></p:commandButton>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Cedula Fiscalizador:   </td>
+                    <td>
+                        <p:outputLabel value="#{pagosdp.fisCedula}"/>
+                    </td>
+                </tr>
+                 <tr>
+                    <td>Codigo Planilla:    </td>
+                    <td>
+                        <p:outputLabel value="#{pagosdp.plaCodigo}"/>
+                    </td>
+                </tr>
+                 <tr>
+                    <td>Cedula Contratista:    </td>
+                    <td>
+                        <p:outputLabel value="#{pagosdp.pla_ConCedula}"/>
+                    </td>
+                </tr>
+                 <tr>
+                    <td>Fecha Autorizacion:  </td>
+                    <td>
+                        <p:outputLabel value="#{pagosdp.pagFechaAutorizacion}"/>
+                    </td>
+                </tr>
+                 <tr>
+                    <td>Codigo Proyecto:  </td>
+                    <td>
+                        <p:outputLabel value="#{pagosdp.proCodigo}"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Fecha envio: yyyy/mm/dd</td>
+                    <td>
+                        <p:inputText value="#{pagosdp.pagFechaEnvio}"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Aprobacion:</td>
+                    <td>
+                        <p:selectOneMenu value="#{pagosdp.pagEstado}"> 
+                            <f:selectItem itemValue="1" itemLabel="SI"/>
+                            <f:selectItem itemValue="0" itemLabel="NO"/> 
+                        </p:selectOneMenu>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>
+                        <p:commandButton action="#{pagosdp.validar()}" value="Ingresar" update=":form2" ></p:commandButton>
+                    </td>
+                </tr>
+            </table>
+        </h:form>
+    </h:body>
+</html>
+
+

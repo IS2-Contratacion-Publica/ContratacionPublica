@@ -41,6 +41,14 @@
                     </tr>
                         <tr><td></td><td colspan="2"><p:message id="codigoplmsg" for="codigopl" /></td></tr>
                     <tr>
+                        <td>Código de Contratista: </td>
+                        <td><p:inputText id="codigoc" value="#{planillaDP.concodigo}" type="number" validatorMessage="Ingrese de 1 a 15 números">
+                        <f:validateLength minimum="1" maximum="15" />
+                        <f:ajax event="keyup" render="codigocmsg" />
+                        </p:inputText></td>
+                    </tr>
+                        <tr><td></td><td colspan="2"><p:message id="codigocmsg" for="codigoc" /></td></tr>
+                    <tr>
                         <td>Fecha: </td>
                         <td><p:inputText id="fecha" value="#{planillaDP.fechaCreacion}" validatorMessage="Ingrese una fecha en formato YYYY/MM/DD">
                         <f:convertDateTime pattern = "yyyy/mm/dd" />

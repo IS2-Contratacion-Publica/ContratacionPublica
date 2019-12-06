@@ -11,6 +11,7 @@ import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.Map;
 import javax.enterprise.context.Dependent;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
@@ -26,12 +27,25 @@ import javax.faces.context.FacesContext;
 public class PlanillaDP {
      private String codigoProyecto;
     private String codigo;
+    private String concodigo;
     private Date fechaCreacion;
     private float monto;
     private PlanillaMD planillaMD = new PlanillaMD();
     private String mensaje;
     private LinkedList<PlanillaDP> lista;
     private ArrayList consulta;
+        public ArrayList getConsulta() {
+        ConsultaGeneral();
+        return consulta;
+    }
+
+    public String getConcodigo() {
+        return concodigo;
+    }
+
+    public void setConcodigo(String concodigo) {
+        this.concodigo = concodigo.trim();
+    }
 
     public LinkedList<PlanillaDP> getLista() {
         return lista;
@@ -40,18 +54,7 @@ public class PlanillaDP {
     public void setLista(LinkedList<PlanillaDP> lista) {
         this.lista = lista;
     }
-
-    public ArrayList getConsulta() {
-        ConsultaGeneral();
-        return consulta;
-    }
-
-    public void setConsulta(ArrayList consulta) {
-        this.consulta = consulta;
-    }
-    
-    
-    
+   
     public void setPlanillaMD() {
 
     }
@@ -141,7 +144,11 @@ public class PlanillaDP {
         }
         FacesContext.getCurrentInstance().addMessage("menj", new FacesMessage(mensaje, ""));
     }
-    public ArrayList ConsultaGeneral()
+    public Map consultaGeneral()
+    {
+        return planillaMD.consultaGeneral();
+    }
+        public ArrayList ConsultaGeneral()
     {
         consulta = planillaMD.ConsultaGeneral();
         return consulta;
