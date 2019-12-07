@@ -14,14 +14,14 @@
                 <tr>
                     <td>Planillas </td>
                     <td>
-                        <p:selectOneMenu value="#{pagosdp.plaCodigo}" >
+                        <p:selectOneMenu value="#{pagosdp.plaCodigo}" id="codigopa">
                         <f:selectItem itemLabel="Seleccione" itemValue="" noSelectionOption="true"/>
                         <f:selectItems value="#{pagosdp.planilla.entrySet()}" var="entry" itemValue="#{entry.value}" itemLabel="#{entry.key}" />
                         </p:selectOneMenu>
                     </td>
                     <td></td>
                     <td>
-                        <p:commandButton action="#{pagosdp.verificar()}" value="Visualizar" update=":form1"></p:commandButton>
+                        <p:commandButton action="#{pagosdp.verificar()}" value="Visualizar" update=":form1" process="@this codigopa"></p:commandButton>
                     </td>
                 </tr>
                 <tr>
@@ -38,20 +38,27 @@
                 </tr>
                 <tr>
                     <td>Codigo del pago:    </td>
-                    <td>
-                        <p:inputText value="#{pagosdp.pagCodigo}"/>
-                    </td>
+                    <td><p:inputText id="codigo" value="#{pagosdp.pagCodigo}" type="number" validatorMessage="Ingrese de 1 a 15 números">
+                        <f:validateLength minimum="1" maximum="15" />
+                        <f:ajax event="keyup" render="codigomsg" />
+                        </p:inputText></td>
                 </tr>
+                <tr><td></td><td colspan="3"><p:message id="codigomsg" for="codigo" /></td></tr>
                 <tr>
-                    <td>Fecha: yyyy/mm/dd</td>
-                    <td>
-                        <p:inputText value="#{pagosdp.pagFechaAutorizacion}"/>
-                    </td>
+                    <td>Fecha:  yyyy/mm/dd </td>
+                    <td><p:inputText id="fecha" value="#{pagosdp.pagFechaAutorizacion}" validatorMessage="Ingrese una fecha en formato YYYY/MM/DD">
+                        <f:validateRegex pattern="[0-9]{4}\/[0-9]{2}\/[0-9]{2}" />
+                        <f:ajax event="keyup" render="fechamsg" />
+                        </p:inputText></td>
                 </tr>
+                <tr><td></td><td colspan="3"><p:message id="fechamsg" for="fecha" /></td></tr>
                 <tr>
                     <td>
                         <p:commandButton action="#{pagosdp.ingresar()}" value="Ingresar" update=":form1" ></p:commandButton>
                     </td>
+                </tr>
+                <tr>
+                    <td colspan="10" class="mensaje"><p:messages for="menj" autoUpdate="true"/></td>
                 </tr>
             </table>
         </h:form>

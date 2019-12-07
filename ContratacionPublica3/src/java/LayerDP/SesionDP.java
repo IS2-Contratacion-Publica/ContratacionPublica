@@ -8,6 +8,8 @@ package LayerDP;
 import LayerMD.SesionMD;
 import javax.enterprise.context.Dependent;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -65,6 +67,9 @@ public class SesionDP {
         ingre = md.Ingresar(usuario,contrasena);
         if(ingre==1){
             //mensaje = "Codigo Existente";
+            FacesContext facesContext = FacesContext.getCurrentInstance();
+            HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(true);
+            session.setAttribute("cedula.cuenta", usuario);
             return "pagprincipal.xhtml";
         }
         else{

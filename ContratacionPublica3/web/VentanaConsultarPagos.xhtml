@@ -11,23 +11,16 @@
             <h2>Consultar Pagos</h2>
             <h:form>
                 <p:dataTable value="#{pagosdp.array}" var="consul">
-                <p:column headerText="Código del proyecto" filterBy="#{consul.pagCodigo}" filterMatchMode="contains">
-                    
-                            
-                            
-                            
+                <p:column headerText="Código del pago" filterBy="#{consul.pagCodigo}" filterMatchMode="contains">
+   
                     
                     <h:outputText value="#{consul.pagCodigo}" ></h:outputText>
                 </p:column>
-                <p:column headerText="Código de plantilla" filterBy="#{consul.pla_ConCedula}" filterMatchMode="contains">
-                    
-                            
-                            
-                            
-                    
-                    <h:outputText value="#{consul.pla_ConCedula}" ></h:outputText>
+                    <p:column headerText="Código del proyecto" filterBy="#{consul.proCodigo}" filterMatchMode="contains">
+
+                    <h:outputText value="#{consul.proCodigo}" ></h:outputText>
                 </p:column>
-                <p:column headerText="Descripción" filterBy="#{consul.plaCodigo}" filterMatchMode="contains">
+                    <p:column headerText="Código de plantilla" filterBy="#{consul.plaCodigo}" filterMatchMode="contains">
                     
                             
                             
@@ -35,7 +28,31 @@
                     
                     <h:outputText value="#{consul.plaCodigo}" ></h:outputText>
                 </p:column>
-                <p:column headerText="Fecha de realización" filterBy="#{consul.pagFechaEnvio}" filterMatchMode="contains">
+                <p:column headerText="Cédula de contratista" filterBy="#{consul.pla_ConCedula}" filterMatchMode="contains">
+                    
+                            
+                            
+                            
+                    
+                    <h:outputText value="#{consul.pla_ConCedula}" ></h:outputText>
+                </p:column>
+                <p:column headerText="Cédula de fiscalizador" filterBy="#{consul.fisCedula}" filterMatchMode="contains">
+                    
+                            
+                            
+                            
+                    
+                    <h:outputText value="#{consul.fisCedula}" ></h:outputText>
+                </p:column>
+                <p:column headerText="Fecha de autorización" filterBy="#{consul.pagFechaAutorizacion}" filterMatchMode="contains">
+                    
+                            
+                            
+                            
+                    
+                    <h:outputText value="#{consul.pagFechaAutorizacion}" ></h:outputText>
+                </p:column>
+                <p:column headerText="Fecha de envio" filterBy="#{consul.pagFechaEnvio}" filterMatchMode="contains">
                     
                             
                             
@@ -43,7 +60,14 @@
                     
                     <h:outputText value="#{consul.pagFechaEnvio}" ></h:outputText>
                 </p:column>
-               
+               <p:column headerText="Aprovación" filterBy="#{consul.pagEstado}" filterMatchMode="contains">
+                    
+                            
+                            
+                            
+                    
+                    <h:outputText value="#{consul.pagEstado}" ></h:outputText>
+                </p:column>
 
             </p:dataTable>
         </h:form>

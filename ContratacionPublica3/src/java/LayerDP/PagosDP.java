@@ -14,7 +14,10 @@ import javax.inject.Named;
 import javax.enterprise.context.Dependent;
 import javax.faces.bean.ManagedBean;
 import EntityClasses.Planilla;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 /**
  *
  * @author sebad
@@ -30,6 +33,7 @@ public class PagosDP {
     private String PagFechaAutorizacion;
     private String PagFechaEnvio;
     private String PagEstado;
+    private String mensaje;
     private double monto=0;
     private Map planilla;
     private Map <String,Pagos> lista;
@@ -37,6 +41,14 @@ public class PagosDP {
     private PagosMD pagosMD = new PagosMD();
     private Pagos pago= new Pagos();
     private ArrayList array;
+
+    public String getMensaje() {
+        return mensaje;
+    }
+
+    public void setMensaje(String mensaje) {
+        this.mensaje = mensaje;
+    }
 
     
     public ArrayList getArray() {
@@ -173,19 +185,23 @@ public class PagosDP {
     {
         verificar();
         Pagos nuevo = new Pagos();
-        FisCedula="1804279048"; //Aqui se ingre el fiscalizador que viene del login que ni idea como hacer xd
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(true);
+        FisCedula = session.getAttribute("cedula.cuenta").toString();
+        //FisCedula="1804279048"; //Aqui se ingre el fiscalizador que viene del login que ni idea como hacer xd
         nuevo.setFisCedula(this.FisCedula);
         nuevo.setPagCodigo(this.PagCodigo);
-        nuevo.setPagEstado(this.PagEstado);
         nuevo.setPagFechaAutorizacion(this.PagFechaAutorizacion);
         nuevo.setPagFechaEnvio(this.PagFechaEnvio);
         nuevo.setPlaCodigo(this.PlaCodigo);
         nuevo.setPla_ConCedula(this.Pla_ConCedula);
         nuevo.setProCodigo(this.ProCodigo);
+        nuevo.setPagEstado("0");
         System.out.println(ProCodigo);
         System.out.println(PlaCodigo);
         System.out.println(Pla_ConCedula);
-        pagosMD.ingresarMD(nuevo);
+        mensaje = pagosMD.ingresarMD(nuevo);
+        FacesContext.getCurrentInstance().addMessage("menj", new FacesMessage(mensaje, ""));
     }
     public void verificar2()
     {
@@ -195,23 +211,26 @@ public class PagosDP {
         Pla_ConCedula=pago.getPla_ConCedula();
         FisCedula=pago.getFisCedula();
         PagFechaAutorizacion=pago.getPagFechaAutorizacion();
+        PagFechaEnvio=pago.getPagFechaEnvio();
+        PagEstado=pago.getPagEstado();
+        
     }
     public void validar()
     {
         Pagos nuevo = new Pagos();
-        FisCedula="1804279048";
         nuevo.setFisCedula(this.FisCedula);
         nuevo.setPagCodigo(this.PagCodigo);
-        nuevo.setPagEstado(this.PagEstado);
         nuevo.setPagFechaAutorizacion(this.PagFechaAutorizacion);
         nuevo.setPagFechaEnvio(this.PagFechaEnvio);
         nuevo.setPlaCodigo(this.PlaCodigo);
         nuevo.setPla_ConCedula(this.Pla_ConCedula);
         nuevo.setProCodigo(this.ProCodigo);
+        nuevo.setPagEstado(this.PagEstado);
         System.out.println(ProCodigo);
         System.out.println(PlaCodigo);
         System.out.println(Pla_ConCedula);
-        pagosMD.validarMD(nuevo);
+        mensaje = pagosMD.validarMD(nuevo);
         verificar2();
+        FacesContext.getCurrentInstance().addMessage("menj", new FacesMessage(mensaje, ""));
     }
 }
