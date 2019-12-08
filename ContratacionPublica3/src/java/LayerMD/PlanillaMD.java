@@ -1,6 +1,7 @@
 package LayerMD;
 import LayerDP.PlanillaDP;
 import Others.Conexion;
+import Others.PopulateUtilities;
 import Others.Properties;
 import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
 import java.sql.Connection;
@@ -13,6 +14,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedList;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.enterprise.context.Dependent;
@@ -53,12 +55,13 @@ public class PlanillaMD {
     {
         Properties p =  new Properties();
         Conexion cx = new Conexion();
-        String codP,cod,fecha,orden;
+        String codP,cod,fecha,orden, codC;
         float monto;
         int dia,estado;
         estado=1;
         codP = planillaDP.getCodigoProyecto();
         cod = planillaDP.getCodigo();
+        codC = planillaDP.getConcodigo();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/mm/dd");
         dia=planillaDP.getFechaCreacion().getDate();
         planillaDP.getFechaCreacion().setDate(dia+1);
@@ -70,9 +73,11 @@ public class PlanillaMD {
                 p.prop("pla.campo1")+","+
                 p.prop("pla.campo2")+","+
                 p.prop("pla.campo3")+","+
-                p.prop("pla.campo4")+")"
-                + "values ('"+codP+"','"+
-                cod+"',"+
+                p.prop("pla.campo4")+","+
+                p.prop("pla.campo5")+")"
+                + "values ('"+cod+"','"+
+                codP+"','"+
+                codC+"',"+
                 "TO_DATE('"+
                 fecha+"', 'YYYY/MM/DD'),"+
                 monto+","+estado+")";
@@ -82,6 +87,7 @@ public class PlanillaMD {
         planillaDP.setFechaCreacion(null);
         planillaDP.setMensaje("");
         planillaDP.setMonto(0);
+        planillaDP.setConcodigo("");
         mensaje=orden;
         try {
             cx.Ejecutar(orden);
@@ -97,12 +103,13 @@ public class PlanillaMD {
     {
          Properties p =  new Properties();
         Conexion cx = new Conexion();
-        String codP,cod,fecha,orden,mensaje;
+        String codP,cod,fecha,orden,mensaje,codC;
         float monto;
         int dia,estado;
         estado=1;
         codP = planillaDP.getCodigoProyecto();
         cod = planillaDP.getCodigo();
+        codC = planillaDP.getConcodigo();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/mm/dd");
         dia=planillaDP.getFechaCreacion().getDate();
         planillaDP.getFechaCreacion().setDate(dia+1);
@@ -110,14 +117,16 @@ public class PlanillaMD {
         monto = planillaDP.getMonto();
         orden = "update "+
                 p.prop("pla.tabla")+" set "+
-                p.prop("pla.llave")+" = '"+
+                p.prop("pla.campo1")+" = '"+
                 codP+"',"+
-                p.prop("pla.campo2")+" = "+
+                p.prop("pla.campo2")+" = '"+
+                codC+"',"+
+                p.prop("pla.campo3")+" = "+
                 "TO_DATE('"+
                 fecha+"', 'YYYY/MM/DD'),"+
-                p.prop("pla.campo3")+" = "+
-                monto+","+p.prop("pla.campo4")+" = "+estado +
-                " where "+p.prop("pla.campo1")+" ='"+
+                p.prop("pla.campo4")+" = "+
+                monto+","+p.prop("pla.campo5")+" = "+estado +
+                " where "+p.prop("pla.llave")+" ='"+
                 cod+"'";
 
         planillaDP.getFechaCreacion().setDate(dia);
@@ -125,8 +134,8 @@ public class PlanillaMD {
             cx.Ejecutar(orden);
             cx.Cerrar();
             return "Se ha modificado correctamente los datos";
-        } catch (SQLException ex) {       
-            Logger.getLogger(OfertasMD.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {      
+            Logger.getLogger(PlanillaMD.class.getName()).log(Level.SEVERE, null, ex);
             return "Comuniquese con el administrado de la base de datos";
         }
     }
@@ -140,8 +149,8 @@ public class PlanillaMD {
         cod = planillaDP.getCodigo();
         orden = "update "+
                 p.prop("pla.tabla")+" set "+
-                p.prop("pla.campo4")+" = "+estado +
-                " where "+p.prop("pla.campo1")+" ='"+
+                p.prop("pla.campo5")+" = "+estado +
+                " where "+p.prop("pla.llave")+" ='"+
                 cod+"'";
         planillaDP.setCodigo("");
         planillaDP.setCodigoProyecto("");
@@ -153,7 +162,7 @@ public class PlanillaMD {
             cx.Cerrar();
             return "Se ha modificado correctamente los datos";
         } catch (SQLException ex) {
-            Logger.getLogger(OfertasMD.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PlanillaMD.class.getName()).log(Level.SEVERE, null, ex);
             return "Error En La conexion";
         }
     }
@@ -170,21 +179,22 @@ public class PlanillaMD {
         int dia,mes,año;
         orden = "select * from "+
                 p.prop("pla.tabla")+" where "+
-                p.prop("pla.campo1")+" = '"+codigo+"' and "+p.prop("pla.campo4")+"="+estado;
+                p.prop("pla.llave")+" = '"+codigo+"' and "+p.prop("pla.campo5")+"="+estado;
         try {
             rs = cx.Ejecutar(orden);
             
             if(rs.next()){
                 planillaDP.setCodigo(rs.getString(2));
                 planillaDP.setCodigoProyecto(rs.getString(1));
-                mensaje=rs.getDate(3).toString();
+                planillaDP.setConcodigo(rs.getString(3));
+                mensaje=rs.getDate(4).toString();
                 datosFecha = mensaje.split("-");
                 año=Integer.parseInt(datosFecha[0]);
                 mes=Integer.parseInt(datosFecha[1]);
                 dia=Integer.parseInt(datosFecha[2]);
                 fecha= new Date(año-1900,0,dia,0,mes,0);
                 planillaDP.setFechaCreacion(fecha);
-                planillaDP.setMonto(rs.getFloat(4));
+                planillaDP.setMonto(rs.getFloat(5));
                 mensaje = "";
             }
             else{
@@ -195,7 +205,7 @@ public class PlanillaMD {
             
         } catch (SQLException ex) {
             planillaDP = null;
-            Logger.getLogger(OfertasMD.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PlanillaMD.class.getName()).log(Level.SEVERE, null, ex);
         }      
    
     }
@@ -207,7 +217,7 @@ public class PlanillaMD {
         Conexion cx = new Conexion();
         ResultSet rs;
         cod=planillaDP.getCodigo();
-        orden="Select "+p.prop("pla.campo1")+" from "+p.prop("pla.tabla")+" where "+p.prop("pla.campo1")+"='"+cod+"'";
+        orden="Select "+p.prop("pla.campo1")+" from "+p.prop("pla.tabla")+" where "+p.prop("pla.llave")+"='"+cod+"'";
         try {
             rs = cx.Ejecutar(orden);         
             if(rs.next()){
@@ -220,7 +230,7 @@ public class PlanillaMD {
             
         } catch (SQLException ex) {
             planillaDP = null;
-            Logger.getLogger(OfertasMD.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PlanillaMD.class.getName()).log(Level.SEVERE, null, ex);
         }      
         return verificar;
     }   
@@ -232,23 +242,32 @@ public class PlanillaMD {
         Conexion cx = new Conexion();
         ResultSet rs;
         String Orden;
-        Orden ="Select * from "+ p.prop("pla.tabla");
+        Orden ="Select * from "+ p.prop("pla.tabla") +
+                " where " + p.prop("pla.campo5") + 
+                " = 1";
         try {
             rs = cx.Ejecutar(Orden);         
             while(rs.next()){
                 agregar= new PlanillaDP();
-                agregar.setCodigo(rs.getString(1));
-                agregar.setCodigoProyecto(rs.getString(2));
-                agregar.setFechaCreacion(rs.getDate(3));
-                agregar.setMonto(rs.getFloat(4));
+                agregar.setCodigo(rs.getString(2));
+                agregar.setCodigoProyecto(rs.getString(1));
+                agregar.setFechaCreacion(rs.getDate(4));
+                agregar.setMonto(rs.getFloat(5));
+                agregar.setConcodigo(rs.getString(3));
                 lista.add(agregar);
             }
             cx.Cerrar();
             
         } catch (SQLException ex) {
             lista= null;
-            Logger.getLogger(OfertasMD.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PlanillaMD.class.getName()).log(Level.SEVERE, null, ex);
         }      
         return lista;
+    }
+    public Map consultaGeneral()
+    {
+      Properties p =  new Properties();
+      PopulateUtilities arreglo = new PopulateUtilities();
+      return arreglo.getMap(p.prop("pla.tabla"), p.prop("pla.llave"));
     }
 }

@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <h:outputStylesheet library="css" name="general.css"/>
+        <title>Consultar Pagos</title>
+    </h:head>
+    <h:body>
+            <h2>Consultar Pagos</h2>
+            <h:form>
+                <p:dataTable value="#{pagosdp.array}" var="consul">
+                <p:column headerText="Código del pago" filterBy="#{consul.pagCodigo}" filterMatchMode="contains">
+   
+                    
+                    <h:outputText value="#{consul.pagCodigo}" ></h:outputText>
+                </p:column>
+                    <p:column headerText="Código del proyecto" filterBy="#{consul.proCodigo}" filterMatchMode="contains">
+
+                    <h:outputText value="#{consul.proCodigo}" ></h:outputText>
+                </p:column>
+                    <p:column headerText="Código de plantilla" filterBy="#{consul.plaCodigo}" filterMatchMode="contains">
+                    
+                            
+                            
+                            
+                    
+                    <h:outputText value="#{consul.plaCodigo}" ></h:outputText>
+                </p:column>
+                <p:column headerText="Cédula de contratista" filterBy="#{consul.pla_ConCedula}" filterMatchMode="contains">
+                    
+                            
+                            
+                            
+                    
+                    <h:outputText value="#{consul.pla_ConCedula}" ></h:outputText>
+                </p:column>
+                <p:column headerText="Cédula de fiscalizador" filterBy="#{consul.fisCedula}" filterMatchMode="contains">
+                    
+                            
+                            
+                            
+                    
+                    <h:outputText value="#{consul.fisCedula}" ></h:outputText>
+                </p:column>
+                <p:column headerText="Fecha de autorización" filterBy="#{consul.pagFechaAutorizacion}" filterMatchMode="contains">
+                    
+                            
+                            
+                            
+                    
+                    <h:outputText value="#{consul.pagFechaAutorizacion}" ></h:outputText>
+                </p:column>
+                <p:column headerText="Fecha de envio" filterBy="#{consul.pagFechaEnvio}" filterMatchMode="contains">
+                    
+                            
+                            
+                            
+                    
+                    <h:outputText value="#{consul.pagFechaEnvio}" ></h:outputText>
+                </p:column>
+               <p:column headerText="Aprovación" filterBy="#{consul.pagEstado}" filterMatchMode="contains">
+                    
+                            
+                            
+                            
+                    
+                    <h:outputText value="#{consul.pagEstado}" ></h:outputText>
+                </p:column>
+
+            </p:dataTable>
+        </h:form>
+    </h:body>
+</html>
+
