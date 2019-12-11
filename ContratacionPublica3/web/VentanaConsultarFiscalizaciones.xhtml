@@ -5,9 +5,132 @@
       xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
         <h:outputStylesheet library="css" name="general.css"/>
+        <h:outputStylesheet library="css" name="menu.css"/>
         <title>Consultar estados de fiscalización</title>
     </h:head>
     <h:body>
+                <div class="navegacion">
+        <nav>
+            <ul>
+                <li>
+                    <a href="#">Archivo <span class="icon icon-up-dir"></span></a>
+                    <div class="submenu">
+                        <div class="submenu-items">
+                            <ul>
+                                <li>
+                                    <h:link outcome="index">Cerrar Sesión</h:link>
+                                </li>                                   
+                            </ul>
+                        </div>
+                    </div>  
+                </li>
+                <li>
+                    <a href="#">Catálogos <span class="icon icon-up-dir"></span></a>
+                    <div class="submenu">
+                        <div class="submenu-items">
+                            <p>Contratistas</p>
+                            <ul>
+                                <li><h:link outcome="VentanaCrearContratista">Crear Contratista</h:link></li>
+                                <li><h:link outcome="VentanaModificarContratista">Modificar Contratista</h:link></li>
+                                <li><h:link outcome="VentanaEliminarContratista">Eliminar Contratista</h:link></li>
+                                <li><h:link outcome="VentanaConsultarContratista">Consultar Contratista</h:link></li>
+                            </ul>
+                        </div>
+                        <div class="submenu-items">
+                            <p>Fiscalizadores</p>
+                            <ul>
+                                <li><h:link outcome="VentanaCrearFiscalizador">Crear Fiscalizador</h:link></li>
+                                <li><h:link outcome="VentanaModificarFiscalizador">Modificar Fiscalizador</h:link></li>
+                                <li><h:link outcome="VentanaEliminarFiscalizador">Eliminar Fiscalizador</h:link></li>
+                                <li><h:link outcome="VentanaConsultarFiscalizador">Consultar Fiscalizador</h:link></li>
+                            </ul>
+                        </div>
+                        <div class="submenu-items">
+                            <p>Proyectos</p>
+                            <ul>
+                                <li><h:link outcome="VentanaIngresarProyecto">Crear Proyecto</h:link></li>
+                                <li><h:link outcome="VentanaModificarProyecto">Modificar Proyecto</h:link></li>
+                                <li><h:link outcome="VentanaEliminarProyecto">Eliminar Proyecto</h:link></li>
+                                <li><h:link outcome="VentanaConsultaParametroProyecto">Consultar Proyecto</h:link></li>
+                            </ul>
+                        </div>
+                        <div class="submenu-items">
+                            <p>Ofertas</p>
+                            <ul>
+                                <li><h:link outcome="VentanaIngresarOferta">Crear Oferta</h:link></li>
+                                <li><h:link outcome="VentanaModificarOferta">Modificar Oferta</h:link></li>
+                                <li><h:link outcome="VentanaEliminarOferta">Eliminar Oferta</h:link></li>
+                                <li><h:link outcome="VentanaConsultaParametroOferta">Consultar Oferta</h:link></li>
+                            </ul>
+                        </div>
+                        <div class="submenu-items">
+                            <p>Planillas</p>
+                            <ul>
+                                <li><h:link outcome="VentanaCrearPlanilla">Crear Planilla</h:link></li>
+                                <li><h:link outcome="VentanaModificarPlanilla">Modificar Planilla</h:link></li>
+                                <li><h:link outcome="VentanaEliminarPlanilla">Eliminar Planilla</h:link></li>
+                                <li><h:link outcome="VentanaConsultarPlanilla">Consultar Planilla</h:link></li>
+                            </ul>
+                        </div>
+                        <div class="submenu-items">
+                            <p>Pruebas</p>
+                            <ul>
+                                <li><h:link outcome="VentanaCrearPrueba">Crear Prueba</h:link></li>
+                                <li><h:link outcome="VentanaModificarPrueba">Modificar Prueba</h:link></li>
+                                <li><h:link outcome="VentanaEliminarPrueba">Eliminar Prueba</h:link></li>
+                                <li><h:link outcome="VentanaConsultarPrueba">Consultar Prueba</h:link></li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <a href="#">Procesos <span class="icon icon-up-dir"></span></a>
+                    <div class="submenu">
+                        <div class="submenu-items">
+                            <p>Validación de Ofertas</p>
+                            <ul>
+                                <li><h:link outcome="VentanaValidarOferta">Validar Oferta</h:link></li>
+                                <li><h:link outcome="VentanaConsultarValidacion">Consultar Validacion</h:link></li>
+                            </ul>
+                        </div>
+                        <div class="submenu-items">
+                            <p>Asignación de Proyectos</p>
+                            <ul>
+                                <li><h:link outcome="VentanaAsignarProyecto">Asignar Proyecto</h:link></li>
+                                <li><h:link outcome="VentanaConsultarAsignacion">Consultar Proyectos Asignados</h:link></li>
+                            </ul>
+                        </div>
+                        <div class="submenu-items">
+                            <p>Fiscalización</p>
+                            <ul>
+                                <li><h:link outcome="VentanaFiscalizaciones">Fiscalizar</h:link></li>
+                                <li><h:link outcome="VentanaValidacionesPruebas">Validar pruebas</h:link></li>
+                                <li><h:link outcome="VentanaConsultarFiscalizaciones">Consultar estado de fiscalización</h:link></li>
+                            </ul>
+                        </div>
+                        <div class="submenu-items">
+                            <p>Fiscalización</p>
+                            <ul>
+                                <li><h:link outcome="VentanaIngresoPagos">Ingresar pago</h:link></li>
+                                <li><h:link outcome="VentanaValidacionPagos">Validar pago</h:link></li>
+                                <li><h:link outcome="VentanaConsultarPagos">Consultar pagos</h:link></li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li id="derecha">
+                    <h:link outcome="index">Cerrar sesión<span class="icon icon-up-dir"></span></h:link>
+                </li>
+    
+                <li id="derecha">
+                    <a href="#">Ayuda<span class="icon icon-up-dir"></span></a>
+                </li>
+    
+
+            </ul>
+        </nav>
+    </div>
+    <div id="ventanas">
         <h2>Consultar estados de fiscalización</h2>
         <h:form>
             <p:dataTable value="#{fiscalizaciones.consulta}" var="consul" filteredValue="#{fiscalizaciones.filtered}">
@@ -45,6 +168,8 @@
                                
             </p:dataTable>
         </h:form>
+    </div>
+
     </h:body>
 </html>
 

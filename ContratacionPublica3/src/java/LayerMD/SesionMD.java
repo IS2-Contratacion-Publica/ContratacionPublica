@@ -28,29 +28,10 @@ public class SesionMD {
     
     public SesionMD(){}
     
-    public Connection GenerarConexion() throws SQLException{
-        Properties pro =  new Properties();
-        try {
-            Class.forName("oracle.jdbc.driver.OracleDriver");
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(SesionMD.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("clase no encontrada");
-        }
-        Connection conn;
-        conn = DriverManager.getConnection("jdbc:"+
-                                            pro.prop("tipo")+":thin:@"+
-                                            pro.prop("direccion")+":"+
-                                            pro.prop("puerto")+":"+
-                                            "orcl",
-                                            pro.prop("usuario"),
-                                            pro.prop("contrasenia"));
-        return conn;
-    }
     
     public int Ingresar(String usuario, String contra){
         Properties p =  new Properties();
-        Connection conn;
-        Statement s;
+        Conexion cx = new Conexion();
         ResultSet rs;
         Sesion resul;
         String query;
@@ -62,9 +43,8 @@ public class SesionMD {
         System.out.print(query);
         try {
             
-            conn = GenerarConexion();
-            s = conn.createStatement();
-            rs = s.executeQuery(query);
+            
+            rs = cx.Ejecutar(query);
             
             if(rs.next()==true){
                 ingreso = 1;
@@ -72,11 +52,14 @@ public class SesionMD {
             else{
                 ingreso=0;
             }
-            conn.close();
+            
             
         } catch (SQLException ex) {
             resul = null;
             System.out.print(ex);
+            Logger.getLogger(SesionMD.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            cx.Cerrar();
         }
         
         return ingreso;

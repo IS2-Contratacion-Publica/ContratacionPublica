@@ -122,16 +122,16 @@ public class PagosDP {
         return ProCodigo;
     }
 
-    public void setProCodigo(String ProCodigo) {
-        this.ProCodigo = ProCodigo;
-    }
-
     public String getPlaCodigo() {
         return PlaCodigo;
     }
 
     public void setPlaCodigo(String PlaCodigo) {
         this.PlaCodigo = PlaCodigo;
+    }
+    
+    public void setProCodigo(String ProCodigo) {
+        this.ProCodigo = ProCodigo;
     }
 
     public String getPla_ConCedula() {
@@ -154,8 +154,8 @@ public class PagosDP {
         return PagFechaAutorizacion;
     }
 
-    public void setPagFechaAutorizacion(String PagFechaAutorizacion) {
-        this.PagFechaAutorizacion = PagFechaAutorizacion;
+    public void setPagFechaAutorizacion(String PagFechaAutorizacio) {
+        this.PagFechaAutorizacion = PagFechaAutorizacio;
     }
 
     public String getPagFechaEnvio() {

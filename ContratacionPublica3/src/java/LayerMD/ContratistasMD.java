@@ -50,11 +50,12 @@ public class ContratistasMD {
     public boolean Crear(Contratista con){
         Properties p =  new Properties();
         Conexion cx = new Conexion();
-        String cod, nom, tel, cel, cor, orden, ced, nac;
+        String cod, nom, cel, cor, tel, orden, ced, nac;
         char gen;
         
-        ced = con.getCedula();
+        
         cod = con.getCodigo();
+        ced = con.getCedula();
         nom = con.getNombre();
         nac = con.getFechaNac();
         gen = con.getGenero();
@@ -102,10 +103,10 @@ public class ContratistasMD {
         Properties p =  new Properties();
         Conexion cx = new Conexion();
 
-        String cod, nom, tel, cel, cor, orden, ced, nac;
+        String cod, nom, tel, cel, cor, ced, nac, orden;
         char gen;
-        ced = con.getCedula();
         cod = con.getCodigo();
+        ced = con.getCedula();
         nom = con.getNombre();
         nac = con.getFechaNac();
         gen = con.getGenero();
@@ -217,7 +218,7 @@ public class ContratistasMD {
     public ArrayList ConsultaGeneral(){
         Properties p =  new Properties();
         Conexion cx = new Conexion();
-        ResultSet rs;
+        ResultSet r;
         Contratista con = null;
         ArrayList resul = new ArrayList();
         String orden;
@@ -227,17 +228,17 @@ public class ContratistasMD {
                 p.prop("con.campo8")+" = "+1;
 
         try {
-            rs = cx.Ejecutar(orden);
-            while (rs.next()){
+            r = cx.Ejecutar(orden);
+            while (r.next()){
                 con = new Contratista();
-                con.setCedula(rs.getString(1));
-                con.setCodigo(rs.getString(2));
-                con.setNombre(rs.getString(3));
-                con.setFechaNac(rs.getString(4));
-                con.setGenero(rs.getString(5).charAt(0));
-                con.setTelefono(rs.getString(6));
-                con.setCelular(rs.getString(7));
-                con.setCorreo(rs.getString(8));
+                con.setCedula(r.getString(1));
+                con.setCodigo(r.getString(2));
+                con.setNombre(r.getString(3));
+                con.setFechaNac(r.getString(4));
+                con.setGenero(r.getString(5).charAt(0));
+                con.setTelefono(r.getString(6));
+                con.setCelular(r.getString(7));
+                con.setCorreo(r.getString(8));
                 resul.add(con);
             }
             cx.Cerrar();
@@ -254,7 +255,7 @@ public class ContratistasMD {
         Properties p =  new Properties();
         Conexion cx = new Conexion();
         ResultSet rs;
-        Contratista con = null;
+        Contratista cont = null;
         ArrayList resul = new ArrayList();
         String orden;
         
@@ -293,16 +294,16 @@ public class ContratistasMD {
         try {
             rs = cx.Ejecutar(orden);
             while (rs.next()){
-                con = new Contratista();
-                con.setCedula(rs.getString(1));
-                con.setCodigo(rs.getString(2));
-                con.setNombre(rs.getString(3));
-                con.setFechaNac(rs.getString(4));
-                con.setGenero(rs.getString(5).charAt(0));
-                con.setTelefono(rs.getString(6));
-                con.setCelular(rs.getString(7));
-                con.setCorreo(rs.getString(8));
-                resul.add(con);
+                cont = new Contratista();
+                cont.setCedula(rs.getString(1));
+                cont.setCodigo(rs.getString(2));
+                cont.setNombre(rs.getString(3));
+                cont.setFechaNac(rs.getString(4));
+                cont.setGenero(rs.getString(5).charAt(0));
+                cont.setTelefono(rs.getString(6));
+                cont.setCelular(rs.getString(7));
+                cont.setCorreo(rs.getString(8));
+                resul.add(cont);
             }
             cx.Cerrar();
         } catch (SQLException ex) {
